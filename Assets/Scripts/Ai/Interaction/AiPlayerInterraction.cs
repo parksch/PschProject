@@ -6,6 +6,9 @@ public class AiPlayerInterraction : AiInteraction
 {
     public override void Init(AiStateMachine stateMachine)
     {
-        base.Init(stateMachine);
+        stateMachine.RegisterState(new AiStateIdle());
+        stateMachine.RegisterState(new AiStateAttack());
+        stateMachine.RegisterState(new AiStateChase());
+        stateMachine.RegisterState(new AiStateDeath());
     }
 }

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ee39f78a0e2b2c448a728eb0312ec91, type: 3}
-  m_Name: Enemy
+  m_Name: Object
   m_EditorClassIdentifier: 
-  enemyPrefabList:
+  objectPrefabList:
   - name: Dwarf
     GameObject: {fileID: 8686804831219470822, guid: 54b10d0c5f7f22345b00750b20c7af9c, type: 3}
+    objectType: 0

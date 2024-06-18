@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiStateDeath : MonoBehaviour
+public class AiStateDeath : AiState
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Enter(AiAgent agent)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit(AiAgent agent)
     {
-        
+    }
+
+    public AiStateID GetID()
+    {
+        return AiStateID.Death;
+    }
+
+    public void Update(AiAgent agent)
+    {
     }
 }

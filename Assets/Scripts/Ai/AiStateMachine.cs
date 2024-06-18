@@ -7,14 +7,15 @@ using UnityEngine;
 public class AiStateMachine 
 {
     [SerializeField] AiStateID currentState;
-    AiState[] states;
+
     AiAgent agent;
+    AiState[] states;
 
     public AiStateMachine(AiAgent agent)
     {
-        this.agent = agent;
         int numStates = System.Enum.GetNames(typeof(AiStateID)).Length;
         states = new AiState[numStates];
+        this.agent = agent;
     }
 
     public void RegisterState(AiState state)

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PlayerCharacter : BaseCharacter
 {
-    [SerializeField] PlayerState state;
+    [SerializeField] PlayerState State => state as PlayerState;
 }

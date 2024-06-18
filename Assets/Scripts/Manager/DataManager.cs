@@ -6,38 +6,47 @@ public class DataManager : Singleton<DataManager>
 {
     [SerializeField] Goods goods;
     [SerializeField] UpgradeLevel upgradeLevel;
+    [SerializeField] Info info;
+
+    public Goods GetGoods => goods;
+    public UpgradeLevel GetUpgradeLevel => upgradeLevel;
+    public Info GetInfo => info;
 
 #region Datas
 
     [System.Serializable]
     public class Goods
     {
-        public long gold;
-        public long diamond;
+        public long gold = 0;
+        public long diamond = 0;
     }
 
     [System.Serializable]
     public class UpgradeLevel 
     {
-        public int attack;
-        public int defense;
-        public int hpRegen;
+        public int attack = 0;
+        public int defense = 0;
+        public int hpRegen = 0;
     }
 
     [System.Serializable]
     public class Info
     {
-        public int stage;
+        public int stage = 0;
     }
 
-#endregion
+    #endregion
+
+    protected override void Awake()
+    {
+        base.Awake();
+        Init();
+    }
 
     public void Init()
     {
-        goods.gold = 0;
-        goods.diamond = 0;
-        upgradeLevel.attack = 0;
-        upgradeLevel.defense = 0;
-        upgradeLevel.hpRegen = 0;
+        goods = new Goods();
+        upgradeLevel = new UpgradeLevel();
+        info = new Info();
     }
 }

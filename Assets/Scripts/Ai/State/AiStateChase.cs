@@ -2,17 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiStateChase : MonoBehaviour
+public class AiStateChase : AiState
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Enter(AiAgent agent)
     {
-        
+        agent.Interaction.Animator.SetBool("Move", true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit(AiAgent agent)
     {
-        
+        agent.Interaction.Animator.SetBool("Move", false);
     }
+
+    public AiStateID GetID()
+    {
+        return AiStateID.Chase;
+    }
+
+    public void Update(AiAgent agent)
+    {
+        if (agent.Interaction.IsRange)
+        {
+            agent.StateMachine.ChangeState(AiStateID.Attack);
+        }
+        else
+        {
+            if(agent.Interaction.TargeTransform != null)
+            {
+                agent.transform.LookAt(agent.Interaction.TargeTransform);
+                agent.transform.position += ((agent.Interaction.TargeTransform.position - agent.transform.position).normalized * agent.Interaction.MoveSpeed) * Time.deltaTime;
+            }
+            else
+            {
+                agent.StateMachine.ChangeState(AiStateID.Idle);
+            }
+        }
+    }
+
 }

@@ -7,4 +7,10 @@ namespace ClientEnum
         Player,
         Enemy
     }
+
+    public enum ObjectType
+    {
+        Object,
+        UI
+    }
 }

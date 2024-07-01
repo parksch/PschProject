@@ -2154,7 +2154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e10a93972e112a41ba2c31390db4eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 0
+  attack: 10
   hp: 200
   defense: 10
   attackRange: 1.5

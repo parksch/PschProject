@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class AiStateAttack : AiState
 {
+    bool isAttack = false;
     public void Enter(AiAgent agent)
     {
+        isAttack = false;
         agent.Interaction.Animator.SetBool("Attack", true);
         agent.transform.LookAt(agent.Interaction.TargeTransform);
+        agent.AiAnimationEvent.SetStart(() => { isAttack = true; });
         agent.AiAnimationEvent.SetMid(agent.Interaction.GetAction("Attack"));
-        agent.AiAnimationEvent.SetEnd(() =>
-        {
-            if (!agent.Interaction.IsRange)
-            {
-                agent.StateMachine.ChangeState(AiStateID.Idle);
-            }
-        });
+        agent.AiAnimationEvent.SetEnd(() => { isAttack = false; });
     }
 
     public void Exit(AiAgent agent)
     {
         agent.Interaction.Animator.SetBool("Attack", false);
+        agent.AiAnimationEvent.ResetEvent();
     }
 
     public AiStateID GetID()
@@ -30,6 +28,10 @@ public class AiStateAttack : AiState
 
     public void Update(AiAgent agent)
     {
-
+        if (!agent.Interaction.IsAttackRange && !isAttack)
+        {
+            agent.StateMachine.ChangeState(AiStateID.Idle);
+            return;
+        }
     }
 }

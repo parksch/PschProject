@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] Stage stage;
-    [SerializeField] PlayerCharacter player;
+    [SerializeField,ReadOnly] Stage stage;
+    [SerializeField,ReadOnly] PlayerCharacter player;
+    [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
 
+    public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
+    public void RemoveEnemy(EnemyCharacter enemy) => enemies.Remove(enemy);
 
     protected override void Awake()
     {
@@ -23,6 +26,7 @@ public class GameManager : Singleton<GameManager>
     {
         player.Init();
         stage.StartStage();
+        UIManager.Instance.Init();
     }
 
     public BaseCharacter GetTarget(CharacterType characterType)
@@ -30,7 +34,20 @@ public class GameManager : Singleton<GameManager>
         switch (characterType)
         {
             case CharacterType.Player:
-                break;
+                float dist = float.MaxValue;
+                BaseCharacter character = null;
+
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    float enemyDist = Vector3.Distance(new Vector3(player.transform.position.x, 0, player.transform.position.z), new Vector3(enemies[i].transform.position.x, 0, enemies[i].transform.position.z));
+                    if (dist > enemyDist)
+                    {
+                        dist = enemyDist;
+                        character = enemies[i];
+                    }
+                }
+
+                return character;
             case CharacterType.Enemy:
                 return player;
         }

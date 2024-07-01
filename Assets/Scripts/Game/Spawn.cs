@@ -19,6 +19,7 @@ public class Spawn : MonoBehaviour
 
             character.Init();
             gameObject.SetActive(true);
+            GameManager.Instance.AddEnemy(character);
         }
     }
 

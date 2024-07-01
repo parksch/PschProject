@@ -21,7 +21,7 @@ public class AiStateChase : AiState
 
     public void Update(AiAgent agent)
     {
-        if (agent.Interaction.IsRange)
+        if (agent.Interaction.IsChaseRange)
         {
             agent.StateMachine.ChangeState(AiStateID.Attack);
         }

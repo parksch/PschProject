@@ -23,6 +23,13 @@ public class AiAnimationEvent : MonoBehaviour
         this.end = end;
     }
 
+    public void ResetEvent()
+    {
+        start = null;
+        mid = null;
+        end = null;
+    }
+
     public void ActionStart()
     {
         start?.Invoke();

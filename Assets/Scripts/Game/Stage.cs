@@ -6,7 +6,7 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     [SerializeField,ReadOnly] StageScriptable stageScriptable;
-    [SerializeField] Spawn spawn;
+    [SerializeField,ReadOnly] Spawn spawn;
 
     public void StartStage()
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
+    [SerializeField, ReadOnly] string deviceNum;
+    [SerializeField, ReadOnly] PlayerState playerDefaultState;
     [SerializeField] Goods goods;
     [SerializeField] UpgradeLevel upgradeLevel;
     [SerializeField] Info info;
@@ -12,13 +14,24 @@ public class DataManager : Singleton<DataManager>
     public UpgradeLevel GetUpgradeLevel => upgradeLevel;
     public Info GetInfo => info;
 
-#region Datas
+    public delegate void ChangeGoods(long value,ClientEnum.Goods goods);
+    public ChangeGoods OnChangeGoods;
+
+    #region PlayerStatus
+    public long HP => playerDefaultState.HP;
+    public long DeFense => playerDefaultState.Defense;
+    public float AttackSpeed => playerDefaultState.AttackSpeed;
+    public float MoveSpeed => playerDefaultState.MoveSpeed;
+    public float AttackRange => playerDefaultState.AttackRange;
+    #endregion
+
+    #region Datas
 
     [System.Serializable]
     public class Goods
     {
         public long gold = 0;
-        public long diamond = 0;
+        public long ruby = 0;
     }
 
     [System.Serializable]
@@ -32,7 +45,10 @@ public class DataManager : Singleton<DataManager>
     [System.Serializable]
     public class Info
     {
+        public string userName;
         public int stage = 0;
+        public int currentLevel;
+        public int maxExp;
     }
 
     #endregion
@@ -45,8 +61,23 @@ public class DataManager : Singleton<DataManager>
 
     public void Init()
     {
-        goods = new Goods();
-        upgradeLevel = new UpgradeLevel();
-        info = new Info();
+        deviceNum = SystemInfo.deviceUniqueIdentifier;
+
+        OnChangeGoods = (value,type) => 
+        {
+            switch (type)
+            {
+                case ClientEnum.Goods.Gold:
+                    goods.gold += value;
+                    UIManager.Instance.SetGold(goods.gold);
+                    break;
+                case ClientEnum.Goods.Ruby:
+                    goods.ruby += value;
+                    UIManager.Instance.SetRuby(goods.ruby);
+                    break;
+                default:
+                    break;
+            }
+        };
     }
 }

@@ -9,7 +9,7 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected AiAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected BaseCharacterState state;
-    [SerializeField] protected BaseCharacter target;
+    [SerializeField,ReadOnly] protected BaseCharacter target;
 
     BaseCharacter Target()
     {
@@ -20,6 +20,8 @@ public class BaseCharacter : MonoBehaviour
 
         return target;
     }
+
+    public bool IsTarget => target != null;
 
     public virtual void Init()
     {

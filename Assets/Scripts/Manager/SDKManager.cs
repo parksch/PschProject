@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class SDKManager : Singleton<SDKManager>
 {
-    public GPGS gpgs;
-    public AdMob admob;
-    public Firebase firebase;
+    [SerializeField, ReadOnly] GPGS gpgs;
+    [SerializeField, ReadOnly] AdMob admob;
+    [SerializeField, ReadOnly] Firebase firebase;
+
+    public GPGS GPGS => gpgs;
+    public AdMob AdMob => admob;
+    public Firebase Firebase => firebase;
+
 }

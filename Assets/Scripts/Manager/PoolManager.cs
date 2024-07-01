@@ -5,8 +5,8 @@ using static ObjectScriptable;
 
 public class PoolManager : Singleton<PoolManager>
 {
-    [SerializeField] Transform uiParent;
-    [SerializeField] ObjectScriptable objectScriptable;
+    [SerializeField,ReadOnly] Transform uiParent;
+    [SerializeField,ReadOnly] ObjectScriptable objectScriptable;
     Dictionary<string,PoolObject> poolObjects = new Dictionary<string, PoolObject>();
 
     protected override void Awake()

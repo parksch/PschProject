@@ -36,7 +36,10 @@ public class AiStateIdle : AiState
         }
         else
         {
-            agent.StateMachine.ChangeState(AiStateID.Chase);
+            if (agent.Interaction.IsTarget)
+            {
+                agent.StateMachine.ChangeState(AiStateID.Chase);
+            }
         }
     }
 

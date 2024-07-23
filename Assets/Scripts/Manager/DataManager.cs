@@ -18,8 +18,9 @@ public class DataManager : Singleton<DataManager>
     public ChangeGoods OnChangeGoods;
 
     #region PlayerStatus
+    public long Attack => playerDefaultState.Attack;
     public long HP => playerDefaultState.HP;
-    public long DeFense => playerDefaultState.Defense;
+    public long Defense => playerDefaultState.Defense;
     public float AttackSpeed => playerDefaultState.AttackSpeed;
     public float MoveSpeed => playerDefaultState.MoveSpeed;
     public float AttackRange => playerDefaultState.AttackRange;

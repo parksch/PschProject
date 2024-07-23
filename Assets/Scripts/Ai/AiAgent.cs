@@ -17,11 +17,16 @@ public class AiAgent : MonoBehaviour
     {
         stateMachine = new AiStateMachine(this);
         interaction.Init(stateMachine);
-        stateMachine.ChangeState(initializeState);
+        SetInitializeState();
     }
 
     private void Update()
     {
         stateMachine.Update();
+    }
+
+    public void SetInitializeState()
+    {
+        stateMachine.ChangeState(initializeState);
     }
 }

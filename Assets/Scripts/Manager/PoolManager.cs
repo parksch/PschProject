@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static ObjectScriptable;
 
 public class PoolManager : Singleton<PoolManager>
 {
     [SerializeField,ReadOnly] Transform uiParent;
-    [SerializeField,ReadOnly] ObjectScriptable objectScriptable;
     Dictionary<string,PoolObject> poolObjects = new Dictionary<string, PoolObject>();
 
     protected override void Awake()
@@ -20,7 +18,6 @@ public class PoolManager : Singleton<PoolManager>
             gameObject.SetActive(false);
             uiParent = gameObject.transform;
         }
-        objectScriptable = Resources.Load<ObjectScriptable>("Scriptable/Object");
     }
 
     public class PoolObject
@@ -51,6 +48,7 @@ public class PoolManager : Singleton<PoolManager>
     {
         PoolObject poolObject = poolObjects[name];
         gameObject.SetActive(false);
+        gameObject.transform.localPosition = Vector3.zero;
 
         switch (poolObject.type)
         {
@@ -64,14 +62,15 @@ public class PoolManager : Singleton<PoolManager>
                 break;
         }
 
+        
         poolObject.queue.Enqueue(gameObject);
     }
 
     void AddPoolObject(string name)
     {
-        ObjectPrefab objectPrefab = objectScriptable.GetObject(name);
+        ObjectScriptable.ObjectPrefab objectPrefab = TableManager.Instance.ObjectScriptable.GetObject(name);
         poolObjects[name] = new PoolObject();
-        poolObjects[name].prefab = objectPrefab.GameObject;
+        poolObjects[name].prefab = objectPrefab.gameObject;
         poolObjects[name].type = objectPrefab.objectType;
     }
 

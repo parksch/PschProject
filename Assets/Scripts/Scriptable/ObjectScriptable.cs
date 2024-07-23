@@ -12,9 +12,16 @@ public class ObjectScriptable : BaseScriptable
     public class ObjectPrefab
     {
         public string name;
-        public GameObject GameObject;
+        public GameObject gameObject;
+        public long attack;
+        public long hp;
+        public long defense;
+        public float attackRange;
+        public float attackSpeed;
+        public float moveSpeed;
         public ObjectType objectType;
     }
+
 
     public ObjectPrefab GetObject(string name) => objectPrefabList.Find(x => x.name == name);
 }

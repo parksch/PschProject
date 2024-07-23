@@ -27,10 +27,10 @@ public class AiStateChase : AiState
         }
         else
         {
-            if(agent.Interaction.TargeTransform != null)
+            if(agent.Interaction.TargetTransform != null)
             {
-                agent.transform.LookAt(agent.Interaction.TargeTransform);
-                agent.transform.position += ((agent.Interaction.TargeTransform.position - agent.transform.position).normalized * agent.Interaction.MoveSpeed) * Time.deltaTime;
+                agent.transform.LookAt(agent.Interaction.TargetTransform);
+                agent.transform.position += ((agent.Interaction.TargetTransform.position - agent.transform.position).normalized * agent.Interaction.MoveSpeed) * Time.deltaTime;
             }
             else
             {

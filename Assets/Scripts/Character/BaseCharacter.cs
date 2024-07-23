@@ -9,11 +9,12 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected AiAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected BaseCharacterState state;
-    [SerializeField,ReadOnly] protected BaseCharacter target;
+    [SerializeField, ReadOnly] protected BaseCharacter target;
+    [SerializeField, ReadOnly] protected long curHp;
 
     BaseCharacter Target()
     {
-        if (target == null)
+        if (target == null || target.IsDeath)
         {
             target = GameManager.Instance.GetTarget(characterType);
         }
@@ -21,31 +22,58 @@ public class BaseCharacter : MonoBehaviour
         return target;
     }
 
-    public bool IsTarget => target != null;
-
+    public bool IsDeath => curHp <= 0;
+    public bool IsTarget => target != null && !target.IsDeath;
+    public bool IsLookAt => Dot() > 0;
     public virtual void Init()
     {
+        curHp = HP();
+        AnimationSpeedSet();
+    }
 
+    public void SetInitializeState()
+    {
+        agent.SetInitializeState();
     }
 
     public float AttackRange => state.AttackRange;
 
     public virtual void AttackAction()
     {
-        if (Dist() <= state.AttackRange && Vector3.Dot(new Vector3(Target().transform.position.x, 0, Target().transform.position.z), new Vector3(transform.position.x, 0, transform.position.z)) > 0)
+        if (Dist() <= state.AttackRange && IsLookAt)
         {
             Target().Hit(Attack());
         }
     }
 
-    public virtual void Hit(long attack)
+    public virtual void DeathAction()
     {
 
     }
 
+    public virtual void Hit(long attack)
+    {
+        if (curHp <= 0)
+        {
+            return;
+        }
+
+        curHp -= attack;
+
+        if (curHp < 0)
+        {
+            curHp = 0;
+        }
+
+        if (curHp <= 0)
+        {
+            Death();
+            agent.StateMachine.ChangeState(AiStateID.Death);
+        }
+    }
+
     public virtual void Death()
     {
-
     }
 
     public virtual long Attack()
@@ -71,6 +99,18 @@ public class BaseCharacter : MonoBehaviour
     public virtual float MoveSpeed()
     {
         return 0;
+    }
+
+    public float Dot()
+    {
+        if (Target() == null)
+        {
+            return 0;
+        }
+
+        Vector3 normal = (new Vector3(Target().transform.position.x, 0, Target().transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
+
+        return Vector3.Dot(normal, transform.forward);
     }
 
     public float Dist()
@@ -101,6 +141,11 @@ public class BaseCharacter : MonoBehaviour
         }
 
         return Target().transform;
+    }
+
+    public virtual void AnimationSpeedSet()
+    {
+        animator.SetFloat("AttackSpeed", AttackSpeed());
     }
 
 }

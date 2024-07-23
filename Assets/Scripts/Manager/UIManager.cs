@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    [SerializeField,ReadOnly] UIText goldText;
-    [SerializeField,ReadOnly] UIText rubyText;
-    [SerializeField,ReadOnly] Text userName;
-    [SerializeField,ReadOnly] Text level;
-    [SerializeField] Slider hpSlider;
-    [SerializeField] Slider expSlider;
+    [SerializeField, ReadOnly] UIText goldText;
+    [SerializeField, ReadOnly] UIText rubyText;
+    [SerializeField, ReadOnly] Text userName;
+    [SerializeField, ReadOnly] Text level;
+    [SerializeField, ReadOnly] Slider hpSlider;
+    [SerializeField, ReadOnly] Slider expSlider;
+    [SerializeField, ReadOnly] BasePanel currentPanel;
 
     public delegate void ChangeHP(long curHp);
-
     public ChangeHP OnChangeHP;
 
     protected override void Awake()
@@ -27,6 +27,7 @@ public class UIManager : Singleton<UIManager>
 
         OnChangeHP = (value) => 
         { 
+
         };
 
     }
@@ -41,4 +42,14 @@ public class UIManager : Singleton<UIManager>
         rubyText.SetText(ruby);
     }
 
+
+    public void OnClickMenuButton(UIMenuButton menuButton)
+    {
+
+    }
+
+    public void OpenPaenl(BasePanel paenl)
+    {
+
+    }
 }

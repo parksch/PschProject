@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class EnemyCharacter : BaseCharacter
 {
+    [SerializeField] string poolName;
     EnemyState State => state as EnemyState;
-    long curHp;
 
     public override void Init()
     {
-        curHp = HP();
-        animator.SetFloat("AttackSpeed",State.AttackSpeed);
+        State.Set(poolName);
+        base.Init();
+    }
+
+    public override void DeathAction()
+    {
+        PoolManager.Instance.Enqueue(poolName, gameObject);
     }
 
     public override long Attack()
@@ -38,4 +43,9 @@ public class EnemyCharacter : BaseCharacter
         return State.MoveSpeed;
     }
 
+    public override void Death()
+    {
+        GameManager.Instance.RemoveEnemy(this);
+        base.Death();
+    }
 }

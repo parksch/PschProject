@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefabList:
   - name: Dwarf
-    GameObject: {fileID: 8686804831219470822, guid: 54b10d0c5f7f22345b00750b20c7af9c, type: 3}
+    gameObject: {fileID: 8686804831219470822, guid: 54b10d0c5f7f22345b00750b20c7af9c, type: 3}
+    attack: 10
+    hp: 200
+    defense: 10
+    attackRange: 2
+    attackSpeed: 1
+    moveSpeed: 3
     objectType: 0

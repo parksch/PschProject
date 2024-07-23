@@ -8,6 +8,7 @@ public class PlayerCharacter : BaseCharacter
 
     public override void Init()
     {
+        State.Set();
         base.Init();
     }
 
@@ -30,6 +31,7 @@ public class PlayerCharacter : BaseCharacter
     {
         return State.MoveSpeed;
     }
+
     public override long Defense()
     {
         return State.Defense;
@@ -37,7 +39,19 @@ public class PlayerCharacter : BaseCharacter
 
     public override void AttackAction()
     {
+        List<EnemyCharacter> enemies = GameManager.Instance.Enemies;
 
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            float dist = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(enemies[i].transform.position.x, 0, enemies[i].transform.position.z));
+            Vector3 normal = (new Vector3(enemies[i].transform.position.x, 0, enemies[i].transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
+
+
+            if (dist <= state.AttackRange && Vector3.Dot(transform.forward, normal) > 0)
+            {
+                enemies[i].Hit(Attack());
+            }
+        }
     }
 
     public override void Death()
@@ -48,5 +62,11 @@ public class PlayerCharacter : BaseCharacter
     public override void Hit(long attack)
     {
 
+    }
+
+    public override void AnimationSpeedSet()
+    {
+        base.AnimationSpeedSet();
+        animator.SetFloat("MoveSpeed", MoveSpeed()/DataManager.Instance.MoveSpeed);
     }
 }

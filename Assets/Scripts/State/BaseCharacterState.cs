@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BaseCharacterState : MonoBehaviour
 {
-    [SerializeField] long attack;
-    [SerializeField] long hp;
-    [SerializeField] long defense;
-    [SerializeField] float attackRange;
-    [SerializeField] float attackSpeed;
-    [SerializeField] float moveSpeed;
+    [SerializeField] protected long  attack;     
+    [SerializeField] protected long  hp;         
+    [SerializeField] protected long  defense;    
+    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackSpeed;
+    [SerializeField] protected float moveSpeed;  
 
     public long Attack => attack;
     public long HP => hp;

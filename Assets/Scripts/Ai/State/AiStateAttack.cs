@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class AiStateAttack : AiState
 {
@@ -9,7 +10,7 @@ public class AiStateAttack : AiState
     {
         isAttack = false;
         agent.Interaction.Animator.SetBool("Attack", true);
-        agent.transform.LookAt(agent.Interaction.TargeTransform);
+        agent.transform.LookAt(agent.Interaction.TargetTransform);
         agent.AiAnimationEvent.SetStart(() => { isAttack = true; });
         agent.AiAnimationEvent.SetMid(agent.Interaction.GetAction("Attack"));
         agent.AiAnimationEvent.SetEnd(() => { isAttack = false; });
@@ -28,10 +29,30 @@ public class AiStateAttack : AiState
 
     public void Update(AiAgent agent)
     {
-        if (!agent.Interaction.IsAttackRange && !isAttack)
+        if (isAttack)
         {
-            agent.StateMachine.ChangeState(AiStateID.Idle);
             return;
+        }
+
+        if (!agent.Interaction.IsTarget)
+        {
+            if (!agent.Interaction.IsAttackRange)
+            {
+                agent.StateMachine.ChangeState(AiStateID.Idle);
+                return;
+            }
+        }
+        else
+        {
+            if (!agent.Interaction.IsAttackRange)
+            {
+                agent.StateMachine.ChangeState(AiStateID.Idle);
+                return;
+            }
+            else
+            {
+                agent.transform.LookAt(agent.Interaction.TargetTransform);
+            }
         }
     }
 }

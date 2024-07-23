@@ -10,13 +10,17 @@ public class AiInteraction : MonoBehaviour
     protected Dictionary<string,System.Action> actions = new Dictionary<string, System.Action> ();
 
     public System.Action GetAction(string name) => actions[name];
-    public bool IsChaseRange => character.Dist() < character.AttackRange * 0.9f;
+    public bool IsChaseRange => character.Dist() < character.AttackRange * 0.8f;
     public bool IsRange => character.Dist() < character.AttackRange;
-    public bool IsAttackRange => character.Dist() < character.AttackRange * 1.1f;
+    public bool IsAttackRange => character.Dist() < character.AttackRange;
     public bool IsTarget => character.IsTarget;
+    public bool IsLookAt => character.IsLookAt;
     public float MoveSpeed => character.MoveSpeed();
-    public Transform TargeTransform => character.TargetTransform();
-    public Animator Animator => ani;  
+    public float Dot => character.Dot();
+
+    public BaseCharacter Character => character;
+    public Transform TargetTransform => character.TargetTransform();
+    public Animator Animator => ani;
 
     public virtual void Init(AiStateMachine stateMachine)
     {

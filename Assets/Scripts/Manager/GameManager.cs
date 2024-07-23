@@ -11,7 +11,17 @@ public class GameManager : Singleton<GameManager>
     [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
 
     public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
-    public void RemoveEnemy(EnemyCharacter enemy) => enemies.Remove(enemy);
+    public void RemoveEnemy(EnemyCharacter enemy) 
+    {
+        enemies.Remove(enemy);
+
+        if (enemies.Count == 0)
+        {
+            stage.CreateEnemy();
+        }
+    }
+
+    public List<EnemyCharacter> Enemies => enemies;
 
     protected override void Awake()
     {

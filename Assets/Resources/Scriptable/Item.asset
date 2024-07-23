@@ -9,15 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10fe55003c52b9e4a821b956ad468a11, type: 3}
-  m_Name: Stage
+  m_Script: {fileID: 11500000, guid: cb355b7d2ae65314084bace3a1158f67, type: 3}
+  m_Name: Item
   m_EditorClassIdentifier: 
-  maxEnemyCount: 10
-  startGold: 1000
-  multiplyPerStageHp: 2
-  multiplyPerStageDefanse: 1.5
-  multiplyPerStageAttack: 1.5
-  multiplyPerGold: 1.5
-  stageMonsters:
-  - monsters:
-    - Dwarf

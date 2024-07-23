@@ -2111,6 +2111,8 @@ MonoBehaviour:
   animator: {fileID: 6966959902745053705}
   state: {fileID: 3420226468226030462}
   target: {fileID: 0}
+  curHp: 0
+  poolName: Dwarf
 --- !u!114 &7728260056396632515
 MonoBehaviour:
   m_ObjectHideFlags: 0

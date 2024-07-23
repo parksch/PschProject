@@ -6,12 +6,15 @@ using UnityEngine;
 public class StageScriptable : BaseScriptable
 {
     [SerializeField] int maxEnemyCount;
+    [SerializeField] int startGold;
     [SerializeField] float multiplyPerStageHp;
     [SerializeField] float multiplyPerStageDefanse;
     [SerializeField] float multiplyPerStageAttack;
+    [SerializeField] float multiplyPerGold;
     [SerializeField] List<StageMonster> stageMonsters;
 
     public int MaxEnemyCount => maxEnemyCount;
+    public long StageGold => (long)(startGold * multiplyPerGold);
     public float MultiplyPerStageHp => multiplyPerStageHp;
     public float MultiplyPerStageDefanse => multiplyPerStageDefanse;
     public float MultiplyPerStageAttack => multiplyPerStageAttack;

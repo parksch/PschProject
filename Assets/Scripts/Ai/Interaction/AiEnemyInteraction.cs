@@ -22,7 +22,7 @@ public class AiEnemyInteraction : AiInteraction
 
         actions["Death"] = () =>
         {
-
+            Character.DeathAction();
         };
     }
 }

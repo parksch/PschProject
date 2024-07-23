@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4385e304877522b4299964b096e89232, type: 3}
   m_Name: Upgrade
   m_EditorClassIdentifier: 
+  upgradeStates:
+  - name: Attack
+    maxLevel: 100
+    addValue: 0

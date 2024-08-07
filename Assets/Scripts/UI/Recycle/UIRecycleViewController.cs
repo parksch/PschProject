@@ -36,6 +36,7 @@ namespace UI
             if (cells.Count < 1)
             {
                 Vector2 cellTop = new Vector2(0.0f, -padding.top);
+
                 for (int i = 0; i < tableData.Count; i++)
                 {
                     float cellHeight = GetCellHeightAtIndex(i);
@@ -190,7 +191,7 @@ namespace UI
                     UpdateCellForIndex(lastCell, firstCell.Index -1);
                     lastCell.Bottom = firstCell.Top + new Vector2(0.0f ,spacingHeight);
 
-                    cells.AddLast(lastCell);
+                    cells.AddFirst(lastCell);
                     cells.RemoveLast();
                     lastCell = cells.Last.Value;
                 }

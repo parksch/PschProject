@@ -12,6 +12,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, ReadOnly] Slider hpSlider;
     [SerializeField, ReadOnly] Slider expSlider;
     [SerializeField, ReadOnly] BasePanel currentPanel;
+    [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField] List<BasePanel> panels;
 
     Stack<BasePanel> panelStack = new Stack<BasePanel>();
@@ -49,7 +50,6 @@ public class UIManager : Singleton<UIManager>
     {
         rubyText.SetText(ruby);
     }
-
 
     public void OnClickMenuButton(UIMenuButton menuButton)
     {

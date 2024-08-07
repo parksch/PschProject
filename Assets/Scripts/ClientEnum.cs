@@ -26,4 +26,15 @@ namespace ClientEnum
         Object,
         UI
     }
+
+    public enum Item
+    {
+        None,
+        Helmet,
+        Armor,
+        Boots,
+        Weapon,
+        Earring,
+        Chain,
+    }
 }

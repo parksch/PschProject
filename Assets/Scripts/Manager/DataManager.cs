@@ -6,6 +6,7 @@ public class DataManager : Singleton<DataManager>
 {
     [SerializeField, ReadOnly] string deviceNum;
     [SerializeField, ReadOnly] PlayerState playerDefaultState;
+    [SerializeField, ReadOnly] List<InventoryData> inventoryDatas = new List<InventoryData>();
     [SerializeField] Goods goods;
     [SerializeField] UpgradeLevel upgradeLevel;
     [SerializeField] Info info;
@@ -13,6 +14,7 @@ public class DataManager : Singleton<DataManager>
     public Goods GetGoods => goods;
     public UpgradeLevel GetUpgradeLevel => upgradeLevel;
     public Info GetInfo => info;
+    public List<InventoryData> InventoryDatas => inventoryDatas;
 
     public delegate void ChangeGoods(long value,ClientEnum.Goods goods);
     public ChangeGoods OnChangeGoods;
@@ -27,6 +29,13 @@ public class DataManager : Singleton<DataManager>
     #endregion
 
     #region Datas
+
+    [System.Serializable]
+    public class InventoryData
+    {
+        public string id;
+        public ClientEnum.Item itemType;
+    }
 
     [System.Serializable]
     public class Goods

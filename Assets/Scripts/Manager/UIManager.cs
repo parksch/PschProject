@@ -12,18 +12,27 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, ReadOnly] Slider hpSlider;
     [SerializeField, ReadOnly] Slider expSlider;
     [SerializeField, ReadOnly] BasePanel currentPanel;
+    [SerializeField] List<BasePanel> firstLoadPanels;
 
+
+    Stack<BasePanel> panels = new Stack<BasePanel>();
     public delegate void ChangeHP(long curHp);
     public ChangeHP OnChangeHP;
 
     protected override void Awake()
     {
+
     }
 
     public void Init()
     {
         SetGold(DataManager.Instance.GetGoods.gold);
         SetRuby(DataManager.Instance.GetGoods.ruby);
+
+        for (int i = 0; i < firstLoadPanels.Count; i++)
+        {
+            firstLoadPanels[i].FirstLoad();
+        }
 
         OnChangeHP = (value) => 
         { 
@@ -45,11 +54,55 @@ public class UIManager : Singleton<UIManager>
 
     public void OnClickMenuButton(UIMenuButton menuButton)
     {
+        if (menuButton.targetPanel == currentPanel)
+        {
+            return;
+        }
 
+        OpenPaenl(menuButton.targetPanel);
     }
 
     public void OpenPaenl(BasePanel paenl)
     {
+        if (currentPanel != null)
+        {
+            ClosePaenl();
+        }
 
+        currentPanel = paenl;
+
+        if (currentPanel != null)
+        {
+            currentPanel.Open();
+            currentPanel.gameObject.SetActive(true);
+        }
     }
+
+    public void ClosePaenl()
+    {
+        currentPanel.Close();
+        currentPanel.gameObject.SetActive(false);
+        currentPanel = null;
+    }
+
+    public void AddPanel(BasePanel panel)
+    {
+        if (currentPanel != null)
+        {
+            panels.Push(currentPanel);
+        }
+
+        OpenPaenl(panel);
+    }
+
+    public void BackPanel()
+    {
+        ClosePaenl();
+
+        if (panels.Count > 0)
+        {
+            OpenPaenl(panels.Pop());
+        }
+    }
+
 }

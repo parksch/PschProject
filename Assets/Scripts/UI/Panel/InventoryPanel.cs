@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InventoryPanel : BasePanel
 {
-    [SerializeField] UIInventoryScroll inventoryScroll;
-
+    [SerializeField,ReadOnly] UIInventoryScroll inventoryScroll;
+    [SerializeField] UIToggleGroup toggleGroup;
     public override void FirstLoad()
     {
         inventoryScroll.LoadData();
@@ -13,11 +13,10 @@ public class InventoryPanel : BasePanel
 
     public override void Open()
     {
-
+        toggleGroup.ResetToggle();
     }
 
     public override void Close()
     {
-
     }
 }

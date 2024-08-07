@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class InventoryData
 {
     public int index = 0;
-    public List<DataManager.InventoryData> datas = new List<DataManager.InventoryData>();
+    public List<DataManager.InventoryData> datas;
 }
 
 public class UIInventoryCell : UIRecycleViewCell<InventoryData>

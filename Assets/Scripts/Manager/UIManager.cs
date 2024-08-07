@@ -12,10 +12,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, ReadOnly] Slider hpSlider;
     [SerializeField, ReadOnly] Slider expSlider;
     [SerializeField, ReadOnly] BasePanel currentPanel;
-    [SerializeField] List<BasePanel> firstLoadPanels;
+    [SerializeField] List<BasePanel> panels;
 
-
-    Stack<BasePanel> panels = new Stack<BasePanel>();
+    Stack<BasePanel> panelStack = new Stack<BasePanel>();
     public delegate void ChangeHP(long curHp);
     public ChangeHP OnChangeHP;
 
@@ -29,9 +28,9 @@ public class UIManager : Singleton<UIManager>
         SetGold(DataManager.Instance.GetGoods.gold);
         SetRuby(DataManager.Instance.GetGoods.ruby);
 
-        for (int i = 0; i < firstLoadPanels.Count; i++)
+        for (int i = 0; i < panels.Count; i++)
         {
-            firstLoadPanels[i].FirstLoad();
+            panels[i].FirstLoad();
         }
 
         OnChangeHP = (value) => 
@@ -89,7 +88,7 @@ public class UIManager : Singleton<UIManager>
     {
         if (currentPanel != null)
         {
-            panels.Push(currentPanel);
+            panelStack.Push(currentPanel);
         }
 
         OpenPaenl(panel);
@@ -101,8 +100,12 @@ public class UIManager : Singleton<UIManager>
 
         if (panels.Count > 0)
         {
-            OpenPaenl(panels.Pop());
+            OpenPaenl(panelStack.Pop());
         }
     }
 
+    public T GetPanel<T>() where T : BasePanel
+    {
+        return panels.Find(x => x.GetType() == typeof(T)) as T;
+    }
 }

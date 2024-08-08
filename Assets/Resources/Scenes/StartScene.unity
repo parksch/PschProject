@@ -1472,6 +1472,7 @@ MonoBehaviour:
     userName: player
     stage: 0
     currentLevel: 0
+    currentExp: 0
     maxExp: 0
 --- !u!4 &1858542573
 Transform:
@@ -1506,6 +1507,8 @@ MonoBehaviour:
   attackRange: 2
   attackSpeed: 2
   moveSpeed: 4
+  hpRegen: 20
+  hpRegenTimer: 2
 --- !u!1 &1945657694
 GameObject:
   m_ObjectHideFlags: 0

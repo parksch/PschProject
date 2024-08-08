@@ -17,7 +17,7 @@ public class AiEnemyInteraction : AiInteraction
     {
         actions["Attack"] = () =>
         {
-
+            Character.AttackAction();
         };
 
         actions["Death"] = () =>

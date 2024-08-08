@@ -12,6 +12,8 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField, ReadOnly] protected BaseCharacter target;
     [SerializeField, ReadOnly] protected long curHp;
 
+    public float GetHPRatio => ((float)curHp / HP());
+
     BaseCharacter Target()
     {
         if (target == null || target.IsDeath)

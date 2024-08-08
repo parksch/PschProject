@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField,ReadOnly] PlayerCharacter player;
     [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
 
+    public PlayerCharacter Player => player;
+
     public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
     public void RemoveEnemy(EnemyCharacter enemy) 
     {

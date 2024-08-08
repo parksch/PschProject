@@ -13,10 +13,11 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, ReadOnly] Slider expSlider;
     [SerializeField, ReadOnly] BasePanel currentPanel;
     [SerializeField, ReadOnly] UIBossHP bossHP;
+    [SerializeField, ReadOnly] UIUserInfo userInfo;
     [SerializeField] List<BasePanel> panels;
 
     Stack<BasePanel> panelStack = new Stack<BasePanel>();
-    public delegate void ChangeHP(long curHp);
+    public delegate void ChangeHP();
     public ChangeHP OnChangeHP;
 
     protected override void Awake()
@@ -28,17 +29,17 @@ public class UIManager : Singleton<UIManager>
     {
         SetGold(DataManager.Instance.GetGoods.gold);
         SetRuby(DataManager.Instance.GetGoods.ruby);
+        userInfo.Init();
 
         for (int i = 0; i < panels.Count; i++)
         {
             panels[i].FirstLoad();
         }
 
-        OnChangeHP = (value) => 
-        { 
-
+        OnChangeHP = () =>
+        {
+            userInfo.SetHP(GameManager.Instance.Player.GetHPRatio);
         };
-
     }
 
     public void SetGold(long gold)

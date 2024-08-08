@@ -12,6 +12,8 @@ public class AiAgent : MonoBehaviour
     public AiAnimationEvent AiAnimationEvent => animationEvent;
     public AiStateMachine StateMachine => stateMachine;
     public AiInteraction Interaction => interaction;
+    public AiStateID CurrentState => StateMachine.CurrentState;
+
 
     private void Awake()
     {

@@ -19,14 +19,7 @@ public class DataManager : Singleton<DataManager>
     public delegate void ChangeGoods(long value,ClientEnum.Goods goods);
     public ChangeGoods OnChangeGoods;
 
-    #region PlayerStatus
-    public long Attack => playerDefaultState.Attack;
-    public long HP => playerDefaultState.HP;
-    public long Defense => playerDefaultState.Defense;
-    public float AttackSpeed => playerDefaultState.AttackSpeed;
-    public float MoveSpeed => playerDefaultState.MoveSpeed;
-    public float AttackRange => playerDefaultState.AttackRange;
-    #endregion
+    public PlayerState PlayerDefaultState => playerDefaultState;
 
     #region Datas
 
@@ -58,6 +51,7 @@ public class DataManager : Singleton<DataManager>
         public string userName;
         public int stage = 0;
         public int currentLevel;
+        public int currentExp;
         public int maxExp;
     }
 

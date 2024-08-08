@@ -48,4 +48,9 @@ public class EnemyCharacter : BaseCharacter
         GameManager.Instance.RemoveEnemy(this);
         base.Death();
     }
+
+    public override void AttackAction()
+    {
+        base.AttackAction();
+    }
 }

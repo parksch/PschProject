@@ -8,6 +8,8 @@ public class AiStateMachine
 {
     [SerializeField] AiStateID currentState;
 
+    public AiStateID CurrentState => currentState;
+
     AiAgent agent;
     AiState[] states;
 

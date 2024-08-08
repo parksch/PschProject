@@ -18,5 +18,6 @@ public class UIUserInfo : MonoBehaviour
         playerName.text = DataManager.Instance.GetInfo.userName;
         playerLevel.text = DataManager.Instance.GetInfo.currentLevel.ToString();
         SetHP(GameManager.Instance.Player.GetHPRatio);
+        SetExp(DataManager.Instance.ExpRatio());
     }
 }

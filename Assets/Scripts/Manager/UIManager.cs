@@ -17,8 +17,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] List<BasePanel> panels;
 
     Stack<BasePanel> panelStack = new Stack<BasePanel>();
-    public delegate void ChangeHP();
+
+    public delegate void ChangeHP(float ratio);
     public ChangeHP OnChangeHP;
+
 
     protected override void Awake()
     {
@@ -36,10 +38,11 @@ public class UIManager : Singleton<UIManager>
             panels[i].FirstLoad();
         }
 
-        OnChangeHP = () =>
-        {
-            userInfo.SetHP(GameManager.Instance.Player.GetHPRatio);
-        };
+        OnChangeHP += userInfo.SetHP;
+
+        DataManager.Instance.OnChangeGold += SetGold;
+
+        DataManager.Instance.OnChangeExp += userInfo.SetExp;
     }
 
     public void SetGold(long gold)

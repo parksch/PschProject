@@ -66,4 +66,15 @@ public class GameManager : Singleton<GameManager>
 
         return null;
     }
+
+    public void AddGold()
+    {
+        long gold = (long)(TableManager.Instance.StageScriptable.StartGold * (1 + (DataManager.Instance.GetInfo.stage * TableManager.Instance.StageScriptable.MultiplyPerGold)));
+        DataManager.Instance.AddGold(gold);
+    }
+
+    public void AddExp()
+    {
+
+    }
 }

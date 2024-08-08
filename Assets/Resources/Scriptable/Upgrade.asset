@@ -16,3 +16,6 @@ MonoBehaviour:
   - name: Attack
     maxLevel: 100
     addValue: 0
+  - name: Exp
+    maxLevel: 100
+    addValue: 1.5

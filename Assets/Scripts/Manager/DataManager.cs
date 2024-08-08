@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,15 +10,43 @@ public class DataManager : Singleton<DataManager>
     [SerializeField] UpgradeLevel upgradeLevel;
     [SerializeField] Info info;
 
+    public delegate void ChangeExp(float ratio);
+    public delegate void ChangeGold(long gold);
+    public ChangeGold OnChangeGold;
+    public ChangeExp OnChangeExp;
+
     public Goods GetGoods => goods;
     public UpgradeLevel GetUpgradeLevel => upgradeLevel;
     public Info GetInfo => info;
     public List<InventoryData> InventoryDatas => inventoryDatas;
-
-    public delegate void ChangeGoods(long value,ClientEnum.Goods goods);
-    public ChangeGoods OnChangeGoods;
-
     public PlayerState PlayerDefaultState => playerDefaultState;
+
+    public float ExpRatio()
+    {
+        UpgradeScriptable.UpgradeState exp = TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
+        return ((float)info.currentExp / (long)(exp.maxLevel * exp.addValue));
+    }
+
+    public void AddGold(long value)
+    {
+        goods.gold += value;
+
+        OnChangeGold(goods.gold);
+    }
+
+    public void AddExp(long value)
+    {
+        UpgradeScriptable.UpgradeState exp = TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
+
+        info.currentExp += value;
+
+        if (info.currentExp > exp.maxLevel * exp.addValue)
+        {
+            info.currentExp = (long)(exp.maxLevel * exp.addValue);
+        }
+        
+        OnChangeExp(ExpRatio());
+    }
 
     #region Datas
 
@@ -51,8 +78,7 @@ public class DataManager : Singleton<DataManager>
         public string userName;
         public int stage = 0;
         public int currentLevel;
-        public int currentExp;
-        public int maxExp;
+        public long currentExp;
     }
 
     #endregion
@@ -66,22 +92,5 @@ public class DataManager : Singleton<DataManager>
     public void Init()
     {
         deviceNum = SystemInfo.deviceUniqueIdentifier;
-
-        OnChangeGoods = (value,type) => 
-        {
-            switch (type)
-            {
-                case ClientEnum.Goods.Gold:
-                    goods.gold += value;
-                    UIManager.Instance.SetGold(goods.gold);
-                    break;
-                case ClientEnum.Goods.Ruby:
-                    goods.ruby += value;
-                    UIManager.Instance.SetRuby(goods.ruby);
-                    break;
-                default:
-                    break;
-            }
-        };
     }
 }

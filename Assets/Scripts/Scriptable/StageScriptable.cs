@@ -7,6 +7,8 @@ public class StageScriptable : BaseScriptable
 {
     [SerializeField] int maxEnemyCount;
     [SerializeField] int startGold;
+    [SerializeField] int startExp;
+    [SerializeField] float multiplyperStageExp;
     [SerializeField] float multiplyPerStageHp;
     [SerializeField] float multiplyPerStageDefanse;
     [SerializeField] float multiplyPerStageAttack;
@@ -14,10 +16,13 @@ public class StageScriptable : BaseScriptable
     [SerializeField] List<StageMonster> stageMonsters;
 
     public int MaxEnemyCount => maxEnemyCount;
-    public long StageGold => (long)(startGold * multiplyPerGold);
+    public long StartGold => startGold;
+
+    public float MultiplyPerGold => multiplyPerGold;
     public float MultiplyPerStageHp => multiplyPerStageHp;
     public float MultiplyPerStageDefanse => multiplyPerStageDefanse;
     public float MultiplyPerStageAttack => multiplyPerStageAttack;
+    public float MultiplyPerStageExp => multiplyperStageExp;
 
     [System.Serializable]
     public class StageMonster

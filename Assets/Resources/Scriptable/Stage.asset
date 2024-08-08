@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnemyCount: 10
   startGold: 1000
+  startExp: 10
+  multiplyperStageExp: 0
   multiplyPerStageHp: 2
   multiplyPerStageDefanse: 1.5
   multiplyPerStageAttack: 1.5
-  multiplyPerGold: 1.5
+  multiplyPerGold: 0.2
   stageMonsters:
   - monsters:
     - Dwarf

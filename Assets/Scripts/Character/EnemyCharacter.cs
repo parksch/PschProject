@@ -45,6 +45,7 @@ public class EnemyCharacter : BaseCharacter
 
     public override void Death()
     {
+        GameManager.Instance.AddGold();
         GameManager.Instance.RemoveEnemy(this);
         base.Death();
     }
@@ -52,5 +53,27 @@ public class EnemyCharacter : BaseCharacter
     public override void AttackAction()
     {
         base.AttackAction();
+    }
+
+
+    public override void Hit(long attack)
+    {
+        if (curHp <= 0)
+        {
+            return;
+        }
+
+        curHp -= attack;
+
+        if (curHp < 0)
+        {
+            curHp = 0;
+        }
+
+        if (curHp <= 0)
+        {
+            Death();
+            agent.StateMachine.ChangeState(AiStateID.Death);
+        }
     }
 }

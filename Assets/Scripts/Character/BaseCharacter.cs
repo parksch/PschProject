@@ -55,23 +55,6 @@ public class BaseCharacter : MonoBehaviour
 
     public virtual void Hit(long attack)
     {
-        if (curHp <= 0)
-        {
-            return;
-        }
-
-        curHp -= attack;
-
-        if (curHp < 0)
-        {
-            curHp = 0;
-        }
-
-        if (curHp <= 0)
-        {
-            Death();
-            agent.StateMachine.ChangeState(AiStateID.Death);
-        }
     }
 
     public virtual void Death()

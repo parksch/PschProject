@@ -27,7 +27,7 @@ public class PlayerCharacter : BaseCharacter
                 curHp = HP();
             }
 
-            UIManager.Instance.OnChangeHP();
+            UIManager.Instance.OnChangeHP(GetHPRatio);
         }
     }
 
@@ -99,7 +99,7 @@ public class PlayerCharacter : BaseCharacter
             curHp = 0;
         }
 
-        UIManager.Instance.OnChangeHP();
+        UIManager.Instance.OnChangeHP(GetHPRatio);
 
         if (curHp <= 0)
         {

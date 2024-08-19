@@ -75,6 +75,7 @@ public class GameManager : Singleton<GameManager>
 
     public void AddExp()
     {
-
+        long exp = (long)(TableManager.Instance.StageScriptable.StartExp * (1 + (DataManager.Instance.GetInfo.stage * TableManager.Instance.StageScriptable.MultiplyPerStageExp)));
+        DataManager.Instance.AddExp(exp);
     }
 }

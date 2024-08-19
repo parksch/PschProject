@@ -6,15 +6,5 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class UIButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   maxEnemyCount: 10
   startGold: 1000
   startExp: 10
-  multiplyperStageExp: 0
+  multiplyperStageExp: 0.2
   multiplyPerStageHp: 2
   multiplyPerStageDefanse: 1.5
   multiplyPerStageAttack: 1.5

@@ -37,4 +37,16 @@ namespace ClientEnum
         Earring,
         Chain,
     }
+
+    public enum UpgradeType
+    {
+        None,
+        StatePanel
+    }
+
+    public enum Language
+    {
+        Kor,
+        En
+    }
 }

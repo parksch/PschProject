@@ -17,6 +17,8 @@ public class StageScriptable : BaseScriptable
 
     public int MaxEnemyCount => maxEnemyCount;
     public long StartGold => startGold;
+    public long StartExp => startExp;
+    public long StartLevelExp => StartExp * 10;
 
     public float MultiplyPerGold => multiplyPerGold;
     public float MultiplyPerStageHp => multiplyPerStageHp;

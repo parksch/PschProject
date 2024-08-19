@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d858912cf1ef2848a5e024478630263, type: 3}
+  m_Name: Text
+  m_EditorClassIdentifier: 
+  textCountries:
+  - language: 0
+    textkeys:
+    - name: UpgradeAttack
+      desc: "\uACF5\uACA9\uB825 \uAC15\uD654"
+    - name: UpgradeHp
+      desc: "\uC0DD\uBA85\uB825 \uAC15\uD654"
+    - name: UpgradeDefense
+      desc: "\uBC29\uC5B4\uB825 \uAC15\uD654"
+    - name: UpgradeHpRegen
+      desc: "\uC7AC\uC0DD \uAC15\uD654"
+  - language: 1
+    textkeys: []

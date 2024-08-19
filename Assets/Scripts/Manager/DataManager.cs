@@ -1,22 +1,26 @@
 using System.Collections.Generic;
+using Unity.Notifications.iOS;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
+    [SerializeField] ClientEnum.Language language;
     [SerializeField, ReadOnly] string deviceNum;
     [SerializeField, ReadOnly] PlayerState playerDefaultState;
     [SerializeField, ReadOnly] List<InventoryData> inventoryDatas = new List<InventoryData>();
     [SerializeField] Goods goods;
-    [SerializeField] UpgradeLevel upgradeLevel;
     [SerializeField] Info info;
+
+    Dictionary<string, int> upgradeLevel = new Dictionary<string, int>();
 
     public delegate void ChangeExp(float ratio);
     public delegate void ChangeGold(long gold);
     public ChangeGold OnChangeGold;
     public ChangeExp OnChangeExp;
 
+    public ClientEnum.Language Language { set { language = value; } get { return language; } }
     public Goods GetGoods => goods;
-    public UpgradeLevel GetUpgradeLevel => upgradeLevel;
+    public int GetUpgradeLevel(string code) => upgradeLevel[code];
     public Info GetInfo => info;
     public List<InventoryData> InventoryDatas => inventoryDatas;
     public PlayerState PlayerDefaultState => playerDefaultState;
@@ -24,7 +28,7 @@ public class DataManager : Singleton<DataManager>
     public float ExpRatio()
     {
         UpgradeScriptable.UpgradeState exp = TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
-        return ((float)info.currentExp / (long)(exp.maxLevel * exp.addValue));
+        return ((float)info.currentExp / GetLevelExp(info.currentLevel + 1));
     }
 
     public void AddGold(long value)
@@ -36,16 +40,27 @@ public class DataManager : Singleton<DataManager>
 
     public void AddExp(long value)
     {
-        UpgradeScriptable.UpgradeState exp = TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
-
         info.currentExp += value;
 
-        if (info.currentExp > exp.maxLevel * exp.addValue)
+        if (info.currentExp > GetLevelExp(TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel))
         {
-            info.currentExp = (long)(exp.maxLevel * exp.addValue);
+            info.currentExp = GetLevelExp(TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel);
         }
-        
+
         OnChangeExp(ExpRatio());
+    }
+
+    long GetLevelExp(int targetLevel)
+    {
+        UpgradeScriptable.UpgradeState expState = TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
+        long exp = 0;
+
+        for (int i = 0; i < targetLevel; i++)
+        {
+            exp += (long)((TableManager.Instance.StageScriptable.StartLevelExp) * (1 + (i * expState.addValue)));
+        }
+
+        return exp;
     }
 
     #region Datas
@@ -65,14 +80,6 @@ public class DataManager : Singleton<DataManager>
     }
 
     [System.Serializable]
-    public class UpgradeLevel 
-    {
-        public int attack = 0;
-        public int defense = 0;
-        public int hpRegen = 0;
-    }
-
-    [System.Serializable]
     public class Info
     {
         public string userName;
@@ -86,11 +93,16 @@ public class DataManager : Singleton<DataManager>
     protected override void Awake()
     {
         base.Awake();
-        Init();
     }
 
     public void Init()
     {
         deviceNum = SystemInfo.deviceUniqueIdentifier;
+        List<UpgradeScriptable.UpgradeState> upgradeStates = TableManager.Instance.UpgradeScriptable.GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
+
+        for (int i = 0; i < upgradeStates.Count; i++)
+        {
+            upgradeLevel[upgradeStates[i].name] = 0;
+        }
     }
 }

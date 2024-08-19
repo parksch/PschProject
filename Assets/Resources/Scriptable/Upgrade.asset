@@ -13,9 +13,43 @@ MonoBehaviour:
   m_Name: Upgrade
   m_EditorClassIdentifier: 
   upgradeStates:
-  - name: Attack
+  - upgradeType: 1
+    sprite: {fileID: 21300000, guid: 7d124c2e35c464db68f26e0fd92a6e02, type: 3}
+    upgradeKey: UpgradeAttack
+    name: Attack
     maxLevel: 100
-    addValue: 0
-  - name: Exp
+    addValue: 10
+    needGoods: 1000
+    levelPerGoods: 0.5
+  - upgradeType: 1
+    sprite: {fileID: 21300000, guid: 333628a596102430683a966f1f7c4c0d, type: 3}
+    upgradeKey: UpgradeHp
+    name: Hp
     maxLevel: 100
-    addValue: 1.5
+    addValue: 100
+    needGoods: 1000
+    levelPerGoods: 0.5
+  - upgradeType: 1
+    sprite: {fileID: 21300000, guid: 62a17929d453d4b5d9e8eee0c8a26782, type: 3}
+    upgradeKey: UpgradeDefense
+    name: Defense
+    maxLevel: 100
+    addValue: 10
+    needGoods: 1000
+    levelPerGoods: 2
+  - upgradeType: 1
+    sprite: {fileID: 21300000, guid: c720e8c13a25445059c1681087ec6e8f, type: 3}
+    upgradeKey: UpgradeHpRegen
+    name: HpRegen
+    maxLevel: 100
+    addValue: 10
+    needGoods: 10000
+    levelPerGoods: 5
+  - upgradeType: 0
+    sprite: {fileID: 0}
+    upgradeKey: 
+    name: Exp
+    maxLevel: 1000
+    addValue: 0.5
+    needGoods: 0
+    levelPerGoods: 0

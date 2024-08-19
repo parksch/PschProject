@@ -9,10 +9,11 @@ public class TableManager : Singleton<TableManager>
     [SerializeField,ReadOnly] ObjectScriptable objectScriptable;
     [SerializeField,ReadOnly] StageScriptable stageScriptable;
     [SerializeField,ReadOnly] UpgradeScriptable upgradeScriptable;
+    [SerializeField,ReadOnly] TextScriptable textScriptable;
 
     public ItemScriptable ItemScriptable => itemScriptable;
     public ObjectScriptable ObjectScriptable => objectScriptable;
     public StageScriptable StageScriptable => stageScriptable;
     public UpgradeScriptable UpgradeScriptable => upgradeScriptable;
-
+    public TextScriptable TextScriptable => textScriptable;
 }

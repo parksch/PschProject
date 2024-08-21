@@ -1,18 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GooglePlayGames;
 
 public class GPGS : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void GoogleLogin()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

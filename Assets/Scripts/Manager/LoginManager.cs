@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoginManager : Singleton<LoginManager>
 {
     [SerializeField,ReadOnly] ClientEnum.LoginType loginType;
-
+    [SerializeField,ReadOnly] UISignUp signUp;
+    
     protected override void Awake()
     {
     }
@@ -40,17 +37,7 @@ public class LoginManager : Singleton<LoginManager>
 
     void SetLogin()
     {
-        switch (loginType)
-        {
-            case ClientEnum.LoginType.None:
-                break;
-            case ClientEnum.LoginType.Google:
-                break;
-            case ClientEnum.LoginType.Guest:
-                break;
-            default:
-                break;
-        }
+        signUp.Init(loginType);
     }
 
     public void OnClickScreen()

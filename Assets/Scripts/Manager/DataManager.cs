@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.Notifications.iOS;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
@@ -18,6 +17,7 @@ public class DataManager : Singleton<DataManager>
     public ChangeGold OnChangeGold;
     public ChangeExp OnChangeExp;
 
+    public void SetDevice(string value) => deviceNum = value;
     public ClientEnum.Language Language { set { language = value; } get { return language; } }
     public Goods GetGoods => goods;
     public int GetUpgradeLevel(string code) => upgradeLevel[code];

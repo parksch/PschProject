@@ -37,7 +37,20 @@ public class LoginManager : Singleton<LoginManager>
 
     void SetLogin()
     {
-        signUp.Init(loginType);
+        switch (loginType)
+        {
+            case ClientEnum.LoginType.None:
+                signUp.Init();
+                break;
+            case ClientEnum.LoginType.Google:
+                DataManager.Instance.SetDevice(SystemInfo.deviceUniqueIdentifier);
+                break;
+            case ClientEnum.LoginType.Guest:
+                DataManager.Instance.SetDevice(SystemInfo.deviceUniqueIdentifier);
+                break;
+            default:
+                break;
+        }
     }
 
     public void OnClickScreen()

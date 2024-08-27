@@ -4,32 +4,21 @@ using UnityEngine;
 
 public class UISignUp : MonoBehaviour
 {
-    public void Init(ClientEnum.LoginType loginType)
+    public void Init()
     {
-        switch (loginType)
-        {
-            case ClientEnum.LoginType.None:
-
-                gameObject.SetActive(true);
-                break;
-            case ClientEnum.LoginType.Google:
-
-                break;
-            case ClientEnum.LoginType.Guest:
-                
-                break;
-            default:
-                break;
-        }
+        gameObject.SetActive(true);
     }
 
     public void OnClickGoggle()
     {
-
+        SDKManager.Instance.GPGS.GoogleInit(() => { PlayerPrefs.SetString("LoginType","Google"); gameObject.SetActive(false); },null);
+        SDKManager.Instance.GPGS.GoogleSignin();
     }
 
     public void OnClickGuest()
     {
-
+        PlayerPrefs.SetString("LoginType", "Guest");
+        DataManager.Instance.SetDevice(SystemInfo.deviceUniqueIdentifier);
+        gameObject.SetActive(false);
     }
 }

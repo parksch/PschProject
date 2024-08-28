@@ -2,20 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasePanel : MonoBehaviour
+public abstract class BasePanel : MonoBehaviour
 {
-    public virtual void FirstLoad()
-    {
+    public abstract void FirstLoad();
 
-    }
+    public abstract void Open();
 
-    public virtual void Open()
-    {
+    public abstract void Close();
 
-    }
-
-    public virtual void Close()
-    {
-
-    }
 }

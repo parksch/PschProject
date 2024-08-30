@@ -4,5 +4,4 @@ using UnityEngine;
 
 public class WeaponItem : BaseItem
 {
-    GameObject prefab;
 }

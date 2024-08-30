@@ -1,73 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable/Item")]
 public class ItemScriptable : BaseScriptable
 {
-    [SerializeField] List<ItemTypeData> itemTypeDatas = new List<ItemTypeData>();
+    [SerializeField] List<TypeData> itemTypeDatas = new List<TypeData>();
 
     [System.Serializable]
-    public class ItemData
+    public class Info
     {
-        public string name;
+        public string id;
+        public GameObject prefab;
+        public List<Datas.Pair<ClientEnum.State, float>> states = new List<Datas.Pair<ClientEnum.State, float>>();
     }
 
-    public class NoneItem : ItemData
-    {
-
-    }
-
-    [System.Serializable]
-    public class Weapon : ItemData
+    public class None : Info
     {
 
     }
 
     [System.Serializable]
-    public class Armor : ItemData
-    {
-
-    }
-
-    [System.Serializable]
-    public class Boots : ItemData
-    {
-
-    }
-
-    [System.Serializable]
-    public class Earring : ItemData
-    {
-
-    }
-
-    [System.Serializable]
-    public class Chain : ItemData
-    {
-
-    }
-
-    [System.Serializable]
-    public class Helmet : ItemData
-    {
-
-    }
-
-    [System.Serializable]
-    public class ItemTypeData
+    public class TypeData
     {
         public ClientEnum.Item target;
-        public List<ItemData> items;
+        public List<Info> items;
     }
 
-    public T GetItem<T>(DataManager.InventoryData inventoryData) where T : ItemData
+    public Info GetItem(DataManager.InventoryData inventoryData)
     {
         if (inventoryData.itemType == ClientEnum.Item.None)
         {
-            return new NoneItem() as T;
+            return new None();
         }
 
-        return (itemTypeDatas.Find(x => x.target == inventoryData.itemType)).items.Find(x => x.name == inventoryData.id) as T;
+        return (itemTypeDatas.Find(x => x.target == inventoryData.itemType)).items.Find(x => x.id == inventoryData.id);
     }
 }

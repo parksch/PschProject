@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIEquipmentSlot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField,ReadOnly] Image icon;
+    [SerializeField,ReadOnly] BaseItem target;
+
+    public void Set(BaseItem item)
     {
-        
+        target = item;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnClickButton()
     {
-        
+        if (target.Type == ClientEnum.Item.None)
+        {
+            return;
+        }
     }
 }

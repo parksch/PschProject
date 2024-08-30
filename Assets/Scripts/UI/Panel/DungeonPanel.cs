@@ -6,13 +6,16 @@ public class DungeonPanel : BasePanel
 {
     public override void Close()
     {
+
     }
 
     public override void FirstLoad()
     {
+
     }
 
     public override void Open()
     {
-     }
+
+    }
 }

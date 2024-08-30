@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmorItem : BaseItem
+public class AddressableManager : Singleton<AddressableManager>
 {
 
 }

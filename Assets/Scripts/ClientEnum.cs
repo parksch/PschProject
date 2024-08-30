@@ -1,5 +1,3 @@
-
-
 namespace ClientEnum
 {
     public enum Goods
@@ -32,10 +30,16 @@ namespace ClientEnum
         None,
         Helmet,
         Armor,
-        Boots,
         Weapon,
-        Earring,
-        Chain,
+    }
+
+    public enum State
+    {
+        Hp,
+        Attack,
+        Int,
+        Defense,
+        HpRegen,
     }
 
     public enum UpgradeType

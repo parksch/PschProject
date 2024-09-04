@@ -23,5 +23,7 @@ MonoBehaviour:
       desc: "\uBC29\uC5B4\uB825 \uAC15\uD654"
     - name: UpgradeHpRegen
       desc: "\uC7AC\uC0DD \uAC15\uD654"
+    - name: ScrapShop
+      desc: "\uACE0\uCCA0 \uC0C1\uC810"
   - language: 1
     textkeys: []

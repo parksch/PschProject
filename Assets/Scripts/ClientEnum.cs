@@ -53,4 +53,9 @@ namespace ClientEnum
         Kor,
         En
     }
+
+    public enum Shop
+    {
+        Scrap
+    }
 }

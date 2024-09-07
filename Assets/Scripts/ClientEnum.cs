@@ -56,6 +56,8 @@ namespace ClientEnum
 
     public enum Shop
     {
-        Scrap
+        Start = 0,
+        Scrap,
+        End
     }
 }

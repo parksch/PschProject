@@ -11,8 +11,11 @@ public class ShopScriptable : BaseScriptable
     [System.Serializable]
     public class Category
     {
-        public string nameKey;
-        public List<Data> datas = new List<Data> ();
+        [SerializeField] string nameKey;
+        [SerializeField] List<Data> datas = new List<Data> ();
+
+        public string NameStringKey => nameKey;
+        public List<Data> Datas => datas;
     }
 
     [System.Serializable]
@@ -25,5 +28,5 @@ public class ShopScriptable : BaseScriptable
         public int NeedValue => needValue;
     }
 
-    public List<Data> GetData(ClientEnum.Shop shop) => datas.Find(x => x.key == shop).value.datas;
+    public Category GetData(ClientEnum.Shop shop) => datas.Find(x => x.key == shop).value;
 }

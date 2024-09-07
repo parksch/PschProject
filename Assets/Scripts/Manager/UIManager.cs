@@ -14,6 +14,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, ReadOnly] BasePanel currentPanel;
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
+    [SerializeField, ReadOnly] RewardPanel rewardPanel;
     [SerializeField] List<BasePanel> panels;
 
     Stack<BasePanel> panelStack = new Stack<BasePanel>();

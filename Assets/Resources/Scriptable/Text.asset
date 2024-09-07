@@ -25,5 +25,7 @@ MonoBehaviour:
       desc: "\uC7AC\uC0DD \uAC15\uD654"
     - name: ScrapShop
       desc: "\uACE0\uCCA0 \uC0C1\uC810"
+    - name: Draw
+      desc: "{0} \uD68C \uBF51\uAE30"
   - language: 1
     textkeys: []

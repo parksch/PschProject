@@ -13,9 +13,17 @@ MonoBehaviour:
   m_Name: Shop
   m_EditorClassIdentifier: 
   datas:
-  - key: 0
+  - key: 1
     value:
       nameKey: ScrapShop
       datas:
-      - maxLevel: 10
-        nameKey: ScrapShop
+      - nameKey: ScrapShop
+        needValue: 0
+  - key: 2
+    value:
+      nameKey: DailyTitle
+      datas:
+      - nameKey: DailyGold
+        needValue: 0
+      - nameKey: DailyGem
+        needValue: 0

@@ -77,6 +77,7 @@ public class DataManager : Singleton<DataManager>
     {
         public long gold = 0;
         public long ruby = 0;
+        public long scrap = 0;
     }
 
     [System.Serializable]

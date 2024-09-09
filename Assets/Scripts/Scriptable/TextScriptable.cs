@@ -22,7 +22,7 @@ public class TextScriptable : BaseScriptable
         public string desc;
     }
 
-    public string GetText(string name)
+    public string Get(string name)
     {
        return textCountries.Find(x => x.language == DataManager.Instance.Language).textkeys.Find(x => x.name == name).desc;
     }

@@ -23,10 +23,24 @@ public class ShopScriptable : BaseScriptable
     {
         [SerializeField] string nameKey;
         [SerializeField] int needValue;
+        [SerializeField] ClientEnum.Goods goods;
 
+        public ClientEnum.Goods GoodsType;
         public string NameKey => nameKey;
         public int NeedValue => needValue;
     }
 
-    public Category GetData(ClientEnum.Shop shop) => datas.Find(x => x.key == shop).value;
+    public Category GetData(ClientEnum.Shop shop)
+    {
+        Datas.Pair<ClientEnum.Shop, Category> pair = datas.Find(x => x.key == shop);
+
+        if (pair == null)
+        {
+            return null;
+        }
+        else
+        {
+            return pair.value;
+        }
+    }
 }

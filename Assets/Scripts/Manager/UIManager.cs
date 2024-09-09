@@ -7,6 +7,7 @@ public class UIManager : Singleton<UIManager>
 {
     [SerializeField, ReadOnly] UIText goldText;
     [SerializeField, ReadOnly] UIText rubyText;
+    [SerializeField, ReadOnly] UIText scrapText;
     [SerializeField, ReadOnly] Text userName;
     [SerializeField, ReadOnly] Text level;
     [SerializeField, ReadOnly] Slider hpSlider;
@@ -32,6 +33,8 @@ public class UIManager : Singleton<UIManager>
     {
         SetGold(DataManager.Instance.GetGoods.gold);
         SetRuby(DataManager.Instance.GetGoods.ruby);
+        SetScrap(DataManager.Instance.GetGoods.scrap);
+
         userInfo.Init();
 
         for (int i = 0; i < panels.Count; i++)
@@ -54,6 +57,11 @@ public class UIManager : Singleton<UIManager>
     public void SetRuby(long ruby) 
     {
         rubyText.SetText(ruby);
+    }
+
+    public void SetScrap(long scrap)
+    {
+        scrapText.SetText(scrap);
     }
 
     public void OnClickMenuButton(UIMenuButton menuButton)

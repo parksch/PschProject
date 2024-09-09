@@ -4,6 +4,7 @@ namespace ClientEnum
     {
         Gold,
         Ruby,
+        Money,
     }
 
     public enum LoginType
@@ -58,6 +59,7 @@ namespace ClientEnum
     {
         Start = 0,
         Scrap,
+        Daily,
         End
     }
 }

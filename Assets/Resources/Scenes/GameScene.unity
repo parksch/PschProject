@@ -13149,6 +13149,7 @@ MonoBehaviour:
   slots:
   - {fileID: 777099940}
   prefab: {fileID: 777099940}
+  content: {fileID: 1049659509}
 --- !u!4 &893578695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4427348796447190, guid: 63baf9dc330c3de4b8989173c035ef37, type: 3}
@@ -14563,7 +14564,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -20815,6 +20816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldText: {fileID: 665172694}
   rubyText: {fileID: 1159377485}
+  scrapText: {fileID: 856265789}
   userName: {fileID: 1104299518}
   level: {fileID: 1099802773}
   hpSlider: {fileID: 6309205129266351211}

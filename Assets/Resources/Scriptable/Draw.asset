@@ -10,20 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e78ba17ffde481e4789393ec7aa03641, type: 3}
-  m_Name: Shop
+  m_Name: Draw
   m_EditorClassIdentifier: 
   datas:
   - key: 1
     value:
       nameKey: ScrapShop
       datas:
-      - nameKey: ScrapShop
-        needValue: 0
+      - limit: 0
+        maxLevel: 100
+        nameKey: ScrapShop
+        needValue: 10
+        goods: 0
   - key: 2
     value:
       nameKey: DailyTitle
       datas:
-      - nameKey: DailyGold
-        needValue: 0
-      - nameKey: DailyGem
-        needValue: 0
+      - limit: 20
+        maxLevel: 0
+        nameKey: DailyGold
+        needValue: 10000
+        goods: 1
+      - limit: 20
+        maxLevel: 0
+        nameKey: DailyGem
+        needValue: 100
+        goods: 2

@@ -2,8 +2,9 @@ namespace ClientEnum
 {
     public enum Goods
     {
+        Scrap,
         Gold,
-        Ruby,
+        Gem,
         Money,
     }
 
@@ -55,11 +56,11 @@ namespace ClientEnum
         En
     }
 
-    public enum Shop
+    public enum Draw
     {
-        Start = 0,
+        Min = 0,
         Scrap,
         Daily,
-        End
+        Max
     }
 }

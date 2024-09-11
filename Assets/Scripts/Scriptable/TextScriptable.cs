@@ -24,6 +24,13 @@ public class TextScriptable : BaseScriptable
 
     public string Get(string name)
     {
-       return textCountries.Find(x => x.language == DataManager.Instance.Language).textkeys.Find(x => x.name == name).desc;
+        TextCountry country = textCountries.Find(x => x.language == DataManager.Instance.Language);
+
+        if (country.textkeys.Find(x => x.name == name) == null)
+        {
+            return "NoText";
+        }
+
+       return country.textkeys.Find(x => x.name == name).desc;
     }
 }

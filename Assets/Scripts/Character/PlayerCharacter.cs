@@ -80,6 +80,14 @@ public class PlayerCharacter : BaseCharacter
         }
     }
 
+    public override void DeathAction()
+    {
+        transform.position = Vector3.zero;
+        curHp = HP();
+        UIManager.Instance.OnChangeHP(GetHPRatio);
+        agent.StateMachine.ChangeState(AiStateID.Idle);
+    }
+
     public override void Death()
     {
 

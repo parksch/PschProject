@@ -10,7 +10,7 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected Animator animator;
     [SerializeField] protected BaseCharacterState state;
     [SerializeField, ReadOnly] protected BaseCharacter target;
-    [SerializeField, ReadOnly] protected long curHp;
+    [SerializeField] protected long curHp;
 
     public float GetHPRatio => ((float)curHp / HP());
 
@@ -25,7 +25,7 @@ public class BaseCharacter : MonoBehaviour
     }
 
     public bool IsDeath => curHp <= 0;
-    public bool IsTarget => target != null && !target.IsDeath;
+    public bool IsTarget => Target() != null;
     public bool IsLookAt => Dot() > 0;
     public virtual void Init()
     {

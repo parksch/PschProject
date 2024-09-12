@@ -34,15 +34,7 @@ public class AiStateAttack : AiState
             return;
         }
 
-        if (!agent.Interaction.IsTarget)
-        {
-            if (!agent.Interaction.IsAttackRange)
-            {
-                agent.StateMachine.ChangeState(AiStateID.Idle);
-                return;
-            }
-        }
-        else
+        if (agent.Interaction.IsTarget)
         {
             if (!agent.Interaction.IsAttackRange)
             {
@@ -54,5 +46,10 @@ public class AiStateAttack : AiState
                 agent.transform.LookAt(agent.Interaction.TargetTransform);
             }
         }
+        else
+        {
+            agent.StateMachine.ChangeState(AiStateID.Idle);
+        }
+
     }
 }

@@ -21,22 +21,24 @@ public class AiStateChase : AiState
 
     public void Update(AiAgent agent)
     {
-        if (agent.Interaction.IsChaseRange)
+        if (agent.Interaction.IsTarget)
         {
-            agent.StateMachine.ChangeState(AiStateID.Attack);
-        }
-        else
-        {
-            if(agent.Interaction.TargetTransform != null)
+            if (agent.Interaction.IsChaseRange)
+            {
+                agent.StateMachine.ChangeState(AiStateID.Attack);
+
+            }
+            else
             {
                 agent.transform.LookAt(agent.Interaction.TargetTransform);
                 agent.transform.position += ((agent.Interaction.TargetTransform.position - agent.transform.position).normalized * agent.Interaction.MoveSpeed) * Time.deltaTime;
             }
-            else
-            {
-                agent.StateMachine.ChangeState(AiStateID.Idle);
-            }
         }
+        else
+        {
+            agent.StateMachine.ChangeState(AiStateID.Idle);
+        }
+
     }
 
 }

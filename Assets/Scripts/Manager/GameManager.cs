@@ -61,7 +61,7 @@ public class GameManager : Singleton<GameManager>
 
                 return character;
             case CharacterType.Enemy:
-                return player;
+                return player.IsDeath ? null : player;
         }
 
         return null;

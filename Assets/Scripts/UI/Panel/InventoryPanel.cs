@@ -7,6 +7,10 @@ public class InventoryPanel : BasePanel
     [SerializeField,ReadOnly] UIInventoryScroll inventoryScroll;
     [SerializeField,ReadOnly] UIToggleGroup toggleGroup;
 
+    public override void OnUpdate()
+    {
+    }
+
     public override void FirstLoad()
     {
         inventoryScroll.LoadData();

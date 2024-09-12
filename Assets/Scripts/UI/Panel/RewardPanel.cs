@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class RewardPanel : BasePanel
 {
+    public override void OnUpdate()
+    {
+    }
+
     public override void FirstLoad()
     {
 

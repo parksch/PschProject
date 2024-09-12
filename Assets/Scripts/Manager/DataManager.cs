@@ -12,11 +12,30 @@ public class DataManager : Singleton<DataManager>
 
     Dictionary<string, int> upgradeLevel = new Dictionary<string, int>();
 
+    public delegate void ChangeGoods(long value);
     public delegate void ChangeExp(float ratio);
-    public delegate void ChangeGold(long gold);
-    public ChangeGold OnChangeGold;
+
+    public ChangeGoods OnChangeGem;
+    public ChangeGoods OnChangeScrap;
+    public ChangeGoods OnChangeGold;
     public ChangeExp OnChangeExp;
 
+    public bool CheckGoods(ClientEnum.Goods type,long need)
+    {
+        switch (type)
+        {
+            case ClientEnum.Goods.Scrap:
+                return goods.scrap >= need;
+            case ClientEnum.Goods.Gold:
+                return goods.gold >= need;
+            case ClientEnum.Goods.Gem:
+                return goods.gem >= need;
+            default:
+                break;
+        }
+
+        return false;
+    }
     public void SetDevice(string value) => deviceNum = value;
     public ClientEnum.Language Language { set { language = value; } get { return language; } }
     public Goods GetGoods => goods;
@@ -31,11 +50,25 @@ public class DataManager : Singleton<DataManager>
         return ((float)info.currentExp / GetLevelExp(info.currentLevel + 1));
     }
 
+    public void AddScrap(long value)
+    {
+        goods.scrap += value;
+
+        OnChangeScrap(goods.scrap);
+    }
+
     public void AddGold(long value)
     {
         goods.gold += value;
 
         OnChangeGold(goods.gold);
+    }
+
+    public void AddGem(long value)
+    {
+        goods.gem += value;
+
+        OnChangeGem(goods.gem);
     }
 
     public void AddExp(long value)
@@ -48,6 +81,26 @@ public class DataManager : Singleton<DataManager>
         }
 
         OnChangeExp(ExpRatio());
+    }
+
+    public void UseGoods(ClientEnum.Goods type,long value)
+    {
+        switch (type)
+        {
+            case ClientEnum.Goods.Scrap:
+                AddScrap(-value);
+                break;
+            case ClientEnum.Goods.Gold:
+                AddGold(-value);
+                break;
+            case ClientEnum.Goods.Gem:
+                AddGem(-value);
+                break;
+            case ClientEnum.Goods.Money:
+                break;
+            default:
+                break;
+        }
     }
 
     long GetLevelExp(int targetLevel)
@@ -76,7 +129,7 @@ public class DataManager : Singleton<DataManager>
     public class Goods
     {
         public long gold = 0;
-        public long ruby = 0;
+        public long gem = 0;
         public long scrap = 0;
     }
 

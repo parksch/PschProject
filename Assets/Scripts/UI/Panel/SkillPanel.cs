@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SkillPanel : BasePanel
 {
+    public override void OnUpdate()
+    {
+    }
+
     public override void FirstLoad()
     {
 

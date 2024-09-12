@@ -47,6 +47,7 @@ public class EnemyCharacter : BaseCharacter
     {
         GameManager.Instance.AddGold();
         GameManager.Instance.AddExp();
+        GameManager.Instance.AddScrap();
         GameManager.Instance.RemoveEnemy(this);
         base.Death();
     }

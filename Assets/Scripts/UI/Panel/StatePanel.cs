@@ -8,6 +8,10 @@ public class StatePanel : BasePanel
     [SerializeField,ReadOnly] List<UIStateUpgradeSlot> stateUpgradeSlots = new List<UIStateUpgradeSlot>();
     [SerializeField,ReadOnly] UIStateUpgradeSlot prefab;
 
+    public override void OnUpdate()
+    {
+    }
+
     public override void FirstLoad()
     {
         List<UpgradeScriptable.UpgradeState> upgradeStates;

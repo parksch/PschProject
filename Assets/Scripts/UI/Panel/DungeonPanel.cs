@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DungeonPanel : BasePanel
 {
+    public override void OnUpdate()
+    {
+    }
+
     public override void Close()
     {
 

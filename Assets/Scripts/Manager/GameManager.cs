@@ -78,4 +78,13 @@ public class GameManager : Singleton<GameManager>
         long exp = (long)(TableManager.Instance.StageScriptable.StartExp * (1 + (DataManager.Instance.GetInfo.stage * TableManager.Instance.StageScriptable.MultiplyPerStageExp)));
         DataManager.Instance.AddExp(exp);
     }
+
+    public void AddScrap()
+    {
+        if (Random.Range(0f,1f) < TableManager.Instance.StageScriptable.ScrapProbability)
+        {
+            long scrap = TableManager.Instance.StageScriptable.Scrap;
+            DataManager.Instance.AddScrap(scrap);
+        }
+    }
 }

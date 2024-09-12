@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : Singleton<UIManager>
 {
     [SerializeField, ReadOnly] UIText goldText;
-    [SerializeField, ReadOnly] UIText rubyText;
+    [SerializeField, ReadOnly] UIText gemText;
     [SerializeField, ReadOnly] UIText scrapText;
     [SerializeField, ReadOnly] Text userName;
     [SerializeField, ReadOnly] Text level;
@@ -29,10 +29,18 @@ public class UIManager : Singleton<UIManager>
 
     }
 
+    public void UpdatePanel()
+    {
+        if (currentPanel != null)
+        {
+            currentPanel.OnUpdate();
+        }
+    }   
+
     public void Init()
     {
         SetGold(DataManager.Instance.GetGoods.gold);
-        SetRuby(DataManager.Instance.GetGoods.ruby);
+        SetGem(DataManager.Instance.GetGoods.gem);
         SetScrap(DataManager.Instance.GetGoods.scrap);
 
         userInfo.Init();
@@ -45,8 +53,13 @@ public class UIManager : Singleton<UIManager>
         OnChangeHP += userInfo.SetHP;
 
         DataManager.Instance.OnChangeGold += SetGold;
-
+        DataManager.Instance.OnChangeGold += (value) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeScrap += SetScrap;
+        DataManager.Instance.OnChangeScrap += (value) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeGem += SetGem;
+        DataManager.Instance.OnChangeGem += (value) => { UpdatePanel(); };
         DataManager.Instance.OnChangeExp += userInfo.SetExp;
+        DataManager.Instance.OnChangeExp += (value) => { UpdatePanel(); };
     }
 
     public void SetGold(long gold)
@@ -54,9 +67,9 @@ public class UIManager : Singleton<UIManager>
         goldText.SetText(gold);
     }
 
-    public void SetRuby(long ruby) 
+    public void SetGem(long ruby) 
     {
-        rubyText.SetText(ruby);
+        gemText.SetText(ruby);
     }
 
     public void SetScrap(long scrap)

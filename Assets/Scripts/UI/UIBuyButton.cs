@@ -8,4 +8,5 @@ public class UIBuyButton : MonoBehaviour
     public int targetNum;
     public Text title;
     public Button button;
+
 }

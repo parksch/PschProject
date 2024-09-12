@@ -8,18 +8,23 @@ public class StageScriptable : BaseScriptable
     [SerializeField] int maxEnemyCount;
     [SerializeField] int startGold;
     [SerializeField] int startExp;
+    [SerializeField] int scrapMin;
+    [SerializeField] int scrapMax;
     [SerializeField] float multiplyperStageExp;
     [SerializeField] float multiplyPerStageHp;
     [SerializeField] float multiplyPerStageDefanse;
     [SerializeField] float multiplyPerStageAttack;
     [SerializeField] float multiplyPerGold;
+    [SerializeField] float scrapProbability;
     [SerializeField] List<StageMonster> stageMonsters;
 
     public int MaxEnemyCount => maxEnemyCount;
     public long StartGold => startGold;
     public long StartExp => startExp;
     public long StartLevelExp => StartExp * 10;
+    public long Scrap => Random.Range(scrapMin, scrapMax);
 
+    public float ScrapProbability => scrapProbability;
     public float MultiplyPerGold => multiplyPerGold;
     public float MultiplyPerStageHp => multiplyPerStageHp;
     public float MultiplyPerStageDefanse => multiplyPerStageDefanse;

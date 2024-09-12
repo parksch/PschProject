@@ -744,6 +744,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37608052}
   m_CullTransparentMesh: 1
+--- !u!1 &43248075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 43248076}
+  - component: {fileID: 43248078}
+  - component: {fileID: 43248077}
+  m_Layer: 5
+  m_Name: Limit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &43248076
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43248075}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1615687988}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 279}
+  m_SizeDelta: {x: 320, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &43248077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43248075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &43248078
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43248075}
+  m_CullTransparentMesh: 1
 --- !u!4 &47072020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4221981873567390, guid: c6435b661f597a34dae9aaf3100b7992, type: 3}
@@ -7640,7 +7719,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 531349876}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 891487645}
+        m_TargetAssemblyTypeName: DrawPanel, Assembly-CSharp
+        m_MethodName: OnClickNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &532780635
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,7 +8270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 555164845}
   m_Layer: 5
-  m_Name: Ruby
+  m_Name: Gem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10716,7 +10807,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 706772020}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 891487645}
+        m_TargetAssemblyTypeName: DrawPanel, Assembly-CSharp
+        m_MethodName: OnClickPrev
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &709837852
 GameObject:
   m_ObjectHideFlags: 0
@@ -13440,17 +13543,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 1495319166}
+  currentDrawTitle: {fileID: 436200903}
+  currentDrawDesc: {fileID: 1500317245}
+  currentDrawLimit: {fileID: 43248077}
   oneDraw: {fileID: 348190406}
   tenDraw: {fileID: 672205155}
-  drawLocal: Draw
   slots:
   - {fileID: 777099940}
   prefab: {fileID: 777099940}
   content: {fileID: 1049659509}
   prevButton: {fileID: 706772018}
   nextButton: {fileID: 531349874}
-  currentDrawTitle: {fileID: 436200903}
-  currentDrawDesc: {fileID: 1500317245}
+  drawLocal: Draw
 --- !u!4 &893578695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4427348796447190, guid: 63baf9dc330c3de4b8989173c035ef37, type: 3}
@@ -21116,7 +21220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldText: {fileID: 665172694}
-  rubyText: {fileID: 1159377485}
+  gemText: {fileID: 1159377485}
   scrapText: {fileID: 856265789}
   userName: {fileID: 1104299518}
   level: {fileID: 1099802773}
@@ -21659,6 +21763,7 @@ RectTransform:
   m_Children:
   - {fileID: 436200902}
   - {fileID: 1500317244}
+  - {fileID: 43248076}
   - {fileID: 348190402}
   - {fileID: 672205151}
   - {fileID: 706772019}

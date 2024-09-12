@@ -14,6 +14,8 @@ public class UIDrawSlot : MonoBehaviour
     public bool isMax => currentIndex + 1 >= datas.Count;
 
     public string Title => title.text;
+
+    public void ResetIndex() { currentIndex = 0; }
     public void AddIndex() { currentIndex = (currentIndex + 1) % datas.Count; }
     public void SubtractIndex() { currentIndex = (currentIndex - 1 > 0 ? currentIndex - 1 : 0); }
 

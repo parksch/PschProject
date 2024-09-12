@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class BasePanel : MonoBehaviour
 {
+    public abstract void OnUpdate();
     public abstract void FirstLoad();
 
     public abstract void Open();

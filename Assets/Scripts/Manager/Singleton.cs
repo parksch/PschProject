@@ -9,10 +9,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
-            // SingletonBehaviour가 초기화 되기 전이라면            
             if (_instance == null)
             {
-                // 해당 오브젝트를 찾아 할당한다.                
                 _instance = FindObjectOfType<T>(true);
 
                 if (_instance == null)

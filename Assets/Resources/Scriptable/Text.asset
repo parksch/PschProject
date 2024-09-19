@@ -29,5 +29,11 @@ MonoBehaviour:
       desc: "{0} \uD68C \uBF51\uAE30"
     - name: DailyTitle
       desc: "\uC77C\uC77C\uC0C1\uC810"
+    - name: DailyGold
+      desc: "\uC77C\uC77C\uACE8\uB4DC\uC0C1\uC810"
+    - name: DailyGem
+      desc: "\uC77C\uC77C\uC82C\uC0C1\uC810"
+    - name: DrawLv
+      desc: "\uBF51\uAE30\uB808\uBCA8"
   - language: 1
     textkeys: []

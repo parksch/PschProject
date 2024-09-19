@@ -63,4 +63,12 @@ namespace ClientEnum
         Daily,
         Max
     }
-}
+
+    public enum Grade
+    { 
+        Normal,
+        Rare,
+        SuperRare,
+        UltraRare
+    }
+} 

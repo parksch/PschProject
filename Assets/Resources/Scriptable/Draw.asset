@@ -12,16 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78ba17ffde481e4789393ec7aa03641, type: 3}
   m_Name: Draw
   m_EditorClassIdentifier: 
+  requiredExp: 5
   datas:
   - key: 1
     value:
       nameKey: ScrapShop
       datas:
       - limit: 0
-        maxLevel: 100
+        maxLevel: 10
         nameKey: ScrapShop
+        descKey: 
         needValue: 10
         goods: 0
+        probabilities:
+        - grade: 0
+          value: 1000
+        - grade: 1
+          value: 100
+        - grade: 2
+          value: 10
+        - grade: 3
+          value: 5
   - key: 2
     value:
       nameKey: DailyTitle
@@ -29,10 +40,30 @@ MonoBehaviour:
       - limit: 20
         maxLevel: 0
         nameKey: DailyGold
+        descKey: 
         needValue: 10000
         goods: 1
+        probabilities:
+        - grade: 0
+          value: 0
+        - grade: 1
+          value: 0
+        - grade: 2
+          value: 0
+        - grade: 3
+          value: 0
       - limit: 20
         maxLevel: 0
         nameKey: DailyGem
+        descKey: 
         needValue: 100
         goods: 2
+        probabilities:
+        - grade: 0
+          value: 0
+        - grade: 1
+          value: 0
+        - grade: 2
+          value: 0
+        - grade: 3
+          value: 0

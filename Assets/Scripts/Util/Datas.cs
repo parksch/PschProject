@@ -6,5 +6,11 @@ namespace Datas
     {
         public T1 key;
         public T2 value;
+
+        public Pair(T1 _key, T2 _value) 
+        { 
+            key = _key;
+            value = _value;
+        }
     }
 }

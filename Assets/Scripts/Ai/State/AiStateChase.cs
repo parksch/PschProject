@@ -26,7 +26,6 @@ public class AiStateChase : AiState
             if (agent.Interaction.IsChaseRange)
             {
                 agent.StateMachine.ChangeState(AiStateID.Attack);
-
             }
             else
             {

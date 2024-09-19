@@ -10,7 +10,7 @@ public class Spawn : MonoBehaviour
     public void CreateEnemy()
     {
         StageScriptable stageScriptable = TableManager.Instance.StageScriptable;
-        List<string> enemies = stageScriptable.GetMonsters(DataManager.Instance.GetInfo.stage);
+        List<string> enemies = stageScriptable.GetMonsters(DataManager.Instance.GetInfo.Stage);
         Vector3 center = spots[Random.Range(0,spots.Count)].position;
 
         for (int i = 0; i < stageScriptable.MaxEnemyCount; i++)

@@ -3912,7 +3912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2169070c802afa441b0a7a9438546e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopScriptable: {fileID: 11400000, guid: 4bea6e381790fca489214da66fb121f8, type: 2}
+  drawScriptable: {fileID: 11400000, guid: 4bea6e381790fca489214da66fb121f8, type: 2}
   itemScriptable: {fileID: 11400000, guid: 32a898d70e8ada144adfa221566f56e9, type: 2}
   objectScriptable: {fileID: 11400000, guid: c9440edf3a2a24a4f80dd9061161875d, type: 2}
   stageScriptable: {fileID: 11400000, guid: 1fe8abc30e1ee1d48bae6b9586009533, type: 2}
@@ -5960,12 +5960,15 @@ MonoBehaviour:
     itemType: 0
   goods:
     gold: 0
-    ruby: 0
+    gem: 0
+    scrap: 0
   info:
     userName: player
     stage: 0
     currentLevel: 0
     currentExp: 0
+    drawLimit: []
+    drawCount: []
 --- !u!4 &1858542573
 Transform:
   m_ObjectHideFlags: 0

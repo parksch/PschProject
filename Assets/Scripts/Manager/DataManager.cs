@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
@@ -47,7 +48,7 @@ public class DataManager : Singleton<DataManager>
     public float ExpRatio()
     {
         UpgradeScriptable.UpgradeState exp = TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
-        return ((float)info.currentExp / GetLevelExp(info.currentLevel + 1));
+        return ((float)info.CurrentExp / GetLevelExp(info.CurrentLevel + 1));
     }
 
     public void AddScrap(long value)
@@ -73,11 +74,11 @@ public class DataManager : Singleton<DataManager>
 
     public void AddExp(long value)
     {
-        info.currentExp += value;
+        info.CurrentExp += value;
 
-        if (info.currentExp > GetLevelExp(TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel))
+        if (info.CurrentExp > GetLevelExp(TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel))
         {
-            info.currentExp = GetLevelExp(TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel);
+            info.CurrentExp = GetLevelExp(TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel);
         }
 
         OnChangeExp(ExpRatio());
@@ -136,10 +137,45 @@ public class DataManager : Singleton<DataManager>
     [System.Serializable]
     public class Info
     {
-        public string userName;
-        public int stage = 0;
-        public int currentLevel;
-        public long currentExp;
+        [SerializeField] string userName;
+        [SerializeField] int stage = 0;
+        [SerializeField] int currentLevel;
+        [SerializeField] long currentExp;
+        [SerializeField] List<Datas.Pair<string, int>> drawLimit;
+        [SerializeField] List<Datas.Pair<string, int>> drawCount;
+
+        public string UserName => userName;
+        public int Stage => stage;
+        public int CurrentLevel => currentLevel;
+        public long CurrentExp
+        {
+            set
+            {
+                currentExp += value;
+            }
+            get
+            {
+                return currentExp;
+            }
+        }
+        public int DrawLimit(string name) => drawLimit.Find(x => name == x.key).value;
+        public int AddDrawLimit(string name, int value) => drawLimit.Find(x => name == x.key).value += value;
+        public void CreateDrawLimit(string name)
+        {
+            if (drawLimit.Find(x => name == x.key) == null)
+            {
+                drawLimit.Add(new Datas.Pair<string,int>(name,0));
+            }
+        }
+        public int DrawCount(string name) => drawCount.Find(x => name == x.key).value;
+        public int AddDrawCount(string name, int value) => drawCount.Find(x => name == x.key).value += value;
+        public void CreateDrawCount(string name)
+        {
+            if (drawCount.Find(x => name == x.key) == null)
+            {
+                drawCount.Add(new Datas.Pair<string, int>(name, 0));
+            }
+        }
     }
 
     #endregion
@@ -157,6 +193,30 @@ public class DataManager : Singleton<DataManager>
         for (int i = 0; i < upgradeStates.Count; i++)
         {
             upgradeLevel[upgradeStates[i].name] = 0;
+        }
+
+        for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
+        {
+            DrawScriptable.Category shop = TableManager.Instance.DrawScriptable.GetData(i);
+
+            if (shop == null)
+            {
+                continue;
+            }
+
+            for (int j = 0; j < shop.Datas.Count; j++)
+            {
+                if (shop.Datas[j].Limit > 0)
+                {
+                    info.CreateDrawLimit(shop.Datas[j].NameKey);
+                }
+
+                if (shop.Datas[j].MaxLevel > 0)
+                {
+                    info.CreateDrawCount(shop.Datas[j].NameKey);
+                }
+            }
+
         }
     }
 }

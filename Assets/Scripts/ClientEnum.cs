@@ -37,7 +37,7 @@ namespace ClientEnum
 
     public enum State
     {
-        Hp,
+        HP,
         Attack,
         Int,
         Defense,
@@ -69,6 +69,7 @@ namespace ClientEnum
         Normal,
         Rare,
         SuperRare,
-        UltraRare
+        UltraRare,
+        Max
     }
 } 

@@ -170,7 +170,9 @@ public class DrawPanel : BasePanel
 
     public void GetItem(DrawScriptable.Data draw, int num)
     {
-
+        for (int i = 0; i < num; i++)
+        {
+        }
     }
 
     public void OnClickSlot(UIDrawSlot uIShopSlot)

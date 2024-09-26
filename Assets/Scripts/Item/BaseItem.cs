@@ -6,6 +6,7 @@ using UnityEngine;
 public class BaseItem 
 {
     [SerializeField] string id;
+    [SerializeField] string index;
     [SerializeField] ClientEnum.Item type;
 
     public string ID => id;

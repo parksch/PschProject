@@ -7,13 +7,18 @@ using UnityEngine;
 public class ItemScriptable : BaseScriptable
 {
     [SerializeField] List<TypeData> itemTypeDatas = new List<TypeData>();
+    
 
     [System.Serializable]
     public class Info
     {
-        public string id;
-        public GameObject prefab;
-        public List<Datas.Pair<ClientEnum.State, float>> states = new List<Datas.Pair<ClientEnum.State, float>>();
+        [SerializeField] string id;
+        [SerializeField] GameObject prefab;
+        [SerializeField] List<Datas.Pair<ClientEnum.State, float>> states = new List<Datas.Pair<ClientEnum.State, float>>();
+
+        public string ID => id;
+        public GameObject Prefab => prefab;
+        public List<Datas.Pair<ClientEnum.State, float>> States => states;
     }
 
     public class None : Info
@@ -24,8 +29,13 @@ public class ItemScriptable : BaseScriptable
     [System.Serializable]
     public class TypeData
     {
-        public ClientEnum.Item target;
-        public List<Info> items;
+        [SerializeField] List<ClientEnum.State> randomTarget;
+        [SerializeField] ClientEnum.Item target;
+        [SerializeField] List<Info> items;
+
+        public ClientEnum.Item Target => target;
+        public List<Info> Items => items;
+        public List<ClientEnum.State> RandomOptionTarget => randomTarget;
     }
 
     public Info GetItem(DataManager.InventoryData inventoryData)
@@ -35,6 +45,6 @@ public class ItemScriptable : BaseScriptable
             return new None();
         }
 
-        return (itemTypeDatas.Find(x => x.target == inventoryData.itemType)).items.Find(x => x.id == inventoryData.id);
+        return (itemTypeDatas.Find(x => x.Target == inventoryData.itemType)).Items.Find(x => x.ID == inventoryData.id);
     }
 }

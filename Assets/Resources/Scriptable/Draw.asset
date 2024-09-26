@@ -24,15 +24,16 @@ MonoBehaviour:
         descKey: 
         needValue: 10
         goods: 0
+        target: 0
         probabilities:
         - grade: 0
           value: 1000
         - grade: 1
-          value: 100
+          value: 500
         - grade: 2
-          value: 10
+          value: 100
         - grade: 3
-          value: 5
+          value: 50
   - key: 2
     value:
       nameKey: DailyTitle
@@ -43,27 +44,29 @@ MonoBehaviour:
         descKey: 
         needValue: 10000
         goods: 1
+        target: 0
         probabilities:
         - grade: 0
-          value: 0
+          value: 1000
         - grade: 1
-          value: 0
+          value: 500
         - grade: 2
-          value: 0
+          value: 100
         - grade: 3
-          value: 0
+          value: 50
       - limit: 20
         maxLevel: 0
         nameKey: DailyGem
         descKey: 
         needValue: 100
         goods: 2
+        target: 0
         probabilities:
         - grade: 0
-          value: 0
+          value: 1000
         - grade: 1
-          value: 0
+          value: 500
         - grade: 2
-          value: 0
+          value: 100
         - grade: 3
-          value: 0
+          value: 50

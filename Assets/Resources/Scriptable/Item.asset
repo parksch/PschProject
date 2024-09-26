@@ -13,9 +13,17 @@ MonoBehaviour:
   m_Name: Item
   m_EditorClassIdentifier: 
   itemTypeDatas:
-  - target: 1
+  - randomTarget: 0000000003000000
+    target: 1
+    items:
+    - id: WoodHelmet
+      prefab: {fileID: 0}
+      states:
+      - key: 0
+        value: 0
+  - randomTarget: 0400000003000000
+    target: 2
     items: []
-  - target: 2
-    items: []
-  - target: 3
+  - randomTarget: 0100000005000000
+    target: 3
     items: []

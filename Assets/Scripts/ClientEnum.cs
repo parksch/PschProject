@@ -42,6 +42,7 @@ namespace ClientEnum
         Int,
         Defense,
         HpRegen,
+        DrainLife,
     }
 
     public enum UpgradeType

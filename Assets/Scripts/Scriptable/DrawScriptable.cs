@@ -44,25 +44,54 @@ public class DrawScriptable : BaseScriptable
         [SerializeField] ClientEnum.Item target;
         [SerializeField] List<Probability> probabilities;
 
-        public int MaxProbability()
+        public int MaxProbability
         {
-            int value = 0;
-
-            foreach (var item in probabilities)
+            get
             {
-                value += item.Value;
-            }
+                int value = 0;
 
-            return value;
+                foreach (var item in probabilities)
+                {
+                    value += item.Value;
+                }
+
+                return value;
+            }
         }
 
         public List<Probability> Probabilities => probabilities;
+        public ClientEnum.Item Target => target;
         public ClientEnum.Goods Goods => goods;
         public string DescKey => descKey;
         public string NameKey => nameKey;
         public int NeedValue => needValue;
         public int Limit => limit;
         public int MaxLevel => maxLevel;
+
+        public ClientEnum.Grade Grade
+        {
+            get
+            {
+                int random = Random.Range(0,MaxProbability);
+                ClientEnum.Grade grade = ClientEnum.Grade.Normal;
+
+                for (int i = 0; i < probabilities.Count; i++)
+                {
+                    if (random < probabilities[i].Value)
+                    {
+                        grade = probabilities[i].Grade;
+
+                        break;
+                    }
+                    else
+                    {
+                        random -= probabilities[i].Value;
+                    }
+                }
+
+                return grade;
+            }
+        }
     }
 
     public Category GetData(ClientEnum.Draw shop)

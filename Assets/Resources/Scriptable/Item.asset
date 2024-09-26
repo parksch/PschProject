@@ -17,13 +17,23 @@ MonoBehaviour:
     target: 1
     items:
     - id: WoodHelmet
+      sprite: {fileID: 0}
       prefab: {fileID: 0}
-      states:
-      - key: 0
-        value: 0
+      mainState: 4
+    mainStateAddValue: 1.1
   - randomTarget: 0400000003000000
     target: 2
-    items: []
+    items:
+    - id: WoodArmor
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      mainState: 0
+    mainStateAddValue: 1.2
   - randomTarget: 0100000005000000
     target: 3
-    items: []
+    items:
+    - id: WoodAxe
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      mainState: 1
+    mainStateAddValue: 1.3

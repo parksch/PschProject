@@ -170,8 +170,22 @@ public class DrawPanel : BasePanel
 
     public void GetItem(DrawScriptable.Data draw, int num)
     {
+
         for (int i = 0; i < num; i++)
         {
+            ClientEnum.Item target = draw.Target;
+
+            if (target == ClientEnum.Item.None)
+            {
+                target = TableManager.Instance.ItemScriptable.GetRandomTarget;
+            }
+
+            ItemScriptable.Info info = TableManager.Instance.ItemScriptable.GetRandom(target);
+
+            Grade grade = draw.Grade;
+
+            BaseItem item = BaseItem.Create(target);
+            item.Set(info, grade);
         }
     }
 

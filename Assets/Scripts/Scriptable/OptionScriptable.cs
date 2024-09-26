@@ -7,12 +7,21 @@ using UnityEngine;
 public class OptionScriptable : BaseScriptable
 {
     [SerializeField] List<Data> datas = new List<Data>();
+    [SerializeField] List<Probability> addOption = new List<Probability>();
 
-	[System.Serializable]
-	public class Data
+    [System.Serializable]
+    public class Probability
+    {
+        [SerializeField] ClientEnum.Grade target;
+        [SerializeField] List<Datas.Pair<int, int>> count;
+        [SerializeField] List<Datas.Pair<ClientEnum.Grade, int>> gradeValue;
+    }
+
+    [System.Serializable]
+    public class Data
 	{
-		[SerializeField] float min = 0.9f, max = 1.1f;
         [SerializeField] ClientEnum.State target;
+        [SerializeField] float min = 0.9f, max = 1.1f;
 		[SerializeField] string local;
 		[SerializeField] List<Datas.Pair<ClientEnum.Grade, float>> gradeValue = new List<Datas.Pair<ClientEnum.Grade, float>>();
 		
@@ -21,5 +30,17 @@ public class OptionScriptable : BaseScriptable
 		public string Local => local;
     }
 
+    [System.Serializable]
+    public class ResultOption
+    {
+        [SerializeField] List<Data> datas = new List<Data>();
+
+    }
+
 	public Data GetData(ClientEnum.State target) => datas.Find(x => x.Target == target);
+
+    //public ResultOption GetGradeOption(ClientEnum.Grade grade)
+    //{
+
+    //}
 }

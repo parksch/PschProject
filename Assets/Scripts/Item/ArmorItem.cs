@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class ArmorItem : BaseItem
 {
-
+    public ArmorItem()
+    {
+        type = ClientEnum.Item.Armor;
+    }
 }

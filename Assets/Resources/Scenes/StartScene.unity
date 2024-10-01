@@ -3918,6 +3918,7 @@ MonoBehaviour:
   stageScriptable: {fileID: 11400000, guid: 1fe8abc30e1ee1d48bae6b9586009533, type: 2}
   upgradeScriptable: {fileID: 11400000, guid: fa68542732d11c1428c6d22f6de093e0, type: 2}
   textScriptable: {fileID: 11400000, guid: 1f57976a535d5ec4dad06c47f79101f4, type: 2}
+  optionScriptable: {fileID: 11400000, guid: c1fd99d92d30d2140994e03b84b609f2, type: 2}
 --- !u!4 &1221131344
 Transform:
   m_ObjectHideFlags: 0

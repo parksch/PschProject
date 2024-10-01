@@ -4,6 +4,8 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 
+//symbol
+
 [CreateAssetMenu(fileName = "Draw", menuName = "Scriptable/Draw")]
 public class DrawScriptable : BaseScriptable
 {
@@ -107,4 +109,6 @@ public class DrawScriptable : BaseScriptable
             return pair.value;
         }
     }
+
+    public List<Datas.Pair<ClientEnum.Draw, Category>> Datas => datas;
 }

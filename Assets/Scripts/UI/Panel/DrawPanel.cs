@@ -170,7 +170,6 @@ public class DrawPanel : BasePanel
 
     public void GetItem(DrawScriptable.Data draw, int num)
     {
-
         for (int i = 0; i < num; i++)
         {
             ClientEnum.Item target = draw.Target;
@@ -185,8 +184,11 @@ public class DrawPanel : BasePanel
             Grade grade = draw.Grade;
 
             BaseItem item = BaseItem.Create(target);
-            item.Set(info, grade);
+            item.Set(info,grade);
+            DataManager.Instance.AddItem(item);
         }
+
+        UIManager.Instance.OpenRewardPanel();
     }
 
     public void OnClickSlot(UIDrawSlot uIShopSlot)

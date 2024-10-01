@@ -7,7 +7,7 @@ public class DataManager : Singleton<DataManager>
     [SerializeField] ClientEnum.Language language;
     [SerializeField, ReadOnly] string deviceNum;
     [SerializeField, ReadOnly] PlayerState playerDefaultState;
-    [SerializeField, ReadOnly] List<InventoryData> inventoryDatas = new List<InventoryData>();
+    [SerializeField, ReadOnly] List<BaseItem> inventoryDatas = new List<BaseItem>();
     [SerializeField] Goods goods;
     [SerializeField] Info info;
 
@@ -42,7 +42,7 @@ public class DataManager : Singleton<DataManager>
     public Goods GetGoods => goods;
     public int GetUpgradeLevel(string code) => upgradeLevel[code];
     public Info GetInfo => info;
-    public List<InventoryData> InventoryDatas => inventoryDatas;
+    public List<BaseItem> InventoryDatas => inventoryDatas;
     public PlayerState PlayerDefaultState => playerDefaultState;
 
     public float ExpRatio()
@@ -56,6 +56,11 @@ public class DataManager : Singleton<DataManager>
         goods.scrap += value;
 
         OnChangeScrap(goods.scrap);
+    }
+
+    public void AddItem(BaseItem item)
+    {
+        inventoryDatas.Add(item);
     }
 
     public void AddGold(long value)
@@ -118,13 +123,6 @@ public class DataManager : Singleton<DataManager>
     }
 
     #region Datas
-
-    [System.Serializable]
-    public class InventoryData
-    {
-        public string id;
-        public ClientEnum.Item itemType;
-    }
 
     [System.Serializable]
     public class Goods

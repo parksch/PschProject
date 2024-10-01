@@ -6,6 +6,7 @@ public class RewardPanel : BasePanel
 {
     public override void OnUpdate()
     {
+
     }
 
     public override void FirstLoad()
@@ -20,12 +21,12 @@ public class RewardPanel : BasePanel
 
     public override void Close()
     {
-
+        gameObject.SetActive(false);
     }
 
     public override void Open()
     {
-
+        gameObject.SetActive(true);
     }
 
 }

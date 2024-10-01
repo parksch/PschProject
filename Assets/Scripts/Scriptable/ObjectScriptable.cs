@@ -22,6 +22,5 @@ public class ObjectScriptable : BaseScriptable
         public ObjectType objectType;
     }
 
-
     public ObjectPrefab GetObject(string name) => objectPrefabList.Find(x => x.name == name);
 }

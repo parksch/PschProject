@@ -134,4 +134,19 @@ public class UIManager : Singleton<UIManager>
     {
         return panels.Find(x => x.GetType() == typeof(T)) as T;
     }
+
+    public void AddRewardItem(ClientEnum.Goods goods, string value)
+    {
+
+    }
+
+    public void AddRewardItem(ClientEnum.Item goods, string value)
+    {
+
+    }
+
+    public void OpenRewardPanel()
+    {
+        rewardPanel.Open();
+    }
 }

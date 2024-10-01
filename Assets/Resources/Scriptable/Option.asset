@@ -39,6 +39,45 @@ MonoBehaviour:
       value: 20
     - key: 3
       value: 30
+  - target: 3
+    min: 0.9
+    max: 1.1
+    local: DefenseOption
+    gradeValue:
+    - key: 0
+      value: 5
+    - key: 1
+      value: 10
+    - key: 2
+      value: 20
+    - key: 3
+      value: 30
+  - target: 4
+    min: 0.9
+    max: 1.1
+    local: HpRegenOption
+    gradeValue:
+    - key: 0
+      value: 5
+    - key: 1
+      value: 10
+    - key: 2
+      value: 20
+    - key: 3
+      value: 30
+  - target: 5
+    min: 0.9
+    max: 1.1
+    local: DrainLifeOption
+    gradeValue:
+    - key: 0
+      value: 5
+    - key: 1
+      value: 10
+    - key: 2
+      value: 20
+    - key: 3
+      value: 30
   addOption:
   - target: 0
     count:

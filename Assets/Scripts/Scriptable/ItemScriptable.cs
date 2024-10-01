@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable/Item")]
@@ -41,19 +40,21 @@ public class ItemScriptable : BaseScriptable
         public List<ClientEnum.State> RandomOptionTarget => randomTarget;
     }
 
+    //Symbol
+
     public TypeData GetTypeData(ClientEnum.Item target)
     {
         return itemTypeDatas.Find(x => x.Target == target);
     }
 
-    public Info GetItem(DataManager.InventoryData inventoryData)
+    public Info GetItem(BaseItem item)
     {
-        if (inventoryData.itemType == ClientEnum.Item.None)
+        if (item.Type == ClientEnum.Item.None)
         {
             return new None();
         }
-
-        return (itemTypeDatas.Find(x => x.Target == inventoryData.itemType)).Items.Find(x => x.ID == inventoryData.id);
+        
+        return (itemTypeDatas.Find(x => x.Target == item.Type)).Items.Find(x => x.ID == item.ID);
     }
 
     public Info GetRandom(ClientEnum.Item target)
@@ -62,4 +63,12 @@ public class ItemScriptable : BaseScriptable
 
         return typeData.Items[Random.Range(0, typeData.Items.Count)];
     }
+
+    public List<ClientEnum.State> GetRandomOption(ClientEnum.Item target)
+    {
+        TypeData typeData = GetTypeData(target);
+
+        return typeData.RandomOptionTarget;
+    }
+
 }

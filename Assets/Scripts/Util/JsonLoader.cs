@@ -2,31 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Newtonsoft.Json;
-using static DrawScriptable;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json.Linq;
-using System.Linq;
-using Unity.VisualScripting.Antlr3.Runtime;
 
 #if UNITY_EDITOR
 public class JsonLoader : EditorWindow
 {
     string jsonDatapath = "Assets/JsonFiles";
     string scriptableDataPath = "Assets/Resources/Scriptable";
+    string scriptableFunctionPath = "Assets/Scripts/Scriptable/Function";
     string scriptableScriptPath = "Assets/Scripts/Scriptable";
 
-    private (string handle, string type)[] typeRules =
-    {
-        ("n_", "int"),
-        ("s_", "string"),
-        ("f_", "float"),
-        ("l_", "long"),
-        ("b_", "bool"),
-        ("e_", "enum")
-    };
+    bool isRunning = false;
 
     [MenuItem("Tools/JsonLoader")]
     public static void ShowMyEditor()
@@ -36,13 +25,13 @@ public class JsonLoader : EditorWindow
         window.minSize = new Vector2(500, 500);
     }
 
-
     public void OnGUI()
     {
         EditorGUILayout.LabelField("Json 파일을 Scriptable 파일로 변경");
 
         if (GUILayout.Button("Conversion"))
         {
+            GUI.enabled = false;
             OnClickJsonConversion();
         }
 
@@ -56,72 +45,135 @@ public class JsonLoader : EditorWindow
 
     void OnClickJsonConversion()
     {
-        if (!Directory.Exists(jsonDatapath))
+        if (!Directory.Exists(scriptableScriptPath))
         {
-            Directory.CreateDirectory(jsonDatapath);
+            Directory.CreateDirectory(scriptableScriptPath);
         }
 
-        DirectoryInfo info = new DirectoryInfo(jsonDatapath);
-        string[] assetPaths = Directory.GetFiles(jsonDatapath, "*.json");
-
-        foreach (FileInfo file in info.GetFiles("*.json"))
+        if (!Directory.Exists(scriptableFunctionPath))
         {
-            string fileName = Path.GetFileNameWithoutExtension(file.Name);
-            string path = Path.Combine(jsonDatapath, file.Name);
-            TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
-            JObject jObject = (JObject)(JArray.Parse(textAsset.text))[0];
-            string classString = GenerateClassFromJson(jObject, fileName);
-            Debug.Log(classString);
-            File.WriteAllText(scriptableScriptPath + "/" + fileName + ".cs", classString);
+            Directory.CreateDirectory(scriptableFunctionPath);
         }
 
-        EditorUtility.DisplayDialog("결과", "메세지","확인");
+        try
+        {
+            DirectoryInfo info = new DirectoryInfo(jsonDatapath);
+            string[] assetPaths = Directory.GetFiles(jsonDatapath, "*.json");
+
+            foreach (FileInfo file in info.GetFiles("*.json"))
+            {
+                string fileName = Path.GetFileNameWithoutExtension(file.Name);
+                string path = Path.Combine(jsonDatapath, file.Name);
+                TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
+                JObject jObject = (JObject)(JArray.Parse(textAsset.text))[0];
+
+                string classString = GenerateClassFromJson(jObject, fileName);
+                File.WriteAllText(scriptableScriptPath + "/" + fileName + ".cs", classString);
+
+                string partialFunction = GenerateClassFromJson(jObject, fileName, 0, true);
+                File.WriteAllText(scriptableFunctionPath + "/" + "Partial" + fileName + ".cs", partialFunction);
+            }
+
+            EditorUtility.DisplayDialog("결과", "Json To Class 변환 성공", "확인");
+            GUI.enabled = true;
+        }
+        catch (System.Exception e)
+        {
+            EditorUtility.DisplayDialog("결과", "Json To Class 변환 실패 \n" + e.Message, "확인");
+            GUI.enabled = true;
+        }
     }
 
-    string GenerateClassFromJson(JObject jsonObject, string className,int tapCount = 0)
+    string GenerateClassFromJson(JObject jsonObject, string className,int tapCount = 0,bool isFunction = false)
     {
-        className = className.First().ToString().ToUpper() + className.Substring(1);
+        className = char.ToUpper(className[0]) + className.Substring(1);
         StringBuilder stringBuilder = new StringBuilder();
+        List<JProperty> properties = new List<JProperty>();
 
         if (tapCount == 0)
         {
             stringBuilder.AppendLine("using System.Collections.Generic;");
+            stringBuilder.AppendLine("//using symbol");
+            stringBuilder.AppendLine("namespace JsonClass");
+            stringBuilder.AppendLine("{");
         }
 
-        stringBuilder.AppendLine(StringTap("[System.Serializable]",tapCount));
-        stringBuilder.AppendLine(StringTap("public class " + className,tapCount));
-        stringBuilder.AppendLine(StringTap("{",tapCount));
+        if (!isFunction)
+        {
+            stringBuilder.AppendLine("    [System.Serializable]");
+        }
+
+        stringBuilder.AppendLine("    public partial class " + className);
+        stringBuilder.AppendLine("    {");
 
         foreach (var property in jsonObject.Properties())
         {
-            string propertyName = property.Name.First().ToString().ToLower() + property.Name.Substring(1);
+            string propertyName = char.ToLower(property.Name[0]) + property.Name.Substring(1);
             string propertyType;
 
             if (property.Value.Type == JTokenType.Object)
             {
-                propertyType = propertyName.First().ToString().ToUpper() + propertyName.Substring(1);
-                
+                propertyType = char.ToUpper(property.Name[0]) + property.Name.Substring(1);
 
-                stringBuilder.AppendLine(StringTap($"    public {propertyType} {propertyName};",tapCount));
-                stringBuilder.AppendLine(GenerateClassFromJson((JObject)property.Value, propertyName,tapCount + 1));
+                if (!isFunction)
+                {
+                    stringBuilder.AppendLine($"        public {propertyType} {propertyName};");
+                }
+                properties.Add(property);
             }
-            else if (property.Value.Type == JTokenType.Array)
+            else if (property.Value.Type == JTokenType.Array && ((JArray)property.Value)[0].Type == JTokenType.Object)
             {
-                propertyType = propertyName.First().ToString().ToUpper() + propertyName.Substring(1);
+                propertyType = char.ToUpper(property.Name[0]) + property.Name.Substring(1);
 
                 JArray datasArray = (JArray)property.Value;
-                stringBuilder.AppendLine(StringTap($"    public List<{propertyType}> {propertyName};",tapCount));
-                stringBuilder.AppendLine(GenerateClassFromJson((JObject)datasArray[0], propertyName,tapCount + 1));
+                if (!isFunction)
+                {
+                    stringBuilder.AppendLine($"        public List<{propertyType}> {propertyName};");
+                }
+                properties.Add(property);
             }
             else
             {
                 propertyType = GetCSharpTypeFromJson(property.Value);
-                stringBuilder.AppendLine(StringTap($"    public {propertyType} {propertyName};",tapCount));
+                if (!isFunction)
+                {
+                    stringBuilder.AppendLine($"        public {propertyType} {propertyName};");
+                }
             }
 
         }
 
-        stringBuilder.AppendLine(StringTap("}",tapCount));
+        if (isFunction)
+        {
+            stringBuilder.AppendLine("//class symbol");
+        }
+
+        stringBuilder.AppendLine("    }");
+        stringBuilder.AppendLine();
+
+        foreach (var property in properties)
+        {
+            string propertyName = char.ToLower(property.Name[0]) + property.Name.Substring(1);
+            string propertyType;
+
+            if (property.Value.Type == JTokenType.Object)
+            {
+                propertyType = char.ToLower(property.Name[0]) + property.Name.Substring(1);
+                stringBuilder.Append(GenerateClassFromJson((JObject)property.Value, propertyName,tapCount + 1, isFunction));
+            }
+            else if (property.Value.Type == JTokenType.Array && ((JArray)property.Value)[0].Type == JTokenType.Object)
+            {
+                propertyType = char.ToUpper(property.Name[0]) + property.Name.Substring(1);
+                JArray datasArray = (JArray)property.Value;
+
+                stringBuilder.Append(GenerateClassFromJson((JObject)datasArray[0], propertyName,tapCount + 1, isFunction));
+            }
+        }
+
+        if (tapCount == 0)
+        {
+            stringBuilder.AppendLine("}");
+        }
 
         return stringBuilder.ToString();
     }
@@ -171,7 +223,7 @@ public class JsonLoader : EditorWindow
 
         //string scriptablePath = scriptableDataPath;
 
-        List<Datas.Pair<ClientEnum.Draw, Category>> datas = TableManager.Instance.DrawScriptable.Datas;
+        List<Datas.Pair<ClientEnum.Draw, DrawScriptable.Category>> datas = TableManager.Instance.DrawScriptable.Datas;
         string json = JsonConvert.SerializeObject(datas);
         string path = string.Format("{0}/{1}", jsonDatapath, "Draw.json");
 

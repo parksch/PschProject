@@ -1,15 +1,20 @@
 using System.Collections.Generic;
-[System.Serializable]
-public class Option
+//using symbol
+namespace JsonClass
 {
-    public int target;
-    public List<GradeValue> gradeValue;
     [System.Serializable]
-    public class GradeValue
+    public partial class Option
+    {
+        public int target;
+        public List<GradeValue> gradeValue;
+        public string local;
+    }
+
+    [System.Serializable]
+    public partial class GradeValue
     {
         public int key;
         public float value;
     }
 
-    public string local;
 }

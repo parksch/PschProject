@@ -1,35 +1,39 @@
 using System.Collections.Generic;
-[System.Serializable]
-public class Draw
+//using symbol
+namespace JsonClass
 {
-    public int key;
-    public Value value;
     [System.Serializable]
-    public class Value
+    public partial class Draw
     {
-        public string nameStringKey;
-        public List<Datas> datas;
-        [System.Serializable]
-        public class Datas
-        {
-            public List<Probabilities> probabilities;
-            [System.Serializable]
-            public class Probabilities
-            {
-                public int grade;
-                public int value;
-            }
+        public int index;
+        public Type type;
+    }
 
-            public int target;
-            public int goods;
-            public string descKey;
-            public string nameKey;
-            public int needValue;
-            public int limit;
-            public int maxLevel;
-            public int grade;
-        }
+    [System.Serializable]
+    public partial class Type
+    {
+        public string titleKey;
+        public List<Shops> shops;
+    }
 
+    [System.Serializable]
+    public partial class Shops
+    {
+        public List<Probabilities> probabilities;
+        public int target;
+        public int goods;
+        public string descKey;
+        public string nameKey;
+        public int needValue;
+        public int limit;
+        public int maxLevel;
+    }
+
+    [System.Serializable]
+    public partial class Probabilities
+    {
+        public int grade;
+        public int value;
     }
 
 }

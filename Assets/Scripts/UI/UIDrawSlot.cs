@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.WSA;
-
+using JsonClass;
 public class UIDrawSlot : MonoBehaviour
 {
     [SerializeField, ReadOnly] ClientEnum.Draw type;

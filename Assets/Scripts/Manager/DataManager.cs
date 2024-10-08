@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-
+using JsonClass;
 public class DataManager : Singleton<DataManager>
 {
     [SerializeField] ClientEnum.Language language;

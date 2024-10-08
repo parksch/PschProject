@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -6,16 +8,16 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using System.Reflection;
+using JsonClass;
+using System;
 
-#if UNITY_EDITOR
 public class JsonLoader : EditorWindow
 {
     string jsonDatapath = "Assets/JsonFiles";
     string scriptableDataPath = "Assets/Resources/Scriptable";
     string scriptableFunctionPath = "Assets/Scripts/Scriptable/Function";
     string scriptableScriptPath = "Assets/Scripts/Scriptable";
-
-    bool isRunning = false;
 
     [MenuItem("Tools/JsonLoader")]
     public static void ShowMyEditor()
@@ -65,15 +67,28 @@ public class JsonLoader : EditorWindow
                 string fileName = Path.GetFileNameWithoutExtension(file.Name);
                 string path = Path.Combine(jsonDatapath, file.Name);
                 TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
+
                 JObject jObject = (JObject)(JArray.Parse(textAsset.text))[0];
 
                 string classString = GenerateClassFromJson(jObject, fileName);
-                File.WriteAllText(scriptableScriptPath + "/" + fileName + ".cs", classString);
+                File.WriteAllText(scriptableScriptPath + "/" + fileName + "Scriptable.cs", classString);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
 
-                string partialFunction = GenerateClassFromJson(jObject, fileName, 0, true);
-                File.WriteAllText(scriptableFunctionPath + "/" + "Partial" + fileName + ".cs", partialFunction);
+
+                if (!File.Exists(scriptableFunctionPath + "/" + "Partial" + fileName + ".cs"))
+                {
+                    string partialFunction = GenerateClassFromJson(jObject, fileName, 0, true);
+                    File.WriteAllText(scriptableFunctionPath + "/" + "Partial" + fileName + ".cs", partialFunction);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
+                }
+
+                //CreateScriptableAsset(scriptableDataPath, fileName , JArray.Parse(textAsset.text));
             }
 
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
             EditorUtility.DisplayDialog("결과", "Json To Class 변환 성공", "확인");
             GUI.enabled = true;
         }
@@ -93,9 +108,31 @@ public class JsonLoader : EditorWindow
         if (tapCount == 0)
         {
             stringBuilder.AppendLine("using System.Collections.Generic;");
-            stringBuilder.AppendLine("//using symbol");
+            stringBuilder.AppendLine("using UnityEngine;");
+            stringBuilder.AppendLine();
             stringBuilder.AppendLine("namespace JsonClass");
             stringBuilder.AppendLine("{");
+
+            string propertyName = char.ToLower(className[0]) + className.Substring(1);
+
+            if (!isFunction)
+            {
+                stringBuilder.AppendLine("    public partial class " + className + "Scriptable" + " : ScriptableObject");
+            }
+            else
+            {
+                stringBuilder.AppendLine("    public partial class " + className + "Scriptable");
+            }
+
+            stringBuilder.AppendLine("    {");
+
+            if (!isFunction)
+            {
+                stringBuilder.AppendLine($"        public List<{className}> {propertyName};");
+            }
+
+            stringBuilder.AppendLine("    }");
+            stringBuilder.AppendLine();
         }
 
         if (!isFunction)
@@ -143,11 +180,6 @@ public class JsonLoader : EditorWindow
 
         }
 
-        if (isFunction)
-        {
-            stringBuilder.AppendLine("//class symbol");
-        }
-
         stringBuilder.AppendLine("    }");
         stringBuilder.AppendLine();
 
@@ -178,6 +210,53 @@ public class JsonLoader : EditorWindow
         return stringBuilder.ToString();
     }
 
+    void CreateScriptableAsset(string path,string name,JArray jArray)
+    {
+        if (!Directory.Exists(scriptableDataPath))
+        {
+            Directory.CreateDirectory(scriptableDataPath);
+        }
+
+        name = char.ToUpper(name[0]) + name.Substring(1);
+        string dataPath = path + "/" + name + "Scriptable";
+        string[] assetPaths = Directory.GetFiles(scriptableDataPath, "*.asset");
+        Assembly assembly = Assembly.Load("Assembly-CSharp");
+        System.Type scriptableType = assembly.GetType($"JsonClass.{name + "Scriptable"}");
+        System.Type classType = assembly.GetType($"JsonClass.{name}");
+
+        ScriptableObject scriptableObject = CreateInstance(scriptableType);
+
+        FieldInfo listField = scriptableType.GetField(char.ToLower(name[0]) + name.Substring(1), BindingFlags.Public | BindingFlags.Instance);
+        IList listInstance = null;
+
+        if (listField != null && typeof(IList).IsAssignableFrom(listField.FieldType))
+        {
+            listInstance = listField.GetValue(scriptableObject) as IList;
+            if (listInstance == null)
+            {
+                listInstance = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(classType));
+                listField.SetValue(scriptableObject, listInstance);
+            }
+        }
+
+        foreach (JObject jObject in jArray)
+        {
+            object var = jObject.ToObject(classType);
+            listInstance.Add(var);
+        }
+
+        if (AssetDatabase.Contains(scriptableObject))
+        {
+            EditorUtility.SetDirty(scriptableObject);
+        }
+        else
+        {
+            AssetDatabase.CreateAsset(scriptableObject, dataPath + ".asset");
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
     string StringTap(string str,int count)
     {
         string result = string.Empty;

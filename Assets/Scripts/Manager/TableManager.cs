@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using JsonClass;
 public class TableManager : Singleton<TableManager>
 {
     [SerializeField, ReadOnly] DrawScriptable drawScriptable;

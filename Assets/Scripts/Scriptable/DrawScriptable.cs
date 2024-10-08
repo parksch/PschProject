@@ -1,114 +1,45 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UI;
 
-//symbol
-
-[CreateAssetMenu(fileName = "Draw", menuName = "Scriptable/Draw")]
-public class DrawScriptable : BaseScriptable
+namespace JsonClass
 {
-    [SerializeField] int requiredExp;
-    [SerializeField] List<Datas.Pair<ClientEnum.Draw,Category>> datas = new List<Datas.Pair<ClientEnum.Draw,Category>> ();
-
-    public int RequiredExp => requiredExp;
-
-    [System.Serializable]
-    public class Category
+    public partial class DrawScriptable : ScriptableObject
     {
-        [SerializeField] string nameKey;
-        [SerializeField] List<Data> datas = new List<Data> ();
-        
-        public string NameStringKey => nameKey;
-        public List<Data> Datas => datas;
+        public List<Draw> draw;
     }
 
     [System.Serializable]
-    public class Probability
+    public partial class Draw
     {
-        [SerializeField] ClientEnum.Grade grade;
-        [SerializeField] int value;
-
-        public ClientEnum.Grade Grade => grade;
-        public int Value => value;
+        public int index;
+        public Type type;
     }
 
     [System.Serializable]
-    public class Data
+    public partial class Type
     {
-        [SerializeField] int limit;
-        [SerializeField] int maxLevel;
-        [SerializeField] string nameKey;
-        [SerializeField] string descKey;
-        [SerializeField] int needValue;
-        [SerializeField] ClientEnum.Goods goods;
-        [SerializeField] ClientEnum.Item target;
-        [SerializeField] List<Probability> probabilities;
-
-        public int MaxProbability
-        {
-            get
-            {
-                int value = 0;
-
-                foreach (var item in probabilities)
-                {
-                    value += item.Value;
-                }
-
-                return value;
-            }
-        }
-
-        public List<Probability> Probabilities => probabilities;
-        public ClientEnum.Item Target => target;
-        public ClientEnum.Goods Goods => goods;
-        public string DescKey => descKey;
-        public string NameKey => nameKey;
-        public int NeedValue => needValue;
-        public int Limit => limit;
-        public int MaxLevel => maxLevel;
-
-        public ClientEnum.Grade Grade
-        {
-            get
-            {
-                int random = Random.Range(0,MaxProbability);
-                ClientEnum.Grade grade = ClientEnum.Grade.Normal;
-
-                for (int i = 0; i < probabilities.Count; i++)
-                {
-                    if (random < probabilities[i].Value)
-                    {
-                        grade = probabilities[i].Grade;
-
-                        break;
-                    }
-                    else
-                    {
-                        random -= probabilities[i].Value;
-                    }
-                }
-
-                return grade;
-            }
-        }
+        public string titleKey;
+        public List<Shops> shops;
     }
 
-    public Category GetData(ClientEnum.Draw shop)
+    [System.Serializable]
+    public partial class Shops
     {
-        Datas.Pair<ClientEnum.Draw, Category> pair = datas.Find(x => x.key == shop);
-
-        if (pair == null)
-        {
-            return null;
-        }
-        else
-        {
-            return pair.value;
-        }
+        public List<Probabilities> probabilities;
+        public int target;
+        public int goods;
+        public string descKey;
+        public string nameKey;
+        public int needValue;
+        public int limit;
+        public int maxLevel;
     }
 
-    public List<Datas.Pair<ClientEnum.Draw, Category>> Datas => datas;
+    [System.Serializable]
+    public partial class Probabilities
+    {
+        public int grade;
+        public int value;
+    }
+
 }

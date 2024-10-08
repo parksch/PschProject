@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using JsonClass;
 
 [System.Serializable]
 public class BaseItem 

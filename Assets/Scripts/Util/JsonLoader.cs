@@ -37,7 +37,7 @@ public class JsonLoader : EditorWindow
             OnClickJsonConversion();
         }
 
-        EditorGUILayout.LabelField("Test : Scriptable 파일을 Json 파일로 변경");
+        EditorGUILayout.LabelField("!에러 주의 개발자 Test 용: Scriptable 파일을 Json으로 만들어주는 프로그램 ");
 
         if (GUILayout.Button("Conversion"))
         {
@@ -84,7 +84,7 @@ public class JsonLoader : EditorWindow
                     AssetDatabase.Refresh();
                 }
 
-                //CreateScriptableAsset(scriptableDataPath, fileName , JArray.Parse(textAsset.text));
+                CreateScriptableAsset(scriptableDataPath, fileName , JArray.Parse(textAsset.text));
             }
 
             AssetDatabase.SaveAssets();

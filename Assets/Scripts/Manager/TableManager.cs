@@ -20,3 +20,4 @@ public class TableManager : Singleton<TableManager>
     public UpgradeScriptable UpgradeScriptable => upgradeScriptable;
     public TextScriptable TextScriptable => textScriptable;
 }
+

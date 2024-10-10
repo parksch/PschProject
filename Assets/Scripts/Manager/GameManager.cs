@@ -69,21 +69,23 @@ public class GameManager : Singleton<GameManager>
 
     public void AddGold()
     {
-        long gold = (long)(TableManager.Instance.StageScriptable.StartGold * (1 + (DataManager.Instance.GetInfo.Stage * TableManager.Instance.StageScriptable.MultiplyPerGold)));
+        long gold = (long)(ScriptableManager.Instance.StageScriptable.startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.StageScriptable.multiplyPerGold)));
         DataManager.Instance.AddGold(gold);
     }
 
     public void AddExp()
     {
-        long exp = (long)(TableManager.Instance.StageScriptable.StartExp * (1 + (DataManager.Instance.GetInfo.Stage * TableManager.Instance.StageScriptable.MultiplyPerStageExp)));
+        long exp = (long)(ScriptableManager.Instance.StageScriptable.startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.StageScriptable.multiplyperStageExp)));
         DataManager.Instance.AddExp(exp);
     }
 
     public void AddScrap()
     {
-        if (Random.Range(0f,1f) < TableManager.Instance.StageScriptable.ScrapProbability)
+        if (Random.Range(0f,1f) < ScriptableManager.Instance.StageScriptable.scrapProbability)
         {
-            long scrap = TableManager.Instance.StageScriptable.Scrap;
+            int scrapMin = ScriptableManager.Instance.StageScriptable.scrapMin;
+            int scrapMax = ScriptableManager.Instance.StageScriptable.scrapMax;
+            long scrap = Random.Range(scrapMin, scrapMax);
             DataManager.Instance.AddScrap(scrap);
         }
     }

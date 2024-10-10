@@ -9,6 +9,6 @@ public class UILocalization : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<Text>().text = TableManager.Instance.TextScriptable.Get(textKey);
+        GetComponent<Text>().text = ScriptableManager.Instance.LocalizationScriptable.Get(textKey);
     }
 }

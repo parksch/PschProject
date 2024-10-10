@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using JsonClass;
 
 public class UIStateUpgradeSlot : MonoBehaviour
 {
@@ -14,8 +14,8 @@ public class UIStateUpgradeSlot : MonoBehaviour
     public void Init(UpgradeScriptable.UpgradeState upgradeState)
     {
         targetState = upgradeState;
-        desc.text = TableManager.Instance.TextScriptable.Get(targetState.upgradeKey);
-        icon.sprite = targetState.sprite;
+        desc.text = ScriptableManager.Instance.LocalizationScriptable.Get(targetState.upgradeKey);
+        //icon.sprite = targetState.sprite;
 
     }
 

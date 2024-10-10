@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: b3adf3b95ea23e94e8a962e29b1913cc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - drawScriptable: {fileID: 11400000, guid: 0fe61722c92f5754983fc979852f3e99, type: 2}
+  - itemScriptable: {fileID: 11400000, guid: 10160c85aa2e5cc46b216f5376c903c8, type: 2}
+  - objectScriptable: {instanceID: 0}
+  - stageScriptable: {instanceID: 0}
+  - upgradeScriptable: {instanceID: 0}
+  - localizationScriptable: {instanceID: 0}
+  - optionProbabilityScriptable: {instanceID: 0}
+  - optionScriptable: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

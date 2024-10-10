@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using JsonClass;
 
 public class StatePanel : BasePanel
 {
@@ -15,7 +16,7 @@ public class StatePanel : BasePanel
     public override void FirstLoad()
     {
         List<UpgradeScriptable.UpgradeState> upgradeStates;
-        upgradeStates = TableManager.Instance.UpgradeScriptable.GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
+        upgradeStates = ScriptableManager.Instance.UpgradeScriptable.GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
 
         for (int i = 0; i < upgradeStates.Count; i++)
         {

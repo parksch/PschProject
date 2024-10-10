@@ -1,0 +1,1 @@
+﻿{"maxEnemyCount":10,"startGold":1000,"startExp":10,"scrapMin":10,"scrapMax":50,"multiplyperStageExp":0.2,"multiplyPerStageHp":2.0,"multiplyPerStageDefanse":1.5,"multiplyPerStageAttack":1.5,"multiplyPerGold":0.2,"scrapProbability":0.05,"stageMonsters":[{"monsters":["Dwarf"]}],"name":"Stage","hideFlags":0}

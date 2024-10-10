@@ -69,5 +69,5 @@ MonoBehaviour:
         needValue: 100
         limit: 20
         maxLevel: 0
-  requiredExp: 5
+  requiredExp: 0
   datas: []

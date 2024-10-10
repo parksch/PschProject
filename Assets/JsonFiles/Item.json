@@ -1,0 +1,1 @@
+﻿[{"randomTarget":[0,3],"target":1,"items":[{"id":"WoodHelmet","sprite":"","prefab":"","mainState":4}],"mainStateAddValue":1.1},{"randomTarget":[4,3],"target":2,"items":[{"id":"WoodArmor","sprite":"","prefab":"","mainState":0}],"mainStateAddValue":1.2},{"randomTarget":[1,5],"target":3,"items":[{"id":"WoodAxe","sprite":"","prefab":"","mainState":1}],"mainStateAddValue":1.3}]

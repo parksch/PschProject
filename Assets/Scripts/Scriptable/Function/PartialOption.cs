@@ -6,8 +6,8 @@ namespace JsonClass
 {
     public partial class OptionScriptable
     {
-        [SerializeField] List<Data> datas = new List<Data>();
-        [SerializeField] List<Probability> addOption = new List<Probability>();
+        public List<Data> datas = new List<Data>();
+        public List<Probability> addOption = new List<Probability>();
 
         [System.Serializable]
         public class Probability

@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,11 @@ public class Spawn : MonoBehaviour
 
     public void CreateEnemy()
     {
-        StageScriptable stageScriptable = TableManager.Instance.StageScriptable;
+        StageScriptable stageScriptable = ScriptableManager.Instance.StageScriptable;
         List<string> enemies = stageScriptable.GetMonsters(DataManager.Instance.GetInfo.Stage);
         Vector3 center = spots[Random.Range(0,spots.Count)].position;
 
-        for (int i = 0; i < stageScriptable.MaxEnemyCount; i++)
+        for (int i = 0; i < stageScriptable.maxEnemyCount; i++)
         {
             GameObject gameObject = PoolManager.Instance.Dequeue(enemies[Random.Range(0, enemies.Count)]);
             gameObject.transform.position = new Vector3((center.x + Random.Range(-radius, radius)),0, (center.z + Random.Range(-radius, radius)));

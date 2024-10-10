@@ -68,7 +68,7 @@ public class PoolManager : Singleton<PoolManager>
 
     void AddPoolObject(string name)
     {
-        ObjectScriptable.ObjectPrefab objectPrefab = TableManager.Instance.ObjectScriptable.GetObject(name);
+        ObjectScriptable.ObjectPrefab objectPrefab = ScriptableManager.Instance.ObjectScriptable.GetObject(name);
         poolObjects[name] = new PoolObject();
         poolObjects[name].prefab = objectPrefab.gameObject;
         poolObjects[name].type = objectPrefab.objectType;

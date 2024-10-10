@@ -49,7 +49,7 @@ public class DrawPanel : BasePanel
     {
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
         {
-            DrawScriptable.Category shop = TableManager.Instance.DrawScriptable.GetData(i);
+            DrawScriptable.Category shop = ScriptableManager.Instance.DrawScriptable.GetData(i);
 
             if (shop == null)
             {
@@ -69,8 +69,8 @@ public class DrawPanel : BasePanel
         }
 
         currentSlot = slots[0];
-        oneDraw.title.text = string.Format(TableManager.Instance.TextScriptable.Get(drawLocal), oneDraw.targetNum);
-        tenDraw.title.text = string.Format(TableManager.Instance.TextScriptable.Get(drawLocal), tenDraw.targetNum);
+        oneDraw.title.text = string.Format(ScriptableManager.Instance.LocalizationScriptable.Get(drawLocal), oneDraw.targetNum);
+        tenDraw.title.text = string.Format(ScriptableManager.Instance.LocalizationScriptable.Get(drawLocal), tenDraw.targetNum);
     }
 
     public override void OnUpdate()
@@ -100,8 +100,8 @@ public class DrawPanel : BasePanel
 
     public void SetDraw(DrawScriptable.Data draw)
     {
-        currentDrawDesc.text = TableManager.Instance.TextScriptable.Get(draw.DescKey);
-        currentDrawTitle.text = TableManager.Instance.TextScriptable.Get(draw.NameKey);
+        currentDrawDesc.text = ScriptableManager.Instance.LocalizationScriptable.Get(draw.DescKey);
+        currentDrawTitle.text = ScriptableManager.Instance.LocalizationScriptable.Get(draw.NameKey);
         currentDrawLimit.gameObject.SetActive(draw.Limit > 0);
         lvSlider.gameObject.SetActive(draw.MaxLevel > 0);
 
@@ -120,7 +120,7 @@ public class DrawPanel : BasePanel
         if (draw.MaxLevel > 0)
         {
             int drawCount = DataManager.Instance.GetInfo.DrawCount(draw.NameKey);
-            int requiredExp = TableManager.Instance.DrawScriptable.RequiredExp;
+            int requiredExp = ScriptableManager.Instance.DrawScriptable.RequiredExp;
 
             if (drawCount < draw.MaxLevel * requiredExp)
             {
@@ -146,7 +146,7 @@ public class DrawPanel : BasePanel
 
         if (currentSlot.GetCurrentData.MaxLevel > 0)
         {
-            int maxCount = currentSlot.GetCurrentData.MaxLevel * TableManager.Instance.DrawScriptable.RequiredExp;
+            int maxCount = currentSlot.GetCurrentData.MaxLevel * ScriptableManager.Instance.DrawScriptable.RequiredExp;
             int currentCount = DataManager.Instance.GetInfo.DrawCount(currentSlot.GetCurrentData.NameKey);
 
             if (maxCount > currentCount)
@@ -176,10 +176,10 @@ public class DrawPanel : BasePanel
 
             if (target == ClientEnum.Item.None)
             {
-                target = TableManager.Instance.ItemScriptable.GetRandomTarget;
+                target = ScriptableManager.Instance.ItemScriptable.GetRandomTarget;
             }
 
-            ItemScriptable.Info info = TableManager.Instance.ItemScriptable.GetRandom(target);
+            ItemScriptable.Info info = ScriptableManager.Instance.ItemScriptable.GetRandom(target);
 
             Grade grade = draw.Grade;
 

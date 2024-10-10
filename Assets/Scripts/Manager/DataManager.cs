@@ -47,7 +47,7 @@ public class DataManager : Singleton<DataManager>
 
     public float ExpRatio()
     {
-        UpgradeScriptable.UpgradeState exp = TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
+        UpgradeScriptable.UpgradeState exp = ScriptableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
         return ((float)info.CurrentExp / GetLevelExp(info.CurrentLevel + 1));
     }
 
@@ -81,9 +81,9 @@ public class DataManager : Singleton<DataManager>
     {
         info.CurrentExp += value;
 
-        if (info.CurrentExp > GetLevelExp(TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel))
+        if (info.CurrentExp > GetLevelExp(ScriptableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel))
         {
-            info.CurrentExp = GetLevelExp(TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel);
+            info.CurrentExp = GetLevelExp(ScriptableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp").maxLevel);
         }
 
         OnChangeExp(ExpRatio());
@@ -111,12 +111,12 @@ public class DataManager : Singleton<DataManager>
 
     long GetLevelExp(int targetLevel)
     {
-        UpgradeScriptable.UpgradeState expState = TableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
+        UpgradeScriptable.UpgradeState expState = ScriptableManager.Instance.UpgradeScriptable.GetUpgradeState("Exp");
         long exp = 0;
 
         for (int i = 0; i < targetLevel; i++)
         {
-            exp += (long)((TableManager.Instance.StageScriptable.StartLevelExp) * (1 + (i * expState.addValue)));
+            exp += (long)((ScriptableManager.Instance.StageScriptable.startExp * 10f) * (1 + (i * expState.addValue)));
         }
 
         return exp;
@@ -186,7 +186,7 @@ public class DataManager : Singleton<DataManager>
     public void Init()
     {
         deviceNum = SystemInfo.deviceUniqueIdentifier;
-        List<UpgradeScriptable.UpgradeState> upgradeStates = TableManager.Instance.UpgradeScriptable.GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
+        List<UpgradeScriptable.UpgradeState> upgradeStates = ScriptableManager.Instance.UpgradeScriptable.GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
 
         for (int i = 0; i < upgradeStates.Count; i++)
         {
@@ -195,7 +195,7 @@ public class DataManager : Singleton<DataManager>
 
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
         {
-            DrawScriptable.Category shop = TableManager.Instance.DrawScriptable.GetData(i);
+            DrawScriptable.Category shop = ScriptableManager.Instance.DrawScriptable.GetData(i);
 
             if (shop == null)
             {

@@ -9,31 +9,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb355b7d2ae65314084bace3a1158f67, type: 3}
-  m_Name: Item
+  m_Script: {fileID: 11500000, guid: 1cdf3a727375ff845896b757c9074ded, type: 3}
+  m_Name: ItemScriptable
   m_EditorClassIdentifier: 
-  itemTypeDatas:
+  itemTypeDatas: []
+  item:
   - randomTarget: 0000000003000000
     target: 1
     items:
     - id: WoodHelmet
-      sprite: {fileID: 21300000, guid: 0395de0e6d58962468cd24a7440dd8c9, type: 3}
-      prefab: {fileID: 0}
+      sprite: 
+      prefab: 
       mainState: 4
     mainStateAddValue: 1.1
   - randomTarget: 0400000003000000
     target: 2
     items:
     - id: WoodArmor
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: 
+      prefab: 
       mainState: 0
     mainStateAddValue: 1.2
   - randomTarget: 0100000005000000
     target: 3
     items:
     - id: WoodAxe
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: 
+      prefab: 
       mainState: 1
     mainStateAddValue: 1.3

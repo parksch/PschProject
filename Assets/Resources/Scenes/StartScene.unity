@@ -3894,7 +3894,7 @@ GameObject:
   - component: {fileID: 1221131344}
   - component: {fileID: 1221131343}
   m_Layer: 0
-  m_Name: TableManager
+  m_Name: ScriptableManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3909,16 +3909,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221131342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2169070c802afa441b0a7a9438546e97, type: 3}
+  m_Script: {fileID: 11500000, guid: b3adf3b95ea23e94e8a962e29b1913cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawScriptable: {fileID: 11400000, guid: 4bea6e381790fca489214da66fb121f8, type: 2}
-  itemScriptable: {fileID: 11400000, guid: 32a898d70e8ada144adfa221566f56e9, type: 2}
+  drawScriptable: {fileID: 11400000, guid: 0fe61722c92f5754983fc979852f3e99, type: 2}
+  itemScriptable: {fileID: 11400000, guid: 10160c85aa2e5cc46b216f5376c903c8, type: 2}
+  localizationScriptable: {fileID: 11400000, guid: df7585b5b8ba8dc4c83a76c3a2634fbe, type: 2}
+  optionProbabilityScriptable: {fileID: 11400000, guid: 8059865e054e2e540bc3bae525a37413, type: 2}
+  optionScriptable: {fileID: 11400000, guid: 471e48f3755c73b4ab8314d6c4a475ff, type: 2}
   objectScriptable: {fileID: 11400000, guid: c9440edf3a2a24a4f80dd9061161875d, type: 2}
-  stageScriptable: {fileID: 11400000, guid: 1fe8abc30e1ee1d48bae6b9586009533, type: 2}
-  upgradeScriptable: {fileID: 11400000, guid: fa68542732d11c1428c6d22f6de093e0, type: 2}
-  textScriptable: {fileID: 11400000, guid: 1f57976a535d5ec4dad06c47f79101f4, type: 2}
-  optionScriptable: {fileID: 11400000, guid: c1fd99d92d30d2140994e03b84b609f2, type: 2}
+  stageScriptable: {fileID: 11400000, guid: 67e3dcdd57cb8674e94fb896eedeeaaf, type: 2}
+  upgradeScriptable: {fileID: 11400000, guid: a50d93594d6a91b4396a4f4daa0c52cf, type: 2}
 --- !u!4 &1221131344
 Transform:
   m_ObjectHideFlags: 0
@@ -5760,205 +5761,905 @@ MonoBehaviour:
   playerDefaultState: {fileID: 1858542574}
   inventoryDatas:
   - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
-  - id: 
-    itemType: 0
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+  - id: 
+    index: 
+    lv: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
   goods:
     gold: 0
     gem: 0

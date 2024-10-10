@@ -25,7 +25,7 @@ public class UIDrawSlot : MonoBehaviour
     {
         type = shop;
         datas = _datas;
-        title.text = TableManager.Instance.TextScriptable.Get(titleKey);
+        title.text = ScriptableManager.Instance.LocalizationScriptable.Get(titleKey);
         currentIndex = 0;
     }
 

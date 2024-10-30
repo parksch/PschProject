@@ -20,7 +20,7 @@ public partial class DataManager : Singleton<DataManager>
 
     public void Init()
     {
-        List<UpgradeScriptable.UpgradeState> upgradeStates = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
+        List<Upgrade> upgradeStates = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
 
         for (int i = 0; i < upgradeStates.Count; i++)
         {

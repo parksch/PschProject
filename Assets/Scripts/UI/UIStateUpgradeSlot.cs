@@ -7,11 +7,11 @@ using JsonClass;
 public class UIStateUpgradeSlot : MonoBehaviour
 {
     [SerializeField, ReadOnly] Image icon;
-    [SerializeField, ReadOnly] UpgradeScriptable.UpgradeState targetState;
+    [SerializeField, ReadOnly] Upgrade targetState;
     [SerializeField, ReadOnly] Text desc;
     [SerializeField, ReadOnly] Text lvPrice;
 
-    public void Init(UpgradeScriptable.UpgradeState upgradeState)
+    public void Init(Upgrade upgradeState)
     {
         targetState = upgradeState;
         desc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(targetState.upgradeKey);

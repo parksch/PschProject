@@ -14,7 +14,7 @@ public partial class DataManager //Info
 
     public float ExpRatio()
     {
-        UpgradeScriptable.UpgradeState exp = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp");
+        Upgrade exp = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp");
         return ((float)info.CurrentExp / GetLevelExp(info.CurrentLevel + 1));
     }
 
@@ -32,7 +32,7 @@ public partial class DataManager //Info
 
     long GetLevelExp(int targetLevel)
     {
-        UpgradeScriptable.UpgradeState expState = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp");
+        Upgrade expState = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp");
         long exp = 0;
 
         for (int i = 0; i < targetLevel; i++)

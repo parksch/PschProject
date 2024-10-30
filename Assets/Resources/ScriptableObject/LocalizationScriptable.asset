@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92ebc52fbdbe374b85ec464fdc73082, type: 3}
+  m_Script: {fileID: 11500000, guid: f3589a28642dcd7488691609b5f2c951, type: 3}
   m_Name: LocalizationScriptable
   m_EditorClassIdentifier: 
-  textCountries: []
   localization:
   - language: 0
     textkeys:
@@ -40,3 +39,4 @@ MonoBehaviour:
     textkeys:
     - name: 
       desc: 
+  textCountries: []

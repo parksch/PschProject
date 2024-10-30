@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e78ba17ffde481e4789393ec7aa03641, type: 3}
+  m_Script: {fileID: 11500000, guid: 654285854d7b55046a39aa0532f8c99b, type: 3}
   m_Name: DrawScriptable
   m_EditorClassIdentifier: 
   draw:
@@ -70,4 +70,3 @@ MonoBehaviour:
         limit: 20
         maxLevel: 0
   requiredExp: 0
-  datas: []

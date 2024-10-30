@@ -17,8 +17,7 @@ namespace JsonClass
         public float multiplyPerGold;
         public float scrapProbability;
         public List<StageMonsters> stageMonsters;
-        public string name;
-        public int hideFlags;
+        public string nameKey;
     }
 
     [System.Serializable]

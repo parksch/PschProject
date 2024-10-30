@@ -5,75 +5,56 @@ namespace JsonClass
 {
     public partial class ItemScriptable // This Class is a functional Class.
     {
-        public List<TypeData> itemTypeDatas = new List<TypeData>();
-
-        public ClientEnum.Item GetRandomTarget
+        public ClientEnum.Item GetRandomTarget()
         {
-            get
-            {
-                return itemTypeDatas[Random.Range(0, itemTypeDatas.Count)].target;
-            }
+            return (ClientEnum.Item)item[Random.Range(0, item.Count)].target;
         }
 
-        [System.Serializable]
-        public class Info
-        {
-            public string id;
-            public string sprite;
-            public string prefab;
-            public ClientEnum.State mainState;
-        }
-
-        public class None : Info
+        public class None : Items
         {
 
         }
 
-        [System.Serializable]
-        public class TypeData
+        Item GetTargetData(ClientEnum.Item target)
         {
-            public List<ClientEnum.State> randomTarget;
-            public ClientEnum.Item target;
-            public List<Info> items;
-            public float mainStateAddValue;
+            return item.Find(x => (ClientEnum.Item)x.target == target);
         }
 
-        public TypeData GetTypeData(ClientEnum.Item target)
+        public Items GetRandom(ClientEnum.Item target)
         {
-            return itemTypeDatas.Find(x => x.target == target);
-        }
-
-        public Info GetItem(BaseItem item)
-        {
-            if (item.Type == ClientEnum.Item.None)
-            {
-                return new None();
-            }
-
-            return (itemTypeDatas.Find(x => x.target == item.Type)).items.Find(x => x.id == item.ID);
-        }
-
-        public Info GetRandom(ClientEnum.Item target)
-        {
-            TypeData typeData = GetTypeData(target);
+            Item typeData = GetTargetData(target);
 
             return typeData.items[Random.Range(0, typeData.items.Count)];
         }
 
-        public List<ClientEnum.State> GetRandomOption(ClientEnum.Item target)
+        public List<ClientEnum.State> GetOptions(ClientEnum.Item target)
         {
-            TypeData typeData = GetTypeData(target);
-
-            return typeData.randomTarget;
+            Item typeData = GetTargetData(target);
+            return typeData.TargetStates();
         }
     }
 
     public partial class Item
     {
+        public List<ClientEnum.State> TargetStates()
+        {
+            List<ClientEnum.State> states = new List<ClientEnum.State>();
+
+            for (int i = 0; i < randomTarget.Count; i++)
+            {
+                states.Add((ClientEnum.State)randomTarget[i]);
+            }
+
+            return states;
+        }
     }
 
     public partial class Items
     {
+        public ClientEnum.State MainState()
+        {
+            return (ClientEnum.State)mainState;
+        }
     }
 
 }

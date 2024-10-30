@@ -1,11 +1,7 @@
-using ClientEnum;
-using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using JsonClass;
 
 public class DrawPanel : BasePanel
@@ -26,17 +22,17 @@ public class DrawPanel : BasePanel
     [SerializeField, ReadOnly] string drawLocal;
 
     UIDrawSlot currentSlot;
-    bool CheckButton(DrawScriptable.Data draw, UIBuyButton button)
+    bool CheckButton(Shops shop, UIBuyButton button)
     {
-        if (draw.Limit == 0)
+        if (shop.limit == 0)
         {
-            return DataManager.Instance.CheckGoods(draw.Goods, draw.NeedValue * button.targetNum);
+            return DataManager.Instance.CheckGoods(shop.Goods(), shop.needValue * button.targetNum);
         }
         else
         {
-            if (draw.Limit >= DataManager.Instance.GetInfo.DrawLimit(draw.NameKey) + button.targetNum)
+            if (shop.limit >= DataManager.Instance.GetInfo.DrawLimit(shop.nameKey) + button.targetNum)
             {
-                return DataManager.Instance.CheckGoods(draw.Goods, draw.NeedValue * button.targetNum);
+                return DataManager.Instance.CheckGoods(shop.Goods(), shop.needValue * button.targetNum);
             }
             else
             {
@@ -49,21 +45,21 @@ public class DrawPanel : BasePanel
     {
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
         {
-            DrawScriptable.Category shop = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).GetData(i);
+            JsonClass.Draw draw = ScriptableManager.Instance.Get<JsonClass.DrawScriptable>(ScriptableType.Draw).GetData(i);
 
-            if (shop == null)
+            if (draw == null)
             {
                 continue;
             }
 
             if (i == ClientEnum.Draw.Min + 1)
             {
-                prefab.Set(i,shop.NameStringKey, shop.Datas);
+                prefab.Set(i,draw.type.titleKey, draw.type.shops);
             }
             else
             {
                 UIDrawSlot slot = Instantiate(prefab, prefab.transform.parent).GetComponent<UIDrawSlot>();
-                slot.Set(i,shop.NameStringKey, shop.Datas);
+                slot.Set(i,draw.type.titleKey, draw.type.shops);
                 slots.Add(slot);
             }
         }
@@ -98,31 +94,31 @@ public class DrawPanel : BasePanel
         SetDraw(currentSlot.GetCurrentData);
     }
 
-    public void SetDraw(DrawScriptable.Data draw)
+    public void SetDraw(Shops shop)
     {
-        currentDrawDesc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(draw.DescKey);
-        currentDrawTitle.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(draw.NameKey);
-        currentDrawLimit.gameObject.SetActive(draw.Limit > 0);
-        lvSlider.gameObject.SetActive(draw.MaxLevel > 0);
+        currentDrawDesc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(shop.descKey);
+        currentDrawTitle.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(shop.nameKey);
+        currentDrawLimit.gameObject.SetActive(shop.limit> 0);
+        lvSlider.gameObject.SetActive(shop.maxLevel > 0);
 
         prevButton.SetActive(!currentSlot.isMin);
         nextButton.SetActive(!currentSlot.isMax);
 
-        UpdateDraw(draw);
+        UpdateDraw(shop);
     }
 
-    void UpdateDraw(DrawScriptable.Data draw)
+    void UpdateDraw(Shops shop)
     {
-        if (draw.Limit > 0)
+        if (shop.limit > 0)
         {
-            currentDrawLimit.text = string.Format("{0}/{1}", DataManager.Instance.GetInfo.DrawLimit(draw.NameKey), draw.Limit);
+            currentDrawLimit.text = string.Format("{0}/{1}", DataManager.Instance.GetInfo.DrawLimit(shop.nameKey), shop.limit);
         }
-        if (draw.MaxLevel > 0)
+        if (shop.maxLevel > 0)
         {
-            int drawCount = DataManager.Instance.GetInfo.DrawCount(draw.NameKey);
+            int drawCount = DataManager.Instance.GetInfo.DrawCount(shop.nameKey);
             int requiredExp = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).RequiredExp;
 
-            if (drawCount < draw.MaxLevel * requiredExp)
+            if (drawCount < shop.maxLevel * requiredExp)
             {
                 lvText.text = string.Format("Lv {0} {1}/{2}", (drawCount / requiredExp), drawCount % requiredExp, requiredExp);
             }
@@ -133,55 +129,55 @@ public class DrawPanel : BasePanel
             lvSlider.value = (float)(drawCount % requiredExp) / requiredExp;
         }
 
-        oneDraw.button.interactable = CheckButton(draw, oneDraw);
-        tenDraw.button.interactable = CheckButton(draw, tenDraw);
+        oneDraw.button.interactable = CheckButton(shop, oneDraw);
+        tenDraw.button.interactable = CheckButton(shop, tenDraw);
     }
 
     public void OnClickDraw(UIBuyButton buyButton)
     {
-        if (currentSlot.GetCurrentData.Limit > 0)
+        if (currentSlot.GetCurrentData.limit > 0)
         {
-            DataManager.Instance.GetInfo.AddDrawLimit(currentSlot.GetCurrentData.NameKey, buyButton.targetNum);
+            DataManager.Instance.GetInfo.AddDrawLimit(currentSlot.GetCurrentData.nameKey, buyButton.targetNum);
         }
 
-        if (currentSlot.GetCurrentData.MaxLevel > 0)
+        if (currentSlot.GetCurrentData.maxLevel > 0)
         {
-            int maxCount = currentSlot.GetCurrentData.MaxLevel * ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).RequiredExp;
-            int currentCount = DataManager.Instance.GetInfo.DrawCount(currentSlot.GetCurrentData.NameKey);
+            int maxCount = currentSlot.GetCurrentData.maxLevel * ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).RequiredExp;
+            int currentCount = DataManager.Instance.GetInfo.DrawCount(currentSlot.GetCurrentData.nameKey);
 
             if (maxCount > currentCount)
             {
                 if (maxCount < currentCount + buyButton.targetNum)
                 {
                     int addCount = buyButton.targetNum - ( (currentCount + buyButton.targetNum) - maxCount);
-                    DataManager.Instance.GetInfo.AddDrawCount(currentSlot.GetCurrentData.NameKey, addCount);
+                    DataManager.Instance.GetInfo.AddDrawCount(currentSlot.GetCurrentData.nameKey, addCount);
                 }
                 else
                 {
-                    DataManager.Instance.GetInfo.AddDrawCount(currentSlot.GetCurrentData.NameKey, buyButton.targetNum);
+                    DataManager.Instance.GetInfo.AddDrawCount(currentSlot.GetCurrentData.nameKey, buyButton.targetNum);
                 }
             }
         }
 
-        DataManager.Instance.UseGoods(currentSlot.GetCurrentData.Goods, currentSlot.GetCurrentData.NeedValue * buyButton.targetNum);
+        DataManager.Instance.UseGoods(currentSlot.GetCurrentData.Goods(), currentSlot.GetCurrentData.needValue * buyButton.targetNum);
         GetItem(currentSlot.GetCurrentData,buyButton.targetNum);
         UpdateDraw(currentSlot.GetCurrentData);
     }
 
-    public void GetItem(DrawScriptable.Data draw, int num)
+    public void GetItem(Shops shop, int num)
     {
         for (int i = 0; i < num; i++)
         {
-            ClientEnum.Item target = draw.Target;
+            ClientEnum.Item target = shop.Target();
 
             if (target == ClientEnum.Item.None)
             {
-                target = ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetRandomTarget;
+                target = ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetRandomTarget();
             }
 
-            ItemScriptable.Info info = ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetRandom(target);
+            Items info = ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetRandom(target);
 
-            Grade grade = draw.Grade;
+            ClientEnum.Grade grade = shop.Grade();
 
             BaseItem item = BaseItem.Create(target);
             item.Set(info,grade);

@@ -7,7 +7,7 @@ using JsonClass;
 public class UIDrawSlot : MonoBehaviour
 {
     [SerializeField, ReadOnly] ClientEnum.Draw type;
-    [SerializeField, ReadOnly] List<DrawScriptable.Data> datas = new List<DrawScriptable.Data>();
+    [SerializeField, ReadOnly] List<Shops> datas = new List<Shops>();
     [SerializeField, ReadOnly] Text title;
 
     public bool isMin => currentIndex - 1 < 0;
@@ -21,7 +21,7 @@ public class UIDrawSlot : MonoBehaviour
 
     int currentIndex = 0;
 
-    public void Set(ClientEnum.Draw shop,string titleKey,List<DrawScriptable.Data> _datas)
+    public void Set(ClientEnum.Draw shop,string titleKey,List<Shops> _datas)
     {
         type = shop;
         datas = _datas;
@@ -29,5 +29,5 @@ public class UIDrawSlot : MonoBehaviour
         currentIndex = 0;
     }
 
-    public DrawScriptable.Data GetCurrentData => datas[currentIndex];
+    public Shops GetCurrentData => datas[currentIndex];
 }

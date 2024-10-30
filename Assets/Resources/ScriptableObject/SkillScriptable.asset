@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baf1744c2f0a6104cb19597145acb39e, type: 3}
-  m_Name: ObjectDataScriptable
+  m_Script: {fileID: 11500000, guid: 98f0b11f2640ca94ead3198b57650b92, type: 3}
+  m_Name: SkillScriptable
   m_EditorClassIdentifier: 
-  objectData:
-  - name: Dwarf
-    prefab: 
-    attack: 10
-    hp: 200
-    defense: 10
-    attackRange: 2
-    attackSpeed: 1
-    moveSpeed: 3
-    objectType: 0
+  skill:
+  - name: Fire
+    description: 
+    levelMax: 10
+    maxAttackCount: 0
+    damageCycleTime: 0
+    damageMultiply: 1.5
+    upgradeAddPer: 0.1
+    coolTime: 8
+    sprite: 

@@ -29,23 +29,23 @@ public partial class DataManager : Singleton<DataManager>
 
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
         {
-            DrawScriptable.Category shop = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).GetData(i);
+            Draw shop = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).GetData(i);
 
             if (shop == null)
             {
                 continue;
             }
 
-            for (int j = 0; j < shop.Datas.Count; j++)
+            for (int j = 0; j < shop.type.shops.Count; j++)
             {
-                if (shop.Datas[j].Limit > 0)
+                if (shop.type.shops[j].limit > 0)
                 {
-                    info.CreateDrawLimit(shop.Datas[j].NameKey);
+                    info.CreateDrawLimit(shop.type.shops[j].nameKey);
                 }
 
-                if (shop.Datas[j].MaxLevel > 0)
+                if (shop.type.shops[j].maxLevel > 0)
                 {
-                    info.CreateDrawCount(shop.Datas[j].NameKey);
+                    info.CreateDrawCount(shop.type.shops[j].nameKey);
                 }
             }
         }

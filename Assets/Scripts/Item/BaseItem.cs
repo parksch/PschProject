@@ -18,12 +18,12 @@ public class BaseItem
     public string ID => id;
     public ClientEnum.Item Type => type;
 
-    public virtual void Set(ItemScriptable.Info info,ClientEnum.Grade target)
+    public virtual void Set(Items info,ClientEnum.Grade target)
     {
         lv = DataManager.Instance.GetInfo.CurrentLevel;
         grade = target;
-        mainState = new Datas.Pair<ClientEnum.State, float>(info.mainState,ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetData(info.mainState).Value(grade));
-        options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetRandomOption(ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetRandomOption(type),grade);
+        mainState = new Datas.Pair<ClientEnum.State, float>(info.MainState(),ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetData(info.MainState()).Value(grade));
+        options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetRandomOption(ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetOptions(type),grade);
     }
 
     public static BaseItem Create(ClientEnum.Item item)

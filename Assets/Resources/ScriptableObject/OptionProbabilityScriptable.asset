@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1b1d2b017d3dc43b21d38e694a161d, type: 3}
+  m_Script: {fileID: 11500000, guid: 23ceaded443d66d40af8855fcb779b6c, type: 3}
   m_Name: OptionProbabilityScriptable
   m_EditorClassIdentifier: 
   optionProbability:

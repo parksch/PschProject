@@ -1,4 +1,5 @@
 using ClientEnum;
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -69,22 +70,22 @@ public class GameManager : Singleton<GameManager>
 
     public void AddGold()
     {
-        long gold = (long)(ScriptableManager.Instance.StageScriptable.startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.StageScriptable.multiplyPerGold)));
+        long gold = (long)(ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).multiplyPerGold)));
         DataManager.Instance.AddGold(gold);
     }
 
     public void AddExp()
     {
-        long exp = (long)(ScriptableManager.Instance.StageScriptable.startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.StageScriptable.multiplyperStageExp)));
+        long exp = (long)(ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).multiplyperStageExp)));
         DataManager.Instance.AddExp(exp);
     }
 
     public void AddScrap()
     {
-        if (Random.Range(0f,1f) < ScriptableManager.Instance.StageScriptable.scrapProbability)
+        if (Random.Range(0f,1f) < ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).scrapProbability)
         {
-            int scrapMin = ScriptableManager.Instance.StageScriptable.scrapMin;
-            int scrapMax = ScriptableManager.Instance.StageScriptable.scrapMax;
+            int scrapMin = ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).scrapMin;
+            int scrapMax = ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).scrapMax;
             long scrap = Random.Range(scrapMin, scrapMax);
             DataManager.Instance.AddScrap(scrap);
         }

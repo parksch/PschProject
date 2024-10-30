@@ -16,7 +16,7 @@ public class StatePanel : BasePanel
     public override void FirstLoad()
     {
         List<UpgradeScriptable.UpgradeState> upgradeStates;
-        upgradeStates = ScriptableManager.Instance.UpgradeScriptable.GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
+        upgradeStates = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeType(ClientEnum.UpgradeType.StatePanel);
 
         for (int i = 0; i < upgradeStates.Count; i++)
         {

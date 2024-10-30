@@ -14,7 +14,7 @@ public class UIStateUpgradeSlot : MonoBehaviour
     public void Init(UpgradeScriptable.UpgradeState upgradeState)
     {
         targetState = upgradeState;
-        desc.text = ScriptableManager.Instance.LocalizationScriptable.Get(targetState.upgradeKey);
+        desc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(targetState.upgradeKey);
         //icon.sprite = targetState.sprite;
 
     }

@@ -1,0 +1,71 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum ScriptableType
+{
+    Draw,
+    Item,
+    Localization,
+    ObjectData,
+    Option,
+    OptionProbability,
+    Skill,
+    Stage,
+    Upgrade
+}
+
+public class ScriptableManager : MonoBehaviour
+{
+    static ScriptableManager instance = null;
+    public static ScriptableManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<ScriptableManager>(true);
+
+                if (instance == null)
+                {
+                    instance = new GameObject().AddComponent<ScriptableManager>();
+                    instance.gameObject.name = "ScriptableManager";
+                    DontDestroyOnLoad(instance.gameObject);
+                }
+
+            }
+
+            return instance;
+        }
+    }
+
+    Dictionary<ScriptableType, ScriptableObject> scriptableObjects = new Dictionary<ScriptableType, ScriptableObject>();
+
+    void Awake()
+    {
+        LoadAllScriptableObjects();
+    }
+
+    void LoadAllScriptableObjects()
+    {
+        foreach (ScriptableType type in System.Enum.GetValues(typeof(ScriptableType)))
+        {
+            var asset = Resources.Load<ScriptableObject>($"Scriptable/{type}DataScriptable");
+
+            if(asset != null)
+            {
+                scriptableObjects[type] = asset;
+            }
+        }
+    }
+
+    public T Get<T>(ScriptableType type) where T : ScriptableObject
+    {
+        if (scriptableObjects.TryGetValue(type, out ScriptableObject obj))
+        {
+            return obj as T;
+        }
+        Debug.LogError($"ScriptableObject '{type}'을(를) 찾을 수 없습니다.");
+
+        return null;
+    }
+}

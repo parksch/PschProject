@@ -22,8 +22,8 @@ public class BaseItem
     {
         lv = DataManager.Instance.GetInfo.CurrentLevel;
         grade = target;
-        mainState = new Datas.Pair<ClientEnum.State, float>(info.mainState,ScriptableManager.Instance.OptionScriptable.GetData(info.mainState).Value(grade));
-        options = ScriptableManager.Instance.OptionScriptable.GetRandomOption(ScriptableManager.Instance.ItemScriptable.GetRandomOption(type),grade);
+        mainState = new Datas.Pair<ClientEnum.State, float>(info.mainState,ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetData(info.mainState).Value(grade));
+        options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetRandomOption(ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetRandomOption(type),grade);
     }
 
     public static BaseItem Create(ClientEnum.Item item)

@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,6 @@ public class UILocalization : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<Text>().text = ScriptableManager.Instance.LocalizationScriptable.Get(textKey);
+        GetComponent<Text>().text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(textKey);
     }
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf1744c2f0a6104cb19597145acb39e, type: 3}
+  m_Name: ObjectDataScriptable
+  m_EditorClassIdentifier: 
+  objectData:
+  - name: Dwarf
+    prefab: 
+    attack: 10
+    hp: 200
+    defense: 10
+    attackRange: 2
+    attackSpeed: 1
+    moveSpeed: 3
+    objectType: 0

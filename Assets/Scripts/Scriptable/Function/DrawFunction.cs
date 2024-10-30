@@ -3,11 +3,9 @@ using UnityEngine;
 
 namespace JsonClass
 {
-    public partial class DrawScriptable
+    public partial class DrawScriptable // This Class is a functional Class.
     {
-        [SerializeField] int requiredExp;
-
-        public int RequiredExp => requiredExp;
+        public int RequiredExp => (int)ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get("RequireExp");
 
         public Draw GetData(ClientEnum.Draw shop)
         {

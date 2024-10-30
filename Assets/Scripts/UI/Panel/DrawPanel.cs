@@ -172,10 +172,10 @@ public class DrawPanel : BasePanel
 
             if (target == ClientEnum.Item.None)
             {
-                target = ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetRandomTarget();
+                target = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetRandomTarget();
             }
 
-            Items info = ScriptableManager.Instance.Get<ItemScriptable>(ScriptableType.Item).GetRandom(target);
+            Items info = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetRandom(target);
 
             ClientEnum.Grade grade = shop.Grade();
 

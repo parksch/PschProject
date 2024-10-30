@@ -361,7 +361,7 @@ public class JsonLoader : EditorWindow
             }
             else
             {
-                stringBuilder.AppendLine("    public partial class " + className + "Scriptable" + "// This Class is a functional Class.");
+                stringBuilder.AppendLine("    public partial class " + className + "Scriptable" + " // This Class is a functional Class.");
             }
 
             if (isArray)

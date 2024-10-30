@@ -3,8 +3,9 @@ using UnityEngine;
 
 public enum ScriptableType
 {
+    DefaultValues,
     Draw,
-    Item,
+    ItemData,
     Localization,
     ObjectData,
     Option,

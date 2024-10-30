@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace JsonClass
 {
-    public partial class ItemScriptable : ScriptableObject
+    public partial class ItemDataScriptable : ScriptableObject
     {
-        public List<Item> item = new List<Item>();
+        public List<ItemData> itemData = new List<ItemData>();
     }
 
     [System.Serializable]
-    public partial class Item
+    public partial class ItemData
     {
         public List<int> randomTarget;
         public int target;

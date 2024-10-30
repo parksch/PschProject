@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace JsonClass
 {
-    public partial class ItemScriptable // This Class is a functional Class.
+    public partial class ItemDataScriptable// This Class is a functional Class.
     {
         public ClientEnum.Item GetRandomTarget()
         {
-            return (ClientEnum.Item)item[Random.Range(0, item.Count)].target;
+            return (ClientEnum.Item)itemData[Random.Range(0, itemData.Count)].target;
         }
 
         public class None : Items
@@ -15,26 +15,27 @@ namespace JsonClass
 
         }
 
-        Item GetTargetData(ClientEnum.Item target)
+        ItemData GetTargetData(ClientEnum.Item target)
         {
-            return item.Find(x => (ClientEnum.Item)x.target == target);
+            return itemData.Find(x => (ClientEnum.Item)x.target == target);
         }
 
         public Items GetRandom(ClientEnum.Item target)
         {
-            Item typeData = GetTargetData(target);
+            ItemData typeData = GetTargetData(target);
 
             return typeData.items[Random.Range(0, typeData.items.Count)];
         }
 
         public List<ClientEnum.State> GetOptions(ClientEnum.Item target)
         {
-            Item typeData = GetTargetData(target);
+            ItemData typeData = GetTargetData(target);
             return typeData.TargetStates();
         }
+
     }
 
-    public partial class Item
+    public partial class ItemData
     {
         public List<ClientEnum.State> TargetStates()
         {

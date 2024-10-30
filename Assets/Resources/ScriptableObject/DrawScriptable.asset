@@ -69,4 +69,3 @@ MonoBehaviour:
         needValue: 100
         limit: 20
         maxLevel: 0
-  requiredExp: 0

@@ -20,6 +20,7 @@ MonoBehaviour:
     name: Attack
     maxLevel: 100
     addValue: 10
+    goodsType: 1
     needGoods: 1000
     levelPerGoods: 0.5
   - upgradeType: 1
@@ -29,6 +30,7 @@ MonoBehaviour:
     name: Hp
     maxLevel: 100
     addValue: 100
+    goodsType: 1
     needGoods: 1000
     levelPerGoods: 0.5
   - upgradeType: 1
@@ -38,6 +40,7 @@ MonoBehaviour:
     name: Defense
     maxLevel: 100
     addValue: 10
+    goodsType: 1
     needGoods: 1000
     levelPerGoods: 2
   - upgradeType: 1
@@ -47,6 +50,7 @@ MonoBehaviour:
     name: HpRegen
     maxLevel: 100
     addValue: 10
+    goodsType: 1
     needGoods: 10000
     levelPerGoods: 5
   - upgradeType: 0
@@ -56,5 +60,6 @@ MonoBehaviour:
     name: Exp
     maxLevel: 1000
     addValue: 0.5
+    goodsType: 0
     needGoods: 0
     levelPerGoods: 0

@@ -23,6 +23,12 @@ namespace JsonClass
         {
             return ResourcesManager.Instance.GetSprite(atlas, sprite);
         }
+
+        public ClientEnum.Goods Goods()
+        {
+            return (ClientEnum.Goods)goodsType;
+        }
+
     }
 
 }

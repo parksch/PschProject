@@ -2,6 +2,7 @@ namespace ClientEnum
 {
     public enum Goods
     {
+        None = 0,
         Scrap,
         Gold,
         Gem,

@@ -4,6 +4,10 @@ using UnityEditor;
 using UnityEngine;
 using System.IO;
 using Unity.Jobs;
+using JsonClass;
+using Newtonsoft.Json;
+
+
 
 #if JsonLoader
 using System.Collections;
@@ -183,7 +187,7 @@ public class JsonLoader : EditorWindow
     {
         AddDirectory(jsonFilePath);
 
-        var files = Directory.GetFiles(jsonFilePath, "*.json");
+        //var files = Directory.GetFiles(jsonFilePath, "*.json");
 
         //foreach (var item in files)
         //{
@@ -195,14 +199,19 @@ public class JsonLoader : EditorWindow
 
         try
         {
+            List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
+            string json = JsonConvert.SerializeObject(upgrades);
+            File.WriteAllText(jsonFilePath + "/Upgrade.json", json,Encoding.UTF8);
+
+            AssetDatabase.Refresh();
             EditorUtility.DisplayDialog("결과", "Scriptable 에서 Json 변환", "확인");
-            isButtonEnabled = true;
         }
         catch (Exception e)
         {
             EditorUtility.DisplayDialog("결과", "Scriptable 에서 Json 변환 실패\n" + e.Message, "확인");
-            isButtonEnabled = true;
         }
+
+        isButtonEnabled = true;
     }
 
     void CreateScriptableAsset(string path, string name, JToken jToken)
@@ -254,6 +263,7 @@ public class JsonLoader : EditorWindow
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("using System.Collections.Generic;");
+        stringBuilder.AppendLine("using UnityEditor;");
         stringBuilder.AppendLine("using UnityEngine;");
         stringBuilder.AppendLine();
 
@@ -307,6 +317,7 @@ public class JsonLoader : EditorWindow
 
         stringBuilder.AppendLine("    void Awake()");
         stringBuilder.AppendLine("    {");
+        stringBuilder.AppendLine("        scriptableObjects.Clear();");
         stringBuilder.AppendLine("        LoadAllScriptableObjects();");
         stringBuilder.AppendLine("    }");
         stringBuilder.AppendLine();
@@ -327,6 +338,14 @@ public class JsonLoader : EditorWindow
 
         stringBuilder.AppendLine("    public T Get<T>(ScriptableType type) where T : ScriptableObject");
         stringBuilder.AppendLine("    {");
+        stringBuilder.AppendLine("#if UNITY_EDITOR");
+        stringBuilder.AppendLine("        if (!EditorApplication.isPlaying)");
+        stringBuilder.AppendLine("        {");
+        stringBuilder.AppendLine("            scriptableObjects.Clear();");
+        stringBuilder.AppendLine("            LoadAllScriptableObjects();");
+        stringBuilder.AppendLine("        }");
+        stringBuilder.AppendLine("#endif");
+        stringBuilder.AppendLine();
         stringBuilder.AppendLine("        if (scriptableObjects.TryGetValue(type, out ScriptableObject obj))");
         stringBuilder.AppendLine("        {");
         stringBuilder.AppendLine("            return obj as T;");

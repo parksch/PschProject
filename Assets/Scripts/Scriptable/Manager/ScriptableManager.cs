@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public enum ScriptableType
@@ -43,6 +44,7 @@ public class ScriptableManager : MonoBehaviour
 
     void Awake()
     {
+        scriptableObjects.Clear();
         LoadAllScriptableObjects();
     }
 
@@ -61,6 +63,14 @@ public class ScriptableManager : MonoBehaviour
 
     public T Get<T>(ScriptableType type) where T : ScriptableObject
     {
+#if UNITY_EDITOR
+        if (!EditorApplication.isPlaying)
+        {
+            scriptableObjects.Clear();
+            LoadAllScriptableObjects();
+        }
+#endif
+
         if (scriptableObjects.TryGetValue(type, out ScriptableObject obj))
         {
             return obj as T;

@@ -19,7 +19,10 @@ namespace JsonClass
 
     public partial class Upgrade
     {
-
+        public Sprite GetSprite()
+        {
+            return ResourcesManager.Instance.GetSprite(atlas, sprite);
+        }
     }
 
 }

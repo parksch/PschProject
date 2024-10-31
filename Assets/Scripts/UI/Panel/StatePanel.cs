@@ -11,6 +11,10 @@ public class StatePanel : BasePanel
 
     public override void OnUpdate()
     {
+        for (int i = 0; i < stateUpgradeSlots.Count; i++)
+        {
+            stateUpgradeSlots[i].UpdateSlot();
+        }
     }
 
     public override void FirstLoad()
@@ -36,10 +40,15 @@ public class StatePanel : BasePanel
 
     public override void Open()
     {
+        for (int i = 0; i < stateUpgradeSlots.Count; i++)
+        {
+            stateUpgradeSlots[i].UpdateSlot();
+        }
     }
 
     public override void Close()
     {
+
     }
 
 }

@@ -7,7 +7,7 @@ namespace JsonClass
     {
     }
 
-    public partial class Skill
+    public partial class Skill // This Class is a functional Class.
     {
     }
 

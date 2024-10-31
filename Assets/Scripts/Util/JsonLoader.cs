@@ -387,7 +387,7 @@ public class JsonLoader : EditorWindow
 
         if (isArray || (!isArray && !isFirst))
         {
-            stringBuilder.AppendLine("    public partial class " + className);
+            stringBuilder.AppendLine("    public partial class " + className + (isFunction ? " // This Class is a functional Class." :""));
         }
 
         stringBuilder.AppendLine("    {");

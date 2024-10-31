@@ -6,6 +6,7 @@ using JsonClass;
 
 public class UIStateUpgradeSlot : MonoBehaviour
 {
+    [SerializeField, ReadOnly] UIButton button;
     [SerializeField, ReadOnly] Image icon;
     [SerializeField, ReadOnly] Upgrade targetState;
     [SerializeField, ReadOnly] Text desc;
@@ -15,12 +16,18 @@ public class UIStateUpgradeSlot : MonoBehaviour
     {
         targetState = upgradeState;
         desc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(targetState.upgradeKey);
-        //icon.sprite = targetState.sprite;
-
+        icon.sprite = targetState.GetSprite();
+        lvPrice.text = "Lv" + DataManager.Instance.GetUpgradeLevel(targetState.name) + "\n";
     }
 
     public void UpdateSlot()
     {
 
     }
+
+    public void OnClickSlot()
+    {
+
+    }
+
 }

@@ -9114,6 +9114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b8f354bcb556a4f8c4e927b028e8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableType: 0
+  frontLockObject: {fileID: 0}
+  button: {fileID: 0}
+  text: {fileID: 0}
+  interactable: {r: 0, g: 0, b: 0, a: 0}
+  notInteractable: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &592660964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9306,7 +9312,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 597957732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1469107268}
+        m_TargetAssemblyTypeName: UIStateUpgradeSlot, Assembly-CSharp
+        m_MethodName: OnClickSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &597957732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9357,6 +9375,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b8f354bcb556a4f8c4e927b028e8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableType: 0
+  frontLockObject: {fileID: 0}
+  button: {fileID: 597957731}
+  text: {fileID: 0}
+  interactable: {r: 1, g: 1, b: 1, a: 1}
+  notInteractable: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
 --- !u!1 &598597719
 GameObject:
   m_ObjectHideFlags: 0
@@ -13933,7 +13957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0015839497}
+  m_AnchoredPosition: {x: 0, y: 0.0020188019}
   m_SizeDelta: {x: 0, y: 155}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &901384770
@@ -16001,8 +16025,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 480, y: 0}
-  m_SizeDelta: {x: 800, y: -80}
+  m_AnchoredPosition: {x: 480, y: -43.99}
+  m_SizeDelta: {x: 800, y: -167.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108403071
 MonoBehaviour:
@@ -20598,6 +20622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841e1c276ad84f14688668fb96c23b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 597957734}
   icon: {fileID: 1098022085}
   targetState:
     upgradeType: 0

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgrade:
   - upgradeType: 1
-    atlas: 
-    sprite: 
+    atlas: Icon
+    sprite: UpgradeAttack
     upgradeKey: UpgradeAttack
     name: Attack
     maxLevel: 100
@@ -23,8 +23,8 @@ MonoBehaviour:
     needGoods: 1000
     levelPerGoods: 0.5
   - upgradeType: 1
-    atlas: 
-    sprite: 
+    atlas: Icon
+    sprite: UpgradeHp
     upgradeKey: UpgradeHp
     name: Hp
     maxLevel: 100
@@ -32,8 +32,8 @@ MonoBehaviour:
     needGoods: 1000
     levelPerGoods: 0.5
   - upgradeType: 1
-    atlas: 
-    sprite: 
+    atlas: Icon
+    sprite: UpgradeDefense
     upgradeKey: UpgradeDefense
     name: Defense
     maxLevel: 100
@@ -41,8 +41,8 @@ MonoBehaviour:
     needGoods: 1000
     levelPerGoods: 2
   - upgradeType: 1
-    atlas: 
-    sprite: 
+    atlas: Icon
+    sprite: UpgradeHpRegen
     upgradeKey: UpgradeHpRegen
     name: HpRegen
     maxLevel: 100

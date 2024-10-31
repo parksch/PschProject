@@ -50,7 +50,7 @@ public class ScriptableManager : MonoBehaviour
     {
         foreach (ScriptableType type in System.Enum.GetValues(typeof(ScriptableType)))
         {
-            var asset = Resources.Load<ScriptableObject>($"Scriptable/{type}DataScriptable");
+            var asset = Resources.Load<ScriptableObject>($"ScriptableObject/{type}Scriptable");
 
             if(asset != null)
             {

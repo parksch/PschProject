@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -68,10 +69,10 @@ public class PoolManager : Singleton<PoolManager>
 
     void AddPoolObject(string name)
     {
-        //ObjectScriptable.ObjectPrefab objectPrefab = ScriptableManager.Instance.objects.GetObject(name);
-        //poolObjects[name] = new PoolObject();
-        //poolObjects[name].prefab = objectPrefab.gameObject;
-        //poolObjects[name].type = objectPrefab.objectType;
+        ObjectData objectPrefab = ScriptableManager.Instance.Get<ObjectDataScriptable>(ScriptableType.ObjectData).Get(name);
+        poolObjects[name] = new PoolObject();
+        poolObjects[name].prefab = objectPrefab.GetGameOjbect();
+        poolObjects[name].type = objectPrefab.GetObjectType();
     }
 
     void CreatePrefab(PoolObject  poolObject)

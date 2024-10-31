@@ -12,6 +12,7 @@ namespace JsonClass
     public partial class Upgrade
     {
         public int upgradeType;
+        public string atlas;
         public string sprite;
         public string upgradeKey;
         public string name;

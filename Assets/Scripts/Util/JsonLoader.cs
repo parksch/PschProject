@@ -185,13 +185,13 @@ public class JsonLoader : EditorWindow
 
         var files = Directory.GetFiles(jsonFilePath, "*.json");
 
-        foreach (var item in files)
-        {
-            AssetDatabase.DeleteAsset(item);
-        }
+        //foreach (var item in files)
+        //{
+        //    AssetDatabase.DeleteAsset(item);
+        //}
 
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
+        //AssetDatabase.SaveAssets();
+        //AssetDatabase.Refresh();
 
         try
         {

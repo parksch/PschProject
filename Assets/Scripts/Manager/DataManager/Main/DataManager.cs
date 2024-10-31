@@ -12,6 +12,7 @@ public partial class DataManager : Singleton<DataManager>
     public ClientEnum.Language Language { set { language = value; } get { return language; } }
     public void SetDevice(string value) => deviceNum = value;
     public int GetUpgradeLevel(string code) => upgradeLevel[code];
+    public int AddUpgradeLevel(string code,int num = 1) => upgradeLevel[code] += num;
 
     protected override void Awake()
     {

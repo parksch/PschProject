@@ -7,11 +7,12 @@ using JsonClass;
 public class UIStateUpgradeSlot : MonoBehaviour
 {
     [SerializeField, ReadOnly] UIButton button;
-    [SerializeField, ReadOnly] Image icon;
     [SerializeField, ReadOnly] Upgrade targetState;
+    [SerializeField, ReadOnly] Image icon;
+    [SerializeField, ReadOnly] Image goodsIcon;
     [SerializeField, ReadOnly] Text desc;
-    [SerializeField] Text lv;
-    [SerializeField] Text price;
+    [SerializeField, ReadOnly] UIText lv;
+    [SerializeField, ReadOnly] UIText price;
 
     long GetNeedValue()
     {
@@ -31,17 +32,18 @@ public class UIStateUpgradeSlot : MonoBehaviour
         targetState = upgradeState;
         desc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(targetState.upgradeKey);
         icon.sprite = targetState.GetSprite();
+        goodsIcon.sprite = ResourcesManager.Instance.GetGoodsSprite(targetState.Goods());
     }
 
     public void UpdateSlot()
     {
         long need = GetNeedValue();
-        lv.text = "Lv" + DataManager.Instance.GetUpgradeLevel(targetState.name);
+        lv.SetText("Lv", DataManager.Instance.GetUpgradeLevel(targetState.name));
 
         if (DataManager.Instance.GetUpgradeLevel(targetState.name) >= targetState.maxLevel)
         {
             button.SetInterractable(false);
-            price.text = "Max";
+            price.SetText("Max");
             return;
         }
         else if (!DataManager.Instance.CheckGoods(targetState.Goods(), need))
@@ -53,11 +55,13 @@ public class UIStateUpgradeSlot : MonoBehaviour
             button.SetInterractable(true);
         }
 
-        price.text = need.ToString();
+        price.SetText(need);
     }
 
     public void OnClickSlot()
     {
-
+        DataManager.Instance.UseGoods(targetState.Goods(), GetNeedValue());
+        DataManager.Instance.AddUpgradeLevel(targetState.name);
+        UpdateSlot();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -25,4 +26,23 @@ public class ResourcesManager : Singleton<ResourcesManager>
     }
 
     public Sprite GetSprite(string atlas, string sprite) => spriteAtlasDict[atlas].GetSprite(sprite);
+
+    public Sprite GetGoodsSprite(ClientEnum.Goods goods)
+    {
+        switch (goods)
+        {
+            case ClientEnum.Goods.None:
+                return null;
+            case ClientEnum.Goods.Scrap:
+                return null;
+            case ClientEnum.Goods.Gold:
+                return spriteAtlasDict["Goods"].GetSprite("Gold");
+            case ClientEnum.Goods.Gem:
+                return null;
+            case ClientEnum.Goods.Money:
+                return null;
+            default:
+                return null;
+        }
+    }
 }

@@ -315,7 +315,7 @@ public class JsonLoader : EditorWindow
         stringBuilder.AppendLine("    {");
         stringBuilder.AppendLine("        foreach (ScriptableType type in System.Enum.GetValues(typeof(ScriptableType)))");
         stringBuilder.AppendLine("        {");
-        stringBuilder.AppendLine("            var asset = Resources.Load<ScriptableObject>($\"Scriptable/{type}DataScriptable\");");
+        stringBuilder.AppendLine("            var asset = Resources.Load<ScriptableObject>($\"ScriptableObject/{type}Scriptable\");");
         stringBuilder.AppendLine();
         stringBuilder.AppendLine("            if(asset != null)");
         stringBuilder.AppendLine("            {");

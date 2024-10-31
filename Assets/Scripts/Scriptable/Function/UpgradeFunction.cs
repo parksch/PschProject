@@ -19,6 +19,7 @@ namespace JsonClass
 
     public partial class Upgrade
     {
+
     }
 
 }

@@ -3417,6 +3417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 987879947}
+  - component: {fileID: 987879948}
   m_Layer: 0
   m_Name: ResourceManager
   m_TagString: Untagged
@@ -3439,6 +3440,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &987879948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987879946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef8f14d4f2770a47b342547dcf27337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteAtlasPath: SpriteAtlas
 --- !u!1 &996621993
 GameObject:
   m_ObjectHideFlags: 0

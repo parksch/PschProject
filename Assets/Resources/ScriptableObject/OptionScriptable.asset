@@ -68,5 +68,3 @@ MonoBehaviour:
     - key: 3
       value: 30
     local: DrainLifeOption
-  datas: []
-  addOption: []

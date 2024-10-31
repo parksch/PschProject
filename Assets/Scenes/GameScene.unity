@@ -13933,7 +13933,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0024321955}
+  m_AnchoredPosition: {x: 0, y: 0.0015839497}
   m_SizeDelta: {x: 0, y: 155}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &901384770
@@ -20601,7 +20601,8 @@ MonoBehaviour:
   icon: {fileID: 1098022085}
   targetState:
     upgradeType: 0
-    sprite: {fileID: 0}
+    atlas: 
+    sprite: 
     upgradeKey: 
     name: 
     maxLevel: 0

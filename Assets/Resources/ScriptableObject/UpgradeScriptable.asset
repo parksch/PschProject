@@ -15,21 +15,25 @@ MonoBehaviour:
   upgrade:
   - upgradeType: 1
     atlas: Icon
-    sprite: UpgradeAttack
-    upgradeKey: UpgradeAttack
-    name: Attack
+    sprite: UpgradeHp
+    upgradeKey: UpgradeHp
+    name: Hp
+    upgradeState: 1
+    changeType: 0
     maxLevel: 100
-    addValue: 10
+    addValue: 100
     goodsType: 1
     needGoods: 1000
     levelPerGoods: 0.5
   - upgradeType: 1
     atlas: Icon
-    sprite: UpgradeHp
-    upgradeKey: UpgradeHp
-    name: Hp
+    sprite: UpgradeAttack
+    upgradeKey: UpgradeAttack
+    name: Attack
+    upgradeState: 2
+    changeType: 0
     maxLevel: 100
-    addValue: 100
+    addValue: 10
     goodsType: 1
     needGoods: 1000
     levelPerGoods: 0.5
@@ -38,6 +42,8 @@ MonoBehaviour:
     sprite: UpgradeDefense
     upgradeKey: UpgradeDefense
     name: Defense
+    upgradeState: 3
+    changeType: 0
     maxLevel: 100
     addValue: 10
     goodsType: 1
@@ -48,6 +54,8 @@ MonoBehaviour:
     sprite: UpgradeHpRegen
     upgradeKey: UpgradeHpRegen
     name: HpRegen
+    upgradeState: 4
+    changeType: 0
     maxLevel: 100
     addValue: 10
     goodsType: 1
@@ -58,6 +66,8 @@ MonoBehaviour:
     sprite: 
     upgradeKey: 
     name: Exp
+    upgradeState: 0
+    changeType: 0
     maxLevel: 1000
     addValue: 0.5
     goodsType: 0

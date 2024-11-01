@@ -6056,6 +6056,99 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0a929d0787772b44ac2f99e03b47829, type: 3}
+--- !u!1 &386725688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386725689}
+  - component: {fileID: 386725691}
+  - component: {fileID: 386725690}
+  - component: {fileID: 386725692}
+  m_Layer: 5
+  m_Name: Value
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &386725689
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386725688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1469107265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -98, y: -25.003}
+  m_SizeDelta: {x: 240, y: 50.004}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &386725690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386725688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.754717, g: 0.6380296, b: 0.49483803, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 4
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &386725691
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386725688}
+  m_CullTransparentMesh: 1
+--- !u!114 &386725692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386725688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deab7fcdc8d5ebb4f8e8595df8304f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 386725690}
 --- !u!1 &388413508
 GameObject:
   m_ObjectHideFlags: 0
@@ -14008,8 +14101,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -98, y: -0.0062199}
-  m_SizeDelta: {x: 240, y: 100}
+  m_AnchoredPosition: {x: -98, y: 24.996}
+  m_SizeDelta: {x: 240, y: 49.997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896454230
 MonoBehaviour:
@@ -14035,7 +14128,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 40
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 4
     m_MaxSize: 40
     m_Alignment: 3
@@ -14126,7 +14219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.001976526}
+  m_AnchoredPosition: {x: 0, y: -0.0003006484}
   m_SizeDelta: {x: 0, y: 155}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &901384770
@@ -20733,6 +20826,7 @@ RectTransform:
   - {fileID: 597957730}
   - {fileID: 1098022084}
   - {fileID: 896454229}
+  - {fileID: 386725689}
   - {fileID: 1884662470}
   - {fileID: 198450983}
   - {fileID: 2131904119}
@@ -20800,6 +20894,8 @@ MonoBehaviour:
     sprite: 
     upgradeKey: 
     name: 
+    upgradeState: 0
+    changeType: 0
     maxLevel: 0
     addValue: 0
     goodsType: 0
@@ -20808,6 +20904,7 @@ MonoBehaviour:
   icon: {fileID: 1098022085}
   goodsIcon: {fileID: 2131904120}
   desc: {fileID: 896454230}
+  value: {fileID: 386725692}
   lv: {fileID: 1884662473}
   price: {fileID: 198450986}
 --- !u!1 &1469497601

@@ -11,15 +11,15 @@ public class PlayerState : BaseCharacterState
     public int HpRegen => hpRegen;
     public float HpRegenTimer => hpRegenTimer;
 
-    public void Set()
+    public void UpdateState()
     {
-        hp = DataManager.Instance.PlayerDefaultState.HP;
-        attack = DataManager.Instance.PlayerDefaultState.Attack;
-        defense = DataManager.Instance.PlayerDefaultState.Defense;
-        attackRange = DataManager.Instance.PlayerDefaultState.AttackRange;
-        attackSpeed = DataManager.Instance.PlayerDefaultState.AttackSpeed;
-        moveSpeed = DataManager.Instance.PlayerDefaultState.MoveSpeed;
-        hpRegen = DataManager.Instance.PlayerDefaultState.HpRegen;
+        hp = (long)(DataManager.Instance.PlayerDefaultState.HP + DataManager.Instance.GetUpgradeValue(ClientEnum.State.HP,ClientEnum.ChangeType.Sum));
+        attack = (long)(DataManager.Instance.PlayerDefaultState.Attack + DataManager.Instance.GetUpgradeValue(ClientEnum.State.Attack, ClientEnum.ChangeType.Sum));
+        defense = (long)(DataManager.Instance.PlayerDefaultState.Defense + DataManager.Instance.GetUpgradeValue(ClientEnum.State.Defense, ClientEnum.ChangeType.Sum));
+        attackRange = DataManager.Instance.PlayerDefaultState.AttackRange + DataManager.Instance.GetUpgradeValue(ClientEnum.State.AttackRange, ClientEnum.ChangeType.Sum);
+        attackSpeed = DataManager.Instance.PlayerDefaultState.AttackSpeed + DataManager.Instance.GetUpgradeValue(ClientEnum.State.AttackSpeed,ClientEnum.ChangeType.Sum);
+        moveSpeed = DataManager.Instance.PlayerDefaultState.MoveSpeed + DataManager.Instance.GetUpgradeValue(ClientEnum.State.MoveSpeed, ClientEnum.ChangeType.Sum);
+        hpRegen = (int)(DataManager.Instance.PlayerDefaultState.HpRegen + DataManager.Instance.GetUpgradeValue(ClientEnum.State.HpRegen, ClientEnum.ChangeType.Sum));
         hpRegenTimer = DataManager.Instance.PlayerDefaultState.HpRegenTimer;
     }
 }

@@ -5,7 +5,7 @@ namespace JsonClass
 {
     public partial class DrawScriptable // This Class is a functional Class.
     {
-        public int RequiredExp => (int)ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get("RequireExp");
+        public int RequiredExp => (int)ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get("RequiredExp");
 
         public Draw GetData(ClientEnum.Draw shop)
         {

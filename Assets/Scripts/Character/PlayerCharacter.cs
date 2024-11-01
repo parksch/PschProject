@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class PlayerCharacter : BaseCharacter
@@ -7,6 +8,13 @@ public class PlayerCharacter : BaseCharacter
     float currentRegenTimer = 0;
 
     [SerializeField] PlayerState State => state as PlayerState;
+
+    public void StateUpdate()
+    {
+        State.UpdateState();
+        AnimationSpeedSet();
+        UIManager.Instance.OnChangeHP(GetHPRatio);
+    }
 
     private void FixedUpdate()
     {
@@ -33,7 +41,7 @@ public class PlayerCharacter : BaseCharacter
 
     public override void Init()
     {
-        State.Set();
+        State.UpdateState();
         currentRegenTimer = 0;
         base.Init();
     }
@@ -99,6 +107,8 @@ public class PlayerCharacter : BaseCharacter
         {
             return;
         }
+
+        attack = DefenseCalculate(attack);
 
         curHp -= attack;
 

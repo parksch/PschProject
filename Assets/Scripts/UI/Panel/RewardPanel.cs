@@ -14,7 +14,7 @@ public class RewardPanel : BasePanel
 
     }
 
-    public void AddItem()
+    public void AddItem(BaseItem item)
     {
 
     }

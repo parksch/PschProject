@@ -11,6 +11,7 @@ public class UIStateUpgradeSlot : MonoBehaviour
     [SerializeField, ReadOnly] Image icon;
     [SerializeField, ReadOnly] Image goodsIcon;
     [SerializeField, ReadOnly] Text desc;
+    [SerializeField, ReadOnly] UIText value;
     [SerializeField, ReadOnly] UIText lv;
     [SerializeField, ReadOnly] UIText price;
 
@@ -33,6 +34,7 @@ public class UIStateUpgradeSlot : MonoBehaviour
         desc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(targetState.upgradeKey);
         icon.sprite = targetState.GetSprite();
         goodsIcon.sprite = ResourcesManager.Instance.GetGoodsSprite(targetState.Goods());
+        value.SetText(targetState.GetLevelValue(DataManager.Instance.GetUpgradeLevel(targetState.name)));
     }
 
     public void UpdateSlot()
@@ -62,6 +64,7 @@ public class UIStateUpgradeSlot : MonoBehaviour
     {
         DataManager.Instance.UseGoods(targetState.Goods(), GetNeedValue());
         DataManager.Instance.AddUpgradeLevel(targetState.name);
+        value.SetText(targetState.GetLevelValue(DataManager.Instance.GetUpgradeLevel(targetState.name)));
         UpdateSlot();
     }
 }

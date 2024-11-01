@@ -149,4 +149,9 @@ public class UIManager : Singleton<UIManager>
     {
         rewardPanel.Open();
     }
+
+    public void AddRewardPanel(BaseItem item)
+    {
+        rewardPanel.AddItem(item);
+    }
 }

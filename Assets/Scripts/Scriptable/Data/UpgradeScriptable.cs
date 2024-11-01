@@ -16,6 +16,8 @@ namespace JsonClass
         public string sprite;
         public string upgradeKey;
         public string name;
+        public int upgradeState;
+        public int changeType;
         public int maxLevel;
         public float addValue;
         public int goodsType;

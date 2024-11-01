@@ -181,6 +181,7 @@ public class DrawPanel : BasePanel
 
             BaseItem item = BaseItem.Create(target);
             item.Set(info,grade);
+            UIManager.Instance.AddRewardPanel(item);
             DataManager.Instance.AddItem(item);
         }
 

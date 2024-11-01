@@ -87,4 +87,29 @@ public partial class DataManager //Info
         }
     }
 
+    void InfoInit()
+    {
+        for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
+        {
+            Draw shop = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).GetData(i);
+
+            if (shop == null)
+            {
+                continue;
+            }
+
+            for (int j = 0; j < shop.type.shops.Count; j++)
+            {
+                if (shop.type.shops[j].limit > 0)
+                {
+                    info.CreateDrawLimit(shop.type.shops[j].nameKey);
+                }
+
+                if (shop.type.shops[j].maxLevel > 0)
+                {
+                    info.CreateDrawCount(shop.type.shops[j].nameKey);
+                }
+            }
+        }
+    }
 }

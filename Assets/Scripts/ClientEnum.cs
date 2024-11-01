@@ -38,12 +38,15 @@ namespace ClientEnum
 
     public enum State
     {
+        None,
         HP,
         Attack,
-        Int,
         Defense,
         HpRegen,
         DrainLife,
+        AttackRange,
+        AttackSpeed,
+        MoveSpeed,
     }
 
     public enum UpgradeType
@@ -73,5 +76,11 @@ namespace ClientEnum
         SuperRare,
         UltraRare,
         Max
+    }
+
+    public enum ChangeType
+    {
+        Sum,
+        Product
     }
 } 

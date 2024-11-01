@@ -65,6 +65,8 @@ public class EnemyCharacter : BaseCharacter
             return;
         }
 
+        attack = DefenseCalculate(attack);
+
         curHp -= attack;
 
         if (curHp < 0)

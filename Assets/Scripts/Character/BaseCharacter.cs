@@ -133,4 +133,30 @@ public class BaseCharacter : MonoBehaviour
         animator.SetFloat("AttackSpeed", AttackSpeed());
     }
 
+    protected long DefenseCalculate(long attack)
+    {
+        if (attack *.9f <= Defense())
+        {
+            attack = (long)(attack * 0.1f);
+        }
+        else if (attack *.7f <= Defense())
+        {
+            attack = (long)(attack * 0.3f);
+        }
+        else if (attack *.5f <= Defense())
+        {
+            attack = (long)(attack * 0.5f);
+        }
+        else if (attack *.3f <= Defense())
+        {
+            attack = (long)(attack * 0.7f);
+        }
+        else
+        {
+            attack = (long)(attack * 0.9f);
+        }
+
+        return attack;
+    }
+
 }

@@ -24,6 +24,7 @@ public class UIRewardSlot : MonoBehaviour
     public void SetItem(BaseItem item)
     {
         goods = ClientEnum.Goods.None;
+        image.sprite = item.GetSprite;
         text.text = "Lv " + item.Level;
         gameObject.SetActive(true);
     }

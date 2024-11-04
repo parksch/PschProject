@@ -56,6 +56,11 @@ namespace JsonClass
         {
             return (ClientEnum.State)mainState;
         }
+
+        public Sprite Sprite()
+        {
+            return ResourcesManager.Instance.GetSprite(atlas, sprite);
+        }
     }
 
 }

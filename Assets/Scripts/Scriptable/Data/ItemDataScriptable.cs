@@ -21,6 +21,7 @@ namespace JsonClass
     public partial class Items
     {
         public string id;
+        public string atlas;
         public string sprite;
         public string prefab;
         public int mainState;

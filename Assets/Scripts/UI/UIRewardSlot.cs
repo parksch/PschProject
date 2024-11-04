@@ -1,18 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIRewardSlot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Image image;
+    [SerializeField] Text text;
+    ClientEnum.Goods goods;
+    int num;
+
+    public bool CheckGoods(ClientEnum.Goods target,int value)
     {
-        
+        if (target == goods)
+        {
+            num += value;
+            return true;
+        }
+
+        return false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetItem(BaseItem item)
     {
-        
+        goods = ClientEnum.Goods.None;
+        text.text = "Lv " + item.Level;
+        gameObject.SetActive(true);
+    }
+
+    public void SetGoods(ClientEnum.Goods target,int vlaue)
+    {
+        goods = target;
+        num = vlaue;
+        image.sprite = ResourcesManager.Instance.GetGoodsSprite(goods);
+        gameObject.SetActive(true); 
     }
 }

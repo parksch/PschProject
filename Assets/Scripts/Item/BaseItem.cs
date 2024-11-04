@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using JsonClass;
+using System;
 
 [System.Serializable]
 public class BaseItem 
@@ -15,11 +16,14 @@ public class BaseItem
     [SerializeField] protected Datas.Pair<ClientEnum.State, float> mainState;
     [SerializeField] protected List<Datas.Pair<ClientEnum.State, float>> options;
 
+    public int Level => lv;
     public string ID => id;
     public ClientEnum.Item Type => type;
 
     public virtual void Set(Items info,ClientEnum.Grade target)
     {
+        id = System.Guid.NewGuid().ToString();
+        index = info.id;
         lv = DataManager.Instance.GetInfo.CurrentLevel;
         grade = target;
         mainState = new Datas.Pair<ClientEnum.State, float>(info.MainState(),ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetData(info.MainState()).Value(grade));

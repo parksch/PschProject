@@ -16,16 +16,18 @@ MonoBehaviour:
   - randomTarget: 0000000003000000
     target: 1
     items:
-    - id: WoodHelmet
-      sprite: 
+    - id: LeatherHelmet
+      atlas: Helmat
+      sprite: 1
       prefab: 
       mainState: 4
     mainStateAddValue: 1.1
   - randomTarget: 0400000003000000
     target: 2
     items:
-    - id: WoodArmor
-      sprite: 
+    - id: ClothArmor
+      atlas: Armor
+      sprite: 1
       prefab: 
       mainState: 0
     mainStateAddValue: 1.2
@@ -33,7 +35,8 @@ MonoBehaviour:
     target: 3
     items:
     - id: WoodAxe
-      sprite: 
+      atlas: Weapon
+      sprite: 1
       prefab: 
       mainState: 1
     mainStateAddValue: 1.3

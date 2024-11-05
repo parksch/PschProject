@@ -24,6 +24,7 @@ namespace JsonClass
         public string atlas;
         public string sprite;
         public string prefab;
+        public string local;
         public int mainState;
     }
 

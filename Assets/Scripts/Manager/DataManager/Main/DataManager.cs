@@ -21,4 +21,11 @@ public partial class DataManager : Singleton<DataManager>
         StateInit();
         InfoInit();
     }
+
+    public float GetStateData(ClientEnum.State state,ClientEnum.ChangeType changeType)
+    {
+        float value = 0;
+
+        return value;
+    }
 }

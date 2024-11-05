@@ -52,6 +52,11 @@ namespace JsonClass
 
     public partial class Items
     {
+        public string GetLocal()
+        {
+            return ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
+        }
+
         public ClientEnum.State MainState()
         {
             return (ClientEnum.State)mainState;

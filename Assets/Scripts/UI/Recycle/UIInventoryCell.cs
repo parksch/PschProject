@@ -17,7 +17,10 @@ public class UIInventoryCell : UIRecycleViewCell<InventoryData>
 
     public override void UpdateContent(InventoryData itemData)
     {
-
+        for (int i = 0; i < itemSlots.Count; i++)
+        {
+            itemSlots[i].SetItem(itemData.datas[i]);
+        }
     }
 
 }

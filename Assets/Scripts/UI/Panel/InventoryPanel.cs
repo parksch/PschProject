@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class InventoryPanel : BasePanel
 {
-    [SerializeField,ReadOnly] UIInventoryScroll inventoryScroll;
-    [SerializeField,ReadOnly] UIToggleGroup toggleGroup;
+    [SerializeField, ReadOnly] UIInventorySelect select;
+    [SerializeField, ReadOnly] UIInventoryScroll inventoryScroll;
+    [SerializeField, ReadOnly] UIToggleGroup toggleGroup;
+    [SerializeField, ReadOnly] ClientEnum.Item target;
 
     public override void OnUpdate()
     {
@@ -13,16 +15,28 @@ public class InventoryPanel : BasePanel
 
     public override void FirstLoad()
     {
-        inventoryScroll.LoadData();
+        target = ClientEnum.Item.None;
+        inventoryScroll.LoadData(target);
     }
 
     public override void Open()
     {
         toggleGroup.ResetToggle();
+        inventoryScroll.LoadData(target);
     }
 
     public override void Close()
     {
 
+    }
+
+    public void OnToggle(int value)
+    {
+        target = (ClientEnum.Item)value;
+    }
+
+    public void OpenItemSelect(BaseItem item)
+    {
+        select.OpenSlect(item);
     }
 }

@@ -35,6 +35,12 @@ MonoBehaviour:
       desc: "\uC77C\uC77C\uC82C\uC0C1\uC810"
     - name: DrawLv
       desc: "\uBF51\uAE30\uB808\uBCA8"
+    - name: LeatherHelmet
+      desc: "\uAC00\uC8FD\uD5EC\uBA67"
+    - name: ClothArmor
+      desc: "\uCC9C\uAC11\uC637"
+    - name: WoodAxe
+      desc: "\uBC8C\uBAA9\uB3C4\uB07C"
   - language: 1
     textkeys:
     - name: 

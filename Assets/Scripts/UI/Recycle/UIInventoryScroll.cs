@@ -9,11 +9,24 @@ public class UIInventoryScroll : UIRecycleViewController<InventoryData>
 {
     [SerializeField] RectTransform content;
     [SerializeField] int slotCount = 5;
-    public void LoadData()
-    {
-        List<BaseItem> data = DataManager.Instance.InventoryDatas;
 
-        for (int i = 0; i < data.Count / slotCount; i++)
+    public void LoadData(ClientEnum.Item item)
+    {
+        int count = DataManager.Instance.InventoryDatas.Count;
+        List<BaseItem> data = null;
+
+        if (item != ClientEnum.Item.None)
+        {
+            data = DataManager.Instance.InventoryDatas.FindAll(x => x.Type == item);
+        }
+        else
+        {
+            data = DataManager.Instance.InventoryDatas;
+        }
+
+        tableData.Clear();
+
+        for (int i = 0; i < count / slotCount; i++)
         {
             InventoryData cell = new InventoryData();
             cell.index = i + 1;
@@ -24,6 +37,10 @@ public class UIInventoryScroll : UIRecycleViewController<InventoryData>
                 if ((i * slotCount) + j < data.Count)
                 {
                     cell.datas[j] = data[(i * slotCount) + j];
+                }
+                else
+                {
+                    cell.datas[j] = new BaseItem();
                 }
             }
 

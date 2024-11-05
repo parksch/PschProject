@@ -10,6 +10,7 @@ public class BaseItem
 {
     [SerializeField] protected string id;
     [SerializeField] protected string index;
+    [SerializeField] protected string itemName;
     [SerializeField] protected int lv;
     [SerializeField] protected ClientEnum.Grade grade;
     [SerializeField] protected ClientEnum.Item type;
@@ -19,6 +20,7 @@ public class BaseItem
 
     public Sprite GetSprite => sprite;
     public int Level => lv;
+    public string Name => itemName;
     public string ID => id;
     public ClientEnum.Item Type => type;
 
@@ -29,6 +31,7 @@ public class BaseItem
         lv = DataManager.Instance.GetInfo.CurrentLevel;
         grade = target;
         sprite = info.Sprite();
+        itemName = info.GetLocal();
         mainState = new Datas.Pair<ClientEnum.State, float>(info.MainState(),ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetData(info.MainState()).Value(grade));
         options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetRandomOption(ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetOptions(type),grade);
     }

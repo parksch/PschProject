@@ -63,7 +63,7 @@ public class UIStateUpgradeSlot : MonoBehaviour
     public void OnClickSlot()
     {
         DataManager.Instance.UseGoods(targetState.Goods(), GetNeedValue());
-        DataManager.Instance.AddUpgradeLevel(targetState.name);
+        DataManager.Instance.OnChangeLevelUp(targetState.name);
         value.SetText(targetState.GetLevelValue(DataManager.Instance.GetUpgradeLevel(targetState.name)));
         UpdateSlot();
     }

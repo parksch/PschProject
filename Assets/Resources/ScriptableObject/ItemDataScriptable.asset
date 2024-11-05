@@ -20,6 +20,7 @@ MonoBehaviour:
       atlas: Helmat
       sprite: 1
       prefab: 
+      local: LeatherHelmet
       mainState: 4
     mainStateAddValue: 1.1
   - randomTarget: 0400000003000000
@@ -29,6 +30,7 @@ MonoBehaviour:
       atlas: Armor
       sprite: 1
       prefab: 
+      local: ClothArmor
       mainState: 0
     mainStateAddValue: 1.2
   - randomTarget: 0100000005000000
@@ -38,5 +40,6 @@ MonoBehaviour:
       atlas: Weapon
       sprite: 1
       prefab: 
+      local: WoodAxe
       mainState: 1
     mainStateAddValue: 1.3

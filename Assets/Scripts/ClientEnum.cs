@@ -47,6 +47,7 @@ namespace ClientEnum
         AttackRange,
         AttackSpeed,
         MoveSpeed,
+        HpRegenTimer,
     }
 
     public enum UpgradeType

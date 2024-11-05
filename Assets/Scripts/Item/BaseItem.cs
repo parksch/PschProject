@@ -12,6 +12,7 @@ public class BaseItem
     [SerializeField] protected string index;
     [SerializeField] protected string itemName;
     [SerializeField] protected int lv;
+    [SerializeField] protected int reinforce;
     [SerializeField] protected ClientEnum.Grade grade;
     [SerializeField] protected ClientEnum.Item type;
     [SerializeField] protected Datas.Pair<ClientEnum.State, float> mainState;
@@ -26,6 +27,7 @@ public class BaseItem
 
     public virtual void Set(Items info,ClientEnum.Grade target)
     {
+        reinforce = 0;
         id = System.Guid.NewGuid().ToString();
         index = info.id;
         lv = DataManager.Instance.GetInfo.CurrentLevel;

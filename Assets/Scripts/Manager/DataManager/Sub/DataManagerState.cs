@@ -45,9 +45,15 @@ public partial class DataManager //State
         };
     }
 
-    public float GetUpgradeValue(ClientEnum.State state,ClientEnum.ChangeType changeType)
+    float GetUpgradeValue(ClientEnum.State state,ClientEnum.ChangeType changeType)
     {
         Upgrade upgrade = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgrade(state,changeType);
+
+        if (upgrade == null)
+        {
+            return 0;
+        }
+
         return data[upgrade.name].velue;
     }
 }

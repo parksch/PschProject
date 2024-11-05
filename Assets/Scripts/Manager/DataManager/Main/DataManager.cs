@@ -26,6 +26,7 @@ public partial class DataManager : Singleton<DataManager>
     {
         float value = 0;
         value += GetUpgradeValue(state, changeType);
+        value += GetItemValue(state, changeType);
         return value;
     }
 }

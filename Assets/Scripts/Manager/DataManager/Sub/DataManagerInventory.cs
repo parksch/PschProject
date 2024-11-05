@@ -47,4 +47,10 @@ public partial class DataManager //Inventory
         }
     }
 
+    float GetItemValue(ClientEnum.State state,ClientEnum.ChangeType type)
+    {
+        float value = 0;
+
+        return value;
+    }
 }

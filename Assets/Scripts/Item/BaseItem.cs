@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using JsonClass;
-using System;
-using ClientEnum;
-using UnityEngine.Purchasing;
 
 [System.Serializable]
 public class BaseItem 
@@ -28,7 +24,7 @@ public class BaseItem
     public ClientEnum.Grade Grade => grade;
     public ClientEnum.Item Type => type;
     public Datas.Pair<ClientEnum.State,float> MainState => mainState;
-    public List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float value)>> Options => options;
+    public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade, float value)>> Options => options;
 
     public virtual void Set(Items info,ClientEnum.Grade target)
     {
@@ -77,4 +73,10 @@ public class BaseItem
 
         return value;
     }
+
+    public void Disassembly()
+    {
+
+    }
+
 }

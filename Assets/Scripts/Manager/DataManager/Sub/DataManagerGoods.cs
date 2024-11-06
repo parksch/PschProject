@@ -13,6 +13,7 @@ public partial class  DataManager //Goods
     public ChangeGoods OnChangeGem;
     public ChangeGoods OnChangeScrap;
     public ChangeGoods OnChangeGold;
+    public ChangeGoods OnChangeReinforce;
     
     [System.Serializable]
     public class Goods
@@ -20,6 +21,7 @@ public partial class  DataManager //Goods
         public long gold = 0;
         public long gem = 0;
         public long scrap = 0;
+        public long reinforceStone = 0;
     }
 
     public void AddScrap(long value)

@@ -31,17 +31,28 @@ public partial class DataManager //Inventory
         switch (item.Type)
         {
             case ClientEnum.Item.Helmet:
-                equipHelmat = item;
+                if (equipHelmat.ID != "")
+                {
+                    equipHelmat.Disassembly();
+                }
                 break;
             case ClientEnum.Item.Armor:
-                equipArmor = item;
+                if (equipArmor.ID != "")
+                {
+                    equipArmor.Disassembly();
+                }
                 break;
             case ClientEnum.Item.Weapon:
-                equipWeapon = item;
+                if (equipWeapon.ID != "")
+                {
+                    equipWeapon.Disassembly();
+                }
                 break;
             default:
                 break;
         }
+
+        equipItem(item);
     }
     
     delegate void OnEquipItem(BaseItem item);
@@ -49,7 +60,25 @@ public partial class DataManager //Inventory
 
     void InventoryInit()
     {
+        equipItem = (item) =>
+        {
+            switch (item.Type)
+            {
+                case ClientEnum.Item.Helmet:
+                    equipHelmat = item;
+                    break;
+                case ClientEnum.Item.Armor:
+                    equipArmor = item;
+                    break;
+                case ClientEnum.Item.Weapon:
+                    equipWeapon = item;
+                    break;
+                default:
+                    break;
+            }
 
+            GameManager.Instance.Player.StateUpdate();
+        };
     }
 
     float GetItemValue(ClientEnum.State state,ClientEnum.ChangeType type)

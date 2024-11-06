@@ -16,7 +16,7 @@ MonoBehaviour:
   - upgradeType: 1
     atlas: Icon
     sprite: UpgradeHp
-    upgradeKey: UpgradeHp
+    localKey: UpgradeHp
     name: Hp
     upgradeState: 1
     changeType: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
   - upgradeType: 1
     atlas: Icon
     sprite: UpgradeAttack
-    upgradeKey: UpgradeAttack
+    localKey: UpgradeAttack
     name: Attack
     upgradeState: 2
     changeType: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   - upgradeType: 1
     atlas: Icon
     sprite: UpgradeDefense
-    upgradeKey: UpgradeDefense
+    localKey: UpgradeDefense
     name: Defense
     upgradeState: 3
     changeType: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   - upgradeType: 1
     atlas: Icon
     sprite: UpgradeHpRegen
-    upgradeKey: UpgradeHpRegen
+    localKey: UpgradeHpRegen
     name: HpRegen
     upgradeState: 4
     changeType: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   - upgradeType: 0
     atlas: 
     sprite: 
-    upgradeKey: 
+    localKey: 
     name: Exp
     upgradeState: 0
     changeType: 0

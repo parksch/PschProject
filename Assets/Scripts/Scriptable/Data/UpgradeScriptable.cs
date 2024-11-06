@@ -14,7 +14,7 @@ namespace JsonClass
         public int upgradeType;
         public string atlas;
         public string sprite;
-        public string upgradeKey;
+        public string localKey;
         public string name;
         public int upgradeState;
         public int changeType;

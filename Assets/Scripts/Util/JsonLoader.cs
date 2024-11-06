@@ -205,13 +205,17 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(upgrades);
             //File.WriteAllText(jsonFilePath + "/Upgrade.json", json,Encoding.UTF8);
 
-            List<ItemData> itemDatas = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).itemData;
-            json = JsonConvert.SerializeObject(itemDatas);
-            File.WriteAllText(jsonFilePath + "/ItemData.json", json, Encoding.UTF8);
+            //List<ItemData> itemDatas = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).itemData;
+            //json = JsonConvert.SerializeObject(itemDatas);
+            //File.WriteAllText(jsonFilePath + "/ItemData.json", json, Encoding.UTF8);
 
             //List<Localization> localizations = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).localization;
             //json = JsonConvert.SerializeObject(localizations);
             //File.WriteAllText(jsonFilePath + "/Localization.json", json, Encoding.UTF8);
+
+            List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
+            json = JsonConvert.SerializeObject(upgrades);
+            File.WriteAllText(jsonFilePath + "/Upgrade.json", json, Encoding.UTF8);
 
             AssetDatabase.Refresh();
             EditorUtility.DisplayDialog("결과", "Scriptable 에서 Json 변환", "확인");

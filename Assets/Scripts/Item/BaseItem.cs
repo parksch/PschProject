@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using JsonClass;
 using System;
+using ClientEnum;
+using UnityEngine.Purchasing;
 
 [System.Serializable]
 public class BaseItem 
@@ -16,14 +18,17 @@ public class BaseItem
     [SerializeField] protected ClientEnum.Grade grade;
     [SerializeField] protected ClientEnum.Item type;
     [SerializeField] protected Datas.Pair<ClientEnum.State, float> mainState;
-    [SerializeField] protected List<Datas.Pair<ClientEnum.State, float>> options;
+    [SerializeField] protected List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float num)>> options;
     [SerializeField] protected Sprite sprite;
 
     public Sprite GetSprite => sprite;
     public int Level => lv;
     public string Name => itemName;
     public string ID => id;
+    public ClientEnum.Grade Grade => grade;
     public ClientEnum.Item Type => type;
+    public Datas.Pair<ClientEnum.State,float> MainState => mainState;
+    public List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float value)>> Options => options;
 
     public virtual void Set(Items info,ClientEnum.Grade target)
     {
@@ -51,5 +56,25 @@ public class BaseItem
             default:
                 return null;
         }
+    }
+
+    public float GetStateValue(ClientEnum.State state)
+    {
+        float value = 0;
+
+        if (mainState.key == state)
+        {
+            value += mainState.value;
+        }
+
+        foreach (var item in options)
+        {
+            if (item.key == state)
+            {
+                value += item.value.num;
+            }
+        }
+
+        return value;
     }
 }

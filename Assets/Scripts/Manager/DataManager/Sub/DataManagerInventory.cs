@@ -13,9 +13,7 @@ public partial class DataManager //Inventory
     public BaseItem Helmat => equipHelmat;
     public BaseItem Weapon => equipWeapon;
     public BaseItem Armor => equipArmor;
-
     public List<BaseItem> InventoryDatas => inventoryDatas;
-
     public void AddItem(BaseItem item)
     {
         for (int i = 0; i < inventoryDatas.Count; i++)
@@ -28,7 +26,6 @@ public partial class DataManager //Inventory
         }
 
     }
-
     public void EquipItem(BaseItem item)
     {
         switch (item.Type)
@@ -46,10 +43,38 @@ public partial class DataManager //Inventory
                 break;
         }
     }
+    
+    delegate void OnEquipItem(BaseItem item);
+    OnEquipItem equipItem;
+
+    void InventoryInit()
+    {
+
+    }
 
     float GetItemValue(ClientEnum.State state,ClientEnum.ChangeType type)
     {
+        if (type == ClientEnum.ChangeType.Sum)
+        {
+            return 0;
+        }
+
         float value = 0;
+
+        if (equipHelmat.ID != "")
+        {
+            value += equipHelmat.GetStateValue(state);
+        }
+
+        if (equipArmor.ID != "")
+        {
+            value += equipArmor.GetStateValue(state);
+        }
+
+        if (equipWeapon.ID != "")
+        {
+            value += equipWeapon.GetStateValue(state);
+        }
 
         return value;
     }

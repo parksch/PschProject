@@ -20,11 +20,12 @@ public partial class DataManager : Singleton<DataManager>
     {
         StateInit();
         InfoInit();
+        InventoryInit();
     }
 
     public float GetStateData(ClientEnum.State state,ClientEnum.ChangeType changeType)
     {
-        float value = 0;
+        float value = changeType == ClientEnum.ChangeType.Product ? 1 : 0;
         value += GetUpgradeValue(state, changeType);
         value += GetItemValue(state, changeType);
         return value;

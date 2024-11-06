@@ -45,6 +45,8 @@ MonoBehaviour:
       desc: "\uCCB4\uB825"
     - name: Attack
       desc: "\uACF5\uACA9\uB825"
+    - name: Defense
+      desc: "\uBC29\uC5B4\uB825"
     - name: HpRegen
       desc: "\uCCB4\uB825\uC7AC\uC0DD"
     - name: DrainLife

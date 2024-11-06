@@ -3452,6 +3452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef8f14d4f2770a47b342547dcf27337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  rare: {r: 0, g: 0.7, b: 0, a: 1}
+  superRare: {r: 0.4, g: 0.4, b: 1, a: 1}
+  ultraRare: {r: 0.7294118, g: 0.33333334, b: 0.827451, a: 1}
   spriteAtlasPath: SpriteAtlas
 --- !u!1 &996621993
 GameObject:
@@ -5765,7 +5769,7 @@ MonoBehaviour:
   language: 0
   deviceNum: 
   goods:
-    gold: 0
+    gold: 10000
     gem: 0
     scrap: 0
   info:
@@ -5775,907 +5779,1246 @@ MonoBehaviour:
     currentExp: 0
     drawLimit: []
     drawCount: []
+  equipHelmat:
+    id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  equipWeapon:
+    id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  equipArmor:
+    id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
   inventoryDatas:
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   - id: 
     index: 
+    itemName: 
     lv: 0
+    reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
       value: 0
     options: []
+    sprite: {fileID: 0}
   playerDefaultState: {fileID: 1858542574}
 --- !u!4 &1858542573
 Transform:
@@ -6711,7 +7054,7 @@ MonoBehaviour:
   attackSpeed: 2
   moveSpeed: 4
   hpRegen: 20
-  hpRegenTimer: 2
+  hpRegenTimer: 1.96
 --- !u!1 &1898427684
 GameObject:
   m_ObjectHideFlags: 0

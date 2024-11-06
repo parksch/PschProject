@@ -21,7 +21,7 @@ MonoBehaviour:
       sprite: 1
       prefab: 
       local: LeatherHelmet
-      mainState: 4
+      mainState: 3
     mainStateAddValue: 1.1
   - randomTarget: 0400000003000000
     target: 2
@@ -31,7 +31,7 @@ MonoBehaviour:
       sprite: 1
       prefab: 
       local: ClothArmor
-      mainState: 0
+      mainState: 1
     mainStateAddValue: 1.2
   - randomTarget: 0100000005000000
     target: 3
@@ -41,5 +41,5 @@ MonoBehaviour:
       sprite: 1
       prefab: 
       local: WoodAxe
-      mainState: 1
+      mainState: 2
     mainStateAddValue: 1.3

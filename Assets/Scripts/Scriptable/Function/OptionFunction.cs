@@ -11,9 +11,9 @@ namespace JsonClass
             [SerializeField] List<Option> datas = new List<Option>();
         }
 
-        public List<Datas.Pair<ClientEnum.State, float>> GetRandomOption(List<ClientEnum.State> randStates, ClientEnum.Grade target)
+        public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade,float value)>> GetRandomOption(List<ClientEnum.State> randStates, ClientEnum.Grade target)
         {
-            List<Datas.Pair<ClientEnum.State, float>> option = new List<Datas.Pair<ClientEnum.State, float>>();
+            List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float value)>> option = new List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float value)>>();
             OptionProbability probability = ScriptableManager.Instance.Get<OptionProbabilityScriptable>(ScriptableType.OptionProbability).GetOptionProbability(target);
 
             int rand = Random.Range(0, probability.MaxProbabilityCount());
@@ -42,7 +42,7 @@ namespace JsonClass
                         ClientEnum.Grade grade = probability.randomGrade[i].Grade();
                         ClientEnum.State state = randStates[Random.Range(0, randStates.Count)];
 
-                        Datas.Pair<ClientEnum.State, float> pair = new Datas.Pair<ClientEnum.State, float>(state, GetData(state).Value(grade));
+                        Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade, float)> pair = new Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float)>(state,(grade, GetData(state).Value(grade)));
                         option.Add(pair);
                         break;
                     }

@@ -6,11 +6,11 @@ using JsonClass;
 [System.Serializable]
 public class BaseItem 
 {
-    [SerializeField] protected string id;
-    [SerializeField] protected string index;
-    [SerializeField] protected string itemName;
-    [SerializeField] protected int lv;
-    [SerializeField] protected int reinforce;
+    [SerializeField] protected string id = "";
+    [SerializeField] protected string index = "";
+    [SerializeField] protected string itemName = "";
+    [SerializeField] protected int lv = 0;
+    [SerializeField] protected int reinforce = 0;
     [SerializeField] protected ClientEnum.Grade grade;
     [SerializeField] protected ClientEnum.Item type;
     [SerializeField] protected Datas.Pair<ClientEnum.State, float> mainState;

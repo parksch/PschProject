@@ -16,6 +16,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
     [SerializeField, ReadOnly] RewardPanel rewardPanel;
+    [SerializeField, ReadOnly] List<GameObject> mainTop = new List<GameObject>();
+    [SerializeField] List<GameObject> topMenu = new List<GameObject>();
     [SerializeField] List<BasePanel> panels;
 
     Stack<BasePanel> panelStack = new Stack<BasePanel>();
@@ -23,6 +25,13 @@ public class UIManager : Singleton<UIManager>
     public delegate void ChangeHP(float ratio);
     public ChangeHP OnChangeHP;
 
+    public void OpenTop(List<GameObject> target)
+    {
+        for (int i = 0; i < target.Count; i++)
+        {
+            target[i].SetActive(true);
+        }
+    }
 
     protected override void Awake()
     {
@@ -60,6 +69,13 @@ public class UIManager : Singleton<UIManager>
         DataManager.Instance.OnChangeGem += (value) => { UpdatePanel(); };
         DataManager.Instance.OnChangeExp += userInfo.SetExp;
         DataManager.Instance.OnChangeExp += (value) => { UpdatePanel(); };
+
+        for (int i = 0; i < topMenu.Count; i++)
+        {
+            topMenu[i].SetActive(false);
+        }
+
+        OpenTop(mainTop);
     }
 
     public void SetGold(long gold)
@@ -89,6 +105,11 @@ public class UIManager : Singleton<UIManager>
 
     public void OpenPaenl(BasePanel paenl)
     {
+        for (int i = 0; i < topMenu.Count; i++)
+        {
+            topMenu[i].SetActive(false);
+        }
+
         if (currentPanel != null)
         {
             ClosePaenl();
@@ -100,6 +121,10 @@ public class UIManager : Singleton<UIManager>
         {
             currentPanel.Open();
             currentPanel.gameObject.SetActive(true);
+        }
+        else if (currentPanel == null)
+        {
+            OpenTop(mainTop);
         }
     }
 
@@ -127,6 +152,15 @@ public class UIManager : Singleton<UIManager>
         if (panels.Count > 0)
         {
             OpenPaenl(panelStack.Pop());
+        }
+        else
+        {
+            for (int i = 0; i < topMenu.Count; i++)
+            {
+                topMenu[i].SetActive(false);
+            }
+
+            OpenTop(mainTop);
         }
     }
 

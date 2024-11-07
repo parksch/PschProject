@@ -17,6 +17,7 @@ public class BaseItem
     [SerializeField] protected List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float num)>> options;
     [SerializeField] protected Sprite sprite;
 
+    public void AddReinforce() => reinforce++;
     public Sprite GetSprite => sprite;
     public int Level => lv;
     public int Reinforce => reinforce;

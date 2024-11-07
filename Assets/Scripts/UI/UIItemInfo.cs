@@ -20,7 +20,7 @@ public class UIItemInfo : MonoBehaviour
     {
         target = item;
         icon.sprite = target.GetSprite;
-        itemName.text = $"<color={ResourcesManager.Instance.GradeColor(target.Grade)}> {target.Name}</color>";
+        itemName.text = $"<color={ResourcesManager.Instance.GradeColor(target.Grade)}>{target.Reinforce}+ {target.Name}</color>";
         string state = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(target.MainState.key.ToString());
         mainState.text = $"{state} : {target.MainState.value}%";
         List<Pair<ClientEnum.State, (ClientEnum.Grade grade, float num)>> options = target.Options;
@@ -32,7 +32,7 @@ public class UIItemInfo : MonoBehaviour
             for (int i = 0; i < options.Count; i++)
             {
                 state = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(options[i].key.ToString());
-                option.text += $"<color={ResourcesManager.Instance.GradeColor(options[i].value.grade)}>{state} : {options[i].value.num}</color> \n";
+                option.text += $"<color={ResourcesManager.Instance.GradeColor(options[i].value.grade)}>{state} : {options[i].value.num}%</color> \n";
             }
         }
         else
@@ -48,6 +48,7 @@ public class UIItemInfo : MonoBehaviour
 
     public void OnClickReinforce()
     {
-
+        target.AddReinforce();
+        SetItem(target);
     }
 }

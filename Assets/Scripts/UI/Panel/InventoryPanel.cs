@@ -25,6 +25,7 @@ public class InventoryPanel : BasePanel
 
     public override void Open()
     {
+        UIManager.Instance.OpenTop(openMenu);
         toggleGroup.ResetToggle();
         UpdatePanel();
     }

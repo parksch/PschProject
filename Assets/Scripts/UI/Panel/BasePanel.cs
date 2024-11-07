@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class BasePanel : MonoBehaviour
 {
+    [SerializeField] protected List<GameObject> openMenu = new List<GameObject>();
+
     public abstract void OnUpdate();
     public abstract void FirstLoad();
 

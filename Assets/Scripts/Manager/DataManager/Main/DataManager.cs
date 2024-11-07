@@ -26,8 +26,9 @@ public partial class DataManager : Singleton<DataManager>
     public float GetStateData(ClientEnum.State state,ClientEnum.ChangeType changeType)
     {
         float value = changeType == ClientEnum.ChangeType.Product ? 1 : 0;
-        value += GetUpgradeValue(state, changeType);
-        value += GetItemValue(state, changeType);
-        return value;
+        float getValue = 0;
+        getValue += GetUpgradeValue(state, changeType);
+        getValue += GetItemValue(state, changeType);
+        return value + (changeType == ClientEnum.ChangeType.Product ? getValue * 0.01f : getValue );
     }
 }

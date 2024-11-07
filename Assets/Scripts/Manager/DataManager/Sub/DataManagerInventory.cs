@@ -4,6 +4,7 @@ using UnityEngine;
 
 public partial class DataManager //Inventory
 {
+    [SerializeField] int maxInventoryCount = 100;
     [SerializeField, ReadOnly] BaseItem equipHelmet;
     [SerializeField, ReadOnly] BaseItem equipWeapon;
     [SerializeField, ReadOnly] BaseItem equipArmor;
@@ -29,7 +30,8 @@ public partial class DataManager //Inventory
     public void EquipItem(BaseItem item)
     {
         BaseItem target = item;
-        inventoryDatas[inventoryDatas.FindIndex(x => x.ID == target.ID)] = new BaseItem();
+        inventoryDatas.Remove(item);
+        inventoryDatas.Add(new BaseItem());
         equipItem(target);
     }
     

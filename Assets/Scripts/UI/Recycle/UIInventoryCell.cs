@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UI;
@@ -20,7 +21,9 @@ public class UIInventoryCell : UIRecycleViewCell<InventoryData>
         for (int i = 0; i < itemSlots.Count; i++)
         {
             itemSlots[i].SetItem(itemData.datas[i]);
+            itemSlots[i].UpdateItem();
         }
     }
+
 
 }

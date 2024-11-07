@@ -43,8 +43,7 @@ public class UIItemInfo : MonoBehaviour
 
     public void OnClickEquip()
     {
-
-        gameObject.SetActive(false);
+        DataManager.Instance.EquipItem(target);
     }
 
     public void OnClickReinforce()

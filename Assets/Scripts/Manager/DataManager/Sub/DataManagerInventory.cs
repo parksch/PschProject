@@ -4,13 +4,13 @@ using UnityEngine;
 
 public partial class DataManager //Inventory
 {
-    [SerializeField] BaseItem equipHelmat;
-    [SerializeField] BaseItem equipWeapon;
-    [SerializeField] BaseItem equipArmor;
+    [SerializeField, ReadOnly] BaseItem equipHelmet;
+    [SerializeField, ReadOnly] BaseItem equipWeapon;
+    [SerializeField, ReadOnly] BaseItem equipArmor;
 
     [SerializeField, ReadOnly] List<BaseItem> inventoryDatas = new List<BaseItem>();
 
-    public BaseItem Helmat => equipHelmat;
+    public BaseItem Helmet => equipHelmet;
     public BaseItem Weapon => equipWeapon;
     public BaseItem Armor => equipArmor;
     public List<BaseItem> InventoryDatas => inventoryDatas;
@@ -28,31 +28,9 @@ public partial class DataManager //Inventory
     }
     public void EquipItem(BaseItem item)
     {
-        switch (item.Type)
-        {
-            case ClientEnum.Item.Helmet:
-                if (equipHelmat.ID != "")
-                {
-                    equipHelmat.Disassembly();
-                }
-                break;
-            case ClientEnum.Item.Armor:
-                if (equipArmor.ID != "")
-                {
-                    equipArmor.Disassembly();
-                }
-                break;
-            case ClientEnum.Item.Weapon:
-                if (equipWeapon.ID != "")
-                {
-                    equipWeapon.Disassembly();
-                }
-                break;
-            default:
-                break;
-        }
-
-        equipItem(item);
+        BaseItem target = item;
+        inventoryDatas[inventoryDatas.FindIndex(x => x.ID == target.ID)] = new BaseItem();
+        equipItem(target);
     }
     
     delegate void OnEquipItem(BaseItem item);
@@ -65,12 +43,24 @@ public partial class DataManager //Inventory
             switch (item.Type)
             {
                 case ClientEnum.Item.Helmet:
-                    equipHelmat = item;
+                    if (equipHelmet.ID != "")
+                    {
+                        equipHelmet.Disassembly();
+                    }
+                    equipHelmet = item;
                     break;
                 case ClientEnum.Item.Armor:
+                    if (equipArmor.ID != "")
+                    {
+                        equipArmor.Disassembly();
+                    }
                     equipArmor = item;
                     break;
                 case ClientEnum.Item.Weapon:
+                    if (equipWeapon.ID != "")
+                    {
+                        equipWeapon.Disassembly();
+                    }
                     equipWeapon = item;
                     break;
                 default:
@@ -90,9 +80,9 @@ public partial class DataManager //Inventory
 
         float value = 0;
 
-        if (equipHelmat.ID != "")
+        if (equipHelmet.ID != "")
         {
-            value += equipHelmat.GetStateValue(state);
+            value += equipHelmet.GetStateValue(state);
         }
 
         if (equipArmor.ID != "")

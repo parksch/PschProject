@@ -59,6 +59,10 @@ MonoBehaviour:
       desc: "\uC774\uB3D9\uC18D\uB3C4"
     - name: HpRegenTimer
       desc: "\uCCB4\uB825\uC7AC\uC0DD\uC8FC\uAE30"
+    - name: Equip
+      desc: "\uC7A5\uCC29"
+    - name: Reinforce
+      desc: "\uAC15\uD654"
   - language: 1
     textkeys:
     - name: 

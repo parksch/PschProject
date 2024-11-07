@@ -19,6 +19,7 @@ public class BaseItem
 
     public Sprite GetSprite => sprite;
     public int Level => lv;
+    public int Reinforce => reinforce;
     public string Name => itemName;
     public string ID => id;
     public ClientEnum.Grade Grade => grade;

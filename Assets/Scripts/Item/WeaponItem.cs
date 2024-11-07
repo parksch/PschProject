@@ -7,6 +7,6 @@ public class WeaponItem : BaseItem
 {
     public WeaponItem()
     {
-        type = ClientEnum.Item.Armor;
+        type = ClientEnum.Item.Weapon;
     }
 }

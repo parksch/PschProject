@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class InventoryPanel : BasePanel
 {
+    [SerializeField, ReadOnly] ItemSlot helmet;
+    [SerializeField, ReadOnly] ItemSlot armor;
+    [SerializeField, ReadOnly] ItemSlot weapon;
+
     [SerializeField, ReadOnly] UIInventorySelect select;
     [SerializeField, ReadOnly] UIInventoryScroll inventoryScroll;
     [SerializeField, ReadOnly] UIToggleGroup toggleGroup;
@@ -11,18 +15,18 @@ public class InventoryPanel : BasePanel
 
     public override void OnUpdate()
     {
+
     }
 
     public override void FirstLoad()
     {
         target = ClientEnum.Item.None;
-        inventoryScroll.LoadData(target);
     }
 
     public override void Open()
     {
         toggleGroup.ResetToggle();
-        inventoryScroll.LoadData(target);
+        UpdatePanel();
     }
 
     public override void Close()
@@ -38,5 +42,16 @@ public class InventoryPanel : BasePanel
     public void OpenItemSelect(BaseItem item)
     {
         select.OpenSlect(item);
+    }
+
+    public void UpdatePanel()
+    {
+        helmet.SetItem(DataManager.Instance.Helmet);
+        helmet.UpdateItem();
+        armor.SetItem(DataManager.Instance.Armor);
+        armor.UpdateItem();
+        weapon.SetItem(DataManager.Instance.Weapon);
+        weapon.UpdateItem();
+        inventoryScroll.LoadData(target);
     }
 }

@@ -20,7 +20,7 @@ public partial class DataManager //Info
 
     public void AddExp(long value)
     {
-        info.CurrentExp += value;
+        info.CurrentExp = (info.CurrentExp + value);
 
         if (info.CurrentExp > GetLevelExp(ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp").maxLevel))
         {
@@ -60,7 +60,7 @@ public partial class DataManager //Info
         {
             set
             {
-                currentExp += value;
+                currentExp = value;
             }
             get
             {

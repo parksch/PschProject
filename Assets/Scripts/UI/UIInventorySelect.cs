@@ -10,17 +10,35 @@ public class UIInventorySelect : MonoBehaviour
 
     public void OpenSlect(BaseItem item)
     {
+        if (CheckInventory(item))
+        {
+            select.gameObject.SetActive(false);
+        }
+        else
+        {
+            select.SetItem(item);
+            select.gameObject.SetActive(true);
+        }
+
+        gameObject.SetActive(true);
+    }
+
+    bool CheckInventory(BaseItem item)
+    {
+        bool result = false;
+
         switch (item.Type)
         {
             case ClientEnum.Item.Helmet:
-                if (DataManager.Instance.Helmat.ID == "")
+                if (DataManager.Instance.Helmet.ID == "")
                 {
                     prev.gameObject.SetActive(false);
                 }
                 else
                 {
-                    prev.SetItem(DataManager.Instance.Helmat);
+                    prev.SetItem(DataManager.Instance.Helmet);
                     prev.gameObject.SetActive(true);
+                    result = item.ID == DataManager.Instance.Helmet.ID;
                 }
                 break;
             case ClientEnum.Item.Armor:
@@ -32,6 +50,7 @@ public class UIInventorySelect : MonoBehaviour
                 {
                     prev.SetItem(DataManager.Instance.Armor);
                     prev.gameObject.SetActive(true);
+                    result = item.ID == DataManager.Instance.Armor.ID;
                 }
                 break;
             case ClientEnum.Item.Weapon:
@@ -43,14 +62,14 @@ public class UIInventorySelect : MonoBehaviour
                 {
                     prev.SetItem(DataManager.Instance.Weapon);
                     prev.gameObject.SetActive(true);
+                    result = item.ID == DataManager.Instance.Weapon.ID;
                 }
                 break;
             default:
                 break;
         }
 
-        select.SetItem(item);
-        gameObject.SetActive(true);
+        return result;
     }
 
     public void CloseSelect()

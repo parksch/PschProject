@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ItemDataScriptable
   m_EditorClassIdentifier: 
   itemData:
-  - randomTarget: 0000000003000000
+  - randomTarget: 0100000003000000
     target: 1
     items:
     - id: LeatherHelmet
@@ -33,7 +33,7 @@ MonoBehaviour:
       local: ClothArmor
       mainState: 1
     mainStateAddValue: 1.2
-  - randomTarget: 0100000005000000
+  - randomTarget: 0200000005000000
     target: 3
     items:
     - id: WoodAxe

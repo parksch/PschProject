@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0010986328}
+  m_AnchoredPosition: {x: 0, y: -0.00036621094}
   m_SizeDelta: {x: 0, y: 140}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1001 &10599151
@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 300904429}
   - component: {fileID: 300904428}
   m_Layer: 5
-  m_Name: Lv (2)
+  m_Name: Lv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5128,8 +5128,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 915569114}
-  - {fileID: 866111290}
   - {fileID: 1523199994}
+  - {fileID: 866111290}
   m_Father: {fileID: 252377496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -5240,7 +5240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 327048334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835a6528fc05afa40b988c7e8690bd80, type: 3}
+  m_Script: {fileID: 11500000, guid: a168de44e638cf749b18617177302b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 915569115}
@@ -5259,6 +5259,7 @@ MonoBehaviour:
       value: 0
     options: []
     sprite: {fileID: 0}
+  itemType: 3
 --- !u!1001 &332902570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7817,7 +7818,7 @@ GameObject:
   - component: {fileID: 496924220}
   - component: {fileID: 496924219}
   m_Layer: 5
-  m_Name: Reinforce (1)
+  m_Name: Reinforce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8678,8 +8679,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 388413509}
-  - {fileID: 712594198}
   - {fileID: 496924218}
+  - {fileID: 712594198}
   m_Father: {fileID: 252377496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -8790,7 +8791,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 542295904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835a6528fc05afa40b988c7e8690bd80, type: 3}
+  m_Script: {fileID: 11500000, guid: a168de44e638cf749b18617177302b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 388413510}
@@ -8809,6 +8810,7 @@ MonoBehaviour:
       value: 0
     options: []
     sprite: {fileID: 0}
+  itemType: 1
 --- !u!1 &542604070
 GameObject:
   m_ObjectHideFlags: 0
@@ -10788,9 +10790,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openMenu:
   - {fileID: 2034659154}
-  helmet: {fileID: 542295910}
-  armor: {fileID: 1874422988}
-  weapon: {fileID: 327048340}
+  slots:
+  - {fileID: 542295910}
+  - {fileID: 1874422988}
+  - {fileID: 327048340}
   select: {fileID: 1554704355}
   inventoryScroll: {fileID: 782996212}
   toggleGroup: {fileID: 1811335558}
@@ -12299,7 +12302,7 @@ GameObject:
   - component: {fileID: 712594200}
   - component: {fileID: 712594199}
   m_Layer: 5
-  m_Name: Lv (1)
+  m_Name: Lv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14514,7 +14517,7 @@ GameObject:
   - component: {fileID: 866111292}
   - component: {fileID: 866111291}
   m_Layer: 5
-  m_Name: Lv (3)
+  m_Name: Lv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22492,7 +22495,7 @@ GameObject:
   - component: {fileID: 1523199996}
   - component: {fileID: 1523199995}
   m_Layer: 5
-  m_Name: Reinforce (3)
+  m_Name: Reinforce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23026,17 +23029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553ebfb360a8164da15a6dda65562ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldText: {fileID: 665172694}
-  gemText: {fileID: 1159377485}
-  scrapText: {fileID: 856265789}
-  userName: {fileID: 1104299518}
-  level: {fileID: 1099802773}
-  hpSlider: {fileID: 6309205129266351211}
-  expSlider: {fileID: 6309205129258901470}
   currentPanel: {fileID: 0}
-  bossHP: {fileID: 1850112044}
-  userInfo: {fileID: 6309205130075196276}
-  rewardPanel: {fileID: 1883939816}
   mainTop:
   - {fileID: 1139234133}
   - {fileID: 555164844}
@@ -23051,6 +23044,17 @@ MonoBehaviour:
   - {fileID: 1392897551}
   - {fileID: 1317659990}
   - {fileID: 891487645}
+  rewardPanel: {fileID: 1883939816}
+  goldText: {fileID: 665172694}
+  gemText: {fileID: 1159377485}
+  scrapText: {fileID: 856265789}
+  reinforceText: {fileID: 1960008188}
+  userName: {fileID: 1104299518}
+  level: {fileID: 1099802773}
+  hpSlider: {fileID: 6309205129266351211}
+  expSlider: {fileID: 6309205129258901470}
+  bossHP: {fileID: 1850112044}
+  userInfo: {fileID: 6309205130075196276}
 --- !u!4 &1558829404
 Transform:
   m_ObjectHideFlags: 0
@@ -24721,7 +24725,7 @@ GameObject:
   - component: {fileID: 1717391558}
   - component: {fileID: 1717391557}
   m_Layer: 5
-  m_Name: Reinforce (2)
+  m_Name: Reinforce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26282,8 +26286,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1760051192}
-  - {fileID: 300904427}
   - {fileID: 1717391556}
+  - {fileID: 300904427}
   m_Father: {fileID: 252377496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -26394,7 +26398,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1874422982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835a6528fc05afa40b988c7e8690bd80, type: 3}
+  m_Script: {fileID: 11500000, guid: a168de44e638cf749b18617177302b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1760051193}
@@ -26413,6 +26417,7 @@ MonoBehaviour:
       value: 0
     options: []
     sprite: {fileID: 0}
+  itemType: 2
 --- !u!1 &1874895242
 GameObject:
   m_ObjectHideFlags: 0

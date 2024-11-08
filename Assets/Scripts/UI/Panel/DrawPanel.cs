@@ -81,6 +81,7 @@ public class DrawPanel : BasePanel
 
     public override void Open()
     {
+        base.Open();
         SetSlot(slots[0]);
     }
 

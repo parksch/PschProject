@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngineInternal;
 
 public partial class UIManager : Singleton<UIManager>
 {
@@ -25,6 +26,14 @@ public partial class UIManager : Singleton<UIManager>
         for (int i = 0; i < target.Count; i++)
         {
             target[i].SetActive(true);
+        }
+    }
+
+    public void ResetTop()
+    {
+        for (int i = 0; i < topMenu.Count; i++)
+        {
+            topMenu[i].SetActive(false);
         }
     }
 
@@ -65,11 +74,6 @@ public partial class UIManager : Singleton<UIManager>
 
     public void OpenPaenl(BasePanel paenl)
     {
-        for (int i = 0; i < topMenu.Count; i++)
-        {
-            topMenu[i].SetActive(false);
-        }
-
         if (currentPanel != null)
         {
             ClosePaenl();
@@ -79,12 +83,9 @@ public partial class UIManager : Singleton<UIManager>
 
         if (currentPanel != null)
         {
+            ResetTop();
             currentPanel.Open();
             currentPanel.gameObject.SetActive(true);
-        }
-        else if (currentPanel == null)
-        {
-            OpenTop(mainTop);
         }
     }
 
@@ -93,6 +94,9 @@ public partial class UIManager : Singleton<UIManager>
         currentPanel.Close();
         currentPanel.gameObject.SetActive(false);
         currentPanel = null;
+
+        ResetTop();
+        OpenTop(mainTop);
     }
 
     public void AddPanel(BasePanel panel)
@@ -112,15 +116,6 @@ public partial class UIManager : Singleton<UIManager>
         if (panels.Count > 0)
         {
             OpenPaenl(panelStack.Pop());
-        }
-        else
-        {
-            for (int i = 0; i < topMenu.Count; i++)
-            {
-                topMenu[i].SetActive(false);
-            }
-
-            OpenTop(mainTop);
         }
     }
 

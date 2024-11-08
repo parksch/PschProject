@@ -30,10 +30,11 @@ namespace ClientEnum
 
     public enum Item
     {
-        None,
+        None = 0,
         Helmet,
         Armor,
         Weapon,
+        Max,
     }
 
     public enum State

@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BasePanel : MonoBehaviour
+public class BasePanel : MonoBehaviour
 {
     [SerializeField] protected List<GameObject> openMenu = new List<GameObject>();
 
-    public abstract void OnUpdate();
-    public abstract void FirstLoad();
+    public virtual void OnUpdate() { }
+    public virtual void FirstLoad() { }
 
-    public abstract void Open();
+    public virtual void Open() 
+    {
+        UIManager.Instance.OpenTop(openMenu);
+    }
 
-    public abstract void Close();
-
+    public virtual void Close() { }
 }

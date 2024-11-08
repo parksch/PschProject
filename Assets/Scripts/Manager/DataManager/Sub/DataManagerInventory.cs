@@ -15,6 +15,20 @@ public partial class DataManager //Inventory
     public BaseItem Weapon => equipWeapon;
     public BaseItem Armor => equipArmor;
     public List<BaseItem> InventoryDatas => inventoryDatas;
+    public BaseItem GetEquipItem(ClientEnum.Item item)
+    {
+        switch (item)
+        {
+            case ClientEnum.Item.Helmet:
+                return Helmet;
+            case ClientEnum.Item.Armor:
+                return Armor;
+            case ClientEnum.Item.Weapon:
+                return Weapon;
+            default:
+                return null;
+        }
+    }
     public void AddItem(BaseItem item)
     {
         for (int i = 0; i < inventoryDatas.Count; i++)
@@ -35,8 +49,8 @@ public partial class DataManager //Inventory
         equipItem(target);
     }
     
-    delegate void OnEquipItem(BaseItem item);
-    OnEquipItem equipItem;
+    public delegate void OnEquipItem(BaseItem item);
+    public OnEquipItem equipItem;
 
     void InventoryInit()
     {
@@ -99,4 +113,5 @@ public partial class DataManager //Inventory
 
         return value;
     }
+
 }

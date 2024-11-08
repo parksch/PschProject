@@ -45,6 +45,13 @@ public partial class  DataManager //Goods
         OnChangeGem(goods.gem);
     }
 
+    public void AddReinforce(long value)
+    {
+        goods.reinforceStone += value;
+
+        OnChangeReinforce(goods.gem);
+    }
+
     public bool CheckGoods(ClientEnum.Goods type, long need)
     {
         switch (type)

@@ -40,7 +40,7 @@ public class StatePanel : BasePanel
 
     public override void Open()
     {
-        UIManager.Instance.OpenTop(openMenu);
+        base.Open();
 
         for (int i = 0; i < stateUpgradeSlots.Count; i++)
         {

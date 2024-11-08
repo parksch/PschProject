@@ -15,7 +15,7 @@ public class SkillPanel : BasePanel
 
     public override void Open()
     {
-
+        base.Open();
     }
 
     public override void Close()

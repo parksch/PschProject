@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class InventoryPanel : BasePanel
 {
-    [SerializeField, ReadOnly] ItemSlot helmet;
-    [SerializeField, ReadOnly] ItemSlot armor;
-    [SerializeField, ReadOnly] ItemSlot weapon;
-
+    [SerializeField] List<UIEquipmentSlot> slots = new List<UIEquipmentSlot>();
     [SerializeField, ReadOnly] UIInventorySelect select;
     [SerializeField, ReadOnly] UIInventoryScroll inventoryScroll;
     [SerializeField, ReadOnly] UIToggleGroup toggleGroup;
@@ -21,11 +18,12 @@ public class InventoryPanel : BasePanel
     public override void FirstLoad()
     {
         target = ClientEnum.Item.None;
+
     }
 
     public override void Open()
     {
-        UIManager.Instance.OpenTop(openMenu);
+        base.Open();
         toggleGroup.ResetToggle();
         UpdatePanel();
     }
@@ -47,12 +45,12 @@ public class InventoryPanel : BasePanel
 
     public void UpdatePanel()
     {
-        helmet.SetItem(DataManager.Instance.Helmet);
-        helmet.UpdateItem();
-        armor.SetItem(DataManager.Instance.Armor);
-        armor.UpdateItem();
-        weapon.SetItem(DataManager.Instance.Weapon);
-        weapon.UpdateItem();
+        for (int i = 0; i < slots.Count; i++)
+        {
+            slots[i].SetItem(DataManager.Instance.GetEquipItem(slots[i].ItemType));
+            slots[i].UpdateItem();
+        }
+
         inventoryScroll.LoadData(target);
     }
 }

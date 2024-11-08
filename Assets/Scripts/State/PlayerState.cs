@@ -26,4 +26,3 @@ public class PlayerState : BaseCharacterState
         hpRegenTimer = ((playerState.HpRegenTimer + dm.GetStateData(ClientEnum.State.HpRegenTimer, ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.HpRegenTimer, ClientEnum.ChangeType.Product));
     }
 }
-

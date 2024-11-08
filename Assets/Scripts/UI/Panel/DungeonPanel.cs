@@ -20,6 +20,6 @@ public class DungeonPanel : BasePanel
 
     public override void Open()
     {
-
+        base.Open();
     }
 }

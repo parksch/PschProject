@@ -31,11 +31,17 @@ public partial class UIManager //Top
         scrapText.SetText(scrap);
     }
 
+    public void SetReinforce(long scrap)
+    {
+        reinforceText.SetText(scrap);
+    }
+
     void InitTopUI()
     {
         SetGold(DataManager.Instance.GetGoods.gold);
         SetGem(DataManager.Instance.GetGoods.gem);
         SetScrap(DataManager.Instance.GetGoods.scrap);
+        SetReinforce(DataManager.Instance.GetGoods.reinforceStone);
 
         userInfo.Init();
 
@@ -46,7 +52,11 @@ public partial class UIManager //Top
         DataManager.Instance.OnChangeScrap += SetScrap;
         DataManager.Instance.OnChangeScrap += (value) => { UpdatePanel(); };
         DataManager.Instance.OnChangeGem += SetGem;
+        DataManager.Instance.OnChangeReinforce += SetReinforce;
+        DataManager.Instance.OnChangeReinforce += (value) => { UpdatePanel(); };
         DataManager.Instance.OnChangeGem += (value) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeExp += userInfo.SetExp;
+        DataManager.Instance.OnChangeExp += (value) => { UpdatePanel(); };
         DataManager.Instance.OnChangeExp += userInfo.SetExp;
         DataManager.Instance.OnChangeExp += (value) => { UpdatePanel(); };
     }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AiAgent : MonoBehaviour
 {
-    [SerializeField,ReadOnly] AiStateID initializeState;
-    [SerializeField,ReadOnly] AiStateMachine stateMachine;
+    [SerializeField, ReadOnly] AiStateMachine stateMachine;
+    [SerializeField] AiStateID initializeState;
     [SerializeField] AiInteraction interaction;
     [SerializeField] AiAnimationEvent animationEvent;
 

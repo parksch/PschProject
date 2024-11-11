@@ -5,11 +5,11 @@ using ClientEnum;
 
 public class BaseCharacter : MonoBehaviour
 {
-    [SerializeField] protected CharacterType characterType;
+    [SerializeField, ReadOnly] protected BaseCharacter target;
     [SerializeField] protected AiAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected BaseCharacterState state;
-    [SerializeField, ReadOnly] protected BaseCharacter target;
+    [SerializeField] protected CharacterType characterType;
     [SerializeField] protected long curHp;
 
     public float GetHPRatio => ((float)curHp / HP());

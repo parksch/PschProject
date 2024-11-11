@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BasePanel : MonoBehaviour
 {
+    [SerializeField] bool isTranslucent;
     [SerializeField] protected List<GameObject> openMenu = new List<GameObject>();
 
+    public List<GameObject> OpenMenu => openMenu;
+    public bool IsTranslucent => isTranslucent;
     public virtual void OnUpdate() { }
     public virtual void FirstLoad() { }
 

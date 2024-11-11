@@ -7145,7 +7145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0024108887}
+  m_AnchoredPosition: {x: 0, y: -0.0021362305}
   m_SizeDelta: {x: 0, y: -337.14}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &441134345
@@ -7305,7 +7305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0024108887}
+  m_AnchoredPosition: {x: 0, y: -0.0021362305}
   m_SizeDelta: {x: 0, y: -337.14}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &464124218
@@ -10788,6 +10788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5441a06342ae83d4ab7448d3e46370c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTranslucent: 0
   openMenu:
   - {fileID: 2034659154}
   slots:
@@ -14798,6 +14799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5ac73b3a18de946b76da04b03a8f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTranslucent: 0
   openMenu:
   - {fileID: 1139234133}
   - {fileID: 555164844}
@@ -20258,6 +20260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0c9ef0b4d6f9d46ba28c89f08dedbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTranslucent: 0
   openMenu: []
 --- !u!4 &1318171606 stripped
 Transform:
@@ -20409,11 +20412,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da81bdcc70ffce54bbc0182f44fb17d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 0
+  target: {fileID: 0}
   agent: {fileID: 1339715211}
   animator: {fileID: 4723184707777382857}
   state: {fileID: 1339715214}
-  target: {fileID: 0}
+  characterType: 0
   curHp: 0
 --- !u!114 &1339715211
 MonoBehaviour:
@@ -20427,9 +20430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f441f842cf1b24d90423f2ecff898e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializeState: 0
   stateMachine:
     currentState: 0
+  initializeState: 0
   interaction: {fileID: 1339715213}
   animationEvent: {fileID: 4723184707777382859}
 --- !u!114 &1339715213
@@ -20979,6 +20982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be07c6f9b640c24bbbc224736cf3518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTranslucent: 0
   openMenu:
   - {fileID: 1139234133}
   - {fileID: 555164844}
@@ -23044,7 +23048,7 @@ MonoBehaviour:
   - {fileID: 1392897551}
   - {fileID: 1317659990}
   - {fileID: 891487645}
-  rewardPanel: {fileID: 1883939816}
+  - {fileID: 1883939816}
   goldText: {fileID: 665172694}
   gemText: {fileID: 1159377485}
   scrapText: {fileID: 856265789}
@@ -25985,6 +25989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979b301827f5d154a96493e6a1583d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTranslucent: 0
   openMenu: []
 --- !u!1 &1850112042
 GameObject:
@@ -26709,9 +26714,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1883939816}
-        m_TargetAssemblyTypeName: RewardPanel, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 1558829403}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BackPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26733,6 +26738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc6cc7220bf80646802f96da66f4f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTranslucent: 1
   openMenu: []
   content: {fileID: 2124867702}
   slotPrefab: {fileID: 1403583555}
@@ -29540,7 +29546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0011163724}
+  m_AnchoredPosition: {x: 0, y: 0.0003080507}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2124867703
@@ -32802,8 +32808,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4670522844913980675}
   - component: {fileID: 4723184707777382857}
-  - component: {fileID: 4723184707777382858}
   - component: {fileID: 4723184707777382859}
+  - component: {fileID: 4723184707777382858}
   m_Layer: 8
   m_Name: Chr_FantasyHero_Preset_88
   m_TagString: Untagged

@@ -13,9 +13,6 @@ public partial class UIManager : Singleton<UIManager>
 
     Stack<BasePanel> panelStack = new Stack<BasePanel>();
 
-    public delegate void ChangeHP(float ratio);
-    public ChangeHP OnChangeHP;
-
     protected override void Awake()
     {
 
@@ -43,6 +40,14 @@ public partial class UIManager : Singleton<UIManager>
         {
             currentPanel.OnUpdate();
         }
+
+        foreach (var item in panelStack)
+        {
+            if (item.gameObject.activeSelf)
+            {
+                item.OnUpdate();
+            }
+        }
     }   
 
     public void Init()
@@ -69,17 +74,25 @@ public partial class UIManager : Singleton<UIManager>
             return;
         }
 
+        while (panelStack.Count > 0)
+        {
+            panelStack.Pop().Close();
+        }
+
         OpenPaenl(menuButton.targetPanel);
     }
 
-    public void OpenPaenl(BasePanel paenl)
+    public void OpenPaenl(BasePanel panel)
     {
         if (currentPanel != null)
         {
-            ClosePaenl();
+            if (panel == null || !panel.IsTranslucent)
+            {
+                ClosePaenl();
+            }
         }
 
-        currentPanel = paenl;
+        currentPanel = panel;
 
         if (currentPanel != null)
         {
@@ -111,15 +124,26 @@ public partial class UIManager : Singleton<UIManager>
 
     public void BackPanel()
     {
+        bool isTranslucent = currentPanel.IsTranslucent;
+
         ClosePaenl();
 
         if (panels.Count > 0)
         {
-            OpenPaenl(panelStack.Pop());
+            if (isTranslucent)
+            {
+                currentPanel = panelStack.Pop();
+                ResetTop();
+                OpenTop(currentPanel.OpenMenu);
+            }
+            else
+            {
+                OpenPaenl(panelStack.Pop());
+            }
         }
     }
 
-    public T GetPanel<T>() where T : BasePanel
+    public T Get<T>() where T : BasePanel
     {
         return panels.Find(x => x.GetType() == typeof(T)) as T;
     }

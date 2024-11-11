@@ -38,7 +38,7 @@ public class ItemSlot : MonoBehaviour
     {
         if (item.ID != "")
         {
-            UIManager.Instance.GetPanel<InventoryPanel>().OpenItemSelect(item);
+            UIManager.Instance.Get<InventoryPanel>().OpenItemSelect(item);
         }
     }
 }

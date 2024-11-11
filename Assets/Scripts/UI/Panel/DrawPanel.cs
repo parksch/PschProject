@@ -167,6 +167,9 @@ public class DrawPanel : BasePanel
 
     public void GetItem(Shops shop, int num)
     {
+        RewardPanel reward = UIManager.Instance.Get<RewardPanel>();
+        reward.SetTopMenu(openMenu);
+
         for (int i = 0; i < num; i++)
         {
             ClientEnum.Item target = shop.Target();
@@ -182,11 +185,11 @@ public class DrawPanel : BasePanel
 
             BaseItem item = BaseItem.Create(target);
             item.Set(info,grade);
-            UIManager.Instance.AddReward(item);
+            reward.AddItem(item);
             DataManager.Instance.AddItem(item);
         }
 
-        UIManager.Instance.OpenRewardPanel();
+        UIManager.Instance.AddPanel(reward);
     }
 
     public void OnClickSlot(UIDrawSlot uIShopSlot)

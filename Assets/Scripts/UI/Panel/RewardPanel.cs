@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RewardPanel : BasePanel
@@ -8,6 +9,12 @@ public class RewardPanel : BasePanel
     [SerializeField] UIRewardSlot slotPrefab;
     [SerializeField] List<UIRewardSlot> slots = new List<UIRewardSlot>();
     [SerializeField] int count = 0;
+
+    public void SetTopMenu(List<GameObject> list)
+    {
+        openMenu.Clear();
+        openMenu = list.ToList();
+    }
 
     public override void OnUpdate()
     {
@@ -62,13 +69,11 @@ public class RewardPanel : BasePanel
         }
 
         count = 0;
-
-        gameObject.SetActive(false);
     }
 
     public override void Open()
     {
-        gameObject.SetActive(true);
+        base.Open();
     }
 
 }

@@ -8,13 +8,16 @@ public partial class UIManager //Top
     [SerializeField, ReadOnly] UIText goldText;
     [SerializeField, ReadOnly] UIText gemText;
     [SerializeField, ReadOnly] UIText scrapText;
-    [SerializeField] UIText reinforceText;
+    [SerializeField, ReadOnly] UIText reinforceText;
     [SerializeField, ReadOnly] Text userName;
     [SerializeField, ReadOnly] Text level;
     [SerializeField, ReadOnly] Slider hpSlider;
     [SerializeField, ReadOnly] Slider expSlider;
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
+
+    public delegate void ChangeHP(float ratio);
+    public ChangeHP OnChangeHP;
 
     public void SetGold(long gold)
     {

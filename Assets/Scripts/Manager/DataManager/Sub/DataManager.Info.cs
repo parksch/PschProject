@@ -68,7 +68,9 @@ public partial class DataManager //Info
             }
         }
         public int DrawLimit(string name) => drawLimit.Find(x => name == x.key).value;
+        public int DrawCount(string name) => drawCount.Find(x => name == x.key).value;
         public int AddDrawLimit(string name, int value) => drawLimit.Find(x => name == x.key).value += value;
+        public int AddDrawCount(string name, int value) => drawCount.Find(x => name == x.key).value += value;
         public void CreateDrawLimit(string name)
         {
             if (drawLimit.Find(x => name == x.key) == null)
@@ -76,8 +78,6 @@ public partial class DataManager //Info
                 drawLimit.Add(new Datas.Pair<string, int>(name, 0));
             }
         }
-        public int DrawCount(string name) => drawCount.Find(x => name == x.key).value;
-        public int AddDrawCount(string name, int value) => drawCount.Find(x => name == x.key).value += value;
         public void CreateDrawCount(string name)
         {
             if (drawCount.Find(x => name == x.key) == null)

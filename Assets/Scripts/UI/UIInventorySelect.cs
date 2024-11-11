@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIInventorySelect : MonoBehaviour
+public class UIInventorySelect : BasePanel
 {
     [SerializeField, ReadOnly] UIItemInfo prev;
     [SerializeField, ReadOnly] UIItemInfo select;
 
-    public void OpenSlect(BaseItem item)
+    public void SetSelect(BaseItem item)
     {
         if (CheckInventory(item))
         {
@@ -19,8 +19,6 @@ public class UIInventorySelect : MonoBehaviour
             select.SetItem(item);
             select.gameObject.SetActive(true);
         }
-
-        gameObject.SetActive(true);
     }
 
     bool CheckInventory(BaseItem item)
@@ -70,10 +68,5 @@ public class UIInventorySelect : MonoBehaviour
         }
 
         return result;
-    }
-
-    public void CloseSelect()
-    {
-        gameObject.SetActive(false);
     }
 }

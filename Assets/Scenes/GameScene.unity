@@ -7145,7 +7145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0021362305}
+  m_AnchoredPosition: {x: 0, y: -0.0018615723}
   m_SizeDelta: {x: 0, y: -337.14}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &441134345
@@ -7305,7 +7305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0021362305}
+  m_AnchoredPosition: {x: 0, y: -0.0018615723}
   m_SizeDelta: {x: 0, y: -337.14}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &464124218
@@ -9107,9 +9107,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1554704355}
-        m_TargetAssemblyTypeName: UIInventorySelect, Assembly-CSharp
-        m_MethodName: CloseSelect
+      - m_Target: {fileID: 1558829403}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BackPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10789,7 +10789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTranslucent: 0
-  openMenu:
+  activeTopUI:
   - {fileID: 2034659154}
   slots:
   - {fileID: 542295910}
@@ -14307,7 +14307,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1558829403}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ClosePaenl
+        m_MethodName: BackPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14800,7 +14800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTranslucent: 0
-  openMenu:
+  activeTopUI:
   - {fileID: 1139234133}
   - {fileID: 555164844}
   - {fileID: 1659821371}
@@ -20261,7 +20261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTranslucent: 0
-  openMenu: []
+  activeTopUI: []
 --- !u!4 &1318171606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4470116263711468, guid: ef940d2e33dd5054b97360e27d4f6697, type: 3}
@@ -20983,7 +20983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTranslucent: 0
-  openMenu:
+  activeTopUI:
   - {fileID: 1139234133}
   - {fileID: 555164844}
   stateUpgradeSlots: []
@@ -22940,6 +22940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56e09a8298d3de4eb7ff55202675167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTranslucent: 1
+  activeTopUI: []
   prev: {fileID: 215739462}
   select: {fileID: 991651100}
 --- !u!4 &1554756443 stripped
@@ -23033,6 +23035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553ebfb360a8164da15a6dda65562ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainScreen: {fileID: 838364317}
   currentPanel: {fileID: 0}
   mainTop:
   - {fileID: 1139234133}
@@ -25990,7 +25993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTranslucent: 0
-  openMenu: []
+  activeTopUI: []
 --- !u!1 &1850112042
 GameObject:
   m_ObjectHideFlags: 0
@@ -26739,7 +26742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTranslucent: 1
-  openMenu: []
+  activeTopUI: []
   content: {fileID: 2124867702}
   slotPrefab: {fileID: 1403583555}
   slots:
@@ -28709,9 +28712,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1554704355}
-        m_TargetAssemblyTypeName: UIInventorySelect, Assembly-CSharp
-        m_MethodName: CloseSelect
+      - m_Target: {fileID: 1558829403}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BackPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29546,7 +29549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0003080507}
+  m_AnchoredPosition: {x: 0, y: -0.0021800827}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2124867703

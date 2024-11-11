@@ -6,6 +6,7 @@ using UnityEngineInternal;
 
 public partial class UIManager : Singleton<UIManager>
 {
+    [SerializeField, ReadOnly] GameObject mainScreen;
     [SerializeField, ReadOnly] BasePanel currentPanel;
     [SerializeField, ReadOnly] List<GameObject> mainTop = new List<GameObject>();
     [SerializeField] List<GameObject> topMenu = new List<GameObject>();
@@ -18,7 +19,7 @@ public partial class UIManager : Singleton<UIManager>
 
     }
 
-    public void OpenTop(List<GameObject> target)
+    public void ActiveTop(List<GameObject> target)
     {
         for (int i = 0; i < target.Count; i++)
         {
@@ -64,7 +65,7 @@ public partial class UIManager : Singleton<UIManager>
             topMenu[i].SetActive(false);
         }
 
-        OpenTop(mainTop);
+        ActiveTop(mainTop);
     }
 
     public void OnClickMenuButton(UIMenuButton menuButton)
@@ -74,9 +75,16 @@ public partial class UIManager : Singleton<UIManager>
             return;
         }
 
-        while (panelStack.Count > 0)
+        if (panelStack.Count > 0)
         {
-            panelStack.Pop().Close();
+            while (panelStack.Count > 0)
+            {
+                panelStack.Pop().Close();
+            }
+
+            currentPanel = null;
+            ResetTop();
+            ActiveTop(mainTop);
         }
 
         OpenPaenl(menuButton.targetPanel);
@@ -99,6 +107,11 @@ public partial class UIManager : Singleton<UIManager>
             ResetTop();
             currentPanel.Open();
             currentPanel.gameObject.SetActive(true);
+            mainScreen.SetActive(currentPanel.IsTranslucent);
+        }
+        else
+        {
+            mainScreen.SetActive(true);
         }
     }
 
@@ -109,7 +122,7 @@ public partial class UIManager : Singleton<UIManager>
         currentPanel = null;
 
         ResetTop();
-        OpenTop(mainTop);
+        ActiveTop(mainTop);
     }
 
     public void AddPanel(BasePanel panel)
@@ -126,20 +139,24 @@ public partial class UIManager : Singleton<UIManager>
     {
         bool isTranslucent = currentPanel.IsTranslucent;
 
-        ClosePaenl();
-
-        if (panels.Count > 0)
+        if (panelStack.Count > 0)
         {
             if (isTranslucent)
             {
+                ClosePaenl();
                 currentPanel = panelStack.Pop();
                 ResetTop();
-                OpenTop(currentPanel.OpenMenu);
+                ActiveTop(currentPanel.ActiveTop);
             }
             else
             {
                 OpenPaenl(panelStack.Pop());
             }
+        }
+        else
+        {
+            ClosePaenl();
+            mainScreen.SetActive(true);
         }
     }
 

@@ -168,7 +168,7 @@ public class DrawPanel : BasePanel
     public void GetItem(Shops shop, int num)
     {
         RewardPanel reward = UIManager.Instance.Get<RewardPanel>();
-        reward.SetTopMenu(openMenu);
+        reward.CopyTopMenu(activeTopUI);
 
         for (int i = 0; i < num; i++)
         {

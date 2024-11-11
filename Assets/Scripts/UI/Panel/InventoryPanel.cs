@@ -18,7 +18,7 @@ public class InventoryPanel : BasePanel
     public override void FirstLoad()
     {
         target = ClientEnum.Item.None;
-
+        select.CopyTopMenu(activeTopUI);
     }
 
     public override void Open()
@@ -40,7 +40,8 @@ public class InventoryPanel : BasePanel
 
     public void OpenItemSelect(BaseItem item)
     {
-        select.OpenSlect(item);
+        select.SetSelect(item);
+        UIManager.Instance.AddPanel(select);
     }
 
     public void UpdatePanel()

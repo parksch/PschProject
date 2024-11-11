@@ -10,12 +10,6 @@ public class RewardPanel : BasePanel
     [SerializeField] List<UIRewardSlot> slots = new List<UIRewardSlot>();
     [SerializeField] int count = 0;
 
-    public void SetTopMenu(List<GameObject> list)
-    {
-        openMenu.Clear();
-        openMenu = list.ToList();
-    }
-
     public override void OnUpdate()
     {
 

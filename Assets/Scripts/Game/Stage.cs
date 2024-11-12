@@ -28,7 +28,6 @@ public class Stage : MonoBehaviour
 
     void CreateMap(string mapData)
     {
-
         if (map != null && map.name == mapData)
         {
             return;

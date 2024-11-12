@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,6 @@ public class EnemyCharacter : BaseCharacter
 
     public override void Init()
     {
-        State.Set(poolName);
         base.Init();
     }
 
@@ -79,5 +79,11 @@ public class EnemyCharacter : BaseCharacter
             Death();
             agent.StateMachine.ChangeState(AiStateID.Death);
         }
+    }
+
+    public void SetState(MonsterData monsterData)
+    {
+        poolName = monsterData.name;
+        State.Set(monsterData);
     }
 }

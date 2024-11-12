@@ -11,22 +11,22 @@ public class Spawn : MonoBehaviour
     public void CreateEnemy(List<string> monsters)
     {
         StageOptionScriptable stageScriptable = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption);
-        List<string> enemies = stageScriptable.GetMonsters(DataManager.Instance.GetInfo.Stage);
-        Vector3 center = spots[Random.Range(0,spots.Count)].position;
 
         for (int i = 0; i < stageScriptable.maxEnemyCount; i++)
         {
-            GameObject gameObject = PoolManager.Instance.Dequeue(ClientEnum.ObjectType.Enemy,enemies[Random.Range(0, enemies.Count)]);
+            MonsterData monsterData = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).Get(monsters[Random.Range(0, monsters.Count)]);
+            Vector3 center = spots[Random.Range(0, spots.Count)].position;
+            GameObject gameObject = PoolManager.Instance.Dequeue(ClientEnum.ObjectType.Enemy, monsterData.prefab);
             gameObject.transform.position = new Vector3((center.x + Random.Range(-radius, radius)),0, (center.z + Random.Range(-radius, radius)));
             EnemyCharacter character = gameObject.GetComponent<EnemyCharacter>();
 
+            character.SetState(monsterData);
             character.Init();
             gameObject.SetActive(true);
             character.SetInitializeState();
             GameManager.Instance.AddEnemy(character);
         }
     }
-
 
     private void OnDrawGizmosSelected()
     {

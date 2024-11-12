@@ -8,7 +8,7 @@ public enum ScriptableType
     Draw,
     ItemData,
     Localization,
-    ObjectData,
+    MonsterData,
     Option,
     OptionProbability,
     Skill,

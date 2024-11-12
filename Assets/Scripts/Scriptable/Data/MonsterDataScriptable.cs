@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace JsonClass
 {
-    public partial class ObjectDataScriptable : ScriptableObject
+    public partial class MonsterDataScriptable : ScriptableObject
     {
-        public List<ObjectData> objectData = new List<ObjectData>();
+        public List<MonsterData> monsterData = new List<MonsterData>();
     }
 
     [System.Serializable]
-    public partial class ObjectData
+    public partial class MonsterData
     {
         public string name;
         public string prefab;

@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -5,10 +6,13 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    [SerializeField,ReadOnly] Spawn spawn;
+    [SerializeField,ReadOnly] Map map;
+    StageData data;
 
-    public void StartStage()
+    public void SetStage()
     {
+        data = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.Stage);
+        CreateMap(data.map);
         CreateEnemy();
     }
 
@@ -19,6 +23,26 @@ public class Stage : MonoBehaviour
 
     public void CreateEnemy()
     {
-        spawn.CreateEnemy();
+        map.CreateEnemy(data.monsters);
+    }
+
+    void CreateMap(string mapData)
+    {
+
+        if (map != null && map.name == mapData)
+        {
+            return;
+        }
+        else
+        {
+            if (map != null)
+            {
+                PoolManager.Instance.Enqueue(mapData, map.gameObject);
+            }
+
+            map = PoolManager.Instance.Dequeue(ClientEnum.ObjectType.Map, mapData).GetComponent<Map>();
+            map.transform.position = Vector3.zero;
+            map.gameObject.SetActive(true);
+        }
     }
 }

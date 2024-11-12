@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
     public void Init()
     {
         player.Init();
-        stage.StartStage();
+        stage.SetStage();
         UIManager.Instance.Init();
     }
 

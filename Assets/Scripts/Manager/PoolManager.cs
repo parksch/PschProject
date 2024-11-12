@@ -1,4 +1,3 @@
-using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,11 +27,11 @@ public class PoolManager : Singleton<PoolManager>
         public ClientEnum.ObjectType type;
     }
 
-    public GameObject Dequeue(string name)
+    public GameObject Dequeue(ClientEnum.ObjectType objectType,string name)
     {
         if (!poolObjects.ContainsKey(name))
         {
-            AddPoolObject(name);
+            AddPoolObject(objectType, name);
         }
 
         if (poolObjects[name].queue.Count <= 0)
@@ -53,26 +52,22 @@ public class PoolManager : Singleton<PoolManager>
 
         switch (poolObject.type)
         {
-            case ClientEnum.ObjectType.Object:
-                gameObject.transform.SetParent(transform);
-                break;
             case ClientEnum.ObjectType.UI:
                 gameObject.transform.SetParent(uiParent);
                 break;
             default:
+                gameObject.transform.SetParent(transform);
                 break;
         }
 
-        
         poolObject.queue.Enqueue(gameObject);
     }
 
-    void AddPoolObject(string name)
+    void AddPoolObject(ClientEnum.ObjectType objectType,string name)
     {
-        ObjectData objectPrefab = ScriptableManager.Instance.Get<ObjectDataScriptable>(ScriptableType.ObjectData).Get(name);
         poolObjects[name] = new PoolObject();
-        poolObjects[name].prefab = objectPrefab.GetGameOjbect();
-        poolObjects[name].type = objectPrefab.GetObjectType();
+        poolObjects[name].type = objectType;
+        poolObjects[name].prefab = Resources.Load<GameObject>($"Prefab/{ClientEnum.EnumString<ClientEnum.ObjectType>.ToString(objectType)}/{name}");
     }
 
     void CreatePrefab(PoolObject  poolObject)
@@ -81,16 +76,15 @@ public class PoolManager : Singleton<PoolManager>
 
         switch (poolObject.type)
         {
-            case ClientEnum.ObjectType.Object:
-                gameObject = Instantiate(poolObject.prefab,transform);
-                break;
             case ClientEnum.ObjectType.UI:
                 gameObject = Instantiate(poolObject.prefab, uiParent);
                 break;
             default:
+                gameObject = Instantiate(poolObject.prefab, transform);
                 break;
         }
 
+        gameObject.name = poolObject.prefab.name;
         gameObject.SetActive(false);
         gameObject.transform.position = Vector3.zero;
 

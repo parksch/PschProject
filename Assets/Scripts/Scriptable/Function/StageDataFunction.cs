@@ -5,10 +5,12 @@ namespace JsonClass
 {
     public partial class StageDataScriptable // This Class is a functional Class.
     {
+        public StageData Get(int index) => stageData.Find(x => x.index == index);
     }
 
     public partial class StageData // This Class is a functional Class.
     {
+
     }
 
 }

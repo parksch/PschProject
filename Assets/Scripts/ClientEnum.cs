@@ -24,7 +24,8 @@ namespace ClientEnum
 
     public enum ObjectType
     {
-        Object,
+        Enemy,
+        Map,
         UI
     }
 

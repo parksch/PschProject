@@ -53,8 +53,28 @@ public partial class DataManager //Info
         [SerializeField] List<Datas.Pair<string, int>> drawLimit;
         [SerializeField] List<Datas.Pair<string, int>> drawCount;
 
-        public string UserName => userName;
-        public int Stage => stage;
+        public string UserName 
+        {
+            get
+            {
+                return userName;
+            }
+            set
+            {
+                userName = value;
+            }
+        }
+        public int Stage
+        {
+            get
+            {
+                return stage;
+            }
+            set
+            {
+                stage = value;
+            }
+        }
         public int CurrentLevel => currentLevel;
         public long CurrentExp
         {
@@ -89,6 +109,9 @@ public partial class DataManager //Info
 
     void InfoInit()
     {
+        info.Stage = 1;
+        info.UserName = "Player";
+
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
         {
             Draw shop = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).GetData(i);

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace JsonClass
 {
-    public partial class StageScriptable // This Class is a functional Class.
+    public partial class StageOptionScriptable // This Class is a functional Class.
     {
         public List<string> GetMonsters(int stage)
         {
@@ -22,7 +22,7 @@ namespace JsonClass
         }
     }
 
-    public partial class StageMonsters
+    public partial class StageMonsters // This Class is a functional Class.
     {
     }
 

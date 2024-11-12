@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d7029896f038f419d41d13e1f4e1d0, type: 3}
-  m_Name: StageScriptable
+  m_Script: {fileID: 11500000, guid: a96d2fd9b49f3c34c8b1dba3647e7336, type: 3}
+  m_Name: StageOptionScriptable
   m_EditorClassIdentifier: 
   maxEnemyCount: 10
   startGold: 1000

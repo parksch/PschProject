@@ -12,7 +12,8 @@ public enum ScriptableType
     Option,
     OptionProbability,
     Skill,
-    Stage,
+    StageData,
+    StageOption,
     Upgrade
 }
 

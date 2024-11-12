@@ -70,22 +70,22 @@ public class GameManager : Singleton<GameManager>
 
     public void AddGold()
     {
-        long gold = (long)(ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).multiplyPerGold)));
+        long gold = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyPerGold)));
         DataManager.Instance.AddGold(gold);
     }
 
     public void AddExp()
     {
-        long exp = (long)(ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).multiplyperStageExp)));
+        long exp = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyperStageExp)));
         DataManager.Instance.AddExp(exp);
     }
 
     public void AddScrap()
     {
-        if (Random.Range(0f,1f) < ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).scrapProbability)
+        if (Random.Range(0f,1f) < ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapProbability)
         {
-            int scrapMin = ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).scrapMin;
-            int scrapMax = ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).scrapMax;
+            int scrapMin = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapMin;
+            int scrapMax = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapMax;
             long scrap = Random.Range(scrapMin, scrapMax);
             DataManager.Instance.AddScrap(scrap);
         }

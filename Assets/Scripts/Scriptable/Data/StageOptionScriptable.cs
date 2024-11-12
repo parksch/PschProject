@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace JsonClass
 {
-    public partial class StageScriptable : ScriptableObject
+    public partial class StageOptionScriptable : ScriptableObject
     {
         public int maxEnemyCount;
         public int startGold;

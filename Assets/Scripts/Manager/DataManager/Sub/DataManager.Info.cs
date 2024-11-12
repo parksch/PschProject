@@ -37,7 +37,7 @@ public partial class DataManager //Info
 
         for (int i = 0; i < targetLevel; i++)
         {
-            exp += (long)((ScriptableManager.Instance.Get<StageScriptable>(ScriptableType.Stage).startExp * 10f) * (1 + (i * expState.addValue)));
+            exp += (long)((ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startExp * 10f) * (1 + (i * expState.addValue)));
         }
 
         return exp;

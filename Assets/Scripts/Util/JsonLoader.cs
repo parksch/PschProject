@@ -7,8 +7,6 @@ using Unity.Jobs;
 using JsonClass;
 using Newtonsoft.Json;
 
-
-
 #if JsonLoader
 using System.Collections;
 using System.Collections.Generic;
@@ -219,7 +217,7 @@ public class JsonLoader : EditorWindow
 
             List<StageData> stages = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).stageData;
             json = JsonConvert.SerializeObject(stages);
-            File.WriteAllText(jsonFilePath + "/Stage.json", json, Encoding.UTF8);
+            File.WriteAllText(jsonFilePath + "/StageData.json", json, Encoding.UTF8);
 
             AssetDatabase.Refresh();
             EditorUtility.DisplayDialog("결과", "Scriptable 에서 Json 변환", "확인");

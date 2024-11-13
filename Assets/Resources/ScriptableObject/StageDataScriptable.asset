@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData:
   - index: 1
-    next: 0
+    next: 2
     map: StageMap1
     nameKey: Stage1
     boss: Dwarf
@@ -27,3 +27,17 @@ MonoBehaviour:
       value: 1000
     - goodsIndex: 3
       value: 1000
+  - index: 2
+    next: 0
+    map: StageMap1
+    nameKey: Stage1
+    boss: Dwarf
+    monsters:
+    - Dwarf
+    stageRewards:
+    - goodsIndex: 1
+      value: 110000
+    - goodsIndex: 2
+      value: 1100
+    - goodsIndex: 3
+      value: 1100

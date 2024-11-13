@@ -5,21 +5,6 @@ namespace JsonClass
 {
     public partial class StageOptionScriptable // This Class is a functional Class.
     {
-        public List<string> GetMonsters(int stage)
-        {
-            List<string> result = null;
-
-            if (stage > stageMonsters.Count)
-            {
-                result = stageMonsters[stageMonsters.Count - 1].monsters;
-            }
-            else
-            {
-                result = stageMonsters[stage].monsters;
-            }
-
-            return result;
-        }
     }
 
     public partial class StageMonsters // This Class is a functional Class.

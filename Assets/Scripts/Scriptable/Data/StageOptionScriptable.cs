@@ -16,14 +16,5 @@ namespace JsonClass
         public float multiplyPerStageAttack;
         public float multiplyPerGold;
         public float scrapProbability;
-        public List<StageMonsters> stageMonsters;
-        public string nameKey;
     }
-
-    [System.Serializable]
-    public partial class StageMonsters
-    {
-        public List<string> monsters;
-    }
-
 }

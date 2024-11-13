@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryPanel : BasePanel
 {
     [SerializeField] List<UIEquipmentSlot> slots = new List<UIEquipmentSlot>();
-    [SerializeField, ReadOnly] UIInventorySelect select;
+    [SerializeField, ReadOnly] EquipSelectPanel select;
     [SerializeField, ReadOnly] UIInventoryScroll inventoryScroll;
     [SerializeField, ReadOnly] UIToggleGroup toggleGroup;
     [SerializeField, ReadOnly] ClientEnum.Item target;

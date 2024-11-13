@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIInventorySelect : BasePanel
+public class EquipSelectPanel : BasePanel
 {
-    [SerializeField, ReadOnly] UIItemInfo prev;
-    [SerializeField, ReadOnly] UIItemInfo select;
+    [SerializeField] UIItemInfo prev;
+    [SerializeField] UIItemInfo select;
 
     public void SetSelect(BaseItem item)
     {

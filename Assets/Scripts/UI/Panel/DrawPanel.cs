@@ -183,7 +183,7 @@ public class DrawPanel : BasePanel
 
             ClientEnum.Grade grade = shop.Grade();
 
-            BaseItem item = BaseItem.Create(target);
+            BaseItem item = ItemFactory.Create(target);
             item.Set(info,grade);
             reward.AddItem(item);
             DataManager.Instance.AddItem(item);

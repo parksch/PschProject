@@ -47,6 +47,11 @@ public partial class UIManager //Top
         stageText.text = string.Format(title, stageNum);
     }
 
+    public void OnClickBossChallenge()
+    {
+
+    }
+
     void InitTopUI()
     {
         SetGold(DataManager.Instance.GetGoods.gold);
@@ -71,4 +76,5 @@ public partial class UIManager //Top
         DataManager.Instance.OnChangeExp += userInfo.SetExp;
         DataManager.Instance.OnChangeExp += (value) => { UpdatePanel(); };
     }
+
 }

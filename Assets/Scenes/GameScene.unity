@@ -7567,7 +7567,6 @@ GameObject:
   - component: {fileID: 592660962}
   - component: {fileID: 592660961}
   - component: {fileID: 592660964}
-  - component: {fileID: 592660963}
   m_Layer: 5
   m_Name: Challenge
   m_TagString: Untagged
@@ -7634,24 +7633,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592660959}
   m_CullTransparentMesh: 1
---- !u!114 &592660963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592660959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b8f354bcb556a4f8c4e927b028e8ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactableType: 0
-  frontLockObject: {fileID: 0}
-  button: {fileID: 0}
-  text: {fileID: 0}
-  interactable: {r: 0, g: 0, b: 0, a: 0}
-  notInteractable: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &592660964
 MonoBehaviour:
   m_ObjectHideFlags: 0

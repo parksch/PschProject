@@ -12,6 +12,7 @@ public class Stage : MonoBehaviour
     public void SetStage()
     {
         data = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.Stage);
+        UIManager.Instance.SetStageTitle(data.nameKey,data.index);
         CreateMap(data.map);
         CreateEnemy();
     }

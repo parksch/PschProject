@@ -6,16 +6,36 @@ namespace JsonClass
 {
     public partial class LocalizationScriptable // This Class is a functional Class.
     {
+        bool isFirst = false;
+        ClientEnum.Language current;
+        Dictionary<string, Textkeys> keyValuePairs = new Dictionary<string, Textkeys>();
+
         public string Get(string name)
         {
-            Localization country = localization.Find(x => (ClientEnum.Language)x.language == DataManager.Instance.Language);
+            if (current != DataManager.Instance.Language || !isFirst)
+            {
+                current = DataManager.Instance.Language;
+                CreateDict();
+                isFirst = true;
+            }
 
-            if (country.textkeys.Find(x => x.name == name) == null)
+            if (!keyValuePairs.ContainsKey(name))
             {
                 return "NoText";
             }
 
-            return country.textkeys.Find(x => x.name == name).desc;
+            return keyValuePairs[name].desc;
+        }
+
+        void CreateDict()
+        {
+            Localization country = localization.Find(x => (ClientEnum.Language)x.language == current);
+            keyValuePairs.Clear();
+
+            foreach (var item in country.textkeys)
+            {
+                keyValuePairs[item.name] = item;
+            }
         }
     }
 

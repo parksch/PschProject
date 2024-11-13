@@ -18023,6 +18023,7 @@ MonoBehaviour:
   gemText: {fileID: 1159377485}
   scrapText: {fileID: 856265789}
   reinforceText: {fileID: 1960008188}
+  stageText: {fileID: 1907309643}
   userName: {fileID: 1104299518}
   level: {fileID: 1099802773}
   hpSlider: {fileID: 6309205129266351211}

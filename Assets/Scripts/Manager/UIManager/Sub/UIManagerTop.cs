@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public partial class UIManager //Top
     [SerializeField, ReadOnly] UIText gemText;
     [SerializeField, ReadOnly] UIText scrapText;
     [SerializeField, ReadOnly] UIText reinforceText;
+    [SerializeField, ReadOnly] Text stageText;
     [SerializeField, ReadOnly] Text userName;
     [SerializeField, ReadOnly] Text level;
     [SerializeField, ReadOnly] Slider hpSlider;
@@ -37,6 +39,12 @@ public partial class UIManager //Top
     public void SetReinforce(long scrap)
     {
         reinforceText.SetText(scrap);
+    }
+
+    public void SetStageTitle(string local,int stageNum)
+    {
+        string title = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
+        stageText.text = string.Format(title, stageNum);
     }
 
     void InitTopUI()

@@ -38,8 +38,8 @@ public class GameManager : Singleton<GameManager>
     public void Init()
     {
         player.Init();
-        stage.SetStage();
         UIManager.Instance.Init();
+        stage.SetStage();
     }
 
     public BaseCharacter GetTarget(CharacterType characterType)

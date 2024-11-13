@@ -17,4 +17,5 @@ namespace JsonClass
         public float multiplyPerGold;
         public float scrapProbability;
     }
+
 }

@@ -1,1 +1,1 @@
-﻿[{"index":1,"next":0,"map":"StageMap1","nameKey":"Stage1","monsters":["Dwarf"]}]
+﻿[{"index":1,"next":0,"map":"StageMap1","nameKey":"Stage1","boss":"Dwarf","monsters":["Dwarf"],"stageRewards":[{"goodsIndex":1,"value":100000},{"goodsIndex":2,"value":1000},{"goodsIndex":3,"value":1000}]}]

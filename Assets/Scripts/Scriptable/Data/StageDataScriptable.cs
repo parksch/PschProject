@@ -15,7 +15,16 @@ namespace JsonClass
         public int next;
         public string map;
         public string nameKey;
+        public string boss;
         public List<string> monsters;
+        public List<StageRewards> stageRewards;
+    }
+
+    [System.Serializable]
+    public partial class StageRewards
+    {
+        public int goodsIndex;
+        public int value;
     }
 
 }

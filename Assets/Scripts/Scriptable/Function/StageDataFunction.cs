@@ -10,7 +10,10 @@ namespace JsonClass
 
     public partial class StageData // This Class is a functional Class.
     {
+    }
 
+    public partial class StageRewards // This Class is a functional Class.
+    {
     }
 
 }

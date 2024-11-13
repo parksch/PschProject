@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData:
   - index: 1
+    next: 0
     map: StageMap1
+    nameKey: Stage1
     monsters:
     - Dwarf

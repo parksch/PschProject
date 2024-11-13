@@ -12,7 +12,9 @@ namespace JsonClass
     public partial class StageData
     {
         public int index;
+        public int next;
         public string map;
+        public string nameKey;
         public List<string> monsters;
     }
 

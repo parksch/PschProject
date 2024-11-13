@@ -41,21 +41,6 @@ public class BaseItem
         options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetRandomOption(ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetOptions(type),grade);
     }
 
-    public static BaseItem Create(ClientEnum.Item item)
-    {
-        switch (item)
-        {
-            case ClientEnum.Item.Helmet:
-                return new HelmetItem();
-            case ClientEnum.Item.Armor:
-                return new ArmorItem();
-            case ClientEnum.Item.Weapon:
-                return new WeaponItem();
-            default:
-                return null;
-        }
-    }
-
     public float GetStateValue(ClientEnum.State state)
     {
         float value = 0;

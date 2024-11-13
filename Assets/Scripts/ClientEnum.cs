@@ -86,4 +86,10 @@ namespace ClientEnum
         Sum,
         Product
     }
+
+    public enum Reward
+    {
+        Item,
+        Goods,
+    }
 } 

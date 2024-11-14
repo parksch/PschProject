@@ -36,21 +36,12 @@ public class GameManager : Singleton<GameManager>
     int scrapMax = 0;
     float scrapProbability = 0;
 
-    protected override void Awake()
-    {
-    }
-
-    void Start()
-    {
-        Init();
-    }
-
     public void Init()
     {
         OnEnemyDeath = null;
-        OnEnemyDeath += (_) => { AddGold(); };
-        OnEnemyDeath += (_) => { AddExp(); };
-        OnEnemyDeath += (_) => { AddScrap(); };
+        OnEnemyDeath += _ => { AddGold(); };
+        OnEnemyDeath += _ => { AddExp(); };
+        OnEnemyDeath += _ => { AddScrap(); };
         OnEnemyDeath += RemoveEnemy;
 
         OnChangeGameMode = null;
@@ -62,8 +53,9 @@ public class GameManager : Singleton<GameManager>
 
         player.Init();
         UIManager.Instance.Init();
-        SetGameMode(ClientEnum.GameMode.Stage);
+        OnChangeGameMode(ClientEnum.GameMode.Stage);
     }
+
     public BaseCharacter GetTarget(ClientEnum.CharacterType characterType)
     {
         switch (characterType)
@@ -88,6 +80,15 @@ public class GameManager : Singleton<GameManager>
         }
 
         return null;
+    }
+
+    protected override void Awake()
+    {
+    }
+
+    void Start()
+    {
+        Init();
     }
 
     void SetGameMode(ClientEnum.GameMode gameMode)

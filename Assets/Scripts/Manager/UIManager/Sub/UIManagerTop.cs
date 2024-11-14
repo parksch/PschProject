@@ -86,23 +86,23 @@ public partial class UIManager //Top
 
         DataManager.Instance.OnChangeGold = null;
         DataManager.Instance.OnChangeGold += SetGold;
-        DataManager.Instance.OnChangeGold += (_) => { UpdatePanel();};
+        DataManager.Instance.OnChangeGold += _ => { UpdatePanel();};
 
         DataManager.Instance.OnChangeScrap = null;
         DataManager.Instance.OnChangeScrap += SetScrap;
-        DataManager.Instance.OnChangeScrap += (_) => { UpdatePanel();};
+        DataManager.Instance.OnChangeScrap += _ => { UpdatePanel(); };
 
         DataManager.Instance.OnChangeGem = null;
         DataManager.Instance.OnChangeGem += SetGem;
-        DataManager.Instance.OnChangeGem += (_) =>{ UpdatePanel();};
+        DataManager.Instance.OnChangeGem += _ => { UpdatePanel(); };
 
         DataManager.Instance.OnChangeReinforce = null;
         DataManager.Instance.OnChangeReinforce += SetReinforce;
-        DataManager.Instance.OnChangeReinforce += (_) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeReinforce += _ => { UpdatePanel(); };
 
         DataManager.Instance.OnChangeExp = null;
         DataManager.Instance.OnChangeExp += userInfo.SetExp;
-        DataManager.Instance.OnChangeExp += (_) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeExp += _ => { UpdatePanel(); };
     }
 
 }

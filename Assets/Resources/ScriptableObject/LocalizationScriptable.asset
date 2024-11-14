@@ -59,6 +59,20 @@ MonoBehaviour:
       desc: "\uCCB4\uB825\uC7AC\uC0DD\uC8FC\uAE30"
     - name: Stage1
       desc: "1 - {0} \uB3D9\uAD74"
+    - name: Yes
+      desc: "\uC608"
+    - name: No
+      desc: "\uC544\uB2C8\uC624"
+    - name: OK
+      desc: "\uD655\uC778"
+    - name: ChallengeSuccess
+      desc: "\uB3C4\uC804 \uC131\uACF5"
+    - name: 'ChallengeFailed '
+      desc: "\uB3C4\uC804 \uC2E4\uD328"
+    - name: Continue
+      desc: "\uACC4\uC18D\uD558\uAE30"
+    - name: Return
+      desc: "\uB3CC\uC544\uAC00\uAE30"
   - language: 1
     textkeys:
     - name: 

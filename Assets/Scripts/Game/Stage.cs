@@ -13,28 +13,38 @@ public class Stage : MonoBehaviour
 
     StageData data;
 
-    public void SetBoss()
+    public void Set(ClientEnum.GameMode gameMode)
     {
-
-    }
-
-    public void SetStage()
-    {
-        mode = ClientEnum.GameMode.Stage;
+        mode = gameMode;
         data = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.Stage);
-        UIManager.Instance.SetStageTitle(data.nameKey,data.index);
+        UIManager.Instance.SetStageTitle(data.nameKey, data.index);
         CreateMap(data.map);
-        CreateEnemy();
+
+        switch (gameMode)
+        {
+            case ClientEnum.GameMode.Stage:
+                map.CreateEnemy(data.monsters);
+                break;
+            case ClientEnum.GameMode.Boss:
+                map.CreateBoss(data.boss);
+                break;
+            default:
+                break;
+        }
     }
 
-    public void EndStage()
+    public void CheckStage()
     {
-
-    }
-
-    public void CreateEnemy()
-    {
-        map.CreateEnemy(data.monsters);
+        switch (mode)
+        {
+            case ClientEnum.GameMode.Stage:
+                map.CreateEnemy(data.monsters);
+                break;
+            case ClientEnum.GameMode.Boss:
+                break;
+            default:
+                break;
+        }
     }
 
     void CreateMap(string mapData)

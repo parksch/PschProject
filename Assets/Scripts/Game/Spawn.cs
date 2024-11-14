@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
+    [SerializeField] Transform boss;
     [SerializeField] List<Transform> spots;
     [SerializeField] float radius;
 
-    public void CreateEnemy(List<string> monsters)
+    public void CreateEnemy(List<string> monsters, StageOptionScriptable stageScriptable)
     {
-        StageOptionScriptable stageScriptable = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption);
-
         for (int i = 0; i < stageScriptable.maxEnemyCount; i++)
         {
             MonsterData monsterData = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).Get(monsters[Random.Range(0, monsters.Count)]);
@@ -26,6 +25,19 @@ public class Spawn : MonoBehaviour
             character.SetInitializeState();
             GameManager.Instance.AddEnemy(character);
         }
+    }
+
+    public void CreateBoss(string monster, StageOptionScriptable stageScriptable)
+    {
+        MonsterData monsterData = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).Get(monster);
+        GameObject gameObject = PoolManager.Instance.Dequeue(ClientEnum.ObjectType.Enemy, monsterData.prefab);
+        EnemyCharacter character = gameObject.GetComponent<EnemyCharacter>();
+
+        character.SetState(monsterData,true);
+        character.Init();
+        gameObject.SetActive(true);
+        character.SetInitializeState();
+        gameObject.transform.position = boss.position;
     }
 
     private void OnDrawGizmosSelected()

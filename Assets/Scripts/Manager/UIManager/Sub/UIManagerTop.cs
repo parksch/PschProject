@@ -59,12 +59,12 @@ public partial class UIManager //Top
         switch (gameMode)
         {
             case ClientEnum.GameMode.Stage:
-                bossButton.gameObject.SetActive(false);
-                bossHP.gameObject.SetActive(true);
-                break;
-            case ClientEnum.GameMode.Boss:
                 bossButton.gameObject.SetActive(true);
                 bossHP.gameObject.SetActive(false);
+                break;
+            case ClientEnum.GameMode.Boss:
+                bossButton.gameObject.SetActive(false);
+                bossHP.gameObject.SetActive(true);
                 break;
             default:
                 break;

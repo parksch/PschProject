@@ -13,6 +13,7 @@ namespace JsonClass
     {
         public string name;
         public string prefab;
+        public string local;
         public int attack;
         public int hp;
         public int defense;

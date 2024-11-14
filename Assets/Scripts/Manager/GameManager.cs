@@ -1,3 +1,4 @@
+using GooglePlayGames.BasicApi;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,6 @@ public class GameManager : Singleton<GameManager>
     public PlayerCharacter Player => player;
     public List<EnemyCharacter> Enemies => enemies;
     public ClientEnum.GameMode Mode => stage.Mode;
-
     public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
     void RemoveEnemy(EnemyCharacter enemy) 
     {
@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager>
 
         if (enemies.Count == 0)
         {
-            stage.CreateEnemy();
+            stage.CheckStage();
         }
     }
 
@@ -93,17 +93,14 @@ public class GameManager : Singleton<GameManager>
 
     void SetGameMode(ClientEnum.GameMode gameMode)
     {
-        switch (gameMode)
+        foreach (var item in enemies)
         {
-            case ClientEnum.GameMode.Stage:
-                stage.SetStage();
-                break;
-            case ClientEnum.GameMode.Boss:
-                stage.SetBoss();
-                break;
-            default:
-                break;
+            item.DeathAction();
         }
+
+        enemies.Clear();
+        player.DeathAction();
+        stage.Set(gameMode);
     }
 
     void AddGold()
@@ -111,7 +108,7 @@ public class GameManager : Singleton<GameManager>
         if (Mode != ClientEnum.GameMode.Stage)
         {
             return;
-        }
+        } 
 
         long gold = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyPerGold)));
         DataManager.Instance.AddGold(gold);

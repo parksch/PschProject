@@ -78,9 +78,15 @@ public class EnemyCharacter : BaseCharacter
         }
     }
 
-    public void SetState(MonsterData monsterData)
+    public void SetState(MonsterData monsterData,bool isBoss = false)
     {
         poolName = monsterData.name;
-        State.Set(monsterData);
+        State.Set(monsterData, isBoss);
+
+        if (isBoss)
+        {
+
+        }
     }
+
 }

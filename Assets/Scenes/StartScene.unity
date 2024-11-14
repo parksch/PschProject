@@ -5772,6 +5772,7 @@ MonoBehaviour:
     gold: 10000
     gem: 0
     scrap: 0
+    reinforceStone: 0
   info:
     userName: player
     stage: 0
@@ -5779,7 +5780,8 @@ MonoBehaviour:
     currentExp: 0
     drawLimit: []
     drawCount: []
-  equipHelmat:
+  maxInventoryCount: 100
+  equipHelmet:
     id: 
     index: 
     itemName: 

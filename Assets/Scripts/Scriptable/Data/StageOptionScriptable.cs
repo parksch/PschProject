@@ -16,6 +16,10 @@ namespace JsonClass
         public float multiplyPerStageAttack;
         public float multiplyPerGold;
         public float scrapProbability;
+        public float multiplyBossHp;
+        public float multiplyBossDefense;
+        public float multiplyBossAttack;
+        public float multiplyBossSize;
     }
 
 }

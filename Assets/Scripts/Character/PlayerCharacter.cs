@@ -94,6 +94,7 @@ public class PlayerCharacter : BaseCharacter
         curHp = HP();
         UIManager.Instance.OnChangePlayerHP(GetHPRatio);
         agent.StateMachine.ChangeState(AiStateID.Idle);
+        target = null;
     }
 
     public override void Death()

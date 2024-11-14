@@ -38,7 +38,7 @@ public class BaseCharacter : MonoBehaviour
         agent.SetInitializeState();
     }
 
-    public float AttackRange => state.AttackRange;
+    public float AttackRange => state.AttackRange * gameObject.transform.lossyScale.y;
 
     public virtual void AttackAction()
     {

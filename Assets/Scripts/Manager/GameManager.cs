@@ -1,9 +1,9 @@
-using ClientEnum;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
+using static GameManager;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -12,9 +12,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
 
     public PlayerCharacter Player => player;
+    public List<EnemyCharacter> Enemies => enemies;
+    public ClientEnum.GameMode Mode => stage.Mode;
 
     public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
-    public void RemoveEnemy(EnemyCharacter enemy) 
+    void RemoveEnemy(EnemyCharacter enemy) 
     {
         enemies.Remove(enemy);
 
@@ -24,7 +26,15 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public List<EnemyCharacter> Enemies => enemies;
+    public delegate void ChangeGameMode(ClientEnum.GameMode mode);
+    public delegate void EnemyDeath(EnemyCharacter enemy);
+
+    public EnemyDeath OnEnemyDeath;
+    public ChangeGameMode OnChangeGameMode;
+
+    int scrapMin = 0;
+    int scrapMax = 0;
+    float scrapProbability = 0;
 
     protected override void Awake()
     {
@@ -37,16 +47,28 @@ public class GameManager : Singleton<GameManager>
 
     public void Init()
     {
+        OnEnemyDeath = null;
+        OnEnemyDeath += (_) => { AddGold(); };
+        OnEnemyDeath += (_) => { AddExp(); };
+        OnEnemyDeath += (_) => { AddScrap(); };
+        OnEnemyDeath += RemoveEnemy;
+
+        OnChangeGameMode = null;
+        OnChangeGameMode += SetGameMode;
+
+        scrapMin = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapMin;
+        scrapMax = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapMax;
+        scrapProbability = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapProbability;
+
         player.Init();
         UIManager.Instance.Init();
-        stage.SetStage();
+        SetGameMode(ClientEnum.GameMode.Stage);
     }
-
-    public BaseCharacter GetTarget(CharacterType characterType)
+    public BaseCharacter GetTarget(ClientEnum.CharacterType characterType)
     {
         switch (characterType)
         {
-            case CharacterType.Player:
+            case ClientEnum.CharacterType.Player:
                 float dist = float.MaxValue;
                 BaseCharacter character = null;
 
@@ -61,31 +83,59 @@ public class GameManager : Singleton<GameManager>
                 }
 
                 return character;
-            case CharacterType.Enemy:
+            case ClientEnum.CharacterType.Enemy:
                 return player.IsDeath ? null : player;
         }
 
         return null;
     }
 
-    public void AddGold()
+    void SetGameMode(ClientEnum.GameMode gameMode)
     {
+        switch (gameMode)
+        {
+            case ClientEnum.GameMode.Stage:
+                stage.SetStage();
+                break;
+            case ClientEnum.GameMode.Boss:
+                stage.SetBoss();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void AddGold()
+    {
+        if (Mode != ClientEnum.GameMode.Stage)
+        {
+            return;
+        }
+
         long gold = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyPerGold)));
         DataManager.Instance.AddGold(gold);
     }
 
-    public void AddExp()
+    void AddExp()
     {
+        if (Mode != ClientEnum.GameMode.Stage)
+        {
+            return;
+        }
+
         long exp = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyperStageExp)));
         DataManager.Instance.AddExp(exp);
     }
 
-    public void AddScrap()
+    void AddScrap()
     {
-        if (Random.Range(0f,1f) < ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapProbability)
+        if (Mode != ClientEnum.GameMode.Stage)
         {
-            int scrapMin = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapMin;
-            int scrapMax = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).scrapMax;
+            return;
+        }
+
+        if (Random.Range(0f,1f) < scrapProbability)
+        {
             long scrap = Random.Range(scrapMin, scrapMax);
             DataManager.Instance.AddScrap(scrap);
         }

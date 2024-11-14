@@ -1,6 +1,7 @@
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,29 +18,10 @@ public partial class UIManager //Top
     [SerializeField, ReadOnly] Slider expSlider;
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
+    [SerializeField] GameObject bossButton;
 
     public delegate void ChangeHP(float ratio);
-    public ChangeHP OnChangeHP;
-
-    public void SetGold(long gold)
-    {
-        goldText.SetText(gold);
-    }
-
-    public void SetGem(long ruby)
-    {
-        gemText.SetText(ruby);
-    }
-
-    public void SetScrap(long scrap)
-    {
-        scrapText.SetText(scrap);
-    }
-
-    public void SetReinforce(long scrap)
-    {
-        reinforceText.SetText(scrap);
-    }
+    public ChangeHP OnChangePlayerHP;
 
     public void SetStageTitle(string local,int stageNum)
     {
@@ -49,11 +31,50 @@ public partial class UIManager //Top
 
     public void OnClickBossChallenge()
     {
+        GameManager.Instance.OnChangeGameMode(ClientEnum.GameMode.Boss);
+    }
 
+    void SetGold(long gold)
+    {
+        goldText.SetText(gold);
+    }
+
+    void SetGem(long ruby)
+    {
+        gemText.SetText(ruby);
+    }
+
+    void SetScrap(long scrap)
+    {
+        scrapText.SetText(scrap);
+    }
+
+    void SetReinforce(long scrap)
+    {
+        reinforceText.SetText(scrap);
+    }
+
+    void SetGameModeUI(ClientEnum.GameMode gameMode)
+    {
+        switch (gameMode)
+        {
+            case ClientEnum.GameMode.Stage:
+                bossButton.gameObject.SetActive(false);
+                bossHP.gameObject.SetActive(true);
+                break;
+            case ClientEnum.GameMode.Boss:
+                bossButton.gameObject.SetActive(true);
+                bossHP.gameObject.SetActive(false);
+                break;
+            default:
+                break;
+        }
     }
 
     void InitTopUI()
     {
+        GameManager.Instance.OnChangeGameMode += SetGameModeUI;
+
         SetGold(DataManager.Instance.GetGoods.gold);
         SetGem(DataManager.Instance.GetGoods.gem);
         SetScrap(DataManager.Instance.GetGoods.scrap);
@@ -61,20 +82,27 @@ public partial class UIManager //Top
 
         userInfo.Init();
 
-        OnChangeHP += userInfo.SetHP;
+        OnChangePlayerHP += userInfo.SetHP;
 
+        DataManager.Instance.OnChangeGold = null;
         DataManager.Instance.OnChangeGold += SetGold;
-        DataManager.Instance.OnChangeGold += (value) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeGold += (_) => { UpdatePanel();};
+
+        DataManager.Instance.OnChangeScrap = null;
         DataManager.Instance.OnChangeScrap += SetScrap;
-        DataManager.Instance.OnChangeScrap += (value) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeScrap += (_) => { UpdatePanel();};
+
+        DataManager.Instance.OnChangeGem = null;
         DataManager.Instance.OnChangeGem += SetGem;
+        DataManager.Instance.OnChangeGem += (_) =>{ UpdatePanel();};
+
+        DataManager.Instance.OnChangeReinforce = null;
         DataManager.Instance.OnChangeReinforce += SetReinforce;
-        DataManager.Instance.OnChangeReinforce += (value) => { UpdatePanel(); };
-        DataManager.Instance.OnChangeGem += (value) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeReinforce += (_) => { UpdatePanel(); };
+
+        DataManager.Instance.OnChangeExp = null;
         DataManager.Instance.OnChangeExp += userInfo.SetExp;
-        DataManager.Instance.OnChangeExp += (value) => { UpdatePanel(); };
-        DataManager.Instance.OnChangeExp += userInfo.SetExp;
-        DataManager.Instance.OnChangeExp += (value) => { UpdatePanel(); };
+        DataManager.Instance.OnChangeExp += (_) => { UpdatePanel(); };
     }
 
 }

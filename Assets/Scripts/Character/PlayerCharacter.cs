@@ -13,7 +13,7 @@ public class PlayerCharacter : BaseCharacter
     {
         State.UpdateState();
         AnimationSpeedSet();
-        UIManager.Instance.OnChangeHP(GetHPRatio);
+        UIManager.Instance.OnChangePlayerHP(GetHPRatio);
     }
 
     private void FixedUpdate()
@@ -35,7 +35,7 @@ public class PlayerCharacter : BaseCharacter
                 curHp = HP();
             }
 
-            UIManager.Instance.OnChangeHP(GetHPRatio);
+            UIManager.Instance.OnChangePlayerHP(GetHPRatio);
         }
     }
 
@@ -92,7 +92,7 @@ public class PlayerCharacter : BaseCharacter
     {
         transform.position = Vector3.zero;
         curHp = HP();
-        UIManager.Instance.OnChangeHP(GetHPRatio);
+        UIManager.Instance.OnChangePlayerHP(GetHPRatio);
         agent.StateMachine.ChangeState(AiStateID.Idle);
     }
 
@@ -117,7 +117,7 @@ public class PlayerCharacter : BaseCharacter
             curHp = 0;
         }
 
-        UIManager.Instance.OnChangeHP(GetHPRatio);
+        UIManager.Instance.OnChangePlayerHP(GetHPRatio);
 
         if (curHp <= 0)
         {

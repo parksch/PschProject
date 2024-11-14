@@ -92,4 +92,10 @@ namespace ClientEnum
         Item,
         Goods,
     }
+
+    public enum GameMode
+    {
+        Stage,
+        Boss
+    }
 } 

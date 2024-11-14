@@ -45,10 +45,7 @@ public class EnemyCharacter : BaseCharacter
 
     public override void Death()
     {
-        GameManager.Instance.AddGold();
-        GameManager.Instance.AddExp();
-        GameManager.Instance.AddScrap();
-        GameManager.Instance.RemoveEnemy(this);
+        GameManager.Instance.OnEnemyDeath(this);
         base.Death();
     }
 

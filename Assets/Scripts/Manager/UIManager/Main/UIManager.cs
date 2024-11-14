@@ -35,22 +35,6 @@ public partial class UIManager : Singleton<UIManager>
         }
     }
 
-    public void UpdatePanel()
-    {
-        if (currentPanel != null)
-        {
-            currentPanel.OnUpdate();
-        }
-
-        foreach (var item in panelStack)
-        {
-            if (item.gameObject.activeSelf)
-            {
-                item.OnUpdate();
-            }
-        }
-    }   
-
     public void Init()
     {
         InitTopUI();
@@ -164,4 +148,21 @@ public partial class UIManager : Singleton<UIManager>
     {
         return panels.Find(x => x.GetType() == typeof(T)) as T;
     }
+
+    void UpdatePanel()
+    {
+        if (currentPanel != null)
+        {
+            currentPanel.OnUpdate();
+        }
+
+        foreach (var item in panelStack)
+        {
+            if (item.gameObject.activeSelf)
+            {
+                item.OnUpdate();
+            }
+        }
+    }
+
 }

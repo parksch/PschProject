@@ -6,11 +6,21 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
+    [SerializeField] ClientEnum.GameMode mode;
     [SerializeField,ReadOnly] Map map;
+
+    public ClientEnum.GameMode Mode => mode;
+
     StageData data;
+
+    public void SetBoss()
+    {
+
+    }
 
     public void SetStage()
     {
+        mode = ClientEnum.GameMode.Stage;
         data = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.Stage);
         UIManager.Instance.SetStageTitle(data.nameKey,data.index);
         CreateMap(data.map);

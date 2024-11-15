@@ -199,9 +199,9 @@ public class JsonLoader : EditorWindow
         {
             string json = string.Empty;
 
-            //List<DefaultValues> values = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).defaultValues;
-            //json = JsonConvert.SerializeObject(values);
-            //File.WriteAllText(jsonFilePath + "/DefaultValues.json", json);
+            List<DefaultValues> values = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).defaultValues;
+            json = JsonConvert.SerializeObject(values);
+            File.WriteAllText(jsonFilePath + "/DefaultValues.json", json);
 
             //List<Draw> draws = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).draw;
             //json = JsonConvert.SerializeObject(draws);
@@ -215,9 +215,9 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(localizations);
             //File.WriteAllText(jsonFilePath + "/Localization.json", json, Encoding.UTF8);
 
-            List<MonsterData> monsterDatas = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).monsterData;
-            json = JsonConvert.SerializeObject(monsterDatas);
-            File.WriteAllText(jsonFilePath + "/MonsterData.json", json, Encoding.UTF8);
+            //List<MonsterData> monsterDatas = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).monsterData;
+            //json = JsonConvert.SerializeObject(monsterDatas);
+            //File.WriteAllText(jsonFilePath + "/MonsterData.json", json, Encoding.UTF8);
 
             //List<Option> options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).option;
             //json = JsonConvert.SerializeObject(options);

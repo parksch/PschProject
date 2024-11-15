@@ -1,1 +1,1 @@
-[{"key":"OptionMin","value":0.8},{"key":"OptionMax","value":1.1},{"key":"RequiredExp","value":20.0},{"key":"NormalDismantle","value":20.0},{"key":"RareDismantle","value":20.0},{"key":"SuperRareDismantle","value":20.0},{"key":"UltaRareDismantle","value":20.0}]
+[{"key":"OptionMin","value":0.8},{"key":"OptionMax","value":1.1},{"key":"RequiredExp","value":20.0},{"key":"NormalDismantle","value":20.0},{"key":"RareDismantle","value":20.0},{"key":"SuperRareDismantle","value":20.0},{"key":"UltaRareDismantle","value":20.0},{"key":"TimeLimit","value":60.0}]

@@ -39,6 +39,7 @@ public partial class UIManager //Top
     {
         bossHP.SetHP(hp);
         bossHP.SetName(name);
+        bossHP.SetTime(ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get("TimeLimit"));
         bossHP.SetOn();
     }
     void SetGold(long gold)

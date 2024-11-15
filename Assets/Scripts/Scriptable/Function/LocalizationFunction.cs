@@ -6,17 +6,15 @@ namespace JsonClass
 {
     public partial class LocalizationScriptable // This Class is a functional Class.
     {
-        [SerializeField] bool isFirst = false;
         ClientEnum.Language current;
         Dictionary<string, Textkeys> keyValuePairs = new Dictionary<string, Textkeys>();
 
         public string Get(string name)
         {
-            if (current != DataManager.Instance.Language || isFirst)
+            if (current != DataManager.Instance.Language || keyValuePairs.Count == 0)
             {
                 current = DataManager.Instance.Language;
                 CreateDict();
-                isFirst = false;
             }
 
             if (!keyValuePairs.ContainsKey(name))

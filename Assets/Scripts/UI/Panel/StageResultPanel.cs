@@ -14,6 +14,7 @@ public class StageResultPanel : BasePanel
     [SerializeField] GameObject scroll;
     [SerializeField] string challengeSuccess;
     [SerializeField] string challengeFailed;
+    int count = 0;
 
     public void SetResult(bool isWin)
     {
@@ -32,7 +33,14 @@ public class StageResultPanel : BasePanel
 
     public void AddGoods(ClientEnum.Goods goods,int value)
     {
+        if (rewards.Count < count)
+        {
+            UIRewardSlot prefab = Instantiate(rewardSlotPrefab, content);
+            rewards.Add(prefab);
+        }
 
+        rewards[count].SetGoods(goods, value);
+        count++;
     }
 
     public override void Open()
@@ -47,5 +55,7 @@ public class StageResultPanel : BasePanel
         {
             rewards[i].gameObject.SetActive(false);
         }
+
+        count = 0;
     }
 }

@@ -199,6 +199,10 @@ public class JsonLoader : EditorWindow
         {
             string json = string.Empty;
 
+            List<DefaultValues> values = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).defaultValues;
+            json = JsonConvert.SerializeObject(values);
+            File.WriteAllText(jsonFilePath + "/DefaultValues.json", json);
+
             //List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
             //json = JsonConvert.SerializeObject(upgrades);
             //File.WriteAllText(jsonFilePath + "/Upgrade.json", json,Encoding.UTF8);
@@ -207,17 +211,17 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(itemDatas);
             //File.WriteAllText(jsonFilePath + "/ItemData.json", json, Encoding.UTF8);
 
-            List<Localization> localizations = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).localization;
-            json = JsonConvert.SerializeObject(localizations);
-            File.WriteAllText(jsonFilePath + "/Localization.json", json, Encoding.UTF8);
+            //List<Localization> localizations = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).localization;
+            //json = JsonConvert.SerializeObject(localizations);
+            //File.WriteAllText(jsonFilePath + "/Localization.json", json, Encoding.UTF8);
 
             //List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
             //json = JsonConvert.SerializeObject(upgrades);
             //File.WriteAllText(jsonFilePath + "/Upgrade.json", json, Encoding.UTF8);
 
-            List<StageData> stages = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).stageData;
-            json = JsonConvert.SerializeObject(stages);
-            File.WriteAllText(jsonFilePath + "/StageData.json", json, Encoding.UTF8);
+            //List<StageData> stages = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).stageData;
+            //json = JsonConvert.SerializeObject(stages);
+            //File.WriteAllText(jsonFilePath + "/StageData.json", json, Encoding.UTF8);
 
             //StageOptionScriptable stageOption = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption);
             //json = JsonConvert.SerializeObject(stageOption);

@@ -22236,8 +22236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673d7d76ac17f3f4f93eb8d3e77a513a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 257434540}
   hpSlider: {fileID: 1923038492}
+  hpText: {fileID: 2104698916}
+  nameText: {fileID: 257434540}
   timeText: {fileID: 1196602265}
 --- !u!1 &1856325709
 GameObject:

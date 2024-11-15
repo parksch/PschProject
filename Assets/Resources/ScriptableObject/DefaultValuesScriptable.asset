@@ -27,3 +27,5 @@ MonoBehaviour:
     value: 20
   - key: UltaRareDismantle
     value: 20
+  - key: TimeLimit
+    value: 60

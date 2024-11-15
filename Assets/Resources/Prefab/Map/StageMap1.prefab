@@ -2110,7 +2110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8f60480ef7a9f4b9dff388ff41c0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
+  boss: {fileID: 7398447009276923532}
   spots:
   - {fileID: 3028735911230180890}
   - {fileID: 4205839544783590727}

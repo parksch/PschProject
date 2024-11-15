@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyCharacter : BaseCharacter
 {
+    [SerializeField] bool isBoss;
     [SerializeField] string poolName;
     EnemyState State => state as EnemyState;
 
@@ -71,6 +72,8 @@ public class EnemyCharacter : BaseCharacter
             curHp = 0;
         }
 
+        UIManager.Instance.UpdateBossHp(curHp);
+
         if (curHp <= 0)
         {
             Death();
@@ -78,14 +81,15 @@ public class EnemyCharacter : BaseCharacter
         }
     }
 
-    public void SetState(MonsterData monsterData,bool isBoss = false)
+    public void SetState(MonsterData monsterData,bool _isBoss = false)
     {
         poolName = monsterData.name;
+        isBoss = _isBoss;
         State.Set(monsterData, isBoss);
 
         if (isBoss)
         {
-
+            UIManager.Instance.SetBossUI(State.HP, ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(monsterData.local));
         }
     }
 

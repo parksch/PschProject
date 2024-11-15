@@ -22,38 +22,41 @@ public partial class UIManager //Top
 
     public delegate void ChangeHP(float ratio);
     public ChangeHP OnChangePlayerHP;
-
+    public void OnClickBossChallenge()
+    {
+        GameManager.Instance.OnChangeGameMode(ClientEnum.GameMode.Boss);
+    }
+    public void UpdateBossHp(long hp)
+    {
+        bossHP.UpdateHp(hp);
+    }
     public void SetStageTitle(string local,int stageNum)
     {
         string title = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
         stageText.text = string.Format(title, stageNum);
     }
-
-    public void OnClickBossChallenge()
+    public void SetBossUI(long hp,string name)
     {
-        GameManager.Instance.OnChangeGameMode(ClientEnum.GameMode.Boss);
+        bossHP.SetHP(hp);
+        bossHP.SetName(name);
+        bossHP.SetOn();
     }
-
     void SetGold(long gold)
     {
         goldText.SetText(gold);
     }
-
     void SetGem(long ruby)
     {
         gemText.SetText(ruby);
     }
-
     void SetScrap(long scrap)
     {
         scrapText.SetText(scrap);
     }
-
     void SetReinforce(long scrap)
     {
         reinforceText.SetText(scrap);
     }
-
     void SetGameModeUI(ClientEnum.GameMode gameMode)
     {
         switch (gameMode)

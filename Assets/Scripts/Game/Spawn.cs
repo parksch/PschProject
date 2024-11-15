@@ -37,6 +37,7 @@ public class Spawn : MonoBehaviour
         character.Init();
         gameObject.SetActive(true);
         character.SetInitializeState();
+        GameManager.Instance.AddEnemy(character);
         gameObject.transform.position = boss.position;
     }
 

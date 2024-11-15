@@ -211,13 +211,13 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(itemDatas);
             //File.WriteAllText(jsonFilePath + "/ItemData.json", json, Encoding.UTF8);
 
-            List<Localization> localizations = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).localization;
-            json = JsonConvert.SerializeObject(localizations);
-            File.WriteAllText(jsonFilePath + "/Localization.json", json, Encoding.UTF8);
+            //List<Localization> localizations = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).localization;
+            //json = JsonConvert.SerializeObject(localizations);
+            //File.WriteAllText(jsonFilePath + "/Localization.json", json, Encoding.UTF8);
 
-            //List<MonsterData> monsterDatas = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).monsterData;
-            //json = JsonConvert.SerializeObject(monsterDatas);
-            //File.WriteAllText(jsonFilePath + "/MonsterData.json", json, Encoding.UTF8);
+            List<MonsterData> monsterDatas = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).monsterData;
+            json = JsonConvert.SerializeObject(monsterDatas);
+            File.WriteAllText(jsonFilePath + "/MonsterData.json", json, Encoding.UTF8);
 
             //List<Option> options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).option;
             //json = JsonConvert.SerializeObject(options);

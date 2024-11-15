@@ -14,7 +14,6 @@ public partial class DataManager //Info
 
     public float ExpRatio()
     {
-        Upgrade exp = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp");
         return ((float)info.CurrentExp / GetLevelExp(info.CurrentLevel + 1));
     }
 

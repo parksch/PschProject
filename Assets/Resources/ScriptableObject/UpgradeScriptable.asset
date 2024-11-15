@@ -61,3 +61,15 @@ MonoBehaviour:
     goodsType: 1
     needGoods: 10000
     levelPerGoods: 5
+  - upgradeType: 0
+    atlas: 
+    sprite: 
+    localKey: 
+    name: Exp
+    upgradeState: 0
+    changeType: 0
+    maxLevel: 1000
+    addValue: 0.5
+    goodsType: 0
+    needGoods: 0
+    levelPerGoods: 0

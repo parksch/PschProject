@@ -73,6 +73,8 @@ MonoBehaviour:
       desc: "\uACC4\uC18D\uD558\uAE30"
     - name: Return
       desc: "\uB3CC\uC544\uAC00\uAE30"
+    - name: Dwarf
+      desc: "\uB4DC\uC6CC\uD504"
   - language: 1
     textkeys:
     - name: 

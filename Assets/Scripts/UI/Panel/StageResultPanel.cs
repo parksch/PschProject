@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,25 @@ public class StageResultPanel : BasePanel
     [SerializeField] RectTransform content;
     [SerializeField] UIRewardSlot rewardSlotPrefab;
     [SerializeField] List<UIRewardSlot> rewards;
+    [SerializeField] Text failDesc;
+    [SerializeField] GameObject scroll;
+    [SerializeField] string challengeSuccess;
+    [SerializeField] string challengeFailed;
+
+    public void SetResult(bool isWin)
+    {
+        if (isWin)
+        {
+            title.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(challengeSuccess);
+        }
+        else
+        {
+            title.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(challengeFailed);
+        }
+
+        failDesc.gameObject.SetActive(!isWin);
+        scroll.SetActive(isWin);
+    }
 
     public void AddGoods(ClientEnum.Goods goods,int value)
     {
@@ -17,8 +37,8 @@ public class StageResultPanel : BasePanel
 
     public override void Open()
     {
-        base.Open();
         content.anchoredPosition = Vector2.zero;
+        base.Open();
     }
 
     public override void Close()

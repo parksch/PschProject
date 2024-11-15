@@ -50,7 +50,15 @@ public class Stage : MonoBehaviour
 
     public void CheckStage()
     {
-
+        switch (mode)
+        {
+            case ClientEnum.GameMode.Stage:
+                break;
+            case ClientEnum.GameMode.Boss:
+                break;
+            default:
+                break;
+        }
     }
 
     public void StageFail()

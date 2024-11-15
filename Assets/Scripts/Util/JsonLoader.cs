@@ -203,13 +203,9 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(values);
             //File.WriteAllText(jsonFilePath + "/DefaultValues.json", json);
 
-            List<Draw> draws = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).draw;
-            json = JsonConvert.SerializeObject(draws);
-            File.WriteAllText(jsonFilePath + "/Draw.json", json);
-
-            //List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
-            //json = JsonConvert.SerializeObject(upgrades);
-            //File.WriteAllText(jsonFilePath + "/Upgrade.json", json,Encoding.UTF8);
+            //List<Draw> draws = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).draw;
+            //json = JsonConvert.SerializeObject(draws);
+            //File.WriteAllText(jsonFilePath + "/Draw.json", json);
 
             //List<ItemData> itemDatas = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).itemData;
             //json = JsonConvert.SerializeObject(itemDatas);
@@ -218,6 +214,14 @@ public class JsonLoader : EditorWindow
             //List<Localization> localizations = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).localization;
             //json = JsonConvert.SerializeObject(localizations);
             //File.WriteAllText(jsonFilePath + "/Localization.json", json, Encoding.UTF8);
+
+            List<MonsterData> monsterDatas = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).monsterData;
+            json = JsonConvert.SerializeObject(monsterDatas);
+            File.WriteAllText(jsonFilePath + "/MonsterData.json", json, Encoding.UTF8);
+
+            //List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
+            //json = JsonConvert.SerializeObject(upgrades);
+            //File.WriteAllText(jsonFilePath + "/Upgrade.json", json,Encoding.UTF8);
 
             //List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
             //json = JsonConvert.SerializeObject(upgrades);

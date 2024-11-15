@@ -1,1 +1,1 @@
-﻿[{"name":"Dwarf","prefab":"Dwarf","attack":10,"hp":200,"defense":10,"attackRange":2.0,"attackSpeed":1.0,"moveSpeed":3.0,"objectType":0}]
+﻿[{"name":"Dwarf","prefab":"Dwarf","local":"","attack":10,"hp":200,"defense":10,"attackRange":2.0,"attackSpeed":1.0,"moveSpeed":3.0,"objectType":0}]

@@ -39,6 +39,11 @@ public class UIBossHP : MonoBehaviour
     {
         if (targetTime > 0)
         {
+            if (GameManager.Instance.Enemies.Count == 0)
+            {
+                return;
+            }
+
             targetTime -= Time.deltaTime;
             timeText.text = FormatTime(targetTime);
         }

@@ -19,10 +19,11 @@ public class GameManager : Singleton<GameManager>
     void RemoveEnemy(EnemyCharacter enemy) 
     {
         enemies.Remove(enemy);
+        stage.CheckStage();
 
         if (enemies.Count == 0)
         {
-            stage.CheckStage();
+            stage.EndStage();
         }
     }
 

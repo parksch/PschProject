@@ -8,7 +8,6 @@ public partial class DataManager //Inventory
     [SerializeField, ReadOnly] BaseItem equipHelmet;
     [SerializeField, ReadOnly] BaseItem equipWeapon;
     [SerializeField, ReadOnly] BaseItem equipArmor;
-
     [SerializeField, ReadOnly] List<BaseItem> inventoryDatas = new List<BaseItem>();
 
     public BaseItem Helmet => equipHelmet;

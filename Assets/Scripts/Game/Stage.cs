@@ -33,7 +33,7 @@ public class Stage : MonoBehaviour
         }
     }
 
-    public void CheckStage()
+    public void EndStage()
     {
         switch (mode)
         {
@@ -41,10 +41,16 @@ public class Stage : MonoBehaviour
                 map.CreateEnemy(data.monsters);
                 break;
             case ClientEnum.GameMode.Boss:
+                StageSuccess();
                 break;
             default:
                 break;
         }
+    }
+
+    public void CheckStage()
+    {
+
     }
 
     public void StageFail()

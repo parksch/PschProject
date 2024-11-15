@@ -199,9 +199,9 @@ public class JsonLoader : EditorWindow
         {
             string json = string.Empty;
 
-            List<DefaultValues> values = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).defaultValues;
-            json = JsonConvert.SerializeObject(values);
-            File.WriteAllText(jsonFilePath + "/DefaultValues.json", json);
+            //List<DefaultValues> values = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).defaultValues;
+            //json = JsonConvert.SerializeObject(values);
+            //File.WriteAllText(jsonFilePath + "/DefaultValues.json", json);
 
             //List<Draw> draws = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).draw;
             //json = JsonConvert.SerializeObject(draws);

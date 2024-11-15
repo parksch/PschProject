@@ -47,6 +47,16 @@ public class Stage : MonoBehaviour
         }
     }
 
+    public void StageFail()
+    {
+
+    }
+
+    public void StageSuccess()
+    {
+
+    }
+
     void CreateMap(string mapData)
     {
         if (map != null && map.name == mapData)

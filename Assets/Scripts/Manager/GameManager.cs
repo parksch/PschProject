@@ -16,16 +16,7 @@ public class GameManager : Singleton<GameManager>
     public List<EnemyCharacter> Enemies => enemies;
     public ClientEnum.GameMode Mode => stage.Mode;
     public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
-    void RemoveEnemy(EnemyCharacter enemy) 
-    {
-        enemies.Remove(enemy);
-        stage.CheckStage();
-
-        if (enemies.Count == 0)
-        {
-            stage.EndStage();
-        }
-    }
+    public void StageFail() => stage.StageFail();
 
     public delegate void ChangeGameMode(ClientEnum.GameMode mode);
     public delegate void EnemyDeath(EnemyCharacter enemy);
@@ -36,6 +27,15 @@ public class GameManager : Singleton<GameManager>
     int scrapMin = 0;
     int scrapMax = 0;
     float scrapProbability = 0;
+
+    protected override void Awake()
+    {
+    }
+
+    void Start()
+    {
+        Init();
+    }
 
     public void Init()
     {
@@ -83,15 +83,6 @@ public class GameManager : Singleton<GameManager>
         return null;
     }
 
-    protected override void Awake()
-    {
-    }
-
-    void Start()
-    {
-        Init();
-    }
-
     void SetGameMode(ClientEnum.GameMode gameMode)
     {
         foreach (var item in enemies)
@@ -137,6 +128,17 @@ public class GameManager : Singleton<GameManager>
         {
             long scrap = Random.Range(scrapMin, scrapMax);
             DataManager.Instance.AddScrap(scrap);
+        }
+    }
+
+    void RemoveEnemy(EnemyCharacter enemy)
+    {
+        enemies.Remove(enemy);
+        stage.CheckStage();
+
+        if (enemies.Count == 0)
+        {
+            stage.EndStage();
         }
     }
 }

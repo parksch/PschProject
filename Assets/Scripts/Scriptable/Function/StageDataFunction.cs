@@ -14,6 +14,7 @@ namespace JsonClass
 
     public partial class StageRewards // This Class is a functional Class.
     {
+        public ClientEnum.Goods Goods() {  return (ClientEnum.Goods)goodsIndex; }
     }
 
 }

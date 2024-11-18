@@ -99,7 +99,7 @@ public class PlayerCharacter : BaseCharacter
 
     public override void Death()
     {
-
+        GameManager.Instance.StageFail();
     }
 
     public override void Hit(long attack)

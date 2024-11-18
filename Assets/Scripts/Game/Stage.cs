@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    [SerializeField] ClientEnum.GameMode mode;
-    [SerializeField,ReadOnly] Map map;
+    [SerializeField, ReadOnly] ClientEnum.GameMode mode;
+    [SerializeField, ReadOnly] StageResultPanel resultPanel;
+    [SerializeField, ReadOnly] Map map;
 
     public ClientEnum.GameMode Mode => mode;
 
@@ -63,12 +64,19 @@ public class Stage : MonoBehaviour
 
     public void StageFail()
     {
-
+        resultPanel.SetResult(false);
+        UIManager.Instance.AddPanel(resultPanel);
     }
 
     public void StageSuccess()
     {
-
+        resultPanel.SetResult(true);
+        for (int i = 0; i < data.stageRewards.Count; i++)
+        {
+            StageRewards rewards = data.stageRewards[i];
+            resultPanel.AddGoods(rewards.Goods(),rewards.value);
+        }
+        UIManager.Instance.AddPanel(resultPanel);
     }
 
     void CreateMap(string mapData)

@@ -18,7 +18,7 @@ public partial class UIManager //Top
     [SerializeField, ReadOnly] Slider expSlider;
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
-    [SerializeField] GameObject bossButton;
+    [SerializeField, ReadOnly] GameObject bossButton;
 
     public delegate void ChangeHP(float ratio);
     public ChangeHP OnChangePlayerHP;

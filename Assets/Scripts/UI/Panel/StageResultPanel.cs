@@ -11,13 +11,21 @@ public class StageResultPanel : BasePanel
     [SerializeField] UIRewardSlot rewardSlotPrefab;
     [SerializeField] List<UIRewardSlot> rewards;
     [SerializeField] Text failDesc;
+    [SerializeField] Text autoReturn;
     [SerializeField] GameObject scroll;
     [SerializeField] string challengeSuccess;
     [SerializeField] string challengeFailed;
+
+    bool isWin;
+    bool isOn = false;
+    float timer = 5f;
+    float current = 0;
     int count = 0;
 
-    public void SetResult(bool isWin)
+    public void SetResult(bool _isWin)
     {
+        isWin = _isWin;
+
         if (isWin)
         {
             title.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(challengeSuccess);
@@ -43,9 +51,17 @@ public class StageResultPanel : BasePanel
         count++;
     }
 
+    public void OnClickBack()
+    {
+        UIManager.Instance.BackPanel();
+        isOn = false;
+    }
+
     public override void Open()
     {
         content.anchoredPosition = Vector2.zero;
+        current = 0;
+        isOn = true;
         base.Open();
     }
 
@@ -57,5 +73,22 @@ public class StageResultPanel : BasePanel
         }
 
         count = 0;
+    }
+
+    void FixedUpdate()
+    {
+        if (!isOn)
+        {
+            return;
+        }
+
+        if (current <= timer)
+        {
+            current += Time.deltaTime;
+        }
+        else
+        {
+            OnClickBack();
+        }
     }
 }

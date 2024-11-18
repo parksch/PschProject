@@ -75,6 +75,10 @@ MonoBehaviour:
       desc: "\uB3CC\uC544\uAC00\uAE30"
     - name: Dwarf
       desc: "\uB4DC\uC6CC\uD504"
+    - name: AutoContinue
+      desc: "{0} \uCD08 \uD6C4 \uC790\uB3D9\uC73C\uB85C \uC9C4\uD589"
+    - name: AutoReturn
+      desc: "{0} \uCD08 \uD6C4 \uC790\uB3D9\uC73C\uB85C \uB2EB\uAE30"
   - language: 1
     textkeys:
     - name: 

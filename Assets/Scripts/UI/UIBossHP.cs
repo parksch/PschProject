@@ -54,6 +54,7 @@ public class UIBossHP : MonoBehaviour
                 isOn = false;
                 targetTime = 0;
                 timeText.text = "00:00:00";
+                GameManager.Instance.StageFail();
             }
         }
 

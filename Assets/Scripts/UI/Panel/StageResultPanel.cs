@@ -7,20 +7,28 @@ using UnityEngine.UI;
 public class StageResultPanel : BasePanel
 {
     [SerializeField,ReadOnly] Text title;
-    [SerializeField] RectTransform content;
-    [SerializeField] UIRewardSlot rewardSlotPrefab;
-    [SerializeField] List<UIRewardSlot> rewards;
-    [SerializeField] Text failDesc;
-    [SerializeField] Text autoReturn;
-    [SerializeField] GameObject scroll;
-    [SerializeField] string challengeSuccess;
-    [SerializeField] string challengeFailed;
+    [SerializeField,ReadOnly] RectTransform content;
+    [SerializeField,ReadOnly] UIRewardSlot rewardSlotPrefab;
+    [SerializeField,ReadOnly] List<UIRewardSlot> rewards;
+    [SerializeField,ReadOnly] Text autoText;
+    [SerializeField] List<GameObject> failObjects;
+    [SerializeField] List<GameObject> successObjects;
+    [SerializeField,ReadOnly] string challengeSuccess;
+    [SerializeField,ReadOnly] string challengeFailed;
+    [SerializeField,ReadOnly] string autoContinueLocal;
+    [SerializeField,ReadOnly] string autoReturnLocal;
 
+    LocalizationScriptable localization;
     bool isWin;
     bool isOn = false;
     float timer = 5f;
     float current = 0;
     int count = 0;
+
+    public override void FirstLoad()
+    {
+        localization = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization);
+    }
 
     public void SetResult(bool _isWin)
     {
@@ -35,8 +43,17 @@ public class StageResultPanel : BasePanel
             title.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(challengeFailed);
         }
 
-        failDesc.gameObject.SetActive(!isWin);
-        scroll.SetActive(isWin);
+        for (int i = 0; i < failObjects.Count; i++)
+        {
+            failObjects[i].SetActive(!isWin);
+        }
+
+
+        for (int i = 0; i < successObjects.Count; i++)
+        {
+            successObjects[i].SetActive(isWin);
+        }
+
     }
 
     public void AddGoods(ClientEnum.Goods goods,int value)
@@ -82,9 +99,24 @@ public class StageResultPanel : BasePanel
             return;
         }
 
-        if (current <= timer)
+
+        if (current < timer)
         {
             current += Time.deltaTime;
+
+            if (current > timer)
+            {
+                current = timer;
+            }
+
+            if (isWin)
+            {
+                autoText.text = string.Format(localization.Get(autoContinueLocal), (int)(timer - current));
+            }
+            else
+            {
+                autoText.text = string.Format(localization.Get(autoReturnLocal), (int)(timer - current));
+            }
         }
         else
         {

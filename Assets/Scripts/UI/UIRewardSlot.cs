@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIRewardSlot : MonoBehaviour
 {
     [SerializeField] Image image;
-    [SerializeField] Text text;
+    [SerializeField] UIText text;
     ClientEnum.Goods goods;
     int num;
 
@@ -15,6 +15,7 @@ public class UIRewardSlot : MonoBehaviour
         if (target == goods)
         {
             num += value;
+            text.SetText(num);
             return true;
         }
 
@@ -25,7 +26,7 @@ public class UIRewardSlot : MonoBehaviour
     {
         goods = ClientEnum.Goods.None;
         image.sprite = item.GetSprite;
-        text.text = "Lv " + item.Level;
+        text.SetText("Lv " + item.Level);
         gameObject.SetActive(true);
     }
 
@@ -34,6 +35,7 @@ public class UIRewardSlot : MonoBehaviour
         goods = target;
         num = vlaue;
         image.sprite = ResourcesManager.Instance.GetGoodsSprite(goods);
+        text.SetText(num);
         gameObject.SetActive(true); 
     }
 }

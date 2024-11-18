@@ -1,3 +1,4 @@
+using ClientEnum;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ public class StageResultPanel : BasePanel
     [SerializeField,ReadOnly] string autoContinueLocal;
     [SerializeField,ReadOnly] string autoReturnLocal;
 
+    GameMode mode;
     LocalizationScriptable localization;
     bool isWin;
     bool isOn = false;
@@ -30,8 +32,9 @@ public class StageResultPanel : BasePanel
         localization = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization);
     }
 
-    public void SetResult(bool _isWin)
+    public void SetResult(bool _isWin,GameMode gameMode = GameMode.Stage)
     {
+        mode = gameMode;
         isWin = _isWin;
 
         if (isWin)
@@ -64,13 +67,24 @@ public class StageResultPanel : BasePanel
             rewards.Add(prefab);
         }
 
-        rewards[count].SetGoods(goods, value);
-        count++;
+        if (!rewards[count].CheckGoods(goods,value))
+        {
+            rewards[count].SetGoods(goods, value);
+            count++;
+        }
     }
 
     public void OnClickBack()
     {
         UIManager.Instance.BackPanel();
+        GameManager.Instance.OnChangeGameMode(GameMode.Stage);
+        isOn = false;
+    }
+
+    public void OnClickNext()
+    {
+        UIManager.Instance.BackPanel();
+        GameManager.Instance.OnChangeGameMode(mode);
         isOn = false;
     }
 
@@ -120,7 +134,14 @@ public class StageResultPanel : BasePanel
         }
         else
         {
-            OnClickBack();
+            if (isWin)
+            {
+                OnClickNext();
+            }
+            else
+            {
+                OnClickBack();
+            }
         }
     }
 }

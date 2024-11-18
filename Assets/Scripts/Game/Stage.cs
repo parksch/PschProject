@@ -70,7 +70,7 @@ public class Stage : MonoBehaviour
 
     public void StageSuccess()
     {
-        resultPanel.SetResult(true);
+        resultPanel.SetResult(true,mode);
         for (int i = 0; i < data.stageRewards.Count; i++)
         {
             StageRewards rewards = data.stageRewards[i];

@@ -37,11 +37,11 @@ public class ResourcesManager : Singleton<ResourcesManager>
             case ClientEnum.Goods.None:
                 return null;
             case ClientEnum.Goods.Scrap:
-                return null;
+                return spriteAtlasDict["Goods"].GetSprite("Scrap");
             case ClientEnum.Goods.Gold:
                 return spriteAtlasDict["Goods"].GetSprite("Gold");
             case ClientEnum.Goods.Gem:
-                return null;
+                return spriteAtlasDict["Goods"].GetSprite("Gem");
             case ClientEnum.Goods.Money:
                 return null;
             default:

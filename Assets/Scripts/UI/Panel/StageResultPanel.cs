@@ -58,7 +58,7 @@ public class StageResultPanel : BasePanel
 
     public void AddGoods(ClientEnum.Goods goods,int value)
     {
-        if (rewards.Count < count)
+        if (rewards.Count <= count)
         {
             UIRewardSlot prefab = Instantiate(rewardSlotPrefab, content);
             rewards.Add(prefab);

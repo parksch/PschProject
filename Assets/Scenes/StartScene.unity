@@ -7056,7 +7056,7 @@ MonoBehaviour:
   attackSpeed: 2
   moveSpeed: 4
   hpRegen: 20
-  hpRegenTimer: 1.96
+  hpRegenTimer: 2
 --- !u!1 &1898427684
 GameObject:
   m_ObjectHideFlags: 0

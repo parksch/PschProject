@@ -22,7 +22,10 @@ namespace JsonClass
                 return "NoText";
             }
 
-            return keyValuePairs[name].desc;
+            string str = keyValuePairs[name].desc;
+            str = str.Replace("\\n", "\n");
+
+            return str;
         }
 
         void CreateDict()

@@ -165,4 +165,14 @@ public partial class UIManager : Singleton<UIManager>
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (currentPanel != null)
+            {
+                BackPanel();
+            }
+        }
+    }
 }

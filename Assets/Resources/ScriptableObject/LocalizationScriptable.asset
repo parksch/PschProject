@@ -79,6 +79,8 @@ MonoBehaviour:
       desc: "{0} \uCD08 \uD6C4 \uC790\uB3D9\uC73C\uB85C \uC9C4\uD589"
     - name: AutoReturn
       desc: "{0} \uCD08 \uD6C4 \uC790\uB3D9\uC73C\uB85C \uB2EB\uAE30"
+    - name: ChallengeFailedDesc
+      desc: "\uB3C4\uC804\uC5D0 \uC2E4\uD328\uD558\uC168\uC2B5\uB2C8\uB2E4."
   - language: 1
     textkeys:
     - name: 

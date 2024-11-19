@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OptionScriptable
   m_EditorClassIdentifier: 
   option:
-  - target: 0
+  - target: 1
     gradeValue:
     - key: 0
       value: 5
@@ -24,7 +24,7 @@ MonoBehaviour:
     - key: 3
       value: 30
     local: HPOption
-  - target: 1
+  - target: 2
     gradeValue:
     - key: 0
       value: 5

@@ -63,7 +63,7 @@ public partial class UIManager //Top
         switch (gameMode)
         {
             case ClientEnum.GameMode.Stage:
-                bossButton.gameObject.SetActive(true);
+                bossButton.gameObject.SetActive(DataManager.Instance.GetInfo.ChallengingStage != 0);
                 bossHP.gameObject.SetActive(false);
                 break;
             case ClientEnum.GameMode.Boss:

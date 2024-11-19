@@ -40,6 +40,20 @@ public class StageResultPanel : BasePanel
         if (isWin)
         {
             title.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(challengeSuccess);
+
+            switch (mode)
+            {
+                case GameMode.Boss:
+                    StageData stageData = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.ChallengingStage);
+                    DataManager.Instance.GetInfo.ChallengingStage = stageData.next;
+                    if (stageData.next != 0)
+                    {
+                        DataManager.Instance.GetInfo.Stage = stageData.next;
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
         else
         {
@@ -51,14 +65,13 @@ public class StageResultPanel : BasePanel
             failObjects[i].SetActive(!isWin);
         }
 
-
         for (int i = 0; i < successObjects.Count; i++)
         {
             successObjects[i].SetActive(isWin);
         }
 
     }
-
+ 
     public void AddGoods(ClientEnum.Goods goods,int value)
     {
         if (rewards.Count <= count)
@@ -83,9 +96,16 @@ public class StageResultPanel : BasePanel
 
     public void OnClickNext()
     {
-        UIManager.Instance.BackPanel();
-        GameManager.Instance.OnChangeGameMode(mode);
-        isOn = false;
+        if (ChangeStage())
+        {
+            UIManager.Instance.BackPanel();
+            GameManager.Instance.OnChangeGameMode(mode);
+            isOn = false;
+        }
+        else
+        {
+            OnClickBack();
+        }
     }
 
     public override void Open()
@@ -143,5 +163,26 @@ public class StageResultPanel : BasePanel
                 OnClickBack();
             }
         }
+    }
+
+    bool ChangeStage()
+    {
+        bool result = false;
+
+        switch (mode)
+        {
+            case GameMode.Stage:
+                break;
+            case GameMode.Boss:
+                if (DataManager.Instance.GetInfo.ChallengingStage != 0)
+                {
+                    result = true;
+                }
+                break;
+            default:
+                break;
+        }
+
+        return result;
     }
 }

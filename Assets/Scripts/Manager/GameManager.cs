@@ -16,7 +16,11 @@ public class GameManager : Singleton<GameManager>
     public List<EnemyCharacter> Enemies => enemies;
     public ClientEnum.GameMode Mode => stage.Mode;
     public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
-    public void StageFail() => stage.StageFail();
+    public void StageFail()
+    {
+        ResetStage();
+        stage.StageFail();
+    }
 
     public delegate void ChangeGameMode(ClientEnum.GameMode mode);
     public delegate void EnemyDeath(EnemyCharacter enemy);
@@ -85,13 +89,7 @@ public class GameManager : Singleton<GameManager>
 
     void SetGameMode(ClientEnum.GameMode gameMode)
     {
-        foreach (var item in enemies)
-        {
-            item.DeathAction();
-        }
-
-        enemies.Clear();
-        player.DeathAction();
+        ResetStage();
         stage.Set(gameMode);
     }
 
@@ -105,7 +103,6 @@ public class GameManager : Singleton<GameManager>
         long gold = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyPerGold)));
         DataManager.Instance.AddGold(gold);
     }
-
     void AddExp()
     {
         if (Mode != ClientEnum.GameMode.Stage)
@@ -116,7 +113,6 @@ public class GameManager : Singleton<GameManager>
         long exp = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyperStageExp)));
         DataManager.Instance.AddExp(exp);
     }
-
     void AddScrap()
     {
         if (Mode != ClientEnum.GameMode.Stage)
@@ -129,6 +125,17 @@ public class GameManager : Singleton<GameManager>
             long scrap = Random.Range(scrapMin, scrapMax);
             DataManager.Instance.AddScrap(scrap);
         }
+    }
+
+    void ResetStage()
+    {
+        foreach (var item in enemies)
+        {
+            item.DeathAction();
+        }
+
+        enemies.Clear();
+        player.DeathAction();
     }
 
     void RemoveEnemy(EnemyCharacter enemy)

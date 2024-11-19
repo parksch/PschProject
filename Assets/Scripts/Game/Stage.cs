@@ -27,6 +27,7 @@ public class Stage : MonoBehaviour
                 map.CreateEnemy(data.monsters);
                 break;
             case ClientEnum.GameMode.Boss:
+                map.CreateEnemy(data.monsters);
                 map.CreateBoss(data.boss);
                 break;
             default:
@@ -70,12 +71,14 @@ public class Stage : MonoBehaviour
 
     public void StageSuccess()
     {
-        resultPanel.SetResult(true,mode);
         for (int i = 0; i < data.stageRewards.Count; i++)
         {
             StageRewards rewards = data.stageRewards[i];
+            DataManager.Instance.AddGoods(rewards.Goods(),rewards.value);
             resultPanel.AddGoods(rewards.Goods(),rewards.value);
         }
+
+        resultPanel.SetResult(true, mode);
         UIManager.Instance.AddPanel(resultPanel);
     }
 

@@ -72,7 +72,10 @@ public class EnemyCharacter : BaseCharacter
             curHp = 0;
         }
 
-        UIManager.Instance.UpdateBossHp(curHp);
+        if (isBoss)
+        {
+            UIManager.Instance.UpdateBossHp(curHp);
+        }
 
         if (curHp <= 0)
         {

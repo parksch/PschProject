@@ -89,4 +89,24 @@ public partial class  DataManager //Goods
         }
     }
 
+    public void AddGoods(ClientEnum.Goods type, long value)
+    {
+        switch (type)
+        {
+            case ClientEnum.Goods.Scrap:
+                AddScrap(value);
+                break;
+            case ClientEnum.Goods.Gold:
+                AddGold(value);
+                break;
+            case ClientEnum.Goods.Gem:
+                AddGem(value);
+                break;
+            case ClientEnum.Goods.Money:
+                break;
+            default:
+                break;
+        }
+    }
+
 }

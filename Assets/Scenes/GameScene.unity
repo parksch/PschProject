@@ -3767,9 +3767,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1681226671}
-        m_TargetAssemblyTypeName: CommonPanel, Assembly-CSharp
-        m_MethodName: OnClickNo
+      - m_Target: {fileID: 222560178}
+        m_TargetAssemblyTypeName: StageResultPanel, Assembly-CSharp
+        m_MethodName: OnClickBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11203,9 +11203,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1681226671}
-        m_TargetAssemblyTypeName: CommonPanel, Assembly-CSharp
-        m_MethodName: OnClickYes
+      - m_Target: {fileID: 222560178}
+        m_TargetAssemblyTypeName: StageResultPanel, Assembly-CSharp
+        m_MethodName: OnClickNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

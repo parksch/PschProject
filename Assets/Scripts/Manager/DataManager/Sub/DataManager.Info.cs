@@ -47,6 +47,7 @@ public partial class DataManager //Info
     {
         [SerializeField] string userName;
         [SerializeField] int stage = 0;
+        [SerializeField] int challengingStage = 0;
         [SerializeField] int currentLevel;
         [SerializeField] long currentExp;
         [SerializeField] List<Datas.Pair<string, int>> drawLimit;
@@ -72,6 +73,17 @@ public partial class DataManager //Info
             set
             {
                 stage = value;
+            }
+        }
+        public int ChallengingStage
+        {
+            get 
+            { 
+                    return challengingStage; 
+            }
+            set 
+            { 
+                challengingStage = value; 
             }
         }
         public int CurrentLevel => currentLevel;
@@ -109,6 +121,7 @@ public partial class DataManager //Info
     void InfoInit()
     {
         info.Stage = 1;
+        info.ChallengingStage = 1;
         info.UserName = "Player";
 
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)

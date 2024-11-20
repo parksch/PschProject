@@ -8,36 +8,41 @@ public partial class DataManager //Info
     [SerializeField] Info info;
     public Info GetInfo => info;
 
-    public delegate void ChangeExp(float ratio);
+    public delegate void ChangeLevel(int level);
+    public delegate void ChangeExpRatio(float ratio);
 
-    public ChangeExp OnChangeExp;
+    public ChangeLevel OnChangeLevel;
+    public ChangeExpRatio OnChangeExp;
 
     public float ExpRatio()
     {
-        return ((float)info.CurrentExp / GetLevelExp(info.CurrentLevel + 1));
+        if (info.CurrentExp >= info.MaxExp)
+        {
+            return 1;
+        }
+        else
+        {
+            int currentLevel = info.CurrentLevel;
+            return ((float)info.CurrentExp - info.LevelExp(currentLevel))/ (info.LevelExp(info.CurrentLevel + 1) - info.LevelExp(info.CurrentLevel));
+        }
     }
 
     public void AddExp(long value)
     {
         info.CurrentExp = (info.CurrentExp + value);
-
-        if (info.CurrentExp > GetLevelExp(ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp").maxLevel))
+        
+        if (info.CurrentExp >= info.MaxExp)
         {
-            info.CurrentExp = GetLevelExp(ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp").maxLevel);
+            info.CurrentExp = info.MaxExp;
         }
 
+        OnChangeLevel(info.CurrentLevel);
         OnChangeExp(ExpRatio());
     }
 
-    long GetLevelExp(int targetLevel)
+    long LevelExp(int targetLevel)
     {
-        Upgrade expState = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp");
-        long exp = 0;
-
-        for (int i = 0; i < targetLevel; i++)
-        {
-            exp += (long)((ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startExp * 10f) * (1 + (i * expState.addValue)));
-        }
+        long exp = info.LevelExp(targetLevel);
 
         return exp;
     }
@@ -49,11 +54,14 @@ public partial class DataManager //Info
         [SerializeField] int stage = 0;
         [SerializeField] int challengingStage = 0;
         [SerializeField] int currentLevel;
+        [SerializeField] int startExp;
         [SerializeField] long currentExp;
+        [SerializeField] long maxExp;
         [SerializeField] List<Datas.Pair<string, int>> drawLimit;
         [SerializeField] List<Datas.Pair<string, int>> drawCount;
+        [SerializeField] Upgrade expUpgrade;
 
-        public string UserName 
+        public string UserName
         {
             get
             {
@@ -64,6 +72,7 @@ public partial class DataManager //Info
                 userName = value;
             }
         }
+        public int StartExp => startExp;
         public int Stage
         {
             get
@@ -77,16 +86,45 @@ public partial class DataManager //Info
         }
         public int ChallengingStage
         {
-            get 
-            { 
-                    return challengingStage; 
+            get
+            {
+                return challengingStage;
             }
-            set 
-            { 
-                challengingStage = value; 
+            set
+            {
+                challengingStage = value;
             }
         }
-        public int CurrentLevel => currentLevel;
+        public int CurrentLevel
+        {
+            get
+            {
+                int level = 0;
+                long exp = currentExp;
+                long target = 0;
+
+                if (currentExp >= maxExp)
+                {
+                    return expUpgrade.maxLevel;
+                }
+
+                for (int i = 0; i < expUpgrade.maxLevel; i++)
+                {
+                    target += (long)(startExp * (1 + (i * expUpgrade.addValue)));
+
+                    if (currentExp >= target)
+                    {
+                        level++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                return level;
+            }
+        }
         public long CurrentExp
         {
             set
@@ -97,6 +135,18 @@ public partial class DataManager //Info
             {
                 return currentExp;
             }
+        }
+        public long MaxExp => maxExp;
+        public long LevelExp(int targetLevel)
+        {
+            long exp = 0;
+
+            for (int i = 0; i < targetLevel; i++)
+            {
+                exp += (long)(startExp * (1 + (i * expUpgrade.addValue)));
+            }
+
+            return exp;
         }
         public int DrawLimit(string name) => drawLimit.Find(x => name == x.key).value;
         public int DrawCount(string name) => drawCount.Find(x => name == x.key).value;
@@ -116,6 +166,12 @@ public partial class DataManager //Info
                 drawCount.Add(new Datas.Pair<string, int>(name, 0));
             }
         }
+        public void SetUpgrade(Upgrade exp)
+        {
+            expUpgrade = exp;
+            startExp = expUpgrade.needGoods;
+            maxExp = LevelExp(exp.maxLevel);
+        }
     }
 
     void InfoInit()
@@ -123,6 +179,7 @@ public partial class DataManager //Info
         info.Stage = 1;
         info.ChallengingStage = 1;
         info.UserName = "Player";
+        info.SetUpgrade(ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState("Exp"));
 
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
         {

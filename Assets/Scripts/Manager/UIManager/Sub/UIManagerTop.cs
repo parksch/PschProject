@@ -85,8 +85,9 @@ public partial class UIManager //Top
         SetReinforce(DataManager.Instance.GetGoods.reinforceStone);
 
         userInfo.Init();
-
+        
         OnChangePlayerHP += userInfo.SetHP;
+
 
         DataManager.Instance.OnChangeGold = null;
         DataManager.Instance.OnChangeGold += SetGold;
@@ -103,6 +104,9 @@ public partial class UIManager //Top
         DataManager.Instance.OnChangeReinforce = null;
         DataManager.Instance.OnChangeReinforce += SetReinforce;
         DataManager.Instance.OnChangeReinforce += _ => { UpdatePanel(); };
+
+        DataManager.Instance.OnChangeLevel = null;
+        DataManager.Instance.OnChangeLevel += userInfo.SetLevel;
 
         DataManager.Instance.OnChangeExp = null;
         DataManager.Instance.OnChangeExp += userInfo.SetExp;

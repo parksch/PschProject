@@ -12,6 +12,7 @@ public class UIUserInfo : MonoBehaviour
 
     public void SetHP(float value) => hp.value = value;
     public void SetExp(float value) => exp.value = value;
+    public void SetLevel(int value) => playerLevel.text = DataManager.Instance.GetInfo.CurrentLevel.ToString();
 
     public void Init()
     {

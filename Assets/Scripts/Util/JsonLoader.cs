@@ -239,9 +239,9 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(stageOption);
             //File.WriteAllText(jsonFilePath + "/StageOption.json", json, Encoding.UTF8);
 
-            List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
-            json = JsonConvert.SerializeObject(upgrades);
-            File.WriteAllText(jsonFilePath + "/Upgrade.json", json, Encoding.UTF8);
+            //List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
+            //json = JsonConvert.SerializeObject(upgrades);
+            //File.WriteAllText(jsonFilePath + "/Upgrade.json", json, Encoding.UTF8);
 
             AssetDatabase.Refresh();
             EditorUtility.DisplayDialog("결과", "Scriptable 에서 Json 변환", "확인");

@@ -11,15 +11,14 @@ namespace JsonClass
     [System.Serializable]
     public partial class Skill
     {
+        public int id;
+        public string sprite;
         public string name;
         public string description;
         public int levelMax;
         public int maxAttackCount;
-        public float damageCycleTime;
-        public float damageMultiply;
-        public float upgradeAddPer;
         public float coolTime;
-        public string sprite;
+        public float upgradeAddPer;
     }
 
 }

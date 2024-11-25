@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace JsonClass
 {
-    public partial class SkillScriptable : ScriptableObject
+    public partial class SkillDataScriptable : ScriptableObject
     {
         public List<SkillData> skillData = new List<SkillData>();
     }
@@ -18,6 +18,7 @@ namespace JsonClass
         public string nameKey;
         public string descKey;
         public float coolTime;
-        public List<int> SpellList;
+        public List<int> spellList;
     }
+
 }

@@ -102,6 +102,7 @@ public class JsonLoader : EditorWindow
     {
         AddDirectory(scriptableDataPath);
         AddDirectory(scriptableFunctionPath);
+        string fileName = string.Empty;
 
         try
         {
@@ -110,7 +111,7 @@ public class JsonLoader : EditorWindow
 
             foreach (FileInfo file in info.GetFiles("*.json"))
             {
-                string fileName = Path.GetFileNameWithoutExtension(file.Name);
+                fileName = Path.GetFileNameWithoutExtension(file.Name);
                 string path = Path.Combine(jsonFilePath, file.Name);
 
                 csFileNames.Add(char.ToUpper(fileName[0]) + fileName.Substring(1));
@@ -135,7 +136,7 @@ public class JsonLoader : EditorWindow
         }
         catch (System.Exception e)
         {
-            EditorUtility.DisplayDialog("결과", "cs 파일 생성 실패 \n" + e.Message, "확인");
+            EditorUtility.DisplayDialog("결과", fileName + "\n" + "cs 파일 생성 실패 \n" + e.Message, "확인");
         }
 
         isButtonEnabled = true;
@@ -144,6 +145,7 @@ public class JsonLoader : EditorWindow
     void OnClickCsConversion()
     {
         AddDirectory(scriptableObjectPath);
+        string fileName = string.Empty;
 
         try
         {
@@ -161,7 +163,7 @@ public class JsonLoader : EditorWindow
 
             foreach (FileInfo file in info.GetFiles("*.json"))
             {
-                string fileName = Path.GetFileNameWithoutExtension(file.Name);
+                fileName = Path.GetFileNameWithoutExtension(file.Name);
                 string path = Path.Combine(jsonFilePath, file.Name);
                 TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
                 JToken jsonToken = JToken.Parse(textAsset.text);
@@ -175,7 +177,7 @@ public class JsonLoader : EditorWindow
         }
         catch (Exception e)
         {
-            EditorUtility.DisplayDialog("결과", "ScriptableObject 생성 실패\n" + e.Message, "확인");
+            EditorUtility.DisplayDialog("결과", fileName + "\n" + "ScriptableObject 생성 실패\n" + e.Message, "확인");
         }
 
         isButtonEnabled = true;
@@ -243,7 +245,7 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(upgrades);
             //File.WriteAllText(jsonFilePath + "/Upgrade.json", json, Encoding.UTF8);
 
-            List<SkillData> skillData = ScriptableManager.Instance.Get<SkillScriptable>(ScriptableType.Skill).skillData;
+            List<SkillData> skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).skillData;
             json = JsonConvert.SerializeObject(skillData);
             File.WriteAllText(jsonFilePath + "/SkillData.json", json, Encoding.UTF8);
 

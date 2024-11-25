@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f0b11f2640ca94ead3198b57650b92, type: 3}
-  m_Name: SkillScriptable
+  m_Script: {fileID: 11500000, guid: d104edf902b2ee84ab3b1c77ef512f8a, type: 3}
+  m_Name: SpellDataScriptable
   m_EditorClassIdentifier: 
-  skillData:
+  spellData:
   - id: 1
     levelMax: 10
     grade: 1
@@ -20,4 +20,4 @@ MonoBehaviour:
     nameKey: SkillSwingName
     descKey: SkillSwingDesc
     coolTime: 8
-    SpellList: 
+    spellList: 00000000

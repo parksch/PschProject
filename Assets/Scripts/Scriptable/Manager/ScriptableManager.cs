@@ -11,7 +11,8 @@ public enum ScriptableType
     MonsterData,
     Option,
     OptionProbability,
-    Skill,
+    SkillData,
+    SpellData,
     StageData,
     StageOption,
     Upgrade

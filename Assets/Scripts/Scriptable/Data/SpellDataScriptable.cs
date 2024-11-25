@@ -12,6 +12,7 @@ namespace JsonClass
     public partial class SpellData
     {
         public int id;
+        public int state;
         public float addValue;
     }
 

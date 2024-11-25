@@ -14,10 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellData:
   - id: 1
-    levelMax: 10
-    grade: 1
-    sprite: SkillSwing
-    nameKey: SkillSwingName
-    descKey: SkillSwingDesc
-    coolTime: 8
-    spellList: 00000000
+    state: 1
+    addValue: 0.8

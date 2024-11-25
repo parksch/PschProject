@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UI;
 using UnityEngine;
 
-public class SkillData
+public class SkillDatas
 {
 
 }
 
-public class UISkillCell : UIRecycleViewCell<SkillData>
+public class UISkillCell : UIRecycleViewCell<SkillDatas>
 {
-    public override void UpdateContent(SkillData itemData)
+    public override void UpdateContent(SkillDatas itemData)
     {
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UI;
 using UnityEngine;
 
-public class UISkillScroll : UIRecycleViewController<SkillData>
+public class UISkillScroll : UIRecycleViewController<SkillDatas>
 {
 
 }

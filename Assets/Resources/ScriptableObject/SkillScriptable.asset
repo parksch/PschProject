@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f0b11f2640ca94ead3198b57650b92, type: 3}
   m_Name: SkillScriptable
   m_EditorClassIdentifier: 
-  skill:
-  - name: Fire
-    description: 
+  skillData:
+  - id: 1
     levelMax: 10
-    maxAttackCount: 0
-    damageCycleTime: 0
-    damageMultiply: 1.5
-    upgradeAddPer: 0.1
+    grade: 1
+    sprite: SkillSwing
+    nameKey: SkillSwingName
+    descKey: SkillSwingDesc
     coolTime: 8
-    sprite: 
+    SpellList: 

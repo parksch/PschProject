@@ -5,20 +5,19 @@ namespace JsonClass
 {
     public partial class SkillScriptable : ScriptableObject
     {
-        public List<Skill> skill = new List<Skill>();
+        public List<SkillData> skillData = new List<SkillData>();
     }
 
     [System.Serializable]
-    public partial class Skill
+    public partial class SkillData
     {
         public int id;
-        public string sprite;
-        public string name;
-        public string description;
         public int levelMax;
-        public int maxAttackCount;
+        public int grade;
+        public string sprite;
+        public string nameKey;
+        public string descKey;
         public float coolTime;
-        public float upgradeAddPer;
+        public List<int> SpellList;
     }
-
 }

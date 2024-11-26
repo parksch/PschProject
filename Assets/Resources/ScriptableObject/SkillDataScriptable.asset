@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: SkillDataScriptable
   m_EditorClassIdentifier: 
   skillData:
-  - id: 1
-    levelMax: 10
-    grade: 1
+  - id: Slash
     sprite: SkillSwing
     nameKey: SkillSwingName
     descKey: SkillSwingDesc
+    spellList:
+    - Cut
+    levelMax: 10
+    grade: 1
     coolTime: 8
-    spellList: 00000000

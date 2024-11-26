@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SpellDataScriptable
   m_EditorClassIdentifier: 
   spellData:
-  - id: 1
+  - id: Cut
+    animation: Attack1
     state: 1
-    addValue: 0.8
+    addValue: 1.8

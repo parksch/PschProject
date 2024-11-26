@@ -11,14 +11,14 @@ namespace JsonClass
     [System.Serializable]
     public partial class SkillData
     {
-        public int id;
-        public int levelMax;
-        public int grade;
+        public string id;
         public string sprite;
         public string nameKey;
         public string descKey;
+        public List<string> spellList;
+        public int levelMax;
+        public int grade;
         public float coolTime;
-        public List<int> spellList;
     }
 
 }

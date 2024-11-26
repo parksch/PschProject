@@ -1,1 +1,1 @@
-﻿[{"id":1,"levelMax":10,"grade":1,"sprite":"SkillSwing","nameKey":"SkillSwingName","descKey":"SkillSwingDesc","coolTime":8.0,"SpellList":[0]}]
+﻿[{"id":"Slash","sprite":"SkillSwing","nameKey":"SkillSwingName","descKey":"SkillSwingDesc","spellList":["Cut"],"levelMax":10,"grade":1,"coolTime":8.0}]

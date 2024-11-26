@@ -249,6 +249,10 @@ public class JsonLoader : EditorWindow
             json = JsonConvert.SerializeObject(skillData);
             File.WriteAllText(jsonFilePath + "/SkillData.json", json, Encoding.UTF8);
 
+            List<SpellData> spelldata = ScriptableManager.Instance.Get<SpellDataScriptable>(ScriptableType.SpellData).spellData;
+            json = JsonConvert.SerializeObject(spelldata);
+            File.WriteAllText(jsonFilePath + "/SpellData.json", json, Encoding.UTF8);
+
             AssetDatabase.Refresh();
             EditorUtility.DisplayDialog("결과", "Scriptable 에서 Json 변환", "확인");
         }

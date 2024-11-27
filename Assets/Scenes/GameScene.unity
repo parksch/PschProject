@@ -1891,6 +1891,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145432617}
   m_CullTransparentMesh: 1
+--- !u!1 &148968264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 148968265}
+  m_Layer: 8
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &148968265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148968264}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1339715208}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &159085929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,8 +2198,8 @@ Transform:
   m_Children:
   - {fileID: 705507995}
   - {fileID: 285294373}
-  - {fileID: 78753492}
   - {fileID: 1402103748}
+  - {fileID: 78753492}
   - {fileID: 1339715208}
   - {fileID: 1826780086}
   - {fileID: 1169275866}
@@ -17891,6 +17922,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4670522844913980675}
+  - {fileID: 148968265}
   m_Father: {fileID: 182418357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1339715209
@@ -17932,12 +17964,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da81bdcc70ffce54bbc0182f44fb17d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buffs: []
   target: {fileID: 0}
   agent: {fileID: 1339715211}
   animator: {fileID: 4723184707777382857}
   state: {fileID: 1339715214}
   characterType: 0
   curHp: 0
+  skillList:
+  - name: 
+    asset: {fileID: 0}
+    currentTime: 0
+  - name: 
+    asset: {fileID: 0}
+    currentTime: 0
+  - name: 
+    asset: {fileID: 0}
+    currentTime: 0
+  - name: 
+    asset: {fileID: 0}
+    currentTime: 0
+  - name: 
+    asset: {fileID: 0}
+    currentTime: 0
+  - name: 
+    asset: {fileID: 0}
+    currentTime: 0
+  skillTrans: {fileID: 148968265}
+  director: {fileID: 1339715215}
 --- !u!114 &1339715211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17998,25 +18052,20 @@ PlayableDirector:
   m_GameObject: {fileID: 1339715207}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: a5304ea1667ed8947aaa66b2b927308e, type: 2}
+  m_PlayableAsset: {fileID: 0}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 6378634665743441274, guid: a5304ea1667ed8947aaa66b2b927308e, type: 2}
+  - key: {fileID: -5014483493876352089, guid: a5304ea1667ed8947aaa66b2b927308e, type: 2}
     value: {fileID: 4723184707777382857}
   - key: {fileID: 3928596423518563602, guid: a5304ea1667ed8947aaa66b2b927308e, type: 2}
     value: {fileID: 285294374}
   m_ExposedReferences:
     m_References:
     - 770c094aa0b1e184e9d150145d74c6f4: {fileID: 78753491}
-    - f65affcad4992b44da885fc321a706e5: {fileID: 78753491}
-    - d1753d917e65d0041bd12774439634d8: {fileID: 78753491}
     - c0932962680f30a49ac2d474a359252b: {fileID: 1402103747}
-    - 6de5d312510daf94ea806eacd14195e4: {fileID: 78753491}
-    - f1bc16723964b714c9db8cd75f128f12: {fileID: 285294370}
-    - efebc2ddfa90a214881ec242fcd37aed: {fileID: 78753491}
     - ad4705323a6871e4ea78e33feb7a9df9: {fileID: 78753491}
 --- !u!1 &1348594969
 GameObject:
@@ -18698,7 +18747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1402103747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30807,12 +30856,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'IndexFinger_02'\n\tTransform 'Elbow_R'\n\tTransform
-    'Finger_02'\n\tTransform 'Finger_03'\n\tTransform 'Eyebrows'\n\tTransform 'Ball_L'\n\tTransform
-    'Thumb_02'\n\tTransform 'Ball_R'\n\tTransform 'Clavicle_L'\n\tTransform 'Head_Attachment'\n\tand
-    more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0

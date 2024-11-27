@@ -1,13 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class PlayerCharacter : BaseCharacter
 {
+    [SerializeField] List<Skill> skillList = new List<Skill>();
+    [SerializeField,ReadOnly] Transform skillTrans;
+    [SerializeField,ReadOnly] PlayableDirector director;
+
+    PlayerState State => state as PlayerState;
+
     float currentRegenTimer = 0;
 
-    [SerializeField] PlayerState State => state as PlayerState;
+    [System.Serializable]
+    public class Skill
+    {
+        public string name;
+        public TimelineAsset asset;
+        public float currentTime;
+    }
 
     public void StateUpdate()
     {
@@ -16,8 +29,10 @@ public class PlayerCharacter : BaseCharacter
         UIManager.Instance.OnChangePlayerHP(GetHPRatio);
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if (agent.CurrentState == AiStateID.Death)
         {
             return;
@@ -131,5 +146,15 @@ public class PlayerCharacter : BaseCharacter
     {
         base.AnimationSpeedSet();
         animator.SetFloat("MoveSpeed", MoveSpeed()/DataManager.Instance.PlayerDefaultState.MoveSpeed);
+    }
+
+    public void SetSkill(int index,JsonClass.SkillData skillData)
+    {
+
+    }
+
+    public void ActiveSkill()
+    {
+
     }
 }

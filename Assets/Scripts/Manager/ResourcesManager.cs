@@ -78,4 +78,9 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
         return $"#{r:X2}{g:X2}{b:X2}";
     }
+
+    public string GradeColorText(ClientEnum.Grade grade,string text)
+    {
+        return $"<color={GradeColor(grade)}>{text}</color>";
+    }
 }

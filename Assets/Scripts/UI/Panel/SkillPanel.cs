@@ -10,6 +10,8 @@ public class SkillPanel : BasePanel
     [SerializeField] UISkillSlot prefab;
     [SerializeField] UISkillInfo info;
 
+    DataManager.Skill target;
+
     public override void OnUpdate()
     {
 
@@ -32,6 +34,14 @@ public class SkillPanel : BasePanel
                 slots.Add(slot);
             }
         }
+
+        SetInfo(skills[0]);
+    }
+
+    public void SetInfo(DataManager.Skill _target)
+    {
+        target = _target;
+        info.SetInfo(target);
     }
 
     public override void Open()

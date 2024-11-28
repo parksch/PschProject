@@ -12,6 +12,7 @@ namespace JsonClass
     public partial class SkillData
     {
         public string id;
+        public string atlas;
         public string sprite;
         public string nameKey;
         public string descKey;

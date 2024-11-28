@@ -27,6 +27,7 @@ public partial class DataManager //Skill
             skill.data = datas[i];
             skill.lv = 0;
             skill.piece = 0;
+            skills.Add(skill);
         }
     }
 

@@ -1,6 +1,8 @@
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.Localization.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,12 +16,15 @@ public class UISkillInfo : MonoBehaviour
     [SerializeField, ReadOnly] UIButton upgrade;
     [SerializeField, ReadOnly] UIButton equip;
 
-    SkillData target;
+    DataManager.Skill target;
 
-    public void SetInfo(SkillData skillData)
+    public void SetInfo(DataManager.Skill skillData)
     {
-        target = skillData;
+        LocalizationScriptable localization = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization);
 
+        target = skillData;
+        icon.sprite = target.data.Sprite();
+        skillName.text = ResourcesManager.Instance.GradeColorText(target.data.Grade(), localization.Get(target.data.nameKey));
         UpdateInfo();
     }
 

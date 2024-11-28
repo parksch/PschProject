@@ -20,6 +20,7 @@ public partial class DataManager : Singleton<DataManager>
     {
         StateInit();
         InfoInit();
+        SkillInit();
         InventoryInit();
     }
 

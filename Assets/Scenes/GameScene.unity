@@ -961,8 +961,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 480, y: 0}
-  m_SizeDelta: {x: 800, y: -80}
+  m_AnchoredPosition: {x: 458, y: 0}
+  m_SizeDelta: {x: 840, y: -80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66034599
 MonoBehaviour:
@@ -2940,7 +2940,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224123637}
   - component: {fileID: 224123639}
-  - component: {fileID: 224123640}
   m_Layer: 5
   m_Name: Scroll
   m_TagString: Untagged
@@ -2966,7 +2965,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -17.13086}
-  m_SizeDelta: {x: 715, y: -194.27}
+  m_SizeDelta: {x: 736, y: -194.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224123639
 MonoBehaviour:
@@ -2998,30 +2997,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &224123640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 224123636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5be6ca8319f934eb4b72cd6b16c189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cellBase: {fileID: 0}
-  spacingHeight: 4
-  padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  visibleRectPadding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
 --- !u!1 &235686007
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,10 +4104,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5749159cd434bad43a210eee00a50d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 5
   icon: {fileID: 284128799}
-  setCoolTime: 0
-  currentCoolTime: 0
+  target:
+    data:
+      id: 
+      sprite: 
+      nameKey: 
+      descKey: 
+      effects: []
+      levelMax: 0
+      grade: 0
+      targetState: 0
+      startValue: 0
+      addValue: 0
+      coolTime: 0
+      skillBuffs: []
+    lv: 0
+    piece: 0
 --- !u!1 &285294370
 GameObject:
   m_ObjectHideFlags: 0
@@ -10556,10 +10544,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5749159cd434bad43a210eee00a50d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
   icon: {fileID: 705441852}
-  setCoolTime: 0
-  currentCoolTime: 0
+  target:
+    data:
+      id: 
+      sprite: 
+      nameKey: 
+      descKey: 
+      effects: []
+      levelMax: 0
+      grade: 0
+      targetState: 0
+      startValue: 0
+      addValue: 0
+      coolTime: 0
+      skillBuffs: []
+    lv: 0
+    piece: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -13614,7 +13615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
+    m_Left: 15
     m_Right: 10
     m_Top: 10
     m_Bottom: 10
@@ -13622,7 +13623,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 350, y: 180}
-  m_Spacing: {x: 0, y: 10}
+  m_Spacing: {x: 5, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!1 &915569113
@@ -15311,10 +15312,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5749159cd434bad43a210eee00a50d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 2
   icon: {fileID: 1094252960}
-  setCoolTime: 0
-  currentCoolTime: 0
+  target:
+    data:
+      id: 
+      sprite: 
+      nameKey: 
+      descKey: 
+      effects: []
+      levelMax: 0
+      grade: 0
+      targetState: 0
+      startValue: 0
+      addValue: 0
+      coolTime: 0
+      skillBuffs: []
+    lv: 0
+    piece: 0
 --- !u!1 &1097068341
 GameObject:
   m_ObjectHideFlags: 0
@@ -17379,10 +17393,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5749159cd434bad43a210eee00a50d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 3
   icon: {fileID: 1216461742}
-  setCoolTime: 0
-  currentCoolTime: 0
+  target:
+    data:
+      id: 
+      sprite: 
+      nameKey: 
+      descKey: 
+      effects: []
+      levelMax: 0
+      grade: 0
+      targetState: 0
+      startValue: 0
+      addValue: 0
+      coolTime: 0
+      skillBuffs: []
+    lv: 0
+    piece: 0
 --- !u!1 &1238803713
 GameObject:
   m_ObjectHideFlags: 0
@@ -17844,7 +17871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1317659989
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17880,12 +17907,11 @@ MonoBehaviour:
   isTranslucent: 0
   activeTopUI:
   - {fileID: 1139234133}
-  icon: {fileID: 709837854}
-  skillName: {fileID: 1940117539}
-  lvPiece: {fileID: 1307814667}
-  desc: {fileID: 464124220}
-  upgrade: {fileID: 205164767}
-  equip: {fileID: 383428920}
+  content: {fileID: 912172344}
+  slots:
+  - {fileID: 1644003158}
+  prefab: {fileID: 1644003158}
+  info: {fileID: 1934807981}
 --- !u!1 &1339715207
 GameObject:
   m_ObjectHideFlags: 0
@@ -20714,10 +20740,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5749159cd434bad43a210eee00a50d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
   icon: {fileID: 1576592516}
-  setCoolTime: 0
-  currentCoolTime: 0
+  target:
+    data:
+      id: 
+      sprite: 
+      nameKey: 
+      descKey: 
+      effects: []
+      levelMax: 0
+      grade: 0
+      targetState: 0
+      startValue: 0
+      addValue: 0
+      coolTime: 0
+      skillBuffs: []
+    lv: 0
+    piece: 0
 --- !u!1 &1584300139
 GameObject:
   m_ObjectHideFlags: 0
@@ -21073,6 +21112,7 @@ GameObject:
   - component: {fileID: 1644003155}
   - component: {fileID: 1644003157}
   - component: {fileID: 1644003156}
+  - component: {fileID: 1644003158}
   m_Layer: 5
   m_Name: SkillSlot
   m_TagString: Untagged
@@ -21096,10 +21136,10 @@ RectTransform:
   - {fileID: 296068826}
   m_Father: {fileID: 912172344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 185, y: -100}
-  m_SizeDelta: {x: 350, y: 180}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1644003156
 MonoBehaviour:
@@ -21139,6 +21179,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644003154}
   m_CullTransparentMesh: 1
+--- !u!114 &1644003158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644003154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5749159cd434bad43a210eee00a50d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  target:
+    data:
+      id: 
+      sprite: 
+      nameKey: 
+      descKey: 
+      effects: []
+      levelMax: 0
+      grade: 0
+      targetState: 0
+      startValue: 0
+      addValue: 0
+      coolTime: 0
+      skillBuffs: []
+    lv: 0
+    piece: 0
 --- !u!1 &1659821371
 GameObject:
   m_ObjectHideFlags: 0
@@ -21310,10 +21379,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5749159cd434bad43a210eee00a50d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 4
   icon: {fileID: 1666353709}
-  setCoolTime: 0
-  currentCoolTime: 0
+  target:
+    data:
+      id: 
+      sprite: 
+      nameKey: 
+      descKey: 
+      effects: []
+      levelMax: 0
+      grade: 0
+      targetState: 0
+      startValue: 0
+      addValue: 0
+      coolTime: 0
+      skillBuffs: []
+    lv: 0
+    piece: 0
 --- !u!1 &1673392630
 GameObject:
   m_ObjectHideFlags: 0
@@ -24280,6 +24362,7 @@ GameObject:
   - component: {fileID: 1934807978}
   - component: {fileID: 1934807980}
   - component: {fileID: 1934807979}
+  - component: {fileID: 1934807981}
   m_Layer: 5
   m_Name: SkillInfo
   m_TagString: Untagged
@@ -24351,6 +24434,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934807977}
   m_CullTransparentMesh: 1
+--- !u!114 &1934807981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934807977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08f3178fe6b09045b04cc5912575cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 709837854}
+  skillName: {fileID: 1940117539}
+  lvPiece: {fileID: 1307814667}
+  desc: {fileID: 464124220}
+  lockObject: {fileID: 183094184}
+  upgrade: {fileID: 205164767}
+  equip: {fileID: 383428920}
 --- !u!1 &1940117537
 GameObject:
   m_ObjectHideFlags: 0

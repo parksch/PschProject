@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,18 @@ using UnityEngine.UI;
 
 public class UISkillSlot : MonoBehaviour
 {
-    [SerializeField] int index;
     [SerializeField] Image icon;
-    [SerializeField,ReadOnly] float setCoolTime;
-    [SerializeField,ReadOnly] float currentCoolTime;
+    [SerializeField] DataManager.Skill target;
 
 
+    public void SetSkill(DataManager.Skill skill)
+    {
+        target = skill;
+        UpdateSlot();
+    }
+
+    public void UpdateSlot()
+    {
+
+    }
 }

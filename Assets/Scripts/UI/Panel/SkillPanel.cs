@@ -5,20 +5,33 @@ using UnityEngine.UI;
 
 public class SkillPanel : BasePanel
 {
-    [SerializeField] Image icon;
-    [SerializeField] Text skillName;
-    [SerializeField] Text lvPiece;
-    [SerializeField] Text desc;
-    [SerializeField] UIButton upgrade;
-    [SerializeField] UIButton equip;
+    [SerializeField] RectTransform content;
+    [SerializeField] List<UISkillSlot> slots = new List<UISkillSlot>();
+    [SerializeField] UISkillSlot prefab;
+    [SerializeField] UISkillInfo info;
 
     public override void OnUpdate()
     {
+
     }
 
     public override void FirstLoad()
     {
+        List<DataManager.Skill> skills = DataManager.Instance.Skills;
 
+        for (int i = 0; i < skills.Count; i++)
+        {
+            if (i == 0 )
+            {
+                slots[i].SetSkill(skills[i]);
+            }
+            else if(slots.Count <= i)
+            {
+                UISkillSlot slot = Instantiate(prefab.gameObject, content).GetComponent<UISkillSlot>();
+                slot.SetSkill(skills[i]);
+                slots.Add(slot);
+            }
+        }
     }
 
     public override void Open()

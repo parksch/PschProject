@@ -25,4 +25,7 @@ MonoBehaviour:
     startValue: 1.5
     addValue: 0.2
     coolTime: 8
-    skillBuffs: []
+    skillBuffs:
+    - state: 0
+      timer: 0
+      value: 0

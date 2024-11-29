@@ -31,4 +31,8 @@ public partial class DataManager //Skill
         }
     }
 
+    public void SetSkill(int index,Skill skill)
+    {
+        skills[index] = skill;
+    }
 }

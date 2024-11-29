@@ -18,8 +18,7 @@ MonoBehaviour:
     sprite: SkillSwing
     nameKey: SkillSwingName
     descKey: SkillSwingDesc
-    effects:
-    - SlashEffect
+    prefab: Slash
     levelMax: 10
     grade: 0
     targetState: 2

@@ -16,18 +16,18 @@ namespace JsonClass
         public string sprite;
         public string nameKey;
         public string descKey;
-        public List<string> effects;
+        public string prefab;
         public int levelMax;
         public int grade;
         public int targetState;
         public float startValue;
         public float addValue;
         public float coolTime;
-        public List<SkillBuff> skillBuffs;
+        public List<SkillBuffs> skillBuffs;
     }
 
     [System.Serializable]
-    public partial class SkillBuff
+    public partial class SkillBuffs
     {
         public int state;
         public float timer;

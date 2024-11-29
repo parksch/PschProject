@@ -221,17 +221,17 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(monsterDatas);
             //File.WriteAllText(jsonFilePath + "/MonsterData.json", json, Encoding.UTF8);
 
-            //List<Option> options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).option;
-            //json = JsonConvert.SerializeObject(options);
-            //File.WriteAllText(jsonFilePath + "/Option.json", json, Encoding.UTF8);
-
             //List<OptionProbability> optionProbability = ScriptableManager.Instance.Get<OptionProbabilityScriptable>(ScriptableType.OptionProbability).optionProbability;
             //json = JsonConvert.SerializeObject(optionProbability);
             //File.WriteAllText(jsonFilePath + "/OptionProbability.json", json, Encoding.UTF8);
 
-            //List<Skill> skills = ScriptableManager.Instance.Get<SkillScriptable>(ScriptableType.Skill).skill;
-            //json = JsonConvert.SerializeObject(skills);
-            //File.WriteAllText(jsonFilePath + "/Skill.json", json, Encoding.UTF8);
+            //List<Option> options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).option;
+            //json = JsonConvert.SerializeObject(options);
+            //File.WriteAllText(jsonFilePath + "/Option.json", json, Encoding.UTF8);
+
+            //List<SkillData> skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).skillData;
+            //json = JsonConvert.SerializeObject(skillData);
+            //File.WriteAllText(jsonFilePath + "/SkillData.json", json, Encoding.UTF8);
 
             //List<StageData> stages = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).stageData;
             //json = JsonConvert.SerializeObject(stages);
@@ -244,10 +244,6 @@ public class JsonLoader : EditorWindow
             //List<Upgrade> upgrades = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).upgrade;
             //json = JsonConvert.SerializeObject(upgrades);
             //File.WriteAllText(jsonFilePath + "/Upgrade.json", json, Encoding.UTF8);
-
-            List<SkillData> skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).skillData;
-            json = JsonConvert.SerializeObject(skillData);
-            File.WriteAllText(jsonFilePath + "/SkillData.json", json, Encoding.UTF8);
 
             AssetDatabase.Refresh();
             EditorUtility.DisplayDialog("결과", "Scriptable 에서 Json 변환", "확인");

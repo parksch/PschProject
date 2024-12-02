@@ -11,7 +11,19 @@ public class UISkillSelectSlot : MonoBehaviour
 
     public void Set()
     {
-
+        DataManager.Skill skill = DataManager.Instance.EquipSkill[targetIndex];
+        
+        if (skill.data == null || skill.data.id == "")
+        {
+            icon.gameObject.SetActive(false);
+            frontLock.SetActive(true);
+        }
+        else
+        {
+            icon.gameObject.SetActive(true);
+            frontLock.SetActive(false);
+            icon.sprite = skill.data.Sprite();
+        }
     }
 
     public void OnClick()

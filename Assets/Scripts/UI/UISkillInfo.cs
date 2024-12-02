@@ -34,4 +34,6 @@ public class UISkillInfo : MonoBehaviour
         upgrade.SetInterractable(target.piece >= (1 + target.data.GetPiece()));
         equip.SetInterractable(target.lv != 0);
     }
+
+
 }

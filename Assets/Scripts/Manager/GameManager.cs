@@ -1,3 +1,4 @@
+using Cinemachine;
 using GooglePlayGames.BasicApi;
 using JsonClass;
 using System.Collections;
@@ -8,10 +9,12 @@ using static GameManager;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField,ReadOnly] CinemachineBrain brain;
     [SerializeField,ReadOnly] Stage stage;
     [SerializeField,ReadOnly] PlayerCharacter player;
     [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
 
+    public CinemachineBrain Brain;
     public PlayerCharacter Player => player;
     public List<EnemyCharacter> Enemies => enemies;
     public ClientEnum.GameMode Mode => stage.Mode;

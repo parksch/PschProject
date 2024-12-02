@@ -13,6 +13,8 @@ public class UIToggle : MonoBehaviour
     [SerializeField] GameObject offObject;
     [SerializeField] GameObject onObject;
 
+    public bool IsOn => target.isOn;
+
     public void OnClickToggle()
     {
         if (target.isOn)

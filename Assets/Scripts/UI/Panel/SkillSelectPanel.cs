@@ -24,7 +24,7 @@ public class SkillSelectPanel : BasePanel
 
     public void SetSkill(int index)
     {
-        DataManager.Instance.SetSkill(index, target);
+        DataManager.Instance.OnChangeSkill(index, target);
         UIManager.Instance.BackPanel();
     }
 }

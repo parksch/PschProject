@@ -23,6 +23,10 @@ MonoBehaviour:
       desc: "\uBC29\uC5B4\uB825 \uAC15\uD654"
     - name: UpgradeHpRegen
       desc: "\uC7AC\uC0DD \uAC15\uD654"
+    - name: Upgrade
+      desc: "\uC5C5\uADF8\uB808\uC774\uB4DC"
+    - name: Equip
+      desc: "\uC7A5\uCC29\uD558\uAE30"
     - name: ScrapShop
       desc: "\uACE0\uCCA0\uC0C1\uC810"
     - name: Draw

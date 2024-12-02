@@ -56,6 +56,7 @@ public class PlayerCharacter : BaseCharacter
 
     public override void Init()
     {
+        DataManager.Instance.OnChangeSkill += SetSkill;
         State.UpdateState();
         currentRegenTimer = 0;
         base.Init();
@@ -148,7 +149,7 @@ public class PlayerCharacter : BaseCharacter
         animator.SetFloat("MoveSpeed", MoveSpeed()/DataManager.Instance.PlayerDefaultState.MoveSpeed);
     }
 
-    public void SetSkill(int index,JsonClass.SkillData skillData)
+    public void SetSkill(int index,DataManager.Skill skillData)
     {
 
     }

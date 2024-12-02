@@ -6,15 +6,22 @@ using UnityEngine;
 public partial class DataManager //Skill
 {
     [SerializeField, ReadOnly] List<Skill> skills = new List<Skill>();
+    [SerializeField, ReadOnly] List<Skill> equipSkill = new List<Skill>();
+
+    public delegate void ChangeSkill(int index,Skill skill);
+
+    public ChangeSkill OnChangeSkill;
 
     public List<Skill> Skills => skills;
+    public List<Skill> EquipSkill => equipSkill;
+
 
     [System.Serializable]
     public class Skill
     {
-        public SkillData data;
-        public int lv;
-        public int piece;
+        public SkillData data = null;
+        public int lv = 0;
+        public int piece = 0;
     }
 
     void SkillInit()
@@ -25,14 +32,25 @@ public partial class DataManager //Skill
         {
             Skill skill = new Skill();
             skill.data = datas[i];
-            skill.lv = 0;
+            skill.lv = 1;
             skill.piece = 0;
             skills.Add(skill);
         }
+
+        OnChangeSkill = null;
+        OnChangeSkill += SetSkill;
     }
 
-    public void SetSkill(int index,Skill skill)
+    void SetSkill(int index,Skill skill)
     {
-        skills[index] = skill;
+        for (int i = 0; i < equipSkill.Count; i++)
+        {
+            if (i != index && equipSkill[i].data != null && skill.data.id == equipSkill[i].data.id)
+            {
+                equipSkill[i] = new Skill();
+            }
+        }
+
+        equipSkill[index] = skill;
     }
 }

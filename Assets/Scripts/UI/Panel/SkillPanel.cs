@@ -9,6 +9,7 @@ public class SkillPanel : BasePanel
     [SerializeField] List<UISkillSlot> slots = new List<UISkillSlot>();
     [SerializeField] UISkillSlot prefab;
     [SerializeField] UISkillInfo info;
+    [SerializeField] SkillSelectPanel selectPanel;
 
     DataManager.Skill target;
 
@@ -50,6 +51,18 @@ public class SkillPanel : BasePanel
     }
 
     public override void Close()
+    {
+
+    }
+
+    public void OnClickEquip()
+    {
+        selectPanel.SetTarget(target);
+        selectPanel.CopyTopMenu(ActiveTop);
+        UIManager.Instance.AddPanel(selectPanel);
+    }
+
+    public void OnClickReinforce()
     {
 
     }

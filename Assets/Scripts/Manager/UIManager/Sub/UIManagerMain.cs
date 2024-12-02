@@ -5,8 +5,10 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class UIManager //Top
+public partial class UIManager //Main
 {
+    [SerializeField, ReadOnly] List<UIActiveSkillSlot> slots;
+    [SerializeField, ReadOnly] UIToggle autoSkill;
     [SerializeField, ReadOnly] UIText goldText;
     [SerializeField, ReadOnly] UIText gemText;
     [SerializeField, ReadOnly] UIText scrapText;
@@ -21,7 +23,9 @@ public partial class UIManager //Top
     [SerializeField, ReadOnly] GameObject bossButton;
 
     public delegate void ChangeHP(float ratio);
+
     public ChangeHP OnChangePlayerHP;
+
     public void OnClickBossChallenge()
     {
         GameManager.Instance.OnChangeGameMode(ClientEnum.GameMode.Boss);
@@ -30,6 +34,7 @@ public partial class UIManager //Top
     {
         bossHP.UpdateHp(hp);
     }
+
     public void SetStageTitle(string local,int stageNum)
     {
         string title = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
@@ -42,6 +47,7 @@ public partial class UIManager //Top
         bossHP.SetTime(ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get("TimeLimit"));
         bossHP.SetOn();
     }
+
     void SetGold(long gold)
     {
         goldText.SetText(gold);
@@ -58,6 +64,7 @@ public partial class UIManager //Top
     {
         reinforceText.SetText(scrap);
     }
+
     void SetGameModeUI(ClientEnum.GameMode gameMode)
     {
         switch (gameMode)
@@ -111,6 +118,14 @@ public partial class UIManager //Top
         DataManager.Instance.OnChangeExp = null;
         DataManager.Instance.OnChangeExp += userInfo.SetExp;
         DataManager.Instance.OnChangeExp += _ => { UpdatePanel(); };
+
+        DataManager.Instance.OnChangeSkill += (_,_)=> 
+        {
+            for (int i = 0; i < slots.Count; i++)
+            {
+                slots[i].SetSkill(DataManager.Instance.EquipSkill[i]);
+            }
+        };
     }
 
 }

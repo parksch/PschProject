@@ -55,4 +55,15 @@ public class SkillBase : MonoBehaviour
 
     }
 
+    public void Active()
+    {
+        gameObject.SetActive(true);
+        director.Play();
+    }
+
+    public void Stop()
+    {
+        director.Stop();
+        gameObject.SetActive(false);
+    }
 }

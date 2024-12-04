@@ -26,6 +26,9 @@ public partial class UIManager //Main
 
     public ChangeHP OnChangePlayerHP;
 
+    public bool IsAutoSkill => autoSkill.IsOn;
+    public List<UIActiveSkillSlot> SkillSlots => slots;
+
     public void OnClickBossChallenge()
     {
         GameManager.Instance.OnChangeGameMode(ClientEnum.GameMode.Boss);

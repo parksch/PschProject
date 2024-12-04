@@ -11,6 +11,8 @@ public class UIActiveSkillSlot : MonoBehaviour
     DataManager.Skill target;
     float timer;
 
+    public bool IsActiveOn => target != null && target.data != null && target.data.id != "" && timer <= 0 && UIManager.Instance.IsAutoSkill;
+
     public void SetSkill(DataManager.Skill skill)
     {
         target = skill;

@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
-using static GameManager;
 
 public class GameManager : Singleton<GameManager>
 {

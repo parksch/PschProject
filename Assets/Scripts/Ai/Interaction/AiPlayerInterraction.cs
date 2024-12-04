@@ -10,6 +10,7 @@ public class AiPlayerInterraction : AiInteraction
         stateMachine.RegisterState(new AiStateAttack());
         stateMachine.RegisterState(new AiStateChase());
         stateMachine.RegisterState(new AiStateDeath());
+        stateMachine.RegisterState(new AiStateSkill());
         AddAction();
     }
 
@@ -22,6 +23,7 @@ public class AiPlayerInterraction : AiInteraction
 
         actions["Death"] = () =>
         {
+
         };
     }
 }

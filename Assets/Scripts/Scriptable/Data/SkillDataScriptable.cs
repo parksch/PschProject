@@ -23,6 +23,7 @@ namespace JsonClass
         public float startValue;
         public float addValue;
         public float coolTime;
+        public float range;
         public List<SkillBuffs> skillBuffs;
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -10,6 +11,7 @@ public class PlayerCharacter : BaseCharacter
     [SerializeField,ReadOnly] Transform skillTrans;
     [SerializeField,ReadOnly] PlayableDirector director;
 
+    SkillBase current;
     PlayerState State => state as PlayerState;
     float currentRegenTimer = 0;
 
@@ -42,6 +44,17 @@ public class PlayerCharacter : BaseCharacter
             }
 
             UIManager.Instance.OnChangePlayerHP(GetHPRatio);
+        }
+
+        if (agent.CurrentState != AiStateID.Skill)
+        {
+            for (int i = 0; i < UIManager.Instance.SkillSlots.Count; i++)
+            {
+                if (UIManager.Instance.SkillSlots[i].IsActiveOn)
+                {
+                    ActiveSkill(i);
+                }
+            }
         }
     }
 
@@ -97,11 +110,9 @@ public class PlayerCharacter : BaseCharacter
 
     public override void DeathAction()
     {
-        transform.position = Vector3.zero;
         curHp = HP();
         UIManager.Instance.OnChangePlayerHP(GetHPRatio);
-        agent.StateMachine.ChangeState(AiStateID.Idle);
-        target = null;
+        ResetAIAndPos();
     }
 
     public override void Death()
@@ -140,42 +151,82 @@ public class PlayerCharacter : BaseCharacter
         animator.SetFloat("MoveSpeed", MoveSpeed()/DataManager.Instance.PlayerDefaultState.MoveSpeed);
     }
 
-    public void SetSkill(int index,DataManager.Skill skillData)
+    public void SetSkill(int index,DataManager.Skill target)
     {
+        if (agent.CurrentState == AiStateID.Skill)
+        {
+            current.Stop();
+            ResetAIAndPos();
+        }
+        else if (agent.CurrentState != AiStateID.Death)
+        {
+            ResetAIAndPos();
+        }
+
         List<DataManager.Skill> list = DataManager.Instance.EquipSkill;
 
-        if (skillList[index] != null)
+        if (skillList[index].ID == target.data.id)
         {
-            if (skillList[index].ID != skillData.data.id)
+            return;
+        }
+
+        for (int i = 0; i < skillList.Count; i++)
+        {
+            if (skillList[i] != null)
             {
-                SkillBase skill = skillList.Find(x => x.ID == skillData.data.id);
-
-                if (skill == null)
+                bool check = false;
+                foreach (var item in list)
                 {
-                    skill = Instantiate(skillData.data.Prefab(), GameManager.Instance.SkillParent).GetComponent<SkillBase>();
-                    skill.SetSkill(this);
-                    skill.gameObject.SetActive(false);
-                    skillList[index] = skill;
+                    if (item != null && item.data != null && item.data.id == skillList[i].ID)
+                    {
+                        check = true;
+                        break;
+                    }
                 }
-                else
-                {
-                    SkillBase temp = skillList[index];
-                    int oldIndex = skillList.FindIndex(x => x.ID != skillData.data.id);
 
-                    skillList[index] = skillList[oldIndex];
-                    skillList[oldIndex] = temp;
+                if (!check)
+                {
+                    GameObject push = skillList[i].gameObject;
+                    PoolManager.Instance.Enqueue(push.name, push);
+                    skillList[i] = null;
                 }
             }
         }
+
+
+        SkillBase skill = skillList.Find(x => x.ID == target.data.id);
+
+        if (skill == null)
+        {
+            skill = Instantiate(target.data.Prefab(), GameManager.Instance.SkillParent).GetComponent<SkillBase>();
+            skill.SetSkill(this);
+            skill.gameObject.SetActive(false);
+            skillList[index] = skill;
+        }
         else
         {
-            
+            SkillBase temp = skillList[index];
+            int oldIndex = skillList.FindIndex(x => x.ID != target.data.id);
+
+            skillList[index] = skillList[oldIndex];
+            skillList[oldIndex] = temp;
         }
 
     }
 
-    public void ActiveSkill()
+    public void ActiveSkill(int index)
     {
+        agent.StateMachine.ChangeState(AiStateID.Skill);
+        current = skillList[index];
+        current.transform.position = transform.position;
+        current.transform.rotation = transform.rotation;
+        current.Active();
+    }
 
+    void ResetAIAndPos()
+    {
+        transform.position = Vector3.zero;
+        agent.StateMachine.ChangeState(AiStateID.Idle);
+        target = null;
     }
 }

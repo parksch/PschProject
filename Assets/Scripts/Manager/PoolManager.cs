@@ -10,6 +10,7 @@ public class PoolManager : Singleton<PoolManager>
     protected override void Awake()
     {
         base.Awake();
+
         if (uiParent == null)
         {
             GameObject gameObject = new GameObject("UIParent");

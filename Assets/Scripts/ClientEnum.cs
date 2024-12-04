@@ -26,6 +26,7 @@ namespace ClientEnum
     {
         Enemy,
         Map,
+        Skill,
         UI
     }
 

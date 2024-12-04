@@ -2441,6 +2441,7 @@ Transform:
   - {fileID: 1339715208}
   - {fileID: 1826780086}
   - {fileID: 1169275866}
+  - {fileID: 947656353}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &183094184
@@ -15147,6 +15148,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915569113}
   m_CullTransparentMesh: 1
+--- !u!1 &947656352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 947656353}
+  m_Layer: 0
+  m_Name: SkillEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &947656353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947656352}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 182418357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &948071803
 GameObject:
   m_ObjectHideFlags: 0
@@ -19492,24 +19524,12 @@ MonoBehaviour:
   characterType: 0
   curHp: 0
   skillList:
-  - name: 
-    asset: {fileID: 0}
-    currentTime: 0
-  - name: 
-    asset: {fileID: 0}
-    currentTime: 0
-  - name: 
-    asset: {fileID: 0}
-    currentTime: 0
-  - name: 
-    asset: {fileID: 0}
-    currentTime: 0
-  - name: 
-    asset: {fileID: 0}
-    currentTime: 0
-  - name: 
-    asset: {fileID: 0}
-    currentTime: 0
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   skillTrans: {fileID: 148968265}
   director: {fileID: 1339715215}
 --- !u!114 &1339715211
@@ -23836,11 +23856,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f672ab9943c6fd544936b14eb01f05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillParent: {fileID: 947656353}
   brain: {fileID: 285294374}
   stage: {fileID: 1006949186}
   player: {fileID: 1339715210}
   enemies: []
-  Brain: {fileID: 0}
 --- !u!4 &1700625769
 Transform:
   m_ObjectHideFlags: 0

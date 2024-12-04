@@ -7,9 +7,12 @@ using UnityEngine.Timeline;
 
 public class SkillBase : MonoBehaviour
 {
+    [SerializeField] string id;
     [SerializeField,ReadOnly] BaseCharacter character;
     [SerializeField] List<CinemachineVirtualCamera> cameras;
     [SerializeField] PlayableDirector director;
+
+    public string ID => id;
 
     public virtual void SetSkill(BaseCharacter target)
     {

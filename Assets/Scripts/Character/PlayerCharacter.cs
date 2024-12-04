@@ -6,21 +6,12 @@ using UnityEngine.Timeline;
 
 public class PlayerCharacter : BaseCharacter
 {
-    [SerializeField] List<Skill> skillList = new List<Skill>();
+    [SerializeField,ReadOnly] List<SkillBase> skillList = new List<SkillBase>();
     [SerializeField,ReadOnly] Transform skillTrans;
     [SerializeField,ReadOnly] PlayableDirector director;
 
     PlayerState State => state as PlayerState;
-
     float currentRegenTimer = 0;
-
-    [System.Serializable]
-    public class Skill
-    {
-        public string name;
-        public TimelineAsset asset;
-        public float currentTime;
-    }
 
     public void StateUpdate()
     {
@@ -151,6 +142,33 @@ public class PlayerCharacter : BaseCharacter
 
     public void SetSkill(int index,DataManager.Skill skillData)
     {
+        List<DataManager.Skill> list = DataManager.Instance.EquipSkill;
+
+        if (skillList[index] != null)
+        {
+            if (skillList[index].ID != skillData.data.id)
+            {
+                SkillBase skill = skillList.Find(x => x.ID == skillData.data.id);
+
+                if (skill == null)
+                {
+                    skill = Instantiate(skillData.data.Prefab(), GameManager.Instance.SkillParent).GetComponent<SkillBase>();
+                    skillList[index] = skill;
+                }
+                else
+                {
+                    SkillBase temp = skillList[index];
+                    int oldIndex = skillList.FindIndex(x => x.ID != skillData.data.id);
+
+                    skillList[index] = skillList[oldIndex];
+                    skillList[oldIndex] = temp;
+                }
+            }
+        }
+        else
+        {
+            
+        }
 
     }
 

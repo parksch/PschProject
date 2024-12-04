@@ -9,12 +9,14 @@ using static GameManager;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField,ReadOnly] Transform skillParent;
     [SerializeField,ReadOnly] CinemachineBrain brain;
     [SerializeField,ReadOnly] Stage stage;
     [SerializeField,ReadOnly] PlayerCharacter player;
     [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
 
-    public CinemachineBrain Brain;
+    public Transform SkillParent => skillParent;
+    public CinemachineBrain Brain => brain;
     public PlayerCharacter Player => player;
     public List<EnemyCharacter> Enemies => enemies;
     public ClientEnum.GameMode Mode => stage.Mode;

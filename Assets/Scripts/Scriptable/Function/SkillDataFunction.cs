@@ -1,3 +1,4 @@
+using ClientEnum;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,11 @@ namespace JsonClass
 
     public partial class SkillData // This Class is a functional Class.
     {
+        public GameObject Prefab()
+        {
+            return PoolManager.Instance.Dequeue(ObjectType.Skill,prefab);
+        }
+
         public Sprite Sprite()
         {
             return ResourcesManager.Instance.GetSprite(atlas, sprite);

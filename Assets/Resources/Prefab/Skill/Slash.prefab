@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2795222616302476615}
   - component: {fileID: 5935703527776901648}
   - component: {fileID: 1915416315939006477}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,8 @@ GameObject:
   m_Component:
   - component: {fileID: 294976042600559836}
   - component: {fileID: 770021246054324009}
-  m_Layer: 8
+  - component: {fileID: -336061069679542564}
+  m_Layer: 11
   m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +121,86 @@ MonoBehaviour:
   - {fileID: 7175422460758817345}
   - {fileID: 8929646729062780351}
   director: {fileID: 3994911619578576615}
+--- !u!54 &-336061069679542564
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405500511935152084}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!1 &2232826429768509392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1546888644620262622}
+  - component: {fileID: 3681025027026045783}
+  m_Layer: 11
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1546888644620262622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232826429768509392}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1915921731804271981}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3681025027026045783
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232826429768509392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4573783220828615225
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1915921731804271981}
   - component: {fileID: 3994911619578576615}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,6 +232,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1644703106593389776}
+  - {fileID: 1546888644620262622}
   m_Father: {fileID: 294976042600559836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &3994911619578576615
@@ -172,6 +254,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 3928596423518563602, guid: a5304ea1667ed8947aaa66b2b927308e, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 7743345639238194720, guid: a5304ea1667ed8947aaa66b2b927308e, type: 2}
+    value: {fileID: 2232826429768509392}
   m_ExposedReferences:
     m_References:
     - 770c094aa0b1e184e9d150145d74c6f4: {fileID: 8929646729062780351}
@@ -190,7 +274,7 @@ GameObject:
   - component: {fileID: 2109804164102646337}
   - component: {fileID: 964007697593018084}
   - component: {fileID: 1629570269723278710}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SlashSmallBlue 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5112,7 +5196,7 @@ GameObject:
   - component: {fileID: 4002449332747246332}
   - component: {fileID: 2121909060895463764}
   - component: {fileID: 524830537619884408}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10021,7 +10105,7 @@ GameObject:
   - component: {fileID: 2052444268065339437}
   - component: {fileID: 9161776332624231503}
   - component: {fileID: 5253071365327250162}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10087,7 +10171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5650133485414816894}
   - component: {fileID: 7175422460758817345}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ZoomIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10159,7 +10243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 54599462896972786}
   - component: {fileID: 8929646729062780351}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -153,6 +153,8 @@ public class PlayerCharacter : BaseCharacter
                 if (skill == null)
                 {
                     skill = Instantiate(skillData.data.Prefab(), GameManager.Instance.SkillParent).GetComponent<SkillBase>();
+                    skill.SetSkill(this);
+                    skill.gameObject.SetActive(false);
                     skillList[index] = skill;
                 }
                 else

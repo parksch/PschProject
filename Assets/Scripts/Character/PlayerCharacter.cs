@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniRx.Triggers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -165,7 +166,7 @@ public class PlayerCharacter : BaseCharacter
 
         List<DataManager.Skill> list = DataManager.Instance.EquipSkill;
 
-        if (skillList[index].ID == target.data.id)
+        if (skillList[index] != null && skillList[index].ID == target.data.id)
         {
             return;
         }
@@ -193,34 +194,36 @@ public class PlayerCharacter : BaseCharacter
             }
         }
 
-
-        SkillBase skill = skillList.Find(x => x.ID == target.data.id);
+        SkillBase skill = skillList.Find(x => x != null && x.ID == target.data.id);
 
         if (skill == null)
         {
             skill = Instantiate(target.data.Prefab(), GameManager.Instance.SkillParent).GetComponent<SkillBase>();
+            skill.transform.position = Vector3.zero;
             skill.SetSkill(this);
             skill.gameObject.SetActive(false);
             skillList[index] = skill;
         }
         else
         {
-            SkillBase temp = skillList[index];
-            int oldIndex = skillList.FindIndex(x => x.ID != target.data.id);
+            if (skill != skillList[index])
+            {
+                SkillBase temp = skillList[index];
+                int oldIndex = skillList.FindIndex(x => x != null && x.ID == target.data.id);
 
-            skillList[index] = skillList[oldIndex];
-            skillList[oldIndex] = temp;
+                skillList[index] = skillList[oldIndex];
+                skillList[oldIndex] = temp;
+            }
         }
 
     }
 
     public void ActiveSkill(int index)
     {
+        UIManager.Instance.SkillSlots[index].ResetSkill();
         agent.StateMachine.ChangeState(AiStateID.Skill);
         current = skillList[index];
-        current.transform.position = transform.position;
-        current.transform.rotation = transform.rotation;
-        current.Active();
+        current.Active(transform);
     }
 
     void ResetAIAndPos()

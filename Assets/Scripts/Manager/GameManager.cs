@@ -10,12 +10,14 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField,ReadOnly] Transform skillParent;
     [SerializeField,ReadOnly] CinemachineBrain brain;
+    [SerializeField,ReadOnly] CinemachineVirtualCamera main;
     [SerializeField,ReadOnly] Stage stage;
     [SerializeField,ReadOnly] PlayerCharacter player;
     [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
 
     public Transform SkillParent => skillParent;
     public CinemachineBrain Brain => brain;
+    public CinemachineVirtualCamera Main => main;
     public PlayerCharacter Player => player;
     public List<EnemyCharacter> Enemies => enemies;
     public ClientEnum.GameMode Mode => stage.Mode;

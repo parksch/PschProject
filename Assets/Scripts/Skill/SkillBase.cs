@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.TextCore.Text;
 using UnityEngine.Timeline;
 
 public class SkillBase : MonoBehaviour
@@ -11,6 +12,7 @@ public class SkillBase : MonoBehaviour
     [SerializeField,ReadOnly] BaseCharacter character;
     [SerializeField] List<CinemachineVirtualCamera> cameras;
     [SerializeField] PlayableDirector director;
+    [SerializeField] GameObject effect;
 
     public string ID => id;
 
@@ -55,15 +57,23 @@ public class SkillBase : MonoBehaviour
 
     }
 
-    public void Active()
+    public void Active(Transform target)
     {
+        effect.transform.position = target.position;
+        effect.transform.rotation = target.rotation;
         gameObject.SetActive(true);
         director.Play();
     }
 
     public void Stop()
     {
+        character.SetIdle();
         director.Stop();
         gameObject.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        
     }
 }

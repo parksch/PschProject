@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 7175422460758817345}
   - {fileID: 8929646729062780351}
   director: {fileID: 3994911619578576615}
+  effect: {fileID: 4573783220828615225}
 --- !u!54 &-336061069679542564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -211,6 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1915921731804271981}
   - component: {fileID: 3994911619578576615}
+  - component: {fileID: 7485784745697295006}
   m_Layer: 11
   m_Name: Object
   m_TagString: Untagged
@@ -245,7 +247,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: a5304ea1667ed8947aaa66b2b927308e, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -259,9 +261,41 @@ PlayableDirector:
   m_ExposedReferences:
     m_References:
     - 770c094aa0b1e184e9d150145d74c6f4: {fileID: 8929646729062780351}
+    - d58b9743c8c3a3941ad27817c42e2cc8: {fileID: 8929646729062780351}
     - c0932962680f30a49ac2d474a359252b: {fileID: 7175422460758817345}
     - 0c170bdddef9c6e4a99d4b7c1d84c1ec: {fileID: 5032389273547328656}
+    - 2e786124e9f430f4fb48a2d157de5772: {fileID: 8929646729062780351}
     - ad4705323a6871e4ea78e33feb7a9df9: {fileID: 8929646729062780351}
+--- !u!114 &7485784745697295006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573783220828615225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: e36b02811f6d4f14ab96175f50ee1a45, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 770021246054324009}
+          m_TargetAssemblyTypeName: SkillBase, Assembly-CSharp
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5032389273547328656
 GameObject:
   m_ObjectHideFlags: 0
@@ -10186,14 +10220,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6648321278030677065}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38215894, y: -0.02002808, z: 0.048352063, w: 0.9226134}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 21, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2052444268065339437}
   m_Father: {fileID: 294976042600559836}
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 6}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &7175422460758817345
 MonoBehaviour:
   m_ObjectHideFlags: 0

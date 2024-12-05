@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIActiveSkillSlot : MonoBehaviour
 {
+    [SerializeField] int index;
     [SerializeField] Image icon;
     [SerializeField] Image fill;
     [SerializeField] Sprite defaultSprite;
@@ -57,5 +58,12 @@ public class UIActiveSkillSlot : MonoBehaviour
         {
             return;
         }
+
+        GameManager.Instance.Player.ActiveSkill(index);
+    }
+
+    public void ResetSkill()
+    {
+        timer = target.data.coolTime;
     }
 }

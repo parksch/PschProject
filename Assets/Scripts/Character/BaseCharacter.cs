@@ -14,6 +14,11 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected CharacterType characterType;
     [SerializeField] protected long curHp;
 
+    public void SetIdle()
+    {
+        agent.StateMachine.ChangeState(AiStateID.Idle);
+    }
+
     public Animator Ani => animator;
 
     [System.Serializable]

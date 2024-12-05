@@ -4517,6 +4517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793ab0b0af9d36e47be4b01758246d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 5
   icon: {fileID: 656412332}
   fill: {fileID: 719538546}
   defaultSprite: {fileID: 21300000, guid: a214a84d2524d402c9fcc2676ba0900e, type: 3}
@@ -11625,6 +11626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793ab0b0af9d36e47be4b01758246d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 1
   icon: {fileID: 1097068343}
   fill: {fileID: 1762227249}
   defaultSprite: {fileID: 21300000, guid: a214a84d2524d402c9fcc2676ba0900e, type: 3}
@@ -16873,6 +16875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793ab0b0af9d36e47be4b01758246d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 2
   icon: {fileID: 1720838165}
   fill: {fileID: 573922427}
   defaultSprite: {fileID: 21300000, guid: a214a84d2524d402c9fcc2676ba0900e, type: 3}
@@ -19027,6 +19030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793ab0b0af9d36e47be4b01758246d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 3
   icon: {fileID: 911016268}
   fill: {fileID: 532780637}
   defaultSprite: {fileID: 21300000, guid: a214a84d2524d402c9fcc2676ba0900e, type: 3}
@@ -22682,6 +22686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793ab0b0af9d36e47be4b01758246d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   icon: {fileID: 190301208}
   fill: {fileID: 53592396}
   defaultSprite: {fileID: 21300000, guid: a214a84d2524d402c9fcc2676ba0900e, type: 3}
@@ -23220,6 +23225,7 @@ MonoBehaviour:
       startValue: 0
       addValue: 0
       coolTime: 0
+      range: 0
       skillBuffs: []
     lv: 0
     piece: 0
@@ -23559,6 +23565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793ab0b0af9d36e47be4b01758246d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 4
   icon: {fileID: 1101104228}
   fill: {fileID: 2049400384}
   defaultSprite: {fileID: 21300000, guid: a214a84d2524d402c9fcc2676ba0900e, type: 3}
@@ -23858,6 +23865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillParent: {fileID: 947656353}
   brain: {fileID: 285294374}
+  main: {fileID: 78753491}
   stage: {fileID: 1006949186}
   player: {fileID: 1339715210}
   enemies: []
@@ -33613,12 +33621,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'IndexFinger_02'\n\tTransform 'Elbow_R'\n\tTransform
-    'Finger_02'\n\tTransform 'Finger_03'\n\tTransform 'Eyebrows'\n\tTransform 'Ball_L'\n\tTransform
-    'Thumb_02'\n\tTransform 'Ball_R'\n\tTransform 'Clavicle_L'\n\tTransform 'Head_Attachment'\n\tand
-    more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0

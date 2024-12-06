@@ -10,23 +10,25 @@ using UnityEngine.Timeline;
 public class SkillBase : MonoBehaviour
 {
     [SerializeField] string id;
-    [SerializeField,ReadOnly] BaseCharacter character;
-    [SerializeField] List<CinemachineVirtualCamera> cameras;
-    [SerializeField] PlayableDirector director;
     [SerializeField] GameObject effect;
+    [SerializeField] PlayableDirector director;
+    [SerializeField] List<CinemachineVirtualCamera> cameras;
+    [SerializeField, ReadOnly] BaseCharacter character;
     [SerializeField, ReadOnly] State state;
     [SerializeField, ReadOnly] float value;
 
     public string ID => id;
 
-    public void SetValue(float newValue) => value = newValue; 
-
-    public virtual void SetSkill(BaseCharacter target)
+    public void UpdateValue()
     {
         DataManager.Skill skill = DataManager.Instance.Skills.Find(x => x.data.id == id);
         state = skill.data.State();
         value = skill.GetValue();
+    }
 
+    public virtual void SetSkill(BaseCharacter target)
+    {
+        UpdateValue();
         character = target;
 
         for (int i = 0; i < cameras.Count; i++)

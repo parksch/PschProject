@@ -1,7 +1,6 @@
+using ClientEnum;
 using System.Collections;
 using System.Collections.Generic;
-using UniRx.Triggers;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -51,7 +50,7 @@ public class PlayerCharacter : BaseCharacter
         {
             for (int i = 0; i < UIManager.Instance.SkillSlots.Count; i++)
             {
-                if (UIManager.Instance.SkillSlots[i].IsActiveOn)
+                if (UIManager.Instance.SkillSlots[i].IsActiveOn && Dist() < UIManager.Instance.SkillSlots[i].Range)
                 {
                     ActiveSkill(i);
                 }
@@ -141,6 +140,11 @@ public class PlayerCharacter : BaseCharacter
 
         if (curHp <= 0)
         {
+            if (agent.CurrentState == AiStateID.Skill)
+            {
+                current.Stop();
+            }
+
             Death();
             agent.StateMachine.ChangeState(AiStateID.Death);
         }
@@ -198,7 +202,8 @@ public class PlayerCharacter : BaseCharacter
 
         if (skill == null)
         {
-            skill = Instantiate(target.data.Prefab(), GameManager.Instance.SkillParent).GetComponent<SkillBase>();
+            skill = target.data.Prefab().GetComponent<SkillBase>();
+            skill.transform.parent = GameManager.Instance.SkillParent;
             skill.transform.position = Vector3.zero;
             skill.SetSkill(this);
             skill.gameObject.SetActive(false);
@@ -226,10 +231,36 @@ public class PlayerCharacter : BaseCharacter
         current.Active(transform);
     }
 
+    public override float GetState(State target)
+    {
+        float value = 0;
+
+        switch (target)
+        {
+            case ClientEnum.State.HP:
+                value = HP();
+                break;
+            case ClientEnum.State.Attack:
+                value = Attack();
+                break;
+            case ClientEnum.State.Defense:
+                value = Defense();
+                break;
+            case ClientEnum.State.HpRegen:
+                value = State.HpRegen;
+                break;
+            default:
+                break;
+        }
+
+        return value;
+    }
+
     void ResetAIAndPos()
     {
         transform.position = Vector3.zero;
         agent.StateMachine.ChangeState(AiStateID.Idle);
         target = null;
     }
+
 }

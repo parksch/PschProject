@@ -1,4 +1,5 @@
 using Cinemachine;
+using ClientEnum;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,11 +14,19 @@ public class SkillBase : MonoBehaviour
     [SerializeField] List<CinemachineVirtualCamera> cameras;
     [SerializeField] PlayableDirector director;
     [SerializeField] GameObject effect;
+    [SerializeField, ReadOnly] State state;
+    [SerializeField, ReadOnly] float value;
 
     public string ID => id;
 
+    public void SetValue(float newValue) => value = newValue; 
+
     public virtual void SetSkill(BaseCharacter target)
     {
+        DataManager.Skill skill = DataManager.Instance.Skills.Find(x => x.data.id == id);
+        state = skill.data.State();
+        value = skill.GetValue();
+
         character = target;
 
         for (int i = 0; i < cameras.Count; i++)
@@ -54,7 +63,6 @@ public class SkillBase : MonoBehaviour
                 }
             }
         }
-
     }
 
     public void Active(Transform target)
@@ -74,6 +82,21 @@ public class SkillBase : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        
+        BaseCharacter enemy = other.GetComponentInParent<BaseCharacter>();
+        float target = character.GetState(state);
+
+        switch (character.CharacterType)
+        {
+            case ClientEnum.CharacterType.Player:
+                if (enemy.CharacterType == CharacterType.Enemy)
+                {
+                    enemy.Hit((long)(value * target));
+                }
+                break;
+            case ClientEnum.CharacterType.Enemy:
+                break;
+            default:
+                break;
+        }
     }
 }

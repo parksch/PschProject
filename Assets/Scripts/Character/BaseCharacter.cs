@@ -14,6 +14,8 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected CharacterType characterType;
     [SerializeField] protected long curHp;
 
+    public CharacterType CharacterType => characterType;
+
     public void SetIdle()
     {
         agent.StateMachine.ChangeState(AiStateID.Idle);
@@ -200,5 +202,10 @@ public class BaseCharacter : MonoBehaviour
         buff.value = addValue;
 
         buffs.Add(buff);
+    }
+
+    public virtual float GetState(ClientEnum.State target)
+    {
+        return 0;
     }
 }

@@ -1,3 +1,4 @@
+using ClientEnum;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,13 @@ public partial class DataManager //Skill
         public SkillData data = null;
         public int lv = 0;
         public int piece = 0;
+
+        public float GetValue()
+        {
+            return data.startValue + (data.addValue * lv);
+        }
+
+        public State GetState() => data.State();
     }
 
     void SkillInit()

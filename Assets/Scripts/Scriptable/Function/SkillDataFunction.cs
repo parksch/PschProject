@@ -50,6 +50,11 @@ namespace JsonClass
 
             return value;
         }
+
+        public State State()
+        {
+            return (State)targetState;
+        }
     }
 
 }

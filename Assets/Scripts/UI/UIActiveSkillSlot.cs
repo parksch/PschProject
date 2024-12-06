@@ -12,6 +12,7 @@ public class UIActiveSkillSlot : MonoBehaviour
     DataManager.Skill target;
     float timer;
 
+    public float Range => target.data.range;
     public bool IsActiveOn => target != null && target.data != null && target.data.id != "" && timer <= 0 && UIManager.Instance.IsAutoSkill;
 
     public void SetSkill(DataManager.Skill skill)
@@ -54,7 +55,7 @@ public class UIActiveSkillSlot : MonoBehaviour
 
     public void OnClick()
     {
-        if (target == null || target.data == null || target.data.id == "" || timer > 0)
+        if (GameManager.Instance.Player.IsDeath || target == null || target.data == null || target.data.id == "" || timer > 0)
         {
             return;
         }

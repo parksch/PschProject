@@ -122,6 +122,8 @@ MonoBehaviour:
   - {fileID: 8929646729062780351}
   director: {fileID: 3994911619578576615}
   effect: {fileID: 4573783220828615225}
+  state: 0
+  value: 0
 --- !u!54 &-336061069679542564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -260,6 +262,7 @@ PlayableDirector:
     value: {fileID: 2232826429768509392}
   m_ExposedReferences:
     m_References:
+    - 32afb4a82bea0d448a2fb58c0cadc8c0: {fileID: 8929646729062780351}
     - 770c094aa0b1e184e9d150145d74c6f4: {fileID: 8929646729062780351}
     - d58b9743c8c3a3941ad27817c42e2cc8: {fileID: 8929646729062780351}
     - c0932962680f30a49ac2d474a359252b: {fileID: 7175422460758817345}
@@ -309,7 +312,7 @@ GameObject:
   - component: {fileID: 964007697593018084}
   - component: {fileID: 1629570269723278710}
   m_Layer: 11
-  m_Name: SlashSmallBlue 1
+  m_Name: SlashSmallBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

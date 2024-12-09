@@ -13,11 +13,10 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] UIText gemText;
     [SerializeField, ReadOnly] UIText scrapText;
     [SerializeField, ReadOnly] UIText reinforceText;
+    [SerializeField, ReadOnly] UIText amplificationText;
     [SerializeField, ReadOnly] Text stageText;
     [SerializeField, ReadOnly] Text userName;
     [SerializeField, ReadOnly] Text level;
-    [SerializeField, ReadOnly] Slider hpSlider;
-    [SerializeField, ReadOnly] Slider expSlider;
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
     [SerializeField, ReadOnly] GameObject bossButton;
@@ -68,6 +67,11 @@ public partial class UIManager //Main
         reinforceText.SetText(scrap);
     }
 
+    void SetAmplification(long amplification)
+    {
+        amplificationText.SetText(amplification);
+    }
+
     void SetGameModeUI(ClientEnum.GameMode gameMode)
     {
         switch (gameMode)
@@ -92,34 +96,27 @@ public partial class UIManager //Main
         SetGold(DataManager.Instance.GetGoods.gold);
         SetGem(DataManager.Instance.GetGoods.gem);
         SetScrap(DataManager.Instance.GetGoods.scrap);
-        SetReinforce(DataManager.Instance.GetGoods.reinforceStone);
+        SetReinforce(DataManager.Instance.GetGoods.reinforce);
+        SetAmplification (DataManager.Instance.GetGoods.amplification);
 
         userInfo.Init();
-        
         OnChangePlayerHP += userInfo.SetHP;
 
-
-        DataManager.Instance.OnChangeGold = null;
-        DataManager.Instance.OnChangeGold += SetGold;
-        DataManager.Instance.OnChangeGold += _ => { UpdatePanel();};
-
-        DataManager.Instance.OnChangeScrap = null;
-        DataManager.Instance.OnChangeScrap += SetScrap;
-        DataManager.Instance.OnChangeScrap += _ => { UpdatePanel(); };
-
-        DataManager.Instance.OnChangeGem = null;
-        DataManager.Instance.OnChangeGem += SetGem;
+        DataManager.Instance.OnChangeGem += _ => { SetGem(DataManager.Instance.GetGoods.gem); };
         DataManager.Instance.OnChangeGem += _ => { UpdatePanel(); };
 
-        DataManager.Instance.OnChangeReinforce = null;
-        DataManager.Instance.OnChangeReinforce += SetReinforce;
+        DataManager.Instance.OnChangeGold += _ => { SetGold(DataManager.Instance.GetGoods.gold); };
+        DataManager.Instance.OnChangeGold += _ => { UpdatePanel();};
+
+        DataManager.Instance.OnChangeScrap += _ => { SetScrap(DataManager.Instance.GetGoods.scrap); };
+        DataManager.Instance.OnChangeScrap += _ => { UpdatePanel(); };
+
+        DataManager.Instance.OnChangeReinforce += _ => { SetReinforce(DataManager.Instance.GetGoods.reinforce); };
         DataManager.Instance.OnChangeReinforce += _ => { UpdatePanel(); };
 
-        DataManager.Instance.OnChangeLevel = null;
-        DataManager.Instance.OnChangeLevel += userInfo.SetLevel;
+        DataManager.Instance.OnChangeAmplification += _ => { SetAmplification(DataManager.Instance.GetGoods.amplification); };
+        DataManager.Instance.OnChangeAmplification += _ => { UpdatePanel(); };
 
-        DataManager.Instance.OnChangeExp = null;
-        DataManager.Instance.OnChangeExp += userInfo.SetExp;
         DataManager.Instance.OnChangeExp += _ => { UpdatePanel(); };
 
         DataManager.Instance.OnChangeSkill += (_,_)=> 

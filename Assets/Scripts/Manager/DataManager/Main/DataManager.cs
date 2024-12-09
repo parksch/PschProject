@@ -18,6 +18,7 @@ public partial class DataManager : Singleton<DataManager>
 
     public void Init()
     {
+        InitGoods();
         StateInit();
         InfoInit();
         SkillInit();

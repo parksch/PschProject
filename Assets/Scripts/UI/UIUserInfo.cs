@@ -11,14 +11,17 @@ public class UIUserInfo : MonoBehaviour
     [SerializeField, ReadOnly] Text playerLevel;
 
     public void SetHP(float value) => hp.value = value;
-    public void SetExp(float value) => exp.value = value;
-    public void SetLevel(int value) => playerLevel.text = DataManager.Instance.GetInfo.CurrentLevel.ToString();
+    public void SetExp() => exp.value = DataManager.Instance.ExpRatio();
+    public void SetLevel() => playerLevel.text = DataManager.Instance.GetInfo.CurrentLevel.ToString();
 
     public void Init()
     {
         playerName.text = DataManager.Instance.GetInfo.UserName;
         playerLevel.text = DataManager.Instance.GetInfo.CurrentLevel.ToString();
         SetHP(GameManager.Instance.Player.GetHPRatio);
-        SetExp(DataManager.Instance.ExpRatio());
+        SetExp();
+
+        DataManager.Instance.OnChangeExp += _ => { SetLevel(); };
+        DataManager.Instance.OnChangeExp += _ => { SetExp();};
     }
 }

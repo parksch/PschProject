@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyCharacter : BaseCharacter
 {
+    [SerializeField] GameObject hitObject;
     [SerializeField] bool isBoss;
     [SerializeField] string poolName;
     EnemyState State => state as EnemyState;
@@ -16,6 +17,7 @@ public class EnemyCharacter : BaseCharacter
 
     public override void DeathAction()
     {
+        hitObject.SetActive(false);
         PoolManager.Instance.Enqueue(poolName, gameObject);
     }
 
@@ -62,6 +64,9 @@ public class EnemyCharacter : BaseCharacter
         {
             return;
         }
+
+        hitObject.SetActive(false);
+        hitObject.SetActive(true);
 
         attack = DefenseCalculate(attack);
 

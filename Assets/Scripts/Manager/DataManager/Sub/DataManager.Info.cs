@@ -8,11 +8,7 @@ public partial class DataManager //Info
     [SerializeField] Info info;
     public Info GetInfo => info;
 
-    public delegate void ChangeLevel(int level);
-    public delegate void ChangeExpRatio(float ratio);
-
-    public ChangeLevel OnChangeLevel;
-    public ChangeExpRatio OnChangeExp;
+    public ChangeGoods OnChangeExp;
 
     public float ExpRatio()
     {
@@ -27,7 +23,7 @@ public partial class DataManager //Info
         }
     }
 
-    public void AddExp(long value)
+    void AddExp(long value)
     {
         info.CurrentExp = (info.CurrentExp + value);
         
@@ -35,9 +31,6 @@ public partial class DataManager //Info
         {
             info.CurrentExp = info.MaxExp;
         }
-
-        OnChangeLevel(info.CurrentLevel);
-        OnChangeExp(ExpRatio());
     }
 
     long LevelExp(int targetLevel)
@@ -203,5 +196,8 @@ public partial class DataManager //Info
                 }
             }
         }
+
+        OnChangeExp = null;
+        OnChangeExp += AddExp;
     }
 }

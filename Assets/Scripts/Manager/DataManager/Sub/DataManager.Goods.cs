@@ -14,42 +14,41 @@ public partial class  DataManager //Goods
     public ChangeGoods OnChangeScrap;
     public ChangeGoods OnChangeGold;
     public ChangeGoods OnChangeReinforce;
-    
+    public ChangeGoods OnChangeAmplification;
+
     [System.Serializable]
     public class Goods
     {
         public long gold = 0;
         public long gem = 0;
         public long scrap = 0;
-        public long reinforceStone = 0;
-    }
-
-    public void AddScrap(long value)
-    {
-        goods.scrap += value;
-
-        OnChangeScrap(goods.scrap);
-    }
-
-    public void AddGold(long value)
-    {
-        goods.gold += value;
-
-        OnChangeGold(goods.gold);
+        public long amplification = 0;
+        public long reinforce = 0;
     }
 
     public void AddGem(long value)
     {
         goods.gem += value;
+    }
 
-        OnChangeGem(goods.gem);
+    public void AddScrap(long value)
+    {
+        goods.scrap += value;
+    }
+
+    public void AddGold(long value)
+    {
+        goods.gold += value;
     }
 
     public void AddReinforce(long value)
     {
-        goods.reinforceStone += value;
+        goods.reinforce += value;
+    }
 
-        OnChangeReinforce(goods.gem);
+    public void AddAmplification(long value)
+    {
+        goods.amplification += value;
     }
 
     public bool CheckGoods(ClientEnum.Goods type, long need)
@@ -62,6 +61,10 @@ public partial class  DataManager //Goods
                 return goods.gold >= need;
             case ClientEnum.Goods.Gem:
                 return goods.gem >= need;
+            case ClientEnum.Goods.Reinforce:
+                return goods.reinforce >= need;
+            case ClientEnum.Goods.Amplification:
+                return goods.amplification >= need;
             default:
                 break;
         }
@@ -74,15 +77,21 @@ public partial class  DataManager //Goods
         switch (type)
         {
             case ClientEnum.Goods.Scrap:
-                AddScrap(-value);
+                OnChangeScrap(-value);
                 break;
             case ClientEnum.Goods.Gold:
-                AddGold(-value);
+                OnChangeGold(-value);
                 break;
             case ClientEnum.Goods.Gem:
-                AddGem(-value);
+                OnChangeGem(-value);
                 break;
             case ClientEnum.Goods.Money:
+                break;
+            case ClientEnum.Goods.Reinforce:
+                OnChangeReinforce(-value);
+                break;
+            case ClientEnum.Goods.Amplification:
+                OnChangeAmplification(-value);
                 break;
             default:
                 break;
@@ -94,19 +103,42 @@ public partial class  DataManager //Goods
         switch (type)
         {
             case ClientEnum.Goods.Scrap:
-                AddScrap(value);
+                OnChangeScrap(value);
                 break;
             case ClientEnum.Goods.Gold:
-                AddGold(value);
+                OnChangeGold(value);
                 break;
             case ClientEnum.Goods.Gem:
-                AddGem(value);
+                OnChangeGem(value);
                 break;
             case ClientEnum.Goods.Money:
+                break;
+            case ClientEnum.Goods.Reinforce:
+                OnChangeReinforce(value);
+                break;
+            case ClientEnum.Goods.Amplification:
+                OnChangeAmplification(value);
                 break;
             default:
                 break;
         }
     }
 
+    void InitGoods()
+    {
+        OnChangeGem = null;
+        OnChangeGem += AddGem;
+
+        OnChangeScrap = null;
+        OnChangeScrap += AddScrap;
+
+        OnChangeGold = null;
+        OnChangeGold += AddGold;
+
+        OnChangeReinforce = null;
+        OnChangeReinforce += AddReinforce;
+
+        OnChangeAmplification = null;
+        OnChangeAmplification += AddAmplification;
+    }
 }

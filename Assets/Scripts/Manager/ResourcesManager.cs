@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,21 +33,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     public Sprite GetGoodsSprite(ClientEnum.Goods goods)
     {
-        switch (goods)
-        {
-            case ClientEnum.Goods.None:
-                return null;
-            case ClientEnum.Goods.Scrap:
-                return spriteAtlasDict["Goods"].GetSprite("Scrap");
-            case ClientEnum.Goods.Gold:
-                return spriteAtlasDict["Goods"].GetSprite("Gold");
-            case ClientEnum.Goods.Gem:
-                return spriteAtlasDict["Goods"].GetSprite("Gem");
-            case ClientEnum.Goods.Money:
-                return null;
-            default:
-                return null;
-        }
+        return spriteAtlasDict["Goods"].GetSprite(ClientEnum.EnumString<ClientEnum.Goods>.ToString(goods));
     }
 
     public string GradeColor(ClientEnum.Grade grade)

@@ -16,7 +16,6 @@ public partial class DataManager //Skill
     public List<Skill> Skills => skills;
     public List<Skill> EquipSkill => equipSkill;
 
-
     [System.Serializable]
     public class Skill
     {

@@ -6,6 +6,8 @@ namespace ClientEnum
         Gold,
         Scrap,
         Gem,
+        Reinforce,
+        Amplification,
         Money,
     }
 

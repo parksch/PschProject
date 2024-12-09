@@ -35,7 +35,7 @@ MonoBehaviour:
         maxLevel: 10
   - index: 2
     type:
-      titleKey: DailyTitle
+      titleKey: DailyShop
       shops:
       - probabilities:
         - grade: 0
@@ -68,4 +68,24 @@ MonoBehaviour:
         nameKey: DailyGem
         needValue: 100
         limit: 20
+        maxLevel: 0
+  - index: 3
+    type:
+      titleKey: GemShop
+      shops:
+      - probabilities:
+        - grade: 0
+          value: 1000
+        - grade: 1
+          value: 500
+        - grade: 2
+          value: 100
+        - grade: 3
+          value: 50
+        target: 0
+        goods: 3
+        descKey: 
+        nameKey: SkillShop
+        needValue: 1000
+        limit: 0
         maxLevel: 0

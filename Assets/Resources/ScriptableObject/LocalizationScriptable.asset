@@ -31,7 +31,7 @@ MonoBehaviour:
       desc: "\uACE0\uCCA0\uC0C1\uC810"
     - name: Draw
       desc: "{0} \uD68C \uBF51\uAE30"
-    - name: DailyTitle
+    - name: DailyShop
       desc: "\uC77C\uC77C\uC0C1\uC810"
     - name: DailyGold
       desc: "\uC77C\uC77C\uACE8\uB4DC\uC0C1\uC810"
@@ -88,6 +88,10 @@ MonoBehaviour:
         \uAC15\uD654\uD558\uC5EC \uB2E4\uC2DC \uB3C4\uC804\uD558\uC138\uC694."
     - name: SkillSwingName
       desc: "\uBCA0\uAE30"
+    - name: GemShop
+      desc: "\uBCF4\uC11D\uC0C1\uC810"
+    - name: SkillShop
+      desc: "\uC2A4\uD0AC\uBF51\uAE30"
   - language: 1
     textkeys:
     - name: 

@@ -161,15 +161,37 @@ public class DrawPanel : BasePanel
         }
 
         DataManager.Instance.UseGoods(currentSlot.GetCurrentData.Goods(), currentSlot.GetCurrentData.needValue * buyButton.targetNum);
-        GetItem(currentSlot.GetCurrentData,buyButton.targetNum);
+        GetResult(currentSlot.GetCurrentData,buyButton.targetNum);
         UpdateDraw(currentSlot.GetCurrentData);
     }
 
-    public void GetItem(Shops shop, int num)
+    public void GetResult(Shops shop, int num)
     {
         RewardPanel reward = UIManager.Instance.Get<RewardPanel>();
         reward.CopyTopMenu(activeTopUI);
 
+        switch (shop.DrawValue())
+        {
+            case ClientEnum.DrawValue.Item:
+                Item(reward, shop, num);
+                break;
+            case ClientEnum.DrawValue.Skill:
+                Skill(reward, shop, num);
+                break;
+            default:
+                break;
+        }
+
+        UIManager.Instance.AddPanel(reward);
+    }
+
+    void Skill(RewardPanel reward, Shops shop,int num)
+    {
+
+    }
+
+    void Item(RewardPanel reward, Shops shop, int num)
+    {
         for (int i = 0; i < num; i++)
         {
             ClientEnum.Item target = shop.Target();
@@ -184,12 +206,10 @@ public class DrawPanel : BasePanel
             ClientEnum.Grade grade = shop.Grade();
 
             BaseItem item = ItemFactory.Create(target);
-            item.Set(info,grade);
+            item.Set(info, grade);
             reward.AddItem(item);
             DataManager.Instance.AddItem(item);
         }
-
-        UIManager.Instance.AddPanel(reward);
     }
 
     public void OnClickSlot(UIDrawSlot uIShopSlot)

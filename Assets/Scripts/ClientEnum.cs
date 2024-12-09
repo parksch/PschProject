@@ -32,6 +32,12 @@ namespace ClientEnum
         UI
     }
 
+    public enum DrawValue
+    {
+        Item,
+        Skill,
+    }
+
     public enum Item
     {
         None = 0,
@@ -39,6 +45,7 @@ namespace ClientEnum
         Armor,
         Weapon,
         Max,
+        Skill
     }
 
     public enum State
@@ -73,6 +80,7 @@ namespace ClientEnum
         Min = 0,
         Scrap,
         Daily,
+        Gem,
         Max
     }
 

@@ -26,6 +26,7 @@ namespace JsonClass
     public partial class Shops
     {
         public List<Probabilities> probabilities;
+        public int type;
         public int target;
         public int goods;
         public string descKey;

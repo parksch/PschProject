@@ -32,6 +32,11 @@ namespace JsonClass
 
     public partial class Shops
     {
+        public ClientEnum.DrawValue DrawValue()
+        {
+            return (ClientEnum.DrawValue)type;
+        }
+
         public ClientEnum.Goods Goods()
         {
             return (ClientEnum.Goods)goods;

@@ -47,3 +47,20 @@ MonoBehaviour:
     - state: 0
       timer: 0
       value: 0
+  - id: Earthquake
+    atlas: Icon
+    sprite: Earthquake
+    nameKey: EarthquakeName
+    descKey: EarthquakeDesc
+    prefab: Earthquake
+    levelMax: 10
+    grade: 2
+    targetState: 2
+    startValue: 3
+    addValue: 0.2
+    coolTime: 6
+    range: 2
+    skillBuffs:
+    - state: 0
+      timer: 0
+      value: 0

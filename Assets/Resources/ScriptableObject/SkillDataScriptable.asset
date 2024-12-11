@@ -30,3 +30,20 @@ MonoBehaviour:
     - state: 0
       timer: 0
       value: 0
+  - id: WarCry
+    atlas: Icon
+    sprite: SkillWarCry
+    nameKey: SkillWarCryName
+    descKey: SkillWarCryDesc
+    prefab: WarCry
+    levelMax: 10
+    grade: 1
+    targetState: 2
+    startValue: 2
+    addValue: 0.25
+    coolTime: 10
+    range: 2
+    skillBuffs:
+    - state: 0
+      timer: 0
+      value: 0

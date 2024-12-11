@@ -6,6 +6,12 @@ namespace JsonClass
 {
     public partial class SkillDataScriptable // This Class is a functional Class.
     {
+        public SkillData GetDataInGrade(ClientEnum.Grade target)
+        {
+            List<SkillData> list = skillData.FindAll(x => x.Grade() == target);
+
+            return list[Random.Range(0,list.Count)];
+        }
     }
 
     public partial class SkillData // This Class is a functional Class.

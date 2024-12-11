@@ -187,7 +187,10 @@ public class DrawPanel : BasePanel
 
     void Skill(RewardPanel reward, Shops shop,int num)
     {
-
+        for (int i = 0; i < num; i++)
+        {
+            ClientEnum.Grade grade = shop.Grade();
+        }
     }
 
     void Item(RewardPanel reward, Shops shop, int num)

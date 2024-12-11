@@ -37,3 +37,5 @@ MonoBehaviour:
     value: 5
   - key: TimeLimit
     value: 60
+  - key: DrawSkillPiece
+    value: 10

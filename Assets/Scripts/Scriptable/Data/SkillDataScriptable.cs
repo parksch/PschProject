@@ -30,7 +30,7 @@ namespace JsonClass
     [System.Serializable]
     public partial class SkillBuffs
     {
-        public int state;
+        public string state;
         public float timer;
         public float value;
     }

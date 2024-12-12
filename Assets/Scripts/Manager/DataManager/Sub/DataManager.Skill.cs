@@ -60,4 +60,9 @@ public partial class DataManager //Skill
 
         equipSkill[index] = skill;
     }
+
+    public void AddPiece(SkillData skillData,int num)
+    {
+        skills.Find(x => x.data.id == skillData.id);
+    }
 }

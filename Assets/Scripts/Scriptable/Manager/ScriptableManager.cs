@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum ScriptableType
 {
+    BuffData,
     DefaultValues,
     Draw,
     DungeonsData,

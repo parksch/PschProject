@@ -14,17 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonsData:
   - type: 0
-    maxLevel: 10
-    itemType: 0
-    startValue: 0
-    itemAddValueType: 0
-    addValue: 0
-    nameLocal: 0
-    descriptionLocal: 
-    mapPrefab: 
-    monsters: []
-  - type: 1
-    maxLevel: 10
+    maxLevel: 0
     itemType: 0
     startValue: 0
     itemAddValueType: 0

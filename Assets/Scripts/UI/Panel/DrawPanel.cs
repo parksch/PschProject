@@ -187,9 +187,17 @@ public class DrawPanel : BasePanel
 
     void Skill(RewardPanel reward, Shops shop,int num)
     {
+        List<(SkillData skill, int piece)> data = new List<(SkillData, int)>();
+
         for (int i = 0; i < num; i++)
         {
             ClientEnum.Grade grade = shop.Grade();
+            SkillData skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).GetDataInGrade(grade);
+
+            if (data.Find(x => x.skill.id == skillData.id) == null)
+            {
+
+            }
         }
     }
 

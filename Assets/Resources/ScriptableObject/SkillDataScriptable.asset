@@ -64,3 +64,20 @@ MonoBehaviour:
     - state: 0
       timer: 0
       value: 0
+  - id: HalfMoonSlash
+    atlas: Icon
+    sprite: HalfMoonSlash
+    nameKey: HalfMoonSlashName
+    descKey: HalfMoonSlashDesc
+    prefab: HalfMoonSlash
+    levelMax: 10
+    grade: 3
+    targetState: 2
+    startValue: 3
+    addValue: 0.5
+    coolTime: 5
+    range: 2
+    skillBuffs:
+    - state: 0
+      timer: 0
+      value: 0

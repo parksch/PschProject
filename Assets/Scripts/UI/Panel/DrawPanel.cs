@@ -194,10 +194,7 @@ public class DrawPanel : BasePanel
             ClientEnum.Grade grade = shop.Grade();
             SkillData skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).GetDataInGrade(grade);
 
-            if (data.Find(x => x.skill.id == skillData.id) == null)
-            {
 
-            }
         }
     }
 

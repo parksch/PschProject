@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class BuffBase : MonoBehaviour
 {
-    [SerializeField] float timer;
+    [SerializeField] GameObject targetParticle;
     [SerializeField] ClientEnum.State state;
+    [SerializeField] string id;
+    [SerializeField] bool isDebuff;
+    [SerializeField] float timer;
     [SerializeField] float value;
 
+    public string ID => id;
     public float Timer => timer;
     public ClientEnum.State State => state;
-    public float Value => value;
+    public float Value => isDebuff ? -1 * value : value;
 
+    float maxTimer = 0;
+    float tick = 0f;
     bool isOn = false;
 
     void FixedUpdate()
@@ -23,7 +29,18 @@ public class BuffBase : MonoBehaviour
         }
 
         timer -= Time.deltaTime;
+        tick += Time.deltaTime;
 
+        if (tick > 0.5f )
+        {
+            tick = 0;
+            BuffUpdate();
+        }
+
+        if(timer <= 0f )
+        {
+            isOn = false;
+        }
     }
 
     public virtual void BuffStart(float _timer,float _value)
@@ -31,13 +48,14 @@ public class BuffBase : MonoBehaviour
         isOn = true;
         timer = _timer;
         value = _value;
+        maxTimer = timer;
+        tick = 0;
     }
 
     public virtual void BuffUpdate()
     {
 
     }
-
 
     public virtual void BuffEnd()
     {

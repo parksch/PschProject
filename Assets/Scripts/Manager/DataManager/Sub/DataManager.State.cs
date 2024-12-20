@@ -2,7 +2,6 @@ using ClientEnum;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
 
 public partial class DataManager //State

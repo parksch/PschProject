@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using JsonClass;
 
@@ -25,12 +24,12 @@ public partial class DataManager : Singleton<DataManager>
         InventoryInit();
     }
 
-    public float GetStateData(ClientEnum.State state,ClientEnum.ChangeType changeType)
+    public float GetStateData(ClientEnum.State state, ClientEnum.ChangeType changeType)
     {
         float value = changeType == ClientEnum.ChangeType.Product ? 1 : 0;
         float getValue = 0;
         getValue += GetUpgradeValue(state, changeType);
         getValue += GetItemValue(state, changeType);
-        return value + (changeType == ClientEnum.ChangeType.Product ? getValue * 0.01f : getValue );
+        return value + (changeType == ClientEnum.ChangeType.Product ? getValue * 0.01f : getValue);
     }
 }

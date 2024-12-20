@@ -6,8 +6,9 @@ using UnityEngine.Rendering;
 
 public class BaseCharacter : MonoBehaviour
 {
-    [SerializeField, ReadOnly] protected List<Buff> buffs = new List<Buff>();
+    [SerializeField, ReadOnly] protected List<BuffBase> buffs = new List<BuffBase>();
     [SerializeField, ReadOnly] protected BaseCharacter target;
+    [SerializeField] protected Transform buffTrans;
     [SerializeField] protected AiAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected BaseCharacterState state;
@@ -23,26 +24,15 @@ public class BaseCharacter : MonoBehaviour
 
     public Animator Ani => animator;
 
-    [System.Serializable]
-    public class Buff
-    {
-        public State state;
-        public float timer;
-        public float value;
-    }
-
     protected virtual void FixedUpdate()
     {
         for (int i = 0; i < buffs.Count; i++)
         {
-            if (buffs[i].timer <= 0)
+            if (buffs[i].Timer <= 0)
             {
+                buffs[i].BuffEnd();
                 buffs.RemoveAt(i);
                 i--;
-            }
-            else
-            {
-                buffs[i].timer -= Time.deltaTime;
             }
         }
     }
@@ -194,14 +184,9 @@ public class BaseCharacter : MonoBehaviour
         return attack;
     }
 
-    public void AddBuff(State state,float timer,float addValue)
+    public void AddBuff(string key,float timer,float addValue)
     {
-        Buff buff = new Buff();
-        buff.state = state;
-        buff.timer = timer;
-        buff.value = addValue;
 
-        buffs.Add(buff);
     }
 
     public virtual float GetState(ClientEnum.State target)

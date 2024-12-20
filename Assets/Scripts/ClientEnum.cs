@@ -26,6 +26,7 @@ namespace ClientEnum
 
     public enum ObjectType
     {
+        Buff,
         Enemy,
         Map,
         Skill,

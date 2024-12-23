@@ -8,17 +8,20 @@ using UnityEngine.UI;
 public partial class UIManager //Main
 {
     [SerializeField, ReadOnly] List<UIActiveSkillSlot> slots;
+    [SerializeField, ReadOnly] UIBuffSlots buffSlots;
     [SerializeField, ReadOnly] UIToggle autoSkill;
     [SerializeField, ReadOnly] UIText goldText;
     [SerializeField, ReadOnly] UIText gemText;
     [SerializeField, ReadOnly] UIText scrapText;
     [SerializeField, ReadOnly] UIText reinforceText;
     [SerializeField, ReadOnly] UIText amplificationText;
+    [SerializeField] Text buffButtonText;
     [SerializeField, ReadOnly] Text stageText;
     [SerializeField, ReadOnly] Text userName;
     [SerializeField, ReadOnly] Text level;
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
+    [SerializeField] RectTransform buffParent;
     [SerializeField, ReadOnly] GameObject bossButton;
 
     public delegate void ChangeHP(float ratio);
@@ -32,11 +35,26 @@ public partial class UIManager //Main
     {
         GameManager.Instance.OnChangeGameMode(ClientEnum.GameMode.Boss);
     }
+    public void OnClickBuff()
+    {
+        RectTransform rectTransform = buffSlots.GetComponent<RectTransform>();
+
+        if (buffButtonText.text == "Close")
+        {
+            buffButtonText.text = "Open";
+            rectTransform.offsetMax = new Vector2(0, -buffParent.GetComponent<RectTransform>().rect.height);
+        }
+        else
+        {
+            buffButtonText.text = "Close";
+            rectTransform.offsetMax = new Vector2(0, -50);
+        }
+    }
+
     public void UpdateBossHp(long hp)
     {
         bossHP.UpdateHp(hp);
     }
-
     public void SetStageTitle(string local,int stageNum)
     {
         string title = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
@@ -66,12 +84,10 @@ public partial class UIManager //Main
     {
         reinforceText.SetText(scrap);
     }
-
     void SetAmplification(long amplification)
     {
         amplificationText.SetText(amplification);
     }
-
     void SetGameModeUI(ClientEnum.GameMode gameMode)
     {
         switch (gameMode)
@@ -87,6 +103,10 @@ public partial class UIManager //Main
             default:
                 break;
         }
+    }
+    void SetBuff(BuffData buffData, float value, float timer)
+    {
+        buffSlots.SetBuff(buffData, value, timer);
     }
 
     void InitTopUI()

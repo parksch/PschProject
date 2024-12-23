@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.TextCore.Text;
 using UnityEngine.Timeline;
 
 public class SkillBase : MonoBehaviour
@@ -13,9 +12,9 @@ public class SkillBase : MonoBehaviour
     [SerializeField] GameObject effect;
     [SerializeField] PlayableDirector director;
     [SerializeField] List<CinemachineVirtualCamera> cameras;
-    [SerializeField, ReadOnly] BaseCharacter character;
-    [SerializeField, ReadOnly] State state;
-    [SerializeField, ReadOnly] float value;
+    [SerializeField, ReadOnly] protected BaseCharacter character;
+    [SerializeField, ReadOnly] protected State state;
+    [SerializeField, ReadOnly] protected float value;
 
     public string ID => id;
 
@@ -67,7 +66,7 @@ public class SkillBase : MonoBehaviour
         }
     }
 
-    public void Active(Transform target)
+    public virtual void Active(Transform target)
     {
         effect.transform.position = target.position;
         effect.transform.rotation = target.rotation;
@@ -92,7 +91,7 @@ public class SkillBase : MonoBehaviour
             case ClientEnum.CharacterType.Player:
                 if (enemy.CharacterType == CharacterType.Enemy)
                 {
-                    enemy.Hit((long)(value * target));
+                    Attack(enemy,target);
                 }
                 break;
             case ClientEnum.CharacterType.Enemy:
@@ -100,5 +99,10 @@ public class SkillBase : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    protected virtual void Attack(BaseCharacter character,float target)
+    {
+        character.Hit((long)(value * target));
     }
 }

@@ -20205,7 +20205,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: -2561704724031065258}
           m_TargetAssemblyTypeName: SkillBase, Assembly-CSharp
           m_MethodName: Stop
           m_Mode: 1

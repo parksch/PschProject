@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdf1f4497538814e93e12fecc473510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: Split
+  id: HalfMoonSlash
   effect: {fileID: 4573783220828615225}
   director: {fileID: 3994911619578576615}
   cameras:
@@ -5162,7 +5162,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 3779045118992348861}
           m_TargetAssemblyTypeName: SkillBase, Assembly-CSharp
           m_MethodName: Stop
           m_Mode: 1
@@ -10305,7 +10305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5948906754092038460
 Transform:
   m_ObjectHideFlags: 0

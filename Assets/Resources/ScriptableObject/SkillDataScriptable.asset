@@ -27,7 +27,7 @@ MonoBehaviour:
     coolTime: 8
     range: 2
     skillBuffs:
-    - state: 0
+    - state: 
       timer: 0
       value: 0
   - id: WarCry
@@ -44,7 +44,7 @@ MonoBehaviour:
     coolTime: 10
     range: 2
     skillBuffs:
-    - state: 0
+    - state: 
       timer: 0
       value: 0
   - id: Earthquake
@@ -78,6 +78,6 @@ MonoBehaviour:
     coolTime: 5
     range: 2
     skillBuffs:
-    - state: 0
+    - state: 
       timer: 0
       value: 0

@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class HalfMoonSlash : SkillBase
 {
+    public override void Active(Transform target)
+    {
+        base.Active(target);
+    }
+
 
 }

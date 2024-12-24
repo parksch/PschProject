@@ -61,7 +61,7 @@ MonoBehaviour:
     coolTime: 6
     range: 2
     skillBuffs:
-    - state: 0
+    - state: 
       timer: 0
       value: 0
   - id: HalfMoonSlash

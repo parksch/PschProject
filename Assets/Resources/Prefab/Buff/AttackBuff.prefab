@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e8abeea2da4ee44812182b82b0571c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetParticle: {fileID: 0}
   state: 2
+  id: AttackBuff
   isDebuff: 0
   timer: 0
   value: 0

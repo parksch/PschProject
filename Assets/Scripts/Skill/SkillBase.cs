@@ -1,5 +1,6 @@
 using Cinemachine;
 using ClientEnum;
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class SkillBase : MonoBehaviour
     [SerializeField] GameObject effect;
     [SerializeField] PlayableDirector director;
     [SerializeField] List<CinemachineVirtualCamera> cameras;
+    [SerializeField, ReadOnly] protected List<SkillBuffs> buffs;
     [SerializeField, ReadOnly] protected BaseCharacter character;
     [SerializeField, ReadOnly] protected State state;
     [SerializeField, ReadOnly] protected float value;
@@ -29,6 +31,7 @@ public class SkillBase : MonoBehaviour
     {
         UpdateValue();
         character = target;
+        buffs = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).skillData.Find(x => x.id == id).skillBuffs;
 
         for (int i = 0; i < cameras.Count; i++)
         {

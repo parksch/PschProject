@@ -9,7 +9,7 @@ public class UIBuffSlots : MonoBehaviour
     [SerializeField, ReadOnly] UIBuffSlot slotPrefab;
     [SerializeField, ReadOnly] List<UIBuffSlot> slots;
 
-    public void SetBuff(BuffData buffData,float value,float timer)
+    public void AddBuff(BuffData buffData,float value,float timer)
     {
         bool isSet = false;
         content.anchoredPosition = Vector2.zero;

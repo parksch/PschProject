@@ -15,13 +15,13 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] UIText scrapText;
     [SerializeField, ReadOnly] UIText reinforceText;
     [SerializeField, ReadOnly] UIText amplificationText;
-    [SerializeField] Text buffButtonText;
+    [SerializeField, ReadOnly] Text buffButtonText;
     [SerializeField, ReadOnly] Text stageText;
     [SerializeField, ReadOnly] Text userName;
     [SerializeField, ReadOnly] Text level;
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
-    [SerializeField] RectTransform buffParent;
+    [SerializeField, ReadOnly] RectTransform buffParent;
     [SerializeField, ReadOnly] GameObject bossButton;
 
     public delegate void ChangeHP(float ratio);
@@ -54,6 +54,10 @@ public partial class UIManager //Main
     public void UpdateBossHp(long hp)
     {
         bossHP.UpdateHp(hp);
+    }
+    public void AddBuff(BuffData buffData, float timer, float value)
+    {
+        buffSlots.AddBuff(buffData, value, timer);
     }
     public void SetStageTitle(string local,int stageNum)
     {
@@ -103,10 +107,6 @@ public partial class UIManager //Main
             default:
                 break;
         }
-    }
-    void SetBuff(BuffData buffData, float value, float timer)
-    {
-        buffSlots.SetBuff(buffData, value, timer);
     }
 
     void InitTopUI()

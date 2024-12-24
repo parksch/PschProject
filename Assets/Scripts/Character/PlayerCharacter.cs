@@ -1,4 +1,5 @@
 using ClientEnum;
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -68,7 +69,7 @@ public class PlayerCharacter : BaseCharacter
 
     public override long Attack()
     {
-        return State.Attack;
+        return (long)(State.Attack * BuffValues(ClientEnum.State.Attack));
     }
 
     public override float AttackSpeed()
@@ -254,6 +255,12 @@ public class PlayerCharacter : BaseCharacter
         }
 
         return value;
+    }
+
+    protected override void SetBuff(BuffData buffData, float timer, float value)
+    {
+        base.SetBuff(buffData, timer, value);
+        UIManager.Instance.AddBuff(buffData, timer, value);
     }
 
     void ResetAIAndPos()

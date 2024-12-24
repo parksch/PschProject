@@ -15,7 +15,17 @@ public class BuffBase : MonoBehaviour
     public string ID => id;
     public float Timer => timer;
     public ClientEnum.State State => state;
-    public float Value => isDebuff ? -1 * value : value;
+    public float Value(ClientEnum.State target)
+    {
+        if (target == state)
+        {
+            return isDebuff ? -value : value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
     float maxTimer = 0;
     float tick = 0f;
@@ -43,11 +53,22 @@ public class BuffBase : MonoBehaviour
         }
     }
 
+    public virtual void BuffCheck(float _timer,float _value)
+    {
+        if (value <= _value)
+        {
+            isOn = true;
+            value = _value;
+            timer = _timer;
+            maxTimer = timer;
+        }
+    }
+
     public virtual void BuffStart(float _timer,float _value)
     {
         isOn = true;
-        timer = _timer;
         value = _value;
+        timer = _timer;
         maxTimer = timer;
         tick = 0;
     }
@@ -59,6 +80,6 @@ public class BuffBase : MonoBehaviour
 
     public virtual void BuffEnd()
     {
-
+        PoolManager.Instance.Enqueue(id, gameObject);
     }
 }

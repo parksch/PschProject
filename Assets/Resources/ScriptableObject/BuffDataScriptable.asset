@@ -16,5 +16,5 @@ MonoBehaviour:
   - name: AttackBuff
     prefab: AttackBuff
     targetState: 1
-    atlas: Icon
-    sprite: 
+    atlas: Icon2
+    sprite: AttackBuff

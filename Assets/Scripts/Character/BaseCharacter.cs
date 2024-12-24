@@ -4,6 +4,7 @@ using UnityEngine;
 using ClientEnum;
 using UnityEngine.Rendering;
 using JsonClass;
+using System;
 
 public class BaseCharacter : MonoBehaviour
 {
@@ -185,7 +186,7 @@ public class BaseCharacter : MonoBehaviour
         return attack;
     }
 
-    public virtual void AddBuff(string key,float timer,float addValue)
+    public void AddBuff(string key,float timer,float addValue)
     {
         JsonClass.BuffData buffData = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData).buffData.Find(x => x.name == key);
         
@@ -194,12 +195,42 @@ public class BaseCharacter : MonoBehaviour
             return;
         }
 
-        BuffBase buffBase = PoolManager.Instance.Dequeue(ObjectType.Buff, buffData.name).GetComponent<BuffBase>();
-
+        SetBuff(buffData,timer,addValue);
     }
-
+    
     public virtual float GetState(ClientEnum.State target)
     {
         return 0;
+    }
+
+    protected virtual void SetBuff(JsonClass.BuffData buffData,float timer,float value)
+    {
+        BuffBase buffBase = buffs.Find(x => x.ID == buffData.name);
+
+        if (buffBase == null)
+        {
+            buffBase = PoolManager.Instance.Dequeue(ObjectType.Buff, buffData.name).GetComponent<BuffBase>();
+            buffBase.transform.parent = buffTrans;
+            buffBase.transform.localPosition = Vector3.zero;
+            buffBase.transform.localRotation = Quaternion.identity;
+            buffBase.BuffStart(timer, value);
+            buffs.Add(buffBase);
+        }
+        else
+        {
+            buffBase.BuffCheck(timer, value);
+        }
+    }
+
+    protected float BuffValues(ClientEnum.State target)
+    {
+        float value = 1;
+
+        for (int i = 0; i < buffs.Count; i++)
+        {
+            value += buffs[i].Value(target);
+        }
+
+        return value;
     }
 }

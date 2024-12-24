@@ -12,6 +12,7 @@ public class UIBuffSlot : MonoBehaviour
     [SerializeField] float max;
     [SerializeField] float current;
 
+    string desc;
     BuffData target;
     float value;
 
@@ -20,7 +21,7 @@ public class UIBuffSlot : MonoBehaviour
     public void SetValue(float target,float timer)
     {
         front.fillAmount = 0;
-        value = target > value ? target : value;
+        value = target;
         max = timer;
         current = max;
     }
@@ -28,7 +29,7 @@ public class UIBuffSlot : MonoBehaviour
     public void SetSlot(BuffData buffData,float _value,float timer)
     {
         target = buffData;
-        image.sprite = ResourcesManager.Instance.GetSprite(target.atlas, target.sprite);
+        image.sprite = buffData.Sprite();
         front.fillAmount = 0;
         value = _value;
         max = timer;
@@ -42,9 +43,9 @@ public class UIBuffSlot : MonoBehaviour
         if (current > 0)
         {
             current -= Time.deltaTime;
-            current *= 10;
-            current = Mathf.Floor(current)/10f;
-            text.text = current + "s";
+            current *= 100;
+            current = Mathf.Round(current)/100f;
+            text.text = current.ToString("F2") + "s";
             front.fillAmount = (max - current)/max;
         }
         else

@@ -112,12 +112,16 @@ public class PlayerCharacter : BaseCharacter
     public override void DeathAction()
     {
         curHp = HP();
-        UIManager.Instance.OnChangePlayerHP(GetHPRatio);
+        BuffReset();
         ResetAIAndPos();
+        UIManager.Instance.OnChangePlayerHP(GetHPRatio);
+        UIManager.Instance.ResetBuff();
     }
 
     public override void Death()
     {
+        base.Death();
+        UIManager.Instance.ResetBuff();
         GameManager.Instance.StageFail();
     }
 

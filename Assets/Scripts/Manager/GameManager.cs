@@ -137,11 +137,13 @@ public class GameManager : Singleton<GameManager>
     {
         foreach (var item in enemies)
         {
+            item.BuffReset();
             item.DeathAction();
         }
 
         enemies.Clear();
         player.DeathAction();
+        UIManager.Instance.ResetSkill();
     }
 
     void RemoveEnemy(EnemyCharacter enemy)

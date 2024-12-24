@@ -13,13 +13,14 @@ public class UIActiveSkillSlot : MonoBehaviour
     float timer;
 
     public float Range => target.data.range;
-    public bool IsActiveOn => target != null && target.data != null && target.data.id != "" && timer <= 0 && UIManager.Instance.IsAutoSkill;
+    public bool IsActiveOn => IsNull && timer <= 0 && UIManager.Instance.IsAutoSkill;
+    public bool IsNull => target == null || target.data == null || target.data.id == "";
 
     public void SetSkill(DataManager.Skill skill)
     {
         target = skill;
 
-        if (target == null || target.data == null || target.data.id == "")
+        if (IsNull)
         {
             timer = 0;
             icon.sprite = defaultSprite;
@@ -33,7 +34,7 @@ public class UIActiveSkillSlot : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (target == null || target.data == null || target.data.id == "")
+        if (IsNull)
         {
             fill.fillAmount = 0;
         }
@@ -55,7 +56,7 @@ public class UIActiveSkillSlot : MonoBehaviour
 
     public void OnClick()
     {
-        if (GameManager.Instance.Player.IsDeath || target == null || target.data == null || target.data.id == "" || timer > 0)
+        if (GameManager.Instance.Player.IsDeath || IsNull || timer > 0)
         {
             return;
         }
@@ -65,6 +66,11 @@ public class UIActiveSkillSlot : MonoBehaviour
 
     public void ResetSkill()
     {
+        if (IsNull)
+        {
+            return;
+        }
+
         timer = target.data.coolTime;
     }
 }

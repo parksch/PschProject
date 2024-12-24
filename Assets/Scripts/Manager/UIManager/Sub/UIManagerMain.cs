@@ -59,6 +59,20 @@ public partial class UIManager //Main
     {
         buffSlots.AddBuff(buffData, value, timer);
     }
+
+    public void ResetSkill()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            slots[i].ResetSkill();
+        }
+    }
+
+    public void ResetBuff()
+    {
+        buffSlots.ResetBuffs();
+    }
+
     public void SetStageTitle(string local,int stageNum)
     {
         string title = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);

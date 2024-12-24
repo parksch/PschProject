@@ -39,6 +39,8 @@ public class BuffBase : MonoBehaviour
         }
 
         timer -= Time.deltaTime;
+        timer = Mathf.Round(timer * 100f)/100f;
+
         tick += Time.deltaTime;
 
         if (tick > 0.5f )
@@ -71,6 +73,7 @@ public class BuffBase : MonoBehaviour
         timer = _timer;
         maxTimer = timer;
         tick = 0;
+        gameObject.SetActive(true);
     }
 
     public virtual void BuffUpdate()
@@ -79,6 +82,10 @@ public class BuffBase : MonoBehaviour
     }
 
     public virtual void BuffEnd()
+    {
+    }
+
+    public void Enqueue()
     {
         PoolManager.Instance.Enqueue(id, gameObject);
     }

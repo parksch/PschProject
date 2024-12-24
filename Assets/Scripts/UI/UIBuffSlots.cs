@@ -38,4 +38,12 @@ public class UIBuffSlots : MonoBehaviour
             slots.Add(slot);
         }
     }
+
+    public void ResetBuffs()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            slots[i].End();
+        }
+    }
 }

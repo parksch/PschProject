@@ -28,11 +28,17 @@ public class BaseCharacter : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if (IsDeath)
+        {
+            return;
+        }
+
         for (int i = 0; i < buffs.Count; i++)
         {
             if (buffs[i].Timer <= 0)
             {
                 buffs[i].BuffEnd();
+                buffs[i].Enqueue();
                 buffs.RemoveAt(i);
                 i--;
             }
@@ -77,7 +83,6 @@ public class BaseCharacter : MonoBehaviour
 
     public virtual void DeathAction()
     {
-
     }
 
     public virtual void Hit(long attack)
@@ -86,6 +91,7 @@ public class BaseCharacter : MonoBehaviour
 
     public virtual void Death()
     {
+        BuffReset();
     }
 
     public virtual long Attack()
@@ -203,6 +209,15 @@ public class BaseCharacter : MonoBehaviour
         return 0;
     }
 
+    public void BuffReset()
+    {
+        for (int i = 0; i < buffs.Count; i++)
+        {
+            buffs[i].Enqueue();
+        }
+        buffs.Clear();
+    }
+
     protected virtual void SetBuff(JsonClass.BuffData buffData,float timer,float value)
     {
         BuffBase buffBase = buffs.Find(x => x.ID == buffData.name);
@@ -218,6 +233,8 @@ public class BaseCharacter : MonoBehaviour
         }
         else
         {
+            buffBase.gameObject.SetActive(false);
+            buffBase.gameObject.SetActive(true);
             buffBase.BuffCheck(timer, value);
         }
     }

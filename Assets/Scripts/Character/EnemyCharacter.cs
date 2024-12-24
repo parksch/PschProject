@@ -48,8 +48,8 @@ public class EnemyCharacter : BaseCharacter
 
     public override void Death()
     {
-        GameManager.Instance.OnEnemyDeath(this);
         base.Death();
+        GameManager.Instance.OnEnemyDeath(this);
     }
 
     public override void AttackAction()

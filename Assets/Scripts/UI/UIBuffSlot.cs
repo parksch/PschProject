@@ -38,6 +38,14 @@ public class UIBuffSlot : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void End()
+    {
+        current = 0;
+        text.text = current + "s";
+        front.fillAmount = 1;
+        gameObject.SetActive(false);
+    }
+
     void FixedUpdate()
     {
         if (current > 0)
@@ -50,11 +58,7 @@ public class UIBuffSlot : MonoBehaviour
         }
         else
         {
-            current = 0;
-            text.text = current + "s";
-            front.fillAmount = 1;
-            gameObject.SetActive(false);
+            End();
         }
     }
-
 }

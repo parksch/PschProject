@@ -120,39 +120,27 @@ public class PlayerCharacter : BaseCharacter
 
     public override void Death()
     {
+        if (agent.CurrentState == AiStateID.Skill)
+        {
+            current.Stop();
+        }
+
         base.Death();
         UIManager.Instance.ResetBuff();
         GameManager.Instance.StageFail();
     }
 
-    public override void Hit(long attack)
+    public override long Hit(long attack)
     {
         if (curHp <= 0)
         {
-            return;
+            return 0;
         }
 
-        attack = DefenseCalculate(attack);
-
-        curHp -= attack;
-
-        if (curHp < 0)
-        {
-            curHp = 0;
-        }
-
+        attack = base.Hit(attack);
         UIManager.Instance.OnChangePlayerHP(GetHPRatio);
 
-        if (curHp <= 0)
-        {
-            if (agent.CurrentState == AiStateID.Skill)
-            {
-                current.Stop();
-            }
-
-            Death();
-            agent.StateMachine.ChangeState(AiStateID.Death);
-        }
+        return attack;
     }
 
     public override void AnimationSpeedSet()

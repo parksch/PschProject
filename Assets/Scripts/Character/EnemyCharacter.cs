@@ -58,35 +58,24 @@ public class EnemyCharacter : BaseCharacter
     }
 
 
-    public override void Hit(long attack)
+    public override long Hit(long attack)
     {
         if (curHp <= 0)
         {
-            return;
+            return 0;
         }
+
+        long result = base.Hit(attack);
 
         hitObject.SetActive(false);
         hitObject.SetActive(true);
-
-        attack = DefenseCalculate(attack);
-
-        curHp -= attack;
-
-        if (curHp < 0)
-        {
-            curHp = 0;
-        }
 
         if (isBoss)
         {
             UIManager.Instance.UpdateBossHp(curHp);
         }
 
-        if (curHp <= 0)
-        {
-            Death();
-            agent.StateMachine.ChangeState(AiStateID.Death);
-        }
+        return result;
     }
 
     public void SetState(MonsterData monsterData,bool _isBoss = false)

@@ -229,9 +229,9 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(options);
             //File.WriteAllText(jsonFilePath + "/Option.json", json, Encoding.UTF8);
 
-            List<SkillData> skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).skillData;
-            json = JsonConvert.SerializeObject(skillData);
-            File.WriteAllText(jsonFilePath + "/SkillData.json", json, Encoding.UTF8);
+            //List<SkillData> skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).skillData;
+            //json = JsonConvert.SerializeObject(skillData);
+            //File.WriteAllText(jsonFilePath + "/SkillData.json", json, Encoding.UTF8);
 
             //List<StageData> stages = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).stageData;
             //json = JsonConvert.SerializeObject(stages);

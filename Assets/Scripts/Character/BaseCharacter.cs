@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ClientEnum;
 using UnityEngine.Rendering;
+using JsonClass;
 
 public class BaseCharacter : MonoBehaviour
 {
@@ -184,8 +185,16 @@ public class BaseCharacter : MonoBehaviour
         return attack;
     }
 
-    public void AddBuff(string key,float timer,float addValue)
+    public virtual void AddBuff(string key,float timer,float addValue)
     {
+        JsonClass.BuffData buffData = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData).buffData.Find(x => x.name == key);
+        
+        if (buffData == null)
+        {
+            return;
+        }
+
+        BuffBase buffBase = PoolManager.Instance.Dequeue(ObjectType.Buff, buffData.name).GetComponent<BuffBase>();
 
     }
 

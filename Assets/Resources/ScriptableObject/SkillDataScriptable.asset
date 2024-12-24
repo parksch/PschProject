@@ -78,6 +78,6 @@ MonoBehaviour:
     coolTime: 5
     range: 2
     skillBuffs:
-    - state: 
-      timer: 0
-      value: 0
+    - state: AttackBuff
+      timer: 10
+      value: 0.5

@@ -8,7 +8,9 @@ public partial class DataManager //Info
     [SerializeField] Info info;
     public Info GetInfo => info;
 
-    public ChangeGoods OnChangeExp;
+    public delegate void ChangeExp(long exp);
+
+    public ChangeExp OnChangeExp;
 
     public float ExpRatio()
     {

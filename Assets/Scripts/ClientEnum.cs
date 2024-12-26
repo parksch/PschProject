@@ -8,7 +8,10 @@ namespace ClientEnum
         Gem,
         Reinforce,
         Amplification,
+        GoldDungeonTicket,
+        GemDungeonTicket,
         Money,
+        Max,
     }
 
     public enum LoginType

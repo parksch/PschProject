@@ -107,7 +107,7 @@ public class GameManager : Singleton<GameManager>
         } 
 
         long gold = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startGold * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyPerGold)));
-        DataManager.Instance.OnChangeGold(gold);
+        DataManager.Instance.AddGoods(ClientEnum.Goods.Gold, gold);
     }
     void AddExp()
     {
@@ -117,7 +117,8 @@ public class GameManager : Singleton<GameManager>
         }
 
         long exp = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyperStageExp)));
-        DataManager.Instance.OnChangeExp(exp);
+        //DataManager.Instance.AddGoods(ClientEnum.Goods.Gold, gold);
+        //DataManager.Instance.OnChangeExp(exp);
     }
     void AddScrap()
     {
@@ -129,7 +130,7 @@ public class GameManager : Singleton<GameManager>
         if (Random.Range(0f,1f) < scrapProbability)
         {
             long scrap = Random.Range(scrapMin, scrapMax);
-            DataManager.Instance.OnChangeScrap(scrap);
+            DataManager.Instance.AddGoods(ClientEnum.Goods.Scrap, scrap);
         }
     }
 

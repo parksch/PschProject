@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public partial class UIManager //Main
 {
@@ -15,6 +16,8 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] UIText scrapText;
     [SerializeField, ReadOnly] UIText reinforceText;
     [SerializeField, ReadOnly] UIText amplificationText;
+    [SerializeField, ReadOnly] UIText goldDungeonTicket;
+    [SerializeField, ReadOnly] UIText gemDungeonTicket;
     [SerializeField, ReadOnly] Text buffButtonText;
     [SerializeField, ReadOnly] Text stageText;
     [SerializeField, ReadOnly] Text userName;
@@ -86,26 +89,38 @@ public partial class UIManager //Main
         bossHP.SetOn();
     }
 
-    void SetGold(long gold)
+    void SetGoodsText(ClientEnum.Goods type,long value)
     {
-        goldText.SetText(gold);
+        switch (type)
+        {
+            case ClientEnum.Goods.Gold:
+                goldText.SetText(value);
+                break;
+            case ClientEnum.Goods.Scrap:
+                scrapText.SetText(value);
+                break;
+            case ClientEnum.Goods.Gem:
+                gemText.SetText(value);
+                break;
+            case ClientEnum.Goods.Reinforce:
+                reinforceText.SetText(value);
+                break;
+            case ClientEnum.Goods.Amplification:
+                amplificationText.SetText(value);
+                break;
+            case ClientEnum.Goods.GoldDungeonTicket:
+                goldDungeonTicket.SetText(value);
+                break;
+            case ClientEnum.Goods.GemDungeonTicket:
+                gemDungeonTicket.SetText(value);
+                break;
+            case ClientEnum.Goods.Money:
+                break;
+            default:
+                break;
+        }
     }
-    void SetGem(long ruby)
-    {
-        gemText.SetText(ruby);
-    }
-    void SetScrap(long scrap)
-    {
-        scrapText.SetText(scrap);
-    }
-    void SetReinforce(long scrap)
-    {
-        reinforceText.SetText(scrap);
-    }
-    void SetAmplification(long amplification)
-    {
-        amplificationText.SetText(amplification);
-    }
+
     void SetGameModeUI(ClientEnum.GameMode gameMode)
     {
         switch (gameMode)
@@ -127,29 +142,17 @@ public partial class UIManager //Main
     {
         GameManager.Instance.OnChangeGameMode += SetGameModeUI;
 
-        SetGold(DataManager.Instance.GetGoods.gold);
-        SetGem(DataManager.Instance.GetGoods.gem);
-        SetScrap(DataManager.Instance.GetGoods.scrap);
-        SetReinforce(DataManager.Instance.GetGoods.reinforce);
-        SetAmplification (DataManager.Instance.GetGoods.amplification);
+        for (int i = (int)ClientEnum.Goods.Gold; i < (int)ClientEnum.Goods.Max; i++)
+        {
+            ClientEnum.Goods goods = (ClientEnum.Goods)i;
+            SetGoodsText(goods, DataManager.Instance.GetGoods(goods));
+        }
 
         userInfo.Init();
         OnChangePlayerHP += userInfo.SetHP;
 
-        DataManager.Instance.OnChangeGem += _ => { SetGem(DataManager.Instance.GetGoods.gem); };
-        DataManager.Instance.OnChangeGem += _ => { UpdatePanel(); };
-
-        DataManager.Instance.OnChangeGold += _ => { SetGold(DataManager.Instance.GetGoods.gold); };
-        DataManager.Instance.OnChangeGold += _ => { UpdatePanel();};
-
-        DataManager.Instance.OnChangeScrap += _ => { SetScrap(DataManager.Instance.GetGoods.scrap); };
-        DataManager.Instance.OnChangeScrap += _ => { UpdatePanel(); };
-
-        DataManager.Instance.OnChangeReinforce += _ => { SetReinforce(DataManager.Instance.GetGoods.reinforce); };
-        DataManager.Instance.OnChangeReinforce += _ => { UpdatePanel(); };
-
-        DataManager.Instance.OnChangeAmplification += _ => { SetAmplification(DataManager.Instance.GetGoods.amplification); };
-        DataManager.Instance.OnChangeAmplification += _ => { UpdatePanel(); };
+        DataManager.Instance.OnChangeGoods += (type,value) => { SetGoodsText(type, value); };
+        DataManager.Instance.OnChangeGoods += (_,_) => { UpdatePanel(); };
 
         DataManager.Instance.OnChangeExp += _ => { UpdatePanel(); };
 

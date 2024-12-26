@@ -13,6 +13,7 @@ namespace JsonClass
     {
         public int type;
         public int maxLevel;
+        public int needGoodsType;
         public int itemType;
         public int startValue;
         public float itemAddValueType;

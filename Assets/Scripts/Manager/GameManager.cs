@@ -117,8 +117,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         long exp = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startExp * (1 + (DataManager.Instance.GetInfo.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplyperStageExp)));
-        //DataManager.Instance.AddGoods(ClientEnum.Goods.Gold, gold);
-        //DataManager.Instance.OnChangeExp(exp);
+        DataManager.Instance.OnChangeExp(exp);
     }
     void AddScrap()
     {

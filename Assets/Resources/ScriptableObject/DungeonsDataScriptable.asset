@@ -13,24 +13,26 @@ MonoBehaviour:
   m_Name: DungeonsDataScriptable
   m_EditorClassIdentifier: 
   dungeonsData:
-  - type: 0
-    maxLevel: 20
+  - maxLevel: 20
     needGoodsType: 6
     itemType: 0
     startValue: 0
     itemAddValueType: 0
     addValue: 0
+    atlas: Icon3
+    sprite: GoldDungeon
     nameLocal: 
     descriptionLocal: 
     mapPrefab: 
     monsters: []
-  - type: 1
-    maxLevel: 20
+  - maxLevel: 20
     needGoodsType: 7
     itemType: 0
     startValue: 0
     itemAddValueType: 0
     addValue: 0
+    atlas: Icon3
+    sprite: GemDungeon
     nameLocal: 
     descriptionLocal: 
     mapPrefab: 

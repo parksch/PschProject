@@ -25,6 +25,28 @@ namespace JsonClass
         {
             return (ClientEnum.Goods)needGoodsType;
         }
+
+        public ClientEnum.Reward Reward()
+        {
+            return (ClientEnum.Reward)itemType;
+        }
+
+        public int Value(int level)
+        {
+            int result = 0;
+
+            switch ((ClientEnum.ChangeType)changeType)
+            {
+                case ClientEnum.ChangeType.Sum:
+                    break;
+                case ClientEnum.ChangeType.Product:
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
     }
 
 }

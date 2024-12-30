@@ -10,10 +10,11 @@ public class DungeonPanel : BasePanel
     [SerializeField,ReadOnly] UIButton challenge;
     [SerializeField,ReadOnly] Text title;
     [SerializeField,ReadOnly] RectTransform content;
+    [SerializeField,ReadOnly] RectTransform rewardContent;
     [SerializeField,ReadOnly] UIDungeonSlot prefab;
     [SerializeField,ReadOnly] List<UIDungeonSlot> slots = new List<UIDungeonSlot>();
-    [SerializeField] UIRewardSlot rewardSlot;
-    [SerializeField] List<UIRewardSlot> rewardSlots;
+    [SerializeField,ReadOnly] UIRewardSlot rewardSlot;
+    [SerializeField,ReadOnly] List<UIRewardSlot> rewardSlots;
 
     DungeonsData current;
 
@@ -59,23 +60,49 @@ public class DungeonPanel : BasePanel
 
     void SetSlot(UIDungeonSlot slot)
     {
+        int level = 0;
+
+        rewardContent.anchoredPosition = Vector2.zero;
         current = slot.Target;
         title.text = current.Title();
 
         switch (current.NeedGoods())
         {
             case ClientEnum.Goods.GoldDungeonTicket:
-                sweep.SetInterractable(DataManager.Instance.GetInfo.CurrentGoldDungeon > 0 && DataManager.Instance.CheckGoods(ClientEnum.Goods.GoldDungeonTicket, 1));
-                challenge.SetInterractable(DataManager.Instance.GetInfo.CurrentGoldDungeon < current.maxLevel && DataManager.Instance.CheckGoods(ClientEnum.Goods.GoldDungeonTicket, 1));
+                level = DataManager.Instance.GetInfo.CurrentGoldDungeon;
+                sweep.SetInterractable(level > 0 && DataManager.Instance.CheckGoods(ClientEnum.Goods.GoldDungeonTicket, 1));
+                challenge.SetInterractable(level < current.maxLevel && DataManager.Instance.CheckGoods(ClientEnum.Goods.GoldDungeonTicket, 1));
                 break;
             case ClientEnum.Goods.GemDungeonTicket:
-                sweep.SetInterractable(DataManager.Instance.GetInfo.CurrentGemDungeon > 0 && DataManager.Instance.CheckGoods(ClientEnum.Goods.GemDungeonTicket, 1));
-                challenge.SetInterractable(DataManager.Instance.GetInfo.CurrentGemDungeon < current.maxLevel && DataManager.Instance.CheckGoods(ClientEnum.Goods.GemDungeonTicket, 1));
+                level = DataManager.Instance.GetInfo.CurrentGemDungeon;
+                sweep.SetInterractable(level > 0 && DataManager.Instance.CheckGoods(ClientEnum.Goods.GemDungeonTicket, 1));
+                challenge.SetInterractable(level < current.maxLevel && DataManager.Instance.CheckGoods(ClientEnum.Goods.GemDungeonTicket, 1));
                 break;
             default:
                 sweep.SetInterractable(false);
                 challenge.SetInterractable(false);
                 break;
+        }
+
+        for (int i = 0; i < rewardSlots.Count; i++)
+        {
+            rewardSlots[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < current.itemIndex.Count; i++)
+        {
+            if ( rewardSlots.Count > i)
+            {
+                rewardSlots[i].SetTypeItem(current.Reward(), current.itemIndex[i],current.Value(level));
+            }
+            else
+            {
+                UIRewardSlot prefab = Instantiate(rewardSlot.gameObject, rewardContent).GetComponent<UIRewardSlot>();
+                prefab.SetTypeItem(current.Reward(), current.itemIndex[i],current.Value(level));
+                rewardSlots.Add(prefab);
+            }
+
+            rewardSlots[i].gameObject.SetActive(true);
         }
     }
 }

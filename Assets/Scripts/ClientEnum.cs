@@ -114,4 +114,4 @@ namespace ClientEnum
         Stage,
         Boss
     }
-} 
+}

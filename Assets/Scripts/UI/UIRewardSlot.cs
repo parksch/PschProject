@@ -38,4 +38,19 @@ public class UIRewardSlot : MonoBehaviour
         text.SetText(num);
         gameObject.SetActive(true); 
     }
+
+    public void SetTypeItem(ClientEnum.Reward reward,int index,int value)
+    {
+        switch (reward)
+        {
+            case ClientEnum.Reward.Item:
+
+                break;
+            case ClientEnum.Reward.Goods:
+                SetGoods((ClientEnum.Goods)index, value);
+;                break;
+            default:
+                break;
+        }
+    }
 }

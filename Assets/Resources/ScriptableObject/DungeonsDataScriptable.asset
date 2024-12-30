@@ -15,25 +15,25 @@ MonoBehaviour:
   dungeonsData:
   - maxLevel: 20
     needGoodsType: 6
-    itemType: 0
+    itemType: 1
     startValue: 0
     itemAddValueType: 0
     addValue: 0
     atlas: Icon3
     sprite: GoldDungeon
-    nameLocal: 
+    nameLocal: GoldDungeonTitle
     descriptionLocal: 
     mapPrefab: 
     monsters: []
   - maxLevel: 20
     needGoodsType: 7
-    itemType: 0
+    itemType: 1
     startValue: 0
     itemAddValueType: 0
     addValue: 0
     atlas: Icon3
     sprite: GemDungeon
-    nameLocal: 
+    nameLocal: GemDungeonTitle
     descriptionLocal: 
     mapPrefab: 
     monsters: []

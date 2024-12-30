@@ -49,6 +49,8 @@ public partial class DataManager //Info
         [SerializeField] int stage = 0;
         [SerializeField] int challengingStage = 0;
         [SerializeField] int currentLevel;
+        [SerializeField] int currentGoldDungeon;
+        [SerializeField] int currentGemDungeon;
         [SerializeField] int startExp;
         [SerializeField] long currentExp;
         [SerializeField] long maxExp;
@@ -67,6 +69,8 @@ public partial class DataManager //Info
                 userName = value;
             }
         }
+        public int CurrentGoldDungeon => currentGoldDungeon;
+        public int CurrentGemDungeon => currentGemDungeon;
         public int StartExp => startExp;
         public int Stage
         {

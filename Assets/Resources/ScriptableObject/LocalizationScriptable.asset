@@ -88,6 +88,10 @@ MonoBehaviour:
         \uAC15\uD654\uD558\uC5EC \uB2E4\uC2DC \uB3C4\uC804\uD558\uC138\uC694."
     - name: SkillSwingName
       desc: "\uBCA0\uAE30"
+    - name: GoldDungeonTitle
+      desc: "\uACE8\uB4DC \uB358\uC804"
+    - name: GemDungeonTitle
+      desc: "\uBCF4\uC11D \uB358\uC804"
   - language: 1
     textkeys:
     - name: 

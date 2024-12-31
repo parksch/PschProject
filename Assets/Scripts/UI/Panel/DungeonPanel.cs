@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DungeonPanel : BasePanel
 {
+    [SerializeField,ReadOnly] DungeonSweepPanel sweepPanel;
     [SerializeField,ReadOnly] UIButton sweep;
     [SerializeField,ReadOnly] UIButton challenge;
     [SerializeField,ReadOnly] Text title;
@@ -20,6 +21,8 @@ public class DungeonPanel : BasePanel
 
     public override void FirstLoad()
     {
+        sweepPanel.CopyTopMenu(ActiveTop);
+
         DungeonsDataScriptable scriptable = ScriptableManager.Instance.Get<DungeonsDataScriptable>(ScriptableType.DungeonsData);
 
         for (int i = 0; i < scriptable.dungeonsData.Count; i++)
@@ -104,5 +107,11 @@ public class DungeonPanel : BasePanel
 
             rewardSlots[i].gameObject.SetActive(true);
         }
+    }
+
+    public void OpenSweep()
+    {
+        sweepPanel.SetTarget(current);
+        UIManager.Instance.AddPanel(sweepPanel);
     }
 }

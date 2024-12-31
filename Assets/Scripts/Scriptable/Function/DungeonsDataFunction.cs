@@ -33,13 +33,15 @@ namespace JsonClass
 
         public int Value(int level)
         {
-            int result = 0;
+            int result = startValue;
 
             switch ((ClientEnum.ChangeType)changeType)
             {
                 case ClientEnum.ChangeType.Sum:
+                    startValue = startValue + (int)(level * addValue);
                     break;
                 case ClientEnum.ChangeType.Product:
+                    startValue = (int)(startValue * (1 + (addValue * level))); 
                     break;
                 default:
                     break;

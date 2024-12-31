@@ -36,6 +36,8 @@ public partial class  DataManager //Goods
             goodsDict[(ClientEnum.Goods)i] = 0;
         }
 
+        goodsDict[ClientEnum.Goods.GoldDungeonTicket] = 10;
+
         OnChangeGoods = null;
     }
 }

@@ -5768,17 +5768,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   language: 0
   deviceNum: 
-  goods:
-    gold: 10000
-    gem: 0
-    scrap: 0
-    amplification: 0
-    reinforce: 0
   info:
     userName: player
     stage: 0
     challengingStage: 0
     currentLevel: 0
+    currentGoldDungeon: 0
+    currentGemDungeon: 0
     startExp: 0
     currentExp: 0
     maxExp: 0

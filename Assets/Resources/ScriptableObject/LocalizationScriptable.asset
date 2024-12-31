@@ -92,6 +92,10 @@ MonoBehaviour:
       desc: "\uACE8\uB4DC \uB358\uC804"
     - name: GemDungeonTitle
       desc: "\uBCF4\uC11D \uB358\uC804"
+    - name: Sweep
+      desc: "\uC18C\uD0D5"
+    - name: Challenge
+      desc: "\uB3C4\uC804"
   - language: 1
     textkeys:
     - name: 

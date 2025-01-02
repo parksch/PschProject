@@ -6,8 +6,10 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     [SerializeField] Spawn spawn;
+    [SerializeField] string poolName;
 
     StageOptionScriptable stageOptionScriptable = null;
+
     StageOptionScriptable StageScriptable
     {
         get
@@ -21,13 +23,15 @@ public class Map : MonoBehaviour
         }
     }
 
-    public void CreateEnemy(List<string> monsters)
+    public string Pool => poolName;
+
+    public void CreateEnemy(List<string> monsters,int stage)
     {
-        spawn.CreateEnemy(monsters, StageScriptable);
+        spawn.CreateEnemy(monsters, StageScriptable, stage);
     }
 
-    public void CreateBoss(string monster)
+    public void CreateBoss(string monster, int stage)
     {
-        spawn.CreateBoss(monster, StageScriptable);
+        spawn.CreateBoss(monster, StageScriptable, stage);
     }
 }

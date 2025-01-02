@@ -78,11 +78,11 @@ public class EnemyCharacter : BaseCharacter
         return result;
     }
 
-    public void SetState(MonsterData monsterData,bool _isBoss = false)
+    public void SetState(MonsterData monsterData,int stage,bool _isBoss = false)
     {
         poolName = monsterData.name;
         isBoss = _isBoss;
-        State.Set(monsterData, isBoss);
+        State.Set(monsterData,isBoss, stage);
 
         if (isBoss)
         {

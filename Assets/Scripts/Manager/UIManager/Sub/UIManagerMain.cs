@@ -130,6 +130,7 @@ public partial class UIManager //Main
                 bossHP.gameObject.SetActive(false);
                 break;
             case ClientEnum.GameMode.Boss:
+            case ClientEnum.GameMode.GoldDungeon:
                 bossButton.gameObject.SetActive(false);
                 bossHP.gameObject.SetActive(true);
                 break;

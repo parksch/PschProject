@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class EnemyState : BaseCharacterState
 {
-    public void Set(MonsterData monsterData,bool isBoss)
+    public void Set(MonsterData monsterData,bool isBoss,int stage)
     {
         StageOptionScriptable option = ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption);
-        int stage = DataManager.Instance.GetInfo.Stage;
 
         transform.localScale = Vector3.one * (isBoss ? option.multiplyBossSize : 1f);
         attack = (long)((monsterData.attack * option.State(stage,State.Attack)) * (isBoss ? option.multiplyBossHp : 1));

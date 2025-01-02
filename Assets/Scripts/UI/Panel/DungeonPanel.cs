@@ -92,16 +92,16 @@ public class DungeonPanel : BasePanel
             rewardSlots[i].gameObject.SetActive(false);
         }
 
-        for (int i = 0; i < current.itemIndex.Count; i++)
+        for (int i = 0; i < current.dungeonReward.Count; i++)
         {
             if ( rewardSlots.Count > i)
             {
-                rewardSlots[i].SetTypeItem(current.Reward(), current.itemIndex[i],current.Value(level));
+                rewardSlots[i].SetTypeItem(current.RewardType(), current.dungeonReward[i].index, current.dungeonReward[i].Value(level));
             }
             else
             {
                 UIRewardSlot prefab = Instantiate(rewardSlot.gameObject, rewardContent).GetComponent<UIRewardSlot>();
-                prefab.SetTypeItem(current.Reward(), current.itemIndex[i],current.Value(level));
+                prefab.SetTypeItem(current.RewardType(), current.dungeonReward[i].index, current.dungeonReward[i].Value(level));
                 rewardSlots.Add(prefab);
             }
 
@@ -113,5 +113,11 @@ public class DungeonPanel : BasePanel
     {
         sweepPanel.SetTarget(current);
         UIManager.Instance.AddPanel(sweepPanel);
+    }
+
+    public void OnClickChallenge()
+    {
+        GameManager.Instance.OnChangeGameMode(current.GameMode());
+        UIManager.Instance.BackPanel();
     }
 }

@@ -9,7 +9,7 @@ public class Spawn : MonoBehaviour
     [SerializeField] List<Transform> spots;
     [SerializeField] float radius;
 
-    public void CreateEnemy(List<string> monsters, StageOptionScriptable stageScriptable)
+    public void CreateEnemy(List<string> monsters, StageOptionScriptable stageScriptable,int stage)
     {
         for (int i = 0; i < stageScriptable.maxEnemyCount; i++)
         {
@@ -19,7 +19,7 @@ public class Spawn : MonoBehaviour
             gameObject.transform.position = new Vector3((center.x + Random.Range(-radius, radius)),0, (center.z + Random.Range(-radius, radius)));
             EnemyCharacter character = gameObject.GetComponent<EnemyCharacter>();
 
-            character.SetState(monsterData);
+            character.SetState(monsterData, stage);
             character.Init();
             gameObject.SetActive(true);
             character.SetInitializeState();
@@ -27,13 +27,13 @@ public class Spawn : MonoBehaviour
         }
     }
 
-    public void CreateBoss(string monster, StageOptionScriptable stageScriptable)
+    public void CreateBoss(string monster, StageOptionScriptable stageScriptable,int stage)
     {
         MonsterData monsterData = ScriptableManager.Instance.Get<MonsterDataScriptable>(ScriptableType.MonsterData).Get(monster);
         GameObject gameObject = PoolManager.Instance.Dequeue(ClientEnum.ObjectType.Enemy, monsterData.prefab);
         EnemyCharacter character = gameObject.GetComponent<EnemyCharacter>();
 
-        character.SetState(monsterData,true);
+        character.SetState(monsterData, stage, true);
         character.Init();
         gameObject.SetActive(true);
         character.SetInitializeState();

@@ -17,6 +17,8 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected CharacterType characterType;
     [SerializeField] protected long curHp;
 
+    public float Size => gameObject.transform.localScale.y/2f;
+
     public CharacterType CharacterType => characterType;
 
     public void SetIdle()
@@ -71,11 +73,11 @@ public class BaseCharacter : MonoBehaviour
         agent.SetInitializeState();
     }
 
-    public float AttackRange => state.AttackRange * gameObject.transform.lossyScale.y;
+    public float AttackRange => state.AttackRange + Size;
 
     public virtual void AttackAction()
     {
-        if (Dist() <= state.AttackRange && IsLookAt)
+        if (Dist() <= AttackRange && IsLookAt)
         {
             Target().Hit(Attack());
         }
@@ -158,7 +160,10 @@ public class BaseCharacter : MonoBehaviour
             return float.MaxValue;
         }
 
-        return Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Target().transform.position.x, 0, Target().transform.position.z));
+        float dist = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Target().transform.position.x, 0, Target().transform.position.z));
+        dist = dist - Target().Size;
+
+        return dist;
     }
 
     public Vector3 Normal()

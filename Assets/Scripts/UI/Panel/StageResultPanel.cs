@@ -2,6 +2,7 @@ using ClientEnum;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,6 +51,14 @@ public class StageResultPanel : BasePanel
                     {
                         DataManager.Instance.GetInfo.Stage = stageData.next;
                     }
+                    break;
+                case GameMode.GoldDungeon:
+                    DataManager.Instance.GetInfo.AddDungeon(mode);
+                    DataManager.Instance.UseGoods(Goods.GoldDungeonTicket, 1);
+                    break;
+                case GameMode.GemDungeon:
+                    DataManager.Instance.GetInfo.AddDungeon(mode);
+                    DataManager.Instance.UseGoods(Goods.GemDungeonTicket, 1);
                     break;
                 default:
                     break;
@@ -133,7 +142,6 @@ public class StageResultPanel : BasePanel
             return;
         }
 
-
         if (current < timer)
         {
             current += Time.deltaTime;
@@ -177,6 +185,20 @@ public class StageResultPanel : BasePanel
                 if (DataManager.Instance.GetInfo.ChallengingStage != 0)
                 {
                     result = true;
+                }
+                break;
+            case GameMode.GoldDungeon:
+                DungeonsData gold = ScriptableManager.Instance.Get<DungeonsDataScriptable>(ScriptableType.DungeonsData).GetDungeon(GameMode.GoldDungeon);
+                if (DataManager.Instance.GetInfo.CurrentGoldDungeon < gold.maxLevel)
+                {
+                    return true;
+                }
+                break;
+            case GameMode.GemDungeon:
+                DungeonsData gem = ScriptableManager.Instance.Get<DungeonsDataScriptable>(ScriptableType.DungeonsData).GetDungeon(GameMode.GemDungeon);
+                if (DataManager.Instance.GetInfo.CurrentGemDungeon < gem.maxLevel)
+                {
+                    return true;
                 }
                 break;
             default:

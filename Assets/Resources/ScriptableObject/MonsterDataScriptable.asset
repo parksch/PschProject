@@ -19,7 +19,17 @@ MonoBehaviour:
     attack: 10
     hp: 200
     defense: 10
-    attackRange: 2
+    attackRange: 1
     attackSpeed: 1
     moveSpeed: 3
+    objectType: 0
+  - name: GoldBoss
+    prefab: GoldBoss
+    local: GoldBoss
+    attack: 0
+    hp: 1000
+    defense: 10
+    attackRange: 0
+    attackSpeed: 0
+    moveSpeed: 0
     objectType: 0

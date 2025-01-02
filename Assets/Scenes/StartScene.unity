@@ -7169,7 +7169,7 @@ MonoBehaviour:
   attack: 50
   hp: 1000
   defense: 10
-  attackRange: 2
+  attackRange: 1
   attackSpeed: 2
   moveSpeed: 4
   hpRegen: 20

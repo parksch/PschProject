@@ -13,29 +13,36 @@ MonoBehaviour:
   m_Name: DungeonsDataScriptable
   m_EditorClassIdentifier: 
   dungeonsData:
-  - maxLevel: 10
+  - gamemode: 2
+    maxLevel: 10
+    targetAddStage: 10
     needGoodsType: 6
-    changeType: 1
-    startValue: 10000
     itemType: 1
-    itemIndex: 01000000
-    addValue: 0.5
     atlas: Icon3
     sprite: GoldDungeon
     nameLocal: GoldDungeonTitle
     descriptionLocal: 
     mapPrefab: GoldDungeon
-    monsters: []
-  - maxLevel: 10
+    monsters:
+    - GoldBoss
+    dungeonReward:
+    - index: 1
+      value: 10000
+      changeType: 1
+      addValue: 2
+  - gamemode: 3
+    maxLevel: 10
+    targetAddStage: 15
     needGoodsType: 7
-    changeType: 0
-    startValue: 1000
     itemType: 1
-    itemIndex: 03000000
-    addValue: 100
     atlas: Icon3
     sprite: GemDungeon
     nameLocal: GemDungeonTitle
     descriptionLocal: 
     mapPrefab: 
     monsters: []
+    dungeonReward:
+    - index: 3
+      value: 1000
+      changeType: 0
+      addValue: 1000

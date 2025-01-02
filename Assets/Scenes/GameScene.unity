@@ -7667,7 +7667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00006839677}
+  m_AnchoredPosition: {x: 0, y: -0.00036970025}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &465614781
@@ -18678,7 +18678,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1070212211}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1843019368}
+        m_TargetAssemblyTypeName: DungeonPanel, Assembly-CSharp
+        m_MethodName: OnClickChallenge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1070781690
 GameObject:
   m_ObjectHideFlags: 0
@@ -26654,6 +26666,8 @@ MonoBehaviour:
   - {fileID: 1659821371}
   - {fileID: 2034659154}
   - {fileID: 1544121462}
+  - {fileID: 23457234}
+  - {fileID: 1227136267}
   panels:
   - {fileID: 639826001}
   - {fileID: 1392897551}
@@ -32642,7 +32656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0026169175}
+  m_AnchoredPosition: {x: 0, y: -0.00229301}
   m_SizeDelta: {x: 0, y: 220}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1963686219
@@ -34176,10 +34190,10 @@ RectTransform:
   - {fileID: 343007817}
   m_Father: {fileID: 465614780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -60}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105466240
 MonoBehaviour:

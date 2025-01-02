@@ -1,6 +1,8 @@
+using ClientEnum;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public partial class DataManager //Info
@@ -71,6 +73,20 @@ public partial class DataManager //Info
         }
         public int CurrentGoldDungeon => currentGoldDungeon;
         public int CurrentGemDungeon => currentGemDungeon;
+        public void AddDungeon(GameMode gameMode)
+        {
+            switch (gameMode)
+            {
+                case GameMode.GoldDungeon:
+                    currentGoldDungeon++;
+                    break;
+                case GameMode.GemDungeon:
+                    currentGemDungeon++;
+                    break;
+                default:
+                    break;
+            }
+        }
         public int StartExp => startExp;
         public int Stage
         {
@@ -182,7 +198,7 @@ public partial class DataManager //Info
 
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
         {
-            Draw shop = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).GetData(i);
+            JsonClass.Draw shop = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).GetData(i);
 
             if (shop == null)
             {

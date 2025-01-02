@@ -112,6 +112,8 @@ namespace ClientEnum
     public enum GameMode
     {
         Stage,
-        Boss
+        Boss,
+        GoldDungeon,
+        GemDungeon,
     }
 }

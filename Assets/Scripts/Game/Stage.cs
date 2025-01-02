@@ -1,3 +1,5 @@
+using ClientEnum;
+using GoogleMobileAds.Api;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,29 +8,30 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    [SerializeField, ReadOnly] ClientEnum.GameMode mode;
+    [SerializeField, ReadOnly] GameMode mode;
     [SerializeField, ReadOnly] StageResultPanel resultPanel;
     [SerializeField, ReadOnly] Map map;
 
-    public ClientEnum.GameMode Mode => mode;
+    public GameMode Mode => mode;
 
-    StageData data;
+    List<string> monsters = new List<string>();
+    List<(int goodsIndex, int value)> rewards = new List<(int goodsIndex, int value)>();
 
-    public void Set(ClientEnum.GameMode gameMode)
+    public void Set(GameMode gameMode)
     {
         mode = gameMode;
-        data = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.Stage);
-        UIManager.Instance.SetStageTitle(data.nameKey, data.index);
-        CreateMap(data.map);
+        rewards.Clear();
+        monsters.Clear();
 
         switch (gameMode)
         {
-            case ClientEnum.GameMode.Stage:
-                map.CreateEnemy(data.monsters);
+            case GameMode.Boss:
+            case GameMode.Stage:
+                SetStage(gameMode);
                 break;
-            case ClientEnum.GameMode.Boss:
-                map.CreateEnemy(data.monsters);
-                map.CreateBoss(data.boss);
+            case GameMode.GoldDungeon:
+            case GameMode.GemDungeon:
+                SetDungeon(gameMode);
                 break;
             default:
                 break;
@@ -39,11 +42,14 @@ public class Stage : MonoBehaviour
     {
         switch (mode)
         {
-            case ClientEnum.GameMode.Stage:
-                map.CreateEnemy(data.monsters);
+            case GameMode.Stage:
+                map.CreateEnemy(monsters,DataManager.Instance.GetInfo.Stage);
                 break;
-            case ClientEnum.GameMode.Boss:
+            case GameMode.Boss:
+            case GameMode.GoldDungeon:
                 StageSuccess();
+                break;
+            case GameMode.GemDungeon:
                 break;
             default:
                 break;
@@ -54,9 +60,13 @@ public class Stage : MonoBehaviour
     {
         switch (mode)
         {
-            case ClientEnum.GameMode.Stage:
+            case GameMode.Stage:
                 break;
-            case ClientEnum.GameMode.Boss:
+            case GameMode.Boss:
+                break;
+            case GameMode.GoldDungeon:
+                break;
+            case GameMode.GemDungeon:
                 break;
             default:
                 break;
@@ -71,15 +81,66 @@ public class Stage : MonoBehaviour
 
     public void StageSuccess()
     {
-        for (int i = 0; i < data.stageRewards.Count; i++)
+        for (int i = 0; i < rewards.Count; i++)
         {
-            StageRewards rewards = data.stageRewards[i];
-            DataManager.Instance.AddGoods(rewards.Goods(),rewards.value);
-            resultPanel.AddGoods(rewards.Goods(),rewards.value);
+            DataManager.Instance.AddGoods((Goods)rewards[i].goodsIndex, rewards[i].value);
+            resultPanel.AddGoods((Goods)rewards[i].goodsIndex,rewards[i].value);
         }
 
         resultPanel.SetResult(true, mode);
         UIManager.Instance.AddPanel(resultPanel);
+    }
+
+    void SetStage(GameMode gameMode)
+    {
+        StageData data = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.Stage);
+        UIManager.Instance.SetStageTitle(data.nameKey, data.index);
+        
+        CreateMap(data.map);
+        rewards = data.Rewards();
+        data.Monsters(monsters);
+
+        switch (gameMode)
+        {
+            case GameMode.Stage:
+                map.CreateEnemy(data.monsters,DataManager.Instance.GetInfo.Stage);
+                break;
+            case GameMode.Boss:
+                map.CreateEnemy(data.monsters, DataManager.Instance.GetInfo.Stage);
+                map.CreateBoss(data.boss, DataManager.Instance.GetInfo.Stage);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void SetDungeon(GameMode gameMode)
+    {
+        DungeonsData dungeonsData = ScriptableManager.Instance.Get<DungeonsDataScriptable>(ScriptableType.DungeonsData).GetDungeon(gameMode);
+        int level = 0;
+        int StageLevel = 0;
+
+        CreateMap(dungeonsData.mapPrefab);
+        dungeonsData.Monsters(monsters);
+
+        switch (gameMode)
+        {
+            case GameMode.GoldDungeon:
+                level = DataManager.Instance.GetInfo.CurrentGoldDungeon;
+                StageLevel = 1 + (dungeonsData.targetAddStage * level);
+                map.CreateBoss(monsters[0],StageLevel);
+                break;
+            case GameMode.GemDungeon:
+                level = DataManager.Instance.GetInfo.CurrentGemDungeon;
+                StageLevel = 1 + (dungeonsData.targetAddStage * level);
+                break;
+            default:
+                break;
+        }
+
+        UIManager.Instance.SetStageTitle(dungeonsData.nameLocal, level);
+        rewards = dungeonsData.GetRewards(level);
+
     }
 
     void CreateMap(string mapData)
@@ -92,10 +153,10 @@ public class Stage : MonoBehaviour
         {
             if (map != null)
             {
-                PoolManager.Instance.Enqueue(mapData, map.gameObject);
+                PoolManager.Instance.Enqueue(map.Pool, map.gameObject);
             }
 
-            map = PoolManager.Instance.Dequeue(ClientEnum.ObjectType.Map, mapData).GetComponent<Map>();
+            map = PoolManager.Instance.Dequeue(ObjectType.Map, mapData).GetComponent<Map>();
             map.transform.position = Vector3.zero;
             map.gameObject.SetActive(true);
         }

@@ -11,18 +11,26 @@ namespace JsonClass
     [System.Serializable]
     public partial class DungeonsData
     {
+        public int gamemode;
         public int maxLevel;
+        public int targetAddStage;
         public int needGoodsType;
-        public int changeType;
-        public int startValue;
         public int itemType;
-        public List<int> itemIndex;
-        public float addValue;
         public string atlas;
         public string sprite;
         public string nameLocal;
         public string descriptionLocal;
         public string mapPrefab;
         public List<string> monsters;
+        public List<DungeonReward> dungeonReward;
+    }
+
+    [System.Serializable]
+    public partial class DungeonReward
+    {
+        public int index;
+        public int value;
+        public int changeType;
+        public float addValue;
     }
 }

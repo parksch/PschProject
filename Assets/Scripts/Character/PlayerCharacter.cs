@@ -101,8 +101,7 @@ public class PlayerCharacter : BaseCharacter
             float dist = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(enemies[i].transform.position.x, 0, enemies[i].transform.position.z));
             Vector3 normal = (new Vector3(enemies[i].transform.position.x, 0, enemies[i].transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
 
-
-            if (dist <= state.AttackRange && Vector3.Dot(transform.forward, normal) > 0)
+            if (dist <= AttackRange + enemies[i].Size && Vector3.Dot(transform.forward, normal) > 0)
             {
                 enemies[i].Hit(Attack());
             }

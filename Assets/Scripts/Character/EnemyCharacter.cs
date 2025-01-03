@@ -46,6 +46,10 @@ public class EnemyCharacter : BaseCharacter
         return State.MoveSpeed;
     }
 
+    public override float DrainLife()
+    {
+        return State.DrainLife;
+    }
     public override void Death()
     {
         base.Death();

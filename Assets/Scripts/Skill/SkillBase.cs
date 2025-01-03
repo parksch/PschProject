@@ -104,8 +104,9 @@ public class SkillBase : MonoBehaviour
         }
     }
 
-    protected virtual void Attack(BaseCharacter character,float target)
+    protected virtual void Attack(BaseCharacter enemy,float target)
     {
-        character.Hit((long)(value * target));
+        long attack = (long)(enemy.Hit((long)(value * target)) * character.DrainLife());
+        character.AddHp(attack);
     }
 }

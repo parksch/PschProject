@@ -20,6 +20,7 @@ namespace JsonClass
         public float attackRange;
         public float attackSpeed;
         public float moveSpeed;
+        public float drainLife;
         public int objectType;
     }
 

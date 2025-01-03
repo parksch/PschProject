@@ -37,13 +37,7 @@ public class PlayerCharacter : BaseCharacter
         if (currentRegenTimer >= State.HpRegenTimer)
         {
             currentRegenTimer = 0;
-            curHp += State.HpRegen;
-
-            if (curHp > HP())
-            {
-                curHp = HP();
-            }
-
+            AddHp(State.HpRegen);
             UIManager.Instance.OnChangePlayerHP(GetHPRatio);
         }
 
@@ -92,6 +86,11 @@ public class PlayerCharacter : BaseCharacter
         return State.Defense;
     }
 
+    public override float DrainLife()
+    {
+        return State.DrainLife;
+    }
+
     public override void AttackAction()
     {
         List<EnemyCharacter> enemies = GameManager.Instance.Enemies;
@@ -103,7 +102,12 @@ public class PlayerCharacter : BaseCharacter
 
             if (dist <= AttackRange + enemies[i].Size && Vector3.Dot(transform.forward, normal) > 0)
             {
-                enemies[i].Hit(Attack());
+                long attack = (long)(enemies[i].Hit(Attack()) * DrainLife());
+
+                if (!IsDeath)
+                {
+                    AddHp(attack);
+                }
             }
         }
     }

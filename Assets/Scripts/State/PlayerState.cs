@@ -1,3 +1,4 @@
+using ClientEnum;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,14 @@ public class PlayerState : BaseCharacterState
         DataManager dm = DataManager.Instance;
         PlayerState playerState = dm.PlayerDefaultState;
 
-        hp = (long)((playerState.HP + dm.GetStateData(ClientEnum.State.HP,ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.HP,ClientEnum.ChangeType.Product));
-        attack = (long)((playerState.Attack + dm.GetStateData(ClientEnum.State.Attack, ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.Attack, ClientEnum.ChangeType.Product));
-        defense = (long)((playerState.Defense + dm.GetStateData(ClientEnum.State.Defense, ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.Defense, ClientEnum.ChangeType.Product));
-        attackRange = ((playerState.AttackRange + dm.GetStateData(ClientEnum.State.AttackRange, ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.AttackRange, ClientEnum.ChangeType.Product));
-        attackSpeed = ((playerState.AttackSpeed + dm.GetStateData(ClientEnum.State.AttackSpeed, ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.AttackSpeed, ClientEnum.ChangeType.Product));
-        moveSpeed = ((playerState.MoveSpeed + dm.GetStateData(ClientEnum.State.MoveSpeed, ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.MoveSpeed, ClientEnum.ChangeType.Product));
-        hpRegen = (int)((playerState.HpRegen + dm.GetStateData(ClientEnum.State.HpRegen, ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.HpRegen, ClientEnum.ChangeType.Product));
-        hpRegenTimer = ((playerState.HpRegenTimer + dm.GetStateData(ClientEnum.State.HpRegenTimer, ClientEnum.ChangeType.Sum)) * dm.GetStateData(ClientEnum.State.HpRegenTimer, ClientEnum.ChangeType.Product));
+        hp = (long)((playerState.HP + dm.GetStateData(State.HP,ChangeType.Sum)) * dm.GetStateData(State.HP,ChangeType.Product));
+        attack = (long)((playerState.Attack + dm.GetStateData(State.Attack, ChangeType.Sum)) * dm.GetStateData(State.Attack, ChangeType.Product));
+        defense = (long)((playerState.Defense + dm.GetStateData(State.Defense, ChangeType.Sum)) * dm.GetStateData(State.Defense, ChangeType.Product));
+        attackRange = ((playerState.AttackRange + dm.GetStateData(State.AttackRange, ChangeType.Sum)) * dm.GetStateData(State.AttackRange, ChangeType.Product));
+        attackSpeed = ((playerState.AttackSpeed + dm.GetStateData(State.AttackSpeed, ChangeType.Sum)) * dm.GetStateData(State.AttackSpeed, ChangeType.Product));
+        moveSpeed = ((playerState.MoveSpeed + dm.GetStateData(State.MoveSpeed, ChangeType.Sum)) * dm.GetStateData(State.MoveSpeed, ChangeType.Product));
+        hpRegen = (int)((playerState.HpRegen + dm.GetStateData(State.HpRegen, ChangeType.Sum)) * dm.GetStateData(State.HpRegen, ChangeType.Product));
+        hpRegenTimer = ((playerState.HpRegenTimer + dm.GetStateData(State.HpRegenTimer, ChangeType.Sum)) * dm.GetStateData(State.HpRegenTimer, ChangeType.Product));
+        drainLife = ((playerState.drainLife + dm.GetStateData(State.DrainLife, ChangeType.Sum)) * dm.GetStateData(State.DrainLife, ChangeType.Product));
     }
 }

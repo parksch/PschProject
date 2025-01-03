@@ -22,6 +22,7 @@ MonoBehaviour:
     attackRange: 1
     attackSpeed: 1
     moveSpeed: 3
+    drainLife: 0
     objectType: 0
   - name: GoldBoss
     prefab: GoldBoss
@@ -32,6 +33,7 @@ MonoBehaviour:
     attackRange: 0
     attackSpeed: 0
     moveSpeed: 0
+    drainLife: 0
     objectType: 0
   - name: Skeleton
     prefab: Skeleton
@@ -42,4 +44,5 @@ MonoBehaviour:
     attackRange: 1
     attackSpeed: 2
     moveSpeed: 4
+    drainLife: 0.3
     objectType: 0

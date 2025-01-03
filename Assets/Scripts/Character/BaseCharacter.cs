@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ClientEnum;
-using UnityEngine.Rendering;
 using JsonClass;
 using System;
 
@@ -16,6 +15,16 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected BaseCharacterState state;
     [SerializeField] protected CharacterType characterType;
     [SerializeField] protected long curHp;
+
+    public virtual void AddHp(long hp)
+    {
+        curHp += hp;
+
+        if (curHp > HP())
+        {
+            curHp = HP();
+        }
+    }
 
     public float Size => gameObject.transform.localScale.y/2f;
 
@@ -79,7 +88,8 @@ public class BaseCharacter : MonoBehaviour
     {
         if (Dist() <= AttackRange && IsLookAt)
         {
-            Target().Hit(Attack());
+            long attack = (long)(Target().Hit(Attack()) * DrainLife());
+            AddHp(attack);
         }
     }
 
@@ -137,6 +147,11 @@ public class BaseCharacter : MonoBehaviour
     }
 
     public virtual float MoveSpeed()
+    {
+        return 0;
+    }
+
+    public virtual float DrainLife()
     {
         return 0;
     }

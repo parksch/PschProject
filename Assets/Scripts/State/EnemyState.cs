@@ -16,6 +16,7 @@ public class EnemyState : BaseCharacterState
         defense = (long)((monsterData.defense * option.State(stage,State.Defense)) * (isBoss ? option.multiplyBossDefense : 1));
         attackRange = monsterData.attackRange;
         attackSpeed = monsterData.attackSpeed;
+        drainLife = monsterData.drainLife;
         moveSpeed = monsterData.moveSpeed;
     }
 }

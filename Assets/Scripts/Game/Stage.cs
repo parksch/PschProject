@@ -47,9 +47,8 @@ public class Stage : MonoBehaviour
                 break;
             case GameMode.Boss:
             case GameMode.GoldDungeon:
-                StageSuccess();
-                break;
             case GameMode.GemDungeon:
+                StageSuccess();
                 break;
             default:
                 break;
@@ -133,6 +132,7 @@ public class Stage : MonoBehaviour
             case GameMode.GemDungeon:
                 level = DataManager.Instance.GetInfo.CurrentGemDungeon;
                 StageLevel = 1 + (dungeonsData.targetAddStage * level);
+                map.CreateBoss(monsters[0], StageLevel);
                 break;
             default:
                 break;

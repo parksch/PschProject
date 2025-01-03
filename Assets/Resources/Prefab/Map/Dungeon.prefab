@@ -5005,7 +5005,7 @@ GameObject:
   - component: {fileID: 3200300316629925291}
   - component: {fileID: 3313574723390946320}
   m_Layer: 0
-  m_Name: GoldDungeon
+  m_Name: Dungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5044,7 +5044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 7945865588853582329}
-  poolName: GoldDungeon
+  poolName: Dungeon
 --- !u!1 &5848249988490580894
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ MonoBehaviour:
     sprite: GoldDungeon
     nameLocal: GoldDungeonTitle
     descriptionLocal: 
-    mapPrefab: GoldDungeon
+    mapPrefab: Dungeon
     monsters:
     - GoldBoss
     dungeonReward:
@@ -39,8 +39,9 @@ MonoBehaviour:
     sprite: GemDungeon
     nameLocal: GemDungeonTitle
     descriptionLocal: 
-    mapPrefab: 
-    monsters: []
+    mapPrefab: Dungeon
+    monsters:
+    - Skeleton
     dungeonReward:
     - index: 3
       value: 1000

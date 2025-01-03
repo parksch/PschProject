@@ -33,3 +33,13 @@ MonoBehaviour:
     attackSpeed: 0
     moveSpeed: 0
     objectType: 0
+  - name: Skeleton
+    prefab: Skeleton
+    local: Skeleton
+    attack: 50
+    hp: 500
+    defense: 20
+    attackRange: 1
+    attackSpeed: 2
+    moveSpeed: 4
+    objectType: 0

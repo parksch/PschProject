@@ -10,6 +10,12 @@ public class UIRewardSlot : MonoBehaviour
     ClientEnum.Goods goods;
     int num;
 
+    public void ResetReward()
+    {
+        goods = ClientEnum.Goods.None;
+        num = 0;
+    }
+
     public bool CheckGoods(ClientEnum.Goods target,int value)
     {
         if (target == goods)

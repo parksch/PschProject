@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -173,6 +174,14 @@ public partial class UIManager : Singleton<UIManager>
             {
                 BackPanel();
             }
+        }
+    }
+
+    public void PanelClose(Type target)
+    {
+        if (currentPanel != null && currentPanel.GetType() == target)
+        {
+            BackPanel();
         }
     }
 }

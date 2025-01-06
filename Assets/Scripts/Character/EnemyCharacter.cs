@@ -10,6 +10,12 @@ public class EnemyCharacter : BaseCharacter
     [SerializeField] string poolName;
     EnemyState State => state as EnemyState;
 
+    public void Enqueue()
+    {
+        hitObject.SetActive(false);
+        PoolManager.Instance.Enqueue(poolName, gameObject);
+    }
+
     public override void Init()
     {
         base.Init();
@@ -17,8 +23,8 @@ public class EnemyCharacter : BaseCharacter
 
     public override void DeathAction()
     {
-        hitObject.SetActive(false);
-        PoolManager.Instance.Enqueue(poolName, gameObject);
+        Enqueue();
+        GameManager.Instance.RemoveDeathEnemy(this);
     }
 
     public override long Attack()

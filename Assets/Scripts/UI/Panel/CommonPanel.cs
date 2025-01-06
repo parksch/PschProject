@@ -13,6 +13,11 @@ public class CommonPanel : BasePanel
 
     System.Action yesAction, noAction, okAction;
 
+    public override void OnUpdate()
+    {
+    }
+
+
     public void SetYesNo(string descKey,System.Action no = null, System.Action yes = null)
     {
         yesObject.SetActive(true);

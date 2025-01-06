@@ -40,6 +40,11 @@ public class StageResultPanel : BasePanel
 
         if (isWin)
         {
+            for (int i = 0; i < rewards.Count; i++)
+            {
+                rewards[i].ResetReward();
+            }
+
             title.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(challengeSuccess);
 
             switch (mode)

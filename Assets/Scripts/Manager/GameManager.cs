@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField,ReadOnly] Stage stage;
     [SerializeField,ReadOnly] PlayerCharacter player;
     [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
-
+    [SerializeField,ReadOnly] List<EnemyCharacter> deathEnemies;
     public Transform SkillParent => skillParent;
     public CinemachineBrain Brain => brain;
     public CinemachineVirtualCamera Main => main;
@@ -54,6 +54,7 @@ public class GameManager : Singleton<GameManager>
         OnEnemyDeath += _ => { AddExp(); };
         OnEnemyDeath += _ => { AddScrap(); };
         OnEnemyDeath += RemoveEnemy;
+        OnEnemyDeath += AddDeathEnemy;
 
         OnChangeGameMode = null;
         OnChangeGameMode += SetGameMode;
@@ -91,6 +92,11 @@ public class GameManager : Singleton<GameManager>
         }
 
         return null;
+    }
+
+    public void RemoveDeathEnemy(EnemyCharacter enemy)
+    {
+        deathEnemies.Remove(enemy);
     }
 
     void SetGameMode(ClientEnum.GameMode gameMode)
@@ -141,7 +147,14 @@ public class GameManager : Singleton<GameManager>
             item.DeathAction();
         }
 
+        foreach (var item in deathEnemies)
+        {
+            item.BuffReset();
+            item.Enqueue();
+        }
+
         enemies.Clear();
+        deathEnemies.Clear();
         player.DeathAction();
         UIManager.Instance.ResetSkill();
     }
@@ -155,5 +168,10 @@ public class GameManager : Singleton<GameManager>
         {
             stage.EndStage();
         }
+    }
+
+    void AddDeathEnemy(EnemyCharacter enemy)
+    {
+        deathEnemies.Add(enemy);
     }
 }

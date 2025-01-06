@@ -74,12 +74,14 @@ public class Stage : MonoBehaviour
 
     public void StageFail()
     {
+        UIManager.Instance.PanelClose(typeof(CommonPanel));
         resultPanel.SetResult(false);
         UIManager.Instance.AddPanel(resultPanel);
     }
 
     public void StageSuccess()
     {
+        UIManager.Instance.PanelClose(typeof(CommonPanel));
         for (int i = 0; i < rewards.Count; i++)
         {
             DataManager.Instance.AddGoods((Goods)rewards[i].goodsIndex, rewards[i].value);

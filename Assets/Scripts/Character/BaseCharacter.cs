@@ -90,6 +90,11 @@ public class BaseCharacter : MonoBehaviour
             attack = (long)(attack * 0.9f);
         }
 
+        if (attack <= 0)
+        {
+            attack = 1;
+        }
+
         return attack;
     }
     public bool IsDeath => curHp <= 0;

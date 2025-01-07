@@ -12,6 +12,7 @@ public class BuffBase : MonoBehaviour
     [SerializeField] float timer;
     [SerializeField] float value;
 
+    public void Stop() => isOn = false;
     public string ID => id;
     public float Timer => timer;
     public ClientEnum.State State => state;

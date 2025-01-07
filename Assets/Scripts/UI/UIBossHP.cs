@@ -10,7 +10,7 @@ public class UIBossHP : MonoBehaviour
     [SerializeField, ReadOnly] Text hpText;
     [SerializeField, ReadOnly] Text nameText;
     [SerializeField, ReadOnly] Text timeText;
-    bool isOn;
+    [SerializeField] float targetTime;
 
     public void SetHP(long hp) 
     {
@@ -29,15 +29,13 @@ public class UIBossHP : MonoBehaviour
     }
     public void SetOn() => isOn = true;
 
-    float targetTime;
-
+    bool isOn;
     long targetHp;
     long currentHp;
 
-
     private void FixedUpdate()
     {
-        if (targetTime > 0)
+        if (Mathf.FloorToInt(targetTime) > 0)
         {
             if (GameManager.Instance.Enemies.Count == 0)
             {

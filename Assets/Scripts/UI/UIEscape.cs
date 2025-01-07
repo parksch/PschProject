@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIEscafe : MonoBehaviour
+public class UIEscape : MonoBehaviour
 {
     [SerializeField, ReadOnly] CommonPanel common;
-    [SerializeField] string escafeDesc;
+    [SerializeField] string escapeDesc;
     public void OnClickButton()
     {
-        common.SetYesNo(escafeDesc, null, StageGameChange);
+        common.SetYesNo(escapeDesc, null, StageGameChange);
         UIManager.Instance.AddPanel(common);
     }
 

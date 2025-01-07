@@ -9,12 +9,12 @@ public class UIBuffSlots : MonoBehaviour
     [SerializeField, ReadOnly] UIBuffSlot slotPrefab;
     [SerializeField, ReadOnly] List<UIBuffSlot> slots;
 
-    public void AddBuff(BuffData buffData,float value,float timer)
+    public void AddBuff(BuffBase buff,float value,float timer)
     {
         bool isSet = false;
         content.anchoredPosition = Vector2.zero;
 
-        UIBuffSlot uIBuffSlot = slots.Find(x => x.ID == buffData.name && x.gameObject.activeSelf);
+        UIBuffSlot uIBuffSlot = slots.Find(x => x.ID == buff.ID && x.gameObject.activeSelf);
 
         if (uIBuffSlot != null)
         {
@@ -26,7 +26,7 @@ public class UIBuffSlots : MonoBehaviour
         {
             if (!slots[i].gameObject.activeSelf)
             {
-                slots[i].SetSlot(buffData,value, timer);
+                slots[i].SetSlot(buff,value, timer);
                 isSet = true;
             }
         }
@@ -34,7 +34,7 @@ public class UIBuffSlots : MonoBehaviour
         if (!isSet)
         {
             UIBuffSlot slot = Instantiate(slotPrefab,content).GetComponent<UIBuffSlot>();
-            slot.SetSlot(buffData,value, timer);
+            slot.SetSlot(buff,value, timer);
             slots.Add(slot);
         }
     }

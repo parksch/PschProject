@@ -134,6 +134,7 @@ public class StageResultPanel : BasePanel
     {
         for (int i = 0; i < rewards.Count; i++)
         {
+            rewards[i].ResetReward();
             rewards[i].gameObject.SetActive(false);
         }
 

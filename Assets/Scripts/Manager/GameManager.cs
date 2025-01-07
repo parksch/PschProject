@@ -15,18 +15,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField,ReadOnly] PlayerCharacter player;
     [SerializeField,ReadOnly] List<EnemyCharacter> enemies;
     [SerializeField,ReadOnly] List<EnemyCharacter> deathEnemies;
-    public Transform SkillParent => skillParent;
-    public CinemachineBrain Brain => brain;
-    public CinemachineVirtualCamera Main => main;
-    public PlayerCharacter Player => player;
-    public List<EnemyCharacter> Enemies => enemies;
-    public ClientEnum.GameMode Mode => stage.Mode;
-    public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
-    public void StageFail()
-    {
-        ResetStage();
-        stage.StageFail();
-    }
 
     public delegate void ChangeGameMode(ClientEnum.GameMode mode);
     public delegate void EnemyDeath(EnemyCharacter enemy);
@@ -37,6 +25,47 @@ public class GameManager : Singleton<GameManager>
     int scrapMin = 0;
     int scrapMax = 0;
     float scrapProbability = 0;
+
+    #region GetStatus
+    public Vector3 PlayerStart => stage.PlayerStart;
+    public Transform SkillParent => skillParent;
+    public CinemachineBrain Brain => brain;
+    public CinemachineVirtualCamera Main => main;
+    public PlayerCharacter Player => player;
+    public List<EnemyCharacter> Enemies => enemies;
+    public ClientEnum.GameMode Mode => stage.Mode;
+    public void AddEnemy(EnemyCharacter enemy) => enemies.Add(enemy);
+    public BaseCharacter GetTarget(ClientEnum.CharacterType characterType)
+    {
+        switch (characterType)
+        {
+            case ClientEnum.CharacterType.Player:
+                float dist = float.MaxValue;
+                BaseCharacter character = enemies.Find(x => x.IsBoss);
+
+                if (character != null)
+                {
+                    return character;
+                }
+
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    float enemyDist = Vector3.Distance(new Vector3(player.transform.position.x, 0, player.transform.position.z), new Vector3(enemies[i].transform.position.x, 0, enemies[i].transform.position.z));
+                    if (dist > enemyDist)
+                    {
+                        dist = enemyDist;
+                        character = enemies[i];
+                    }
+                }
+
+                return character;
+            case ClientEnum.CharacterType.Enemy:
+                return player.IsDeath ? null : player;
+        }
+
+        return null;
+    }
+    #endregion
 
     protected override void Awake()
     {
@@ -68,30 +97,20 @@ public class GameManager : Singleton<GameManager>
         OnChangeGameMode(ClientEnum.GameMode.Stage);
     }
 
-    public BaseCharacter GetTarget(ClientEnum.CharacterType characterType)
+    public void StageFail()
     {
-        switch (characterType)
-        {
-            case ClientEnum.CharacterType.Player:
-                float dist = float.MaxValue;
-                BaseCharacter character = null;
+        UIManager.Instance.OffEscape();
+        ResetStage();
+        stage.StageFail();
+        player.SetPlayerPos(PlayerStart);
+    }
 
-                for (int i = 0; i < enemies.Count; i++)
-                {
-                    float enemyDist = Vector3.Distance(new Vector3(player.transform.position.x, 0, player.transform.position.z), new Vector3(enemies[i].transform.position.x, 0, enemies[i].transform.position.z));
-                    if (dist > enemyDist)
-                    {
-                        dist = enemyDist;
-                        character = enemies[i];
-                    }
-                }
-
-                return character;
-            case ClientEnum.CharacterType.Enemy:
-                return player.IsDeath ? null : player;
-        }
-
-        return null;
+    public void StageSuccess()
+    {
+        UIManager.Instance.OffEscape();
+        ResetStage();
+        stage.StageSuccess();
+        player.SetPlayerPos(PlayerStart);
     }
 
     public void RemoveDeathEnemy(EnemyCharacter enemy)
@@ -99,12 +118,24 @@ public class GameManager : Singleton<GameManager>
         deathEnemies.Remove(enemy);
     }
 
+    public void BossDeath()
+    {
+        UIManager.Instance.OffEscape();
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].SystemDeath();
+            i--;
+        }
+    }
+
     void SetGameMode(ClientEnum.GameMode gameMode)
     {
         ResetStage();
         stage.Set(gameMode);
+        player.SetPlayerPos(PlayerStart);
+        main.transform.position = PlayerStart;
     }
-
     void AddGold()
     {
         if (Mode != ClientEnum.GameMode.Stage)
@@ -138,27 +169,25 @@ public class GameManager : Singleton<GameManager>
             DataManager.Instance.AddGoods(ClientEnum.Goods.Scrap, scrap);
         }
     }
-
     void ResetStage()
     {
         foreach (var item in enemies)
         {
-            item.BuffReset();
-            item.DeathAction();
+            item.ResetBuff();
+            item.Enqueue();
         }
 
         foreach (var item in deathEnemies)
         {
-            item.BuffReset();
+            item.ResetBuff();
             item.Enqueue();
         }
 
         enemies.Clear();
         deathEnemies.Clear();
-        player.DeathAction();
+        player.ResetPlayer();
         UIManager.Instance.ResetSkill();
     }
-
     void RemoveEnemy(EnemyCharacter enemy)
     {
         enemies.Remove(enemy);
@@ -169,7 +198,6 @@ public class GameManager : Singleton<GameManager>
             stage.EndStage();
         }
     }
-
     void AddDeathEnemy(EnemyCharacter enemy)
     {
         deathEnemies.Add(enemy);

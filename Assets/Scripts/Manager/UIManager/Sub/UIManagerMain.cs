@@ -26,7 +26,7 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] UIUserInfo userInfo;
     [SerializeField, ReadOnly] RectTransform buffParent;
     [SerializeField, ReadOnly] GameObject bossButton;
-    [SerializeField, ReadOnly] GameObject escafeButton;
+    [SerializeField] GameObject escapeButton;
 
     public delegate void ChangeHP(float ratio);
 
@@ -55,13 +55,18 @@ public partial class UIManager //Main
         }
     }
 
+    public void OffEscape()
+    {
+        escapeButton.SetActive(false);
+    }
+
     public void UpdateBossHp(long hp)
     {
         bossHP.UpdateHp(hp);
     }
-    public void AddBuff(BuffData buffData, float timer, float value)
+    public void AddBuff(BuffBase buff, float timer, float value)
     {
-        buffSlots.AddBuff(buffData, value, timer);
+        buffSlots.AddBuff(buff, value, timer);
     }
 
     public void ResetSkill()
@@ -129,14 +134,14 @@ public partial class UIManager //Main
             case ClientEnum.GameMode.Stage:
                 bossButton.gameObject.SetActive(DataManager.Instance.GetInfo.ChallengingStage != 0);
                 bossHP.gameObject.SetActive(false);
-                escafeButton.gameObject.SetActive(false);
+                escapeButton.gameObject.SetActive(false);
                 break;
             case ClientEnum.GameMode.Boss:
             case ClientEnum.GameMode.GoldDungeon:
             case ClientEnum.GameMode.GemDungeon:
                 bossButton.gameObject.SetActive(false);
                 bossHP.gameObject.SetActive(true);
-                escafeButton.gameObject.SetActive(true);
+                escapeButton.gameObject.SetActive(true);
                 break;
             default:
                 break;

@@ -96,9 +96,9 @@ MonoBehaviour:
       desc: "\uC18C\uD0D5"
     - name: Challenge
       desc: "\uB3C4\uC804"
-    - name: Escafe
+    - name: Escape
       desc: "\uD0C8\uCD9C\uD558\uAE30"
-    - name: EscafeDesc
+    - name: EscapeDesc
       desc: "\uB3C4\uC804\uC744 \uD3EC\uAE30\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
   - language: 1
     textkeys:

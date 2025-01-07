@@ -13,7 +13,7 @@ public class UIBuffSlot : MonoBehaviour
     [SerializeField] float current;
 
     string desc;
-    BuffData target;
+    BuffBase target;
     float value;
 
     public string ID => target == null ? "" : target.name;
@@ -26,10 +26,12 @@ public class UIBuffSlot : MonoBehaviour
         current = max;
     }
 
-    public void SetSlot(BuffData buffData,float _value,float timer)
+    public void SetSlot(BuffBase buffData,float _value,float timer)
     {
         target = buffData;
-        image.sprite = buffData.Sprite();
+        BuffData buff = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData).buffData.Find(x => target.ID == x.name);
+
+        image.sprite = buff.Sprite();
         front.fillAmount = 0;
         value = _value;
         max = timer;
@@ -40,19 +42,19 @@ public class UIBuffSlot : MonoBehaviour
 
     public void End()
     {
+        target = null;
         current = 0;
         text.text = current + "s";
         front.fillAmount = 1;
         gameObject.SetActive(false);
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        current = target.Timer;
+
         if (current > 0)
         {
-            current -= Time.deltaTime;
-            current *= 100;
-            current = Mathf.Round(current)/100f;
             text.text = current.ToString("F2") + "s";
             front.fillAmount = (max - current)/max;
         }

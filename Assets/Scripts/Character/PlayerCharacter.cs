@@ -19,7 +19,7 @@ public class PlayerCharacter : BaseCharacter
     public void StateUpdate()
     {
         State.UpdateState();
-        AnimationSpeedSet();
+        SetAnimationSpeed();
         UIManager.Instance.OnChangePlayerHP(GetHPRatio);
     }
 
@@ -114,9 +114,14 @@ public class PlayerCharacter : BaseCharacter
 
     public override void DeathAction()
     {
+        GameManager.Instance.StageFail();
+    }
+
+    public void ResetPlayer()
+    {
         curHp = HP();
-        BuffReset();
-        ResetAIAndPos();
+        ResetBuff();
+        ResetAI();
         UIManager.Instance.OnChangePlayerHP(GetHPRatio);
         UIManager.Instance.ResetBuff();
     }
@@ -130,7 +135,6 @@ public class PlayerCharacter : BaseCharacter
 
         base.Death();
         UIManager.Instance.ResetBuff();
-        GameManager.Instance.StageFail();
     }
 
     public override long Hit(long attack)
@@ -146,22 +150,25 @@ public class PlayerCharacter : BaseCharacter
         return attack;
     }
 
-    public override void AnimationSpeedSet()
+    public override void SetAnimationSpeed()
     {
-        base.AnimationSpeedSet();
+        base.SetAnimationSpeed();
         animator.SetFloat("MoveSpeed", MoveSpeed()/DataManager.Instance.PlayerDefaultState.MoveSpeed);
     }
 
     public void SetSkill(int index,DataManager.Skill target)
     {
+
         if (agent.CurrentState == AiStateID.Skill)
         {
             current.Stop();
-            ResetAIAndPos();
+            ResetAI();
+            SetPlayerPos(GameManager.Instance.PlayerStart);
         }
         else if (agent.CurrentState != AiStateID.Death)
         {
-            ResetAIAndPos();
+            ResetAI();
+            SetPlayerPos(GameManager.Instance.PlayerStart);
         }
 
         List<DataManager.Skill> list = DataManager.Instance.EquipSkill;
@@ -252,17 +259,26 @@ public class PlayerCharacter : BaseCharacter
         return value;
     }
 
-    protected override void SetBuff(BuffData buffData, float timer, float value)
+    public void SetPlayerPos(Vector3 pos)
     {
-        base.SetBuff(buffData, timer, value);
-        UIManager.Instance.AddBuff(buffData, timer, value);
+        transform.position = pos;
     }
 
-    void ResetAIAndPos()
+    protected override BuffBase SetBuff(BuffData buffData, float timer, float value)
     {
-        transform.position = Vector3.zero;
+        BuffBase buff = base.SetBuff(buffData, timer, value);
+
+        if (buff != null)
+        {
+            UIManager.Instance.AddBuff(buff, timer, value);
+        }
+
+        return buff;
+    }
+
+    void ResetAI()
+    {
         agent.StateMachine.ChangeState(AiStateID.Idle);
         target = null;
     }
-
 }

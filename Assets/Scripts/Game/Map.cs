@@ -6,7 +6,10 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     [SerializeField] Spawn spawn;
+    [SerializeField] Transform playerStart;
     [SerializeField] string poolName;
+
+    public Vector3 Start => playerStart.position;
 
     StageOptionScriptable stageOptionScriptable = null;
 

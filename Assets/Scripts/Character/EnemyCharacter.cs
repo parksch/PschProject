@@ -8,6 +8,9 @@ public class EnemyCharacter : BaseCharacter
     [SerializeField] GameObject hitObject;
     [SerializeField] bool isBoss;
     [SerializeField] string poolName;
+
+    public bool IsBoss => isBoss;
+
     EnemyState State => state as EnemyState;
 
     public void Enqueue()
@@ -23,8 +26,14 @@ public class EnemyCharacter : BaseCharacter
 
     public override void DeathAction()
     {
+        base.DeathAction();
         Enqueue();
         GameManager.Instance.RemoveDeathEnemy(this);
+
+        if (isBoss)
+        {
+            GameManager.Instance.StageSuccess();
+        }
     }
 
     public override long Attack()
@@ -56,10 +65,22 @@ public class EnemyCharacter : BaseCharacter
     {
         return State.DrainLife;
     }
+
+    public void SystemDeath()
+    {
+        curHp = 0;
+        Death();
+        agent.StateMachine.ChangeState(AiStateID.Death);
+    }
+
     public override void Death()
     {
         base.Death();
         GameManager.Instance.OnEnemyDeath(this);
+        if (isBoss)
+        {
+            GameManager.Instance.BossDeath();
+        }
     }
 
     public override void AttackAction()

@@ -23,7 +23,7 @@ public class AiPlayerInterraction : AiInteraction
 
         actions["Death"] = () =>
         {
-
+            Character.DeathAction();
         };
     }
 }

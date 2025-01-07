@@ -7,13 +7,21 @@ public class MeshCombine : MonoBehaviour
     private void Start()
     {
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+
         CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+        Vector4[] lightmapScaleOffsets = new Vector4[renderers.Length];
+        int[] lightmapIndices = new int[renderers.Length];
         int vertexCount = 0;
 
         for (int i = 0; i < meshFilters.Length; i++)
         {
             combine[i].mesh = meshFilters[i].sharedMesh;
             combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+
+            // Save lightmap data
+            lightmapScaleOffsets[i] = renderers[i].lightmapScaleOffset;
+            lightmapIndices[i] = renderers[i].lightmapIndex;
 
             meshFilters[i].gameObject.SetActive(false);
 
@@ -43,6 +51,9 @@ public class MeshCombine : MonoBehaviour
         parentMeshFilter.mesh.CombineMeshes(combine);
 
         parentMeshRenderer.material = meshFilters[0].GetComponent<MeshRenderer>().sharedMaterial;
+
+        parentMeshRenderer.lightmapIndex = lightmapIndices[0];
+        parentMeshRenderer.lightmapScaleOffset = Vector4.zero; 
 
         gameObject.SetActive(true);
     }

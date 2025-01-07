@@ -11,7 +11,9 @@ public class Stage : MonoBehaviour
     [SerializeField, ReadOnly] GameMode mode;
     [SerializeField, ReadOnly] StageResultPanel resultPanel;
     [SerializeField, ReadOnly] Map map;
+    [SerializeField] List<Map> mapList;
 
+    public Vector3 PlayerStart => map.Start;
     public GameMode Mode => mode;
 
     List<string> monsters = new List<string>();
@@ -48,7 +50,6 @@ public class Stage : MonoBehaviour
             case GameMode.Boss:
             case GameMode.GoldDungeon:
             case GameMode.GemDungeon:
-                StageSuccess();
                 break;
             default:
                 break;
@@ -147,7 +148,7 @@ public class Stage : MonoBehaviour
 
     void CreateMap(string mapData)
     {
-        if (map != null && map.name == mapData)
+        if (map != null && map.Pool == mapData)
         {
             return;
         }
@@ -155,11 +156,10 @@ public class Stage : MonoBehaviour
         {
             if (map != null)
             {
-                PoolManager.Instance.Enqueue(map.Pool, map.gameObject);
+                map.gameObject.SetActive(false);
             }
 
-            map = PoolManager.Instance.Dequeue(ObjectType.Map, mapData).GetComponent<Map>();
-            map.transform.position = Vector3.zero;
+            map = mapList.Find(x => x.Pool == mapData);
             map.gameObject.SetActive(true);
         }
     }

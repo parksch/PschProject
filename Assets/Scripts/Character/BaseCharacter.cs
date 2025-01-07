@@ -16,26 +16,130 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected CharacterType characterType;
     [SerializeField] protected long curHp;
 
-    public virtual void AddHp(long hp)
+    #region GetStatus
+    public float Size => gameObject.transform.localScale.y / 2f;
+    public float GetHPRatio => ((float)curHp / HP());
+    public float AttackRange => state.AttackRange + Size;
+    public float Dot()
     {
-        curHp += hp;
-
-        if (curHp > HP())
+        if (Target() == null)
         {
-            curHp = HP();
+            return 0;
         }
+
+        Vector3 normal = (new Vector3(Target().transform.position.x, 0, Target().transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
+
+        return Vector3.Dot(normal, transform.forward);
     }
-
-    public float Size => gameObject.transform.localScale.y/2f;
-
-    public CharacterType CharacterType => characterType;
-
-    public void SetIdle()
+    public float Dist()
     {
-        agent.StateMachine.ChangeState(AiStateID.Idle);
-    }
+        if (Target() == null)
+        {
+            return float.MaxValue;
+        }
 
+        float dist = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Target().transform.position.x, 0, Target().transform.position.z));
+        dist = dist - Target().Size;
+
+        return dist;
+    }
+    public virtual float AttackSpeed()
+    {
+        return 0;
+    }
+    public virtual float MoveSpeed()
+    {
+        return 0;
+    }
+    public virtual float DrainLife()
+    {
+        return 0;
+    }
+    public virtual long Attack()
+    {
+        return 0;
+    }
+    public virtual long Defense()
+    {
+        return 0;
+    }
+    public virtual long HP()
+    {
+        return 0;
+    }
+    protected long DefenseCalculate(long attack)
+    {
+        if (attack * .9f <= Defense())
+        {
+            attack = (long)(attack * 0.1f);
+        }
+        else if (attack * .7f <= Defense())
+        {
+            attack = (long)(attack * 0.3f);
+        }
+        else if (attack * .5f <= Defense())
+        {
+            attack = (long)(attack * 0.5f);
+        }
+        else if (attack * .3f <= Defense())
+        {
+            attack = (long)(attack * 0.7f);
+        }
+        else
+        {
+            attack = (long)(attack * 0.9f);
+        }
+
+        return attack;
+    }
+    public bool IsDeath => curHp <= 0;
+    public bool IsTarget => Target() != null;
+    public bool IsLookAt => Dot() > 0;
+    public CharacterType CharacterType => characterType;
     public Animator Ani => animator;
+    public Vector3 Normal()
+    {
+        if (Target() == null)
+        {
+            return Vector3.zero;
+        }
+
+        return (new Vector3(Target().transform.position.x, 0, Target().transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
+    }
+    BaseCharacter Target()
+    {
+        if (target == null || target.IsDeath)
+        {
+            target = GameManager.Instance.GetTarget(characterType);
+        }
+
+        return target;
+    }
+    protected float BuffValues(ClientEnum.State target)
+    {
+        float value = 1;
+
+        for (int i = 0; i < buffs.Count; i++)
+        {
+            value += buffs[i].Value(target);
+        }
+
+        return value;
+    }
+    public Transform TargetTransform()
+    {
+        if (Target() == null)
+        {
+            return null;
+        }
+
+        return Target().transform;
+    }
+    public virtual float GetState(ClientEnum.State target)
+    {
+        return 0;
+    }
+    #endregion
 
     protected virtual void FixedUpdate()
     {
@@ -56,47 +160,39 @@ public class BaseCharacter : MonoBehaviour
         }
     }
 
-    public float GetHPRatio => ((float)curHp / HP());
-
-    BaseCharacter Target()
-    {
-        if (target == null || target.IsDeath)
-        {
-            target = GameManager.Instance.GetTarget(characterType);
-        }
-
-        return target;
-    }
-
-    public bool IsDeath => curHp <= 0;
-    public bool IsTarget => Target() != null;
-    public bool IsLookAt => Dot() > 0;
     public virtual void Init()
     {
         curHp = HP();
-        AnimationSpeedSet();
+        SetAnimationSpeed();
     }
 
     public void SetInitializeState()
     {
         agent.SetInitializeState();
     }
-
-    public float AttackRange => state.AttackRange + Size;
-
-    public virtual void AttackAction()
+    public virtual void SetAnimationSpeed()
     {
-        if (Dist() <= AttackRange && IsLookAt)
+        animator.SetFloat("AttackSpeed", AttackSpeed());
+    }
+    public void SetIdle()
+    {
+        agent.StateMachine.ChangeState(AiStateID.Idle);
+    }
+
+    public virtual void AddHp(long hp)
+    {
+        curHp += hp;
+
+        if (curHp > HP())
         {
-            long attack = (long)(Target().Hit(Attack()) * DrainLife());
-            AddHp(attack);
+            curHp = HP();
         }
     }
 
-    public virtual void DeathAction()
+    public virtual void Death()
     {
+        StopBuff();
     }
-
     public virtual long Hit(long attack)
     {
         if (curHp <= 0)
@@ -120,145 +216,20 @@ public class BaseCharacter : MonoBehaviour
 
         return attack;
     }
-
-    public virtual void Death()
+    public virtual void AttackAction()
     {
-        BuffReset();
-    }
-
-    public virtual long Attack()
-    {
-        return 0;
-    }
-
-    public virtual long Defense()
-    {
-        return 0;
-    }
-
-    public virtual long HP()
-    {
-        return 0;
-    }
-
-    public virtual float AttackSpeed()
-    {
-        return 0;
-    }
-
-    public virtual float MoveSpeed()
-    {
-        return 0;
-    }
-
-    public virtual float DrainLife()
-    {
-        return 0;
-    }
-
-    public float Dot()
-    {
-        if (Target() == null)
+        if (Dist() <= AttackRange && IsLookAt)
         {
-            return 0;
+            long attack = (long)(Target().Hit(Attack()) * DrainLife());
+            AddHp(attack);
         }
-
-        Vector3 normal = (new Vector3(Target().transform.position.x, 0, Target().transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
-
-        return Vector3.Dot(normal, transform.forward);
     }
-
-    public float Dist()
+    public virtual void DeathAction()
     {
-        if (Target() == null)
-        {
-            return float.MaxValue;
-        }
-
-        float dist = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(Target().transform.position.x, 0, Target().transform.position.z));
-        dist = dist - Target().Size;
-
-        return dist;
+        ResetBuff();
     }
 
-    public Vector3 Normal()
-    {
-        if (Target() == null)
-        {
-            return Vector3.zero;
-        }
-
-        return (new Vector3(Target().transform.position.x, 0, Target().transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
-    }
-
-    public Transform TargetTransform()
-    {
-        if (Target() == null)
-        {
-            return null;
-        }
-
-        return Target().transform;
-    }
-
-    public virtual void AnimationSpeedSet()
-    {
-        animator.SetFloat("AttackSpeed", AttackSpeed());
-    }
-
-    protected long DefenseCalculate(long attack)
-    {
-        if (attack *.9f <= Defense())
-        {
-            attack = (long)(attack * 0.1f);
-        }
-        else if (attack *.7f <= Defense())
-        {
-            attack = (long)(attack * 0.3f);
-        }
-        else if (attack *.5f <= Defense())
-        {
-            attack = (long)(attack * 0.5f);
-        }
-        else if (attack *.3f <= Defense())
-        {
-            attack = (long)(attack * 0.7f);
-        }
-        else
-        {
-            attack = (long)(attack * 0.9f);
-        }
-
-        return attack;
-    }
-
-    public void AddBuff(string key,float timer,float addValue)
-    {
-        JsonClass.BuffData buffData = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData).buffData.Find(x => x.name == key);
-        
-        if (buffData == null)
-        {
-            return;
-        }
-
-        SetBuff(buffData,timer,addValue);
-    }
-    
-    public virtual float GetState(ClientEnum.State target)
-    {
-        return 0;
-    }
-
-    public void BuffReset()
-    {
-        for (int i = 0; i < buffs.Count; i++)
-        {
-            buffs[i].Enqueue();
-        }
-        buffs.Clear();
-    }
-
-    protected virtual void SetBuff(JsonClass.BuffData buffData,float timer,float value)
+    protected virtual BuffBase SetBuff(JsonClass.BuffData buffData, float timer, float value)
     {
         BuffBase buffBase = buffs.Find(x => x.ID == buffData.name);
 
@@ -270,24 +241,43 @@ public class BaseCharacter : MonoBehaviour
             buffBase.transform.localRotation = Quaternion.identity;
             buffBase.BuffStart(timer, value);
             buffs.Add(buffBase);
+            return buffBase;
         }
         else
         {
             buffBase.gameObject.SetActive(false);
             buffBase.gameObject.SetActive(true);
             buffBase.BuffCheck(timer, value);
+            return null;
         }
     }
 
-    protected float BuffValues(ClientEnum.State target)
+    public void AddBuff(string key, float timer, float addValue)
     {
-        float value = 1;
+        JsonClass.BuffData buffData = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData).buffData.Find(x => x.name == key);
 
-        for (int i = 0; i < buffs.Count; i++)
+        if (buffData == null)
         {
-            value += buffs[i].Value(target);
+            return;
         }
 
-        return value;
+        SetBuff(buffData, timer, addValue);
+    }
+
+    public void StopBuff()
+    {
+        for (int i = 0; i < buffs.Count; i++)
+        {
+            buffs[i].Stop();
+        }
+    }
+
+    public void ResetBuff()
+    {
+        for (int i = 0; i < buffs.Count; i++)
+        {
+            buffs[i].Enqueue();
+        }
+        buffs.Clear();
     }
 }

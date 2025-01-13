@@ -13,6 +13,7 @@ public class LoginManager : Singleton<LoginManager>
     void Start()
     {
         Init();
+        SDKManager.Instance.Init();
         DataManager.Instance.Init();
     }
 

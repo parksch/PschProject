@@ -37,6 +37,8 @@ MonoBehaviour:
       desc: "\uC77C\uC77C\uACE8\uB4DC\uC0C1\uC810"
     - name: DailyGem
       desc: "\uC77C\uC77C\uC82C\uC0C1\uC810"
+    - name: DrawIcon
+      desc: "\uBF51\uAE30"
     - name: DrawLv
       desc: "\uBF51\uAE30\uB808\uBCA8"
     - name: LeatherHelmet
@@ -100,6 +102,8 @@ MonoBehaviour:
       desc: "\uD0C8\uCD9C\uD558\uAE30"
     - name: EscapeDesc
       desc: "\uB3C4\uC804\uC744 \uD3EC\uAE30\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
+    - name: ADIcon
+      desc: "\uAD11\uACE0\uBCF4\uAE30"
   - language: 1
     textkeys:
     - name: 

@@ -1,17 +1,17 @@
+using GooglePlayGames.BasicApi;
+using GooglePlayGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
 
-public class GPGS : MonoBehaviour
+public partial class SDKManager //GPGS
 {
     [SerializeField] string id;
 
     System.Action successAction;
     System.Action failAction;
 
-    public void GoogleInit(System.Action success,System.Action fail)
+    public void GoogleInit(System.Action success, System.Action fail)
     {
         successAction = success;
         failAction = fail;
@@ -20,7 +20,7 @@ public class GPGS : MonoBehaviour
         PlayGamesPlatform.Activate();
     }
 
-    public void GoogleSignin()
+    public void GoogleSignIn()
     {
         PlayGamesPlatform.Instance.Authenticate(ProcessorArchitecture);
     }
@@ -39,7 +39,7 @@ public class GPGS : MonoBehaviour
         else
         {
             Debug.Log("Fail Authenticate");
-            failAction.Invoke();
+            failAction?.Invoke();
         }
     }
 }

@@ -28,7 +28,7 @@ MonoBehaviour:
           value: 50
         type: 0
         target: 0
-        goods: 0
+        goods: 2
         descKey: 
         nameKey: ScrapShop
         needValue: 10

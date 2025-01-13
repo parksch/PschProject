@@ -11,8 +11,8 @@ public class UISignUp : MonoBehaviour
 
     public void OnClickGoggle()
     {
-        SDKManager.Instance.GPGS.GoogleInit(() => { PlayerPrefs.SetString("LoginType","Google"); gameObject.SetActive(false); },null);
-        SDKManager.Instance.GPGS.GoogleSignin();
+        SDKManager.Instance.GoogleInit(() => { PlayerPrefs.SetString("LoginType", "Google"); gameObject.SetActive(false); }, null);
+        SDKManager.Instance.GoogleSignIn();
     }
 
     public void OnClickGuest()

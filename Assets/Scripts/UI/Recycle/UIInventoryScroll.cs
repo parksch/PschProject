@@ -12,16 +12,16 @@ public class UIInventoryScroll : UIRecycleViewController<InventoryData>
 
     public void LoadData(ClientEnum.Item item)
     {
-        int count = DataManager.Instance.InventoryDatas.Count;
+        int count = DataManager.Instance.InventoryDates.Count;
         List<BaseItem> data = null;
 
         if (item != ClientEnum.Item.None)
         {
-            data = DataManager.Instance.InventoryDatas.FindAll(x => x.Type == item);
+            data = DataManager.Instance.InventoryDates.FindAll(x => x.Type == item);
         }
         else
         {
-            data = DataManager.Instance.InventoryDatas;
+            data = DataManager.Instance.InventoryDates;
         }
 
         tableData.Clear();

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public partial class DataManager //Inventory
 {
-    [SerializeField] int maxInventoryCount = 100;
+    //[SerializeField] int maxInventoryCount = 100;
     [SerializeField, ReadOnly] BaseItem equipHelmet;
     [SerializeField, ReadOnly] BaseItem equipWeapon;
     [SerializeField, ReadOnly] BaseItem equipArmor;
-    [SerializeField, ReadOnly] List<BaseItem> inventoryDatas = new List<BaseItem>();
+    [SerializeField, ReadOnly] List<BaseItem> inventoryDates = new List<BaseItem>();
 
     public BaseItem Helmet => equipHelmet;
     public BaseItem Weapon => equipWeapon;
     public BaseItem Armor => equipArmor;
-    public List<BaseItem> InventoryDatas => inventoryDatas;
+    public List<BaseItem> InventoryDates => inventoryDates;
     public BaseItem GetEquipItem(ClientEnum.Item item)
     {
         switch (item)
@@ -30,11 +30,11 @@ public partial class DataManager //Inventory
     }
     public void AddItem(BaseItem item)
     {
-        for (int i = 0; i < inventoryDatas.Count; i++)
+        for (int i = 0; i < inventoryDates.Count; i++)
         {
-            if (inventoryDatas[i].ID == "")
+            if (inventoryDates[i].ID == "")
             {
-                inventoryDatas[i] = item;
+                inventoryDates[i] = item;
                 break;
             }
         }
@@ -43,8 +43,8 @@ public partial class DataManager //Inventory
     public void EquipItem(BaseItem item)
     {
         BaseItem target = item;
-        inventoryDatas.Remove(item);
-        inventoryDatas.Add(new BaseItem());
+        inventoryDates.Remove(item);
+        inventoryDates.Add(new BaseItem());
         equipItem(target);
     }
     

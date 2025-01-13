@@ -18,6 +18,13 @@ public partial class SDKManager //ADMob
 
     RewardedAd rewardedAd = null;
 
+    Action<AdValue> adPaid = null;
+    Action adImpressionRecorded = null;
+    Action adClicked = null;
+    Action adFullScreenContentOpened = null;
+    Action adFullScreenContentClosed = null;
+    Action adFullScreenContentFailed = null;
+
     public void ADMobInit()
     {
         MobileAds.Initialize(InitComplete);
@@ -56,15 +63,17 @@ public partial class SDKManager //ADMob
         RegisterEventHandlers(rewardedAd);
     }
 
-    public void ShowRewardedAD()
+    public bool ShowRewardedAD()
     {
         if (rewardedAd != null && rewardedAd.CanShowAd())
         {
             rewardedAd.Show(ShowCallback);
+            return true;
         }
         else
         {
             LoadRewardedAD();
+            return false;
         }
     }
 
@@ -80,36 +89,45 @@ public partial class SDKManager //ADMob
         // Raised when the ad is estimated to have earned money.
         ad.OnAdPaid += (AdValue adValue) =>
         {
-            Debug.Log(String.Format("Rewarded ad paid {0} {1}.",
-                adValue.Value,
-                adValue.CurrencyCode));
+            Debug.Log(String.Format("Rewarded ad paid {0} {1}.",adValue.Value,adValue.CurrencyCode));
+            adPaid?.Invoke(adValue);
         };
+
         // Raised when an impression is recorded for an ad.
         ad.OnAdImpressionRecorded += () =>
         {
             Debug.Log("Rewarded ad recorded an impression.");
+            adImpressionRecorded?.Invoke();
         };
+
         // Raised when a click is recorded for an ad.
         ad.OnAdClicked += () =>
         {
             Debug.Log("Rewarded ad was clicked.");
+            adClicked?.Invoke();
         };
+
         // Raised when an ad opened full screen content.
         ad.OnAdFullScreenContentOpened += () =>
         {
             Debug.Log("Rewarded ad full screen content opened.");
+            adFullScreenContentOpened?.Invoke();
         };
+
         // Raised when the ad closed full screen content.
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Rewarded ad full screen content closed.");
+            adFullScreenContentClosed?.Invoke();
             LoadRewardedAD();
         };
+
         // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             Debug.LogError("Rewarded ad failed to open full screen content " +
                            "with error : " + error);
+            adFullScreenContentFailed?.Invoke();
             LoadRewardedAD();
         };
     }

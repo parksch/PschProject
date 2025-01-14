@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Localization.Editor;
 using UnityEngine;
 
 namespace JsonClass

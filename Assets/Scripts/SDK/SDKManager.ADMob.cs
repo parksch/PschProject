@@ -25,7 +25,12 @@ public partial class SDKManager //ADMob
     Action adFullScreenContentClosed = null;
     Action adFullScreenContentFailed = null;
 
-    public void ADMobInit()
+    public void SetAdFullScreenContentClosed(Action action)
+    {
+        adFullScreenContentClosed = action;
+    }
+
+    public void AdMobInit()
     {
         MobileAds.Initialize(InitComplete);
     }
@@ -46,10 +51,10 @@ public partial class SDKManager //ADMob
 
         var adRequest = new AdRequest();
 
-        RewardedAd.Load(_adUnitId, adRequest, ADLoadCallBack);
+        RewardedAd.Load(_adUnitId, adRequest, RewardedAdCallBack);
     }
 
-    void ADLoadCallBack(RewardedAd ad,LoadAdError error)
+    void RewardedAdCallBack(RewardedAd ad,LoadAdError error)
     {
         if (error != null || ad == null)
         {
@@ -131,4 +136,42 @@ public partial class SDKManager //ADMob
             LoadRewardedAD();
         };
     }
+
+    void RegisterEventHandlers(RewardedInterstitialAd ad)
+    {
+        // Raised when the ad is estimated to have earned money.
+        ad.OnAdPaid += (AdValue adValue) =>
+        {
+            Debug.Log(String.Format("Rewarded interstitial ad paid {0} {1}.",
+                adValue.Value,
+                adValue.CurrencyCode));
+        };
+        // Raised when an impression is recorded for an ad.
+        ad.OnAdImpressionRecorded += () =>
+        {
+            Debug.Log("Rewarded interstitial ad recorded an impression.");
+        };
+        // Raised when a click is recorded for an ad.
+        ad.OnAdClicked += () =>
+        {
+            Debug.Log("Rewarded interstitial ad was clicked.");
+        };
+        // Raised when an ad opened full screen content.
+        ad.OnAdFullScreenContentOpened += () =>
+        {
+            Debug.Log("Rewarded interstitial ad full screen content opened.");
+        };
+        // Raised when the ad closed full screen content.
+        ad.OnAdFullScreenContentClosed += () =>
+        {
+            Debug.Log("Rewarded interstitial ad full screen content closed.");
+        };
+        // Raised when the ad failed to open full screen content.
+        ad.OnAdFullScreenContentFailed += (AdError error) =>
+        {
+            Debug.LogError("Rewarded interstitial ad failed to open " +
+                           "full screen content with error : " + error);
+        };
+    }
+
 }

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -620,3 +621,4 @@ public class SheetParsing : EditorWindow
         }
     }
 }
+#endif

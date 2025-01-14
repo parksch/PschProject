@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
@@ -36,3 +37,4 @@ public class ExternalDataAsset
 {
     //== Only parent
 }
+#endif

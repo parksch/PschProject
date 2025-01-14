@@ -6,6 +6,6 @@ public partial class SDKManager : Singleton<SDKManager>
 {
     public void Init()
     {
-        ADMobInit();
+        AdMobInit();
     }
 }

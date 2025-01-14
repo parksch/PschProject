@@ -13,6 +13,18 @@ public class ADPanel : BasePanel
     {
         base.Open();
 
+        SDKManager.Instance.SetAdFullScreenContentClosed(UIManager.Instance.BackPanel);
+
         SDKManager.Instance.ShowRewardedAD();
+    }
+
+    void AdSuccess()
+    {
+
+    }
+
+    void AdFail()
+    {
+
     }
 }

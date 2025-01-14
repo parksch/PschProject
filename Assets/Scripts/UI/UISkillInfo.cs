@@ -1,8 +1,6 @@
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.Localization.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 

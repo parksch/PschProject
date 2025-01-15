@@ -10,6 +10,8 @@ public class RewardPanel : BasePanel
     [SerializeField] List<UIRewardSlot> slots = new List<UIRewardSlot>();
     [SerializeField] int count = 0;
 
+    List<(int goodsIndex, int value)> rewards = new List<(int goodsIndex, int value)>();
+
     public override void OnUpdate()
     {
 

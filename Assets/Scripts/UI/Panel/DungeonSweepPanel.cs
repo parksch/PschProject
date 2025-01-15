@@ -1,3 +1,5 @@
+using ClientEnum;
+using GoogleMobileAds.Api;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,17 +10,18 @@ public class DungeonSweepPanel : BasePanel
 {
     [SerializeField] Text titleText;
     [SerializeField,ReadOnly] Text countText;
+
     DungeonsData target;
     int count;
 
-    bool Check()
+    bool Check(int check)
     {
         switch (target.NeedGoods())
         {
             case ClientEnum.Goods.GoldDungeonTicket:
-                return DataManager.Instance.CheckGoods(ClientEnum.Goods.GoldDungeonTicket, count);
+                return DataManager.Instance.CheckGoods(ClientEnum.Goods.GoldDungeonTicket, check);
             case ClientEnum.Goods.GemDungeonTicket:
-                return DataManager.Instance.CheckGoods(ClientEnum.Goods.GemDungeonTicket, count);
+                return DataManager.Instance.CheckGoods(ClientEnum.Goods.GemDungeonTicket, check);
             default:
                 break;
         }
@@ -80,7 +83,7 @@ public class DungeonSweepPanel : BasePanel
 
     public void OnClickNext()
     {
-        if (Check())
+        if (Check(count + 1))
         {
             count += 1;
             countText.text = count.ToString();
@@ -89,11 +92,44 @@ public class DungeonSweepPanel : BasePanel
 
     public void OnClickYes()
     {
+        if (count == 0)
+        {
+            return;
+        }
 
+        RewardPanel rewardPanel = UIManager.Instance.Get<RewardPanel>();
+        int level = 0;
+        List<(int goodsIndex, int value)> rewards = null;
+
+        switch (target.GameMode())
+        {
+            case GameMode.GoldDungeon:
+                level = DataManager.Instance.GetInfo.CurrentGoldDungeon;
+                DataManager.Instance.UseGoods(Goods.GoldDungeonTicket, count);
+                break;
+            case GameMode.GemDungeon:
+                level = DataManager.Instance.GetInfo.CurrentGemDungeon;
+                DataManager.Instance.UseGoods(Goods.GemDungeonTicket, count);
+                break;
+            default:
+                break;
+        }
+
+        rewards = target.GetRewards(level);
+
+        for (int i = 0; i < rewards.Count; i++)
+        {
+            DataManager.Instance.AddGoods((Goods)rewards[i].goodsIndex, rewards[i].value * count);
+            rewardPanel.AddGoods((Goods)rewards[i].goodsIndex, rewards[i].value * count);
+        }
+
+        UIManager.Instance.AddPanel(rewardPanel);
+
+        OnClickMin();
     }
 
     public void OnClickNo()
     {
-
+        UIManager.Instance.BackPanel();
     }
 }

@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ClientEnum;
 using JsonClass;
-using System;
 
 public class BaseCharacter : MonoBehaviour
 {

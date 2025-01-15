@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 public class UIInventoryScroll : UIRecycleViewController<InventoryData>
 {
@@ -30,17 +28,17 @@ public class UIInventoryScroll : UIRecycleViewController<InventoryData>
         {
             InventoryData cell = new InventoryData();
             cell.index = i + 1;
-            cell.datas = new List<BaseItem>(new BaseItem[slotCount]);
+            cell.dates = new List<BaseItem>(new BaseItem[slotCount]);
 
             for (int j = 0; j < slotCount; j++)
             {
                 if ((i * slotCount) + j < data.Count)
                 {
-                    cell.datas[j] = data[(i * slotCount) + j];
+                    cell.dates[j] = data[(i * slotCount) + j];
                 }
                 else
                 {
-                    cell.datas[j] = new BaseItem();
+                    cell.dates[j] = new BaseItem();
                 }
             }
 

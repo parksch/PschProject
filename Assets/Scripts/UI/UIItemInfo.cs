@@ -1,9 +1,7 @@
 using Datas;
-using DG.Tweening;
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 

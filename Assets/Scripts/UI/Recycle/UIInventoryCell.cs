@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class InventoryData
 {
     public int index = 0;
-    public List<BaseItem> datas;
+    public List<BaseItem> dates;
 }
 
 public class UIInventoryCell : UIRecycleViewCell<InventoryData>
@@ -20,7 +20,7 @@ public class UIInventoryCell : UIRecycleViewCell<InventoryData>
     {
         for (int i = 0; i < itemSlots.Count; i++)
         {
-            itemSlots[i].SetItem(itemData.datas[i]);
+            itemSlots[i].SetItem(itemData.dates[i]);
             itemSlots[i].UpdateItem();
         }
     }

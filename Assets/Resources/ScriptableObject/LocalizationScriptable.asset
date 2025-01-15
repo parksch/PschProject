@@ -104,6 +104,8 @@ MonoBehaviour:
       desc: "\uB3C4\uC804\uC744 \uD3EC\uAE30\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
     - name: ADIcon
       desc: "\uAD11\uACE0\uBCF4\uAE30"
+    - name: NotEnoughGoods
+      desc: "\uC7AC\uD654\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4."
   - language: 1
     textkeys:
     - name: 

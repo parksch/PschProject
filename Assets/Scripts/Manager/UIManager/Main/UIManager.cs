@@ -71,16 +71,16 @@ public partial class UIManager : Singleton<UIManager>
             ActiveTop(mainTop);
         }
 
-        OpenPaenl(menuButton.targetPanel);
+        OpenPanel(menuButton.targetPanel);
     }
 
-    public void OpenPaenl(BasePanel panel)
+    public void OpenPanel(BasePanel panel)
     {
         if (currentPanel != null)
         {
             if (panel == null || !panel.IsTranslucent)
             {
-                ClosePaenl();
+                ClosePanel();
             }
         }
 
@@ -99,7 +99,7 @@ public partial class UIManager : Singleton<UIManager>
         }
     }
 
-    public void ClosePaenl()
+    public void ClosePanel()
     {
         currentPanel.Close();
         currentPanel.gameObject.SetActive(false);
@@ -116,7 +116,7 @@ public partial class UIManager : Singleton<UIManager>
             panelStack.Push(currentPanel);
         }
 
-        OpenPaenl(panel);
+        OpenPanel(panel);
     }
 
     public void BackPanel()
@@ -127,19 +127,19 @@ public partial class UIManager : Singleton<UIManager>
         {
             if (isTranslucent)
             {
-                ClosePaenl();
+                ClosePanel();
                 currentPanel = panelStack.Pop();
                 ResetTop();
                 ActiveTop(currentPanel.ActiveTop);
             }
             else
             {
-                OpenPaenl(panelStack.Pop());
+                OpenPanel(panelStack.Pop());
             }
         }
         else
         {
-            ClosePaenl();
+            ClosePanel();
             mainScreen.SetActive(true);
         }
     }

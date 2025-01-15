@@ -94,6 +94,26 @@ public class DungeonSweepPanel : BasePanel
     {
         if (count == 0)
         {
+            CommonPanel commonPanel = UIManager.Instance.Get<CommonPanel>();
+            switch (target.GameMode())
+            {
+                case GameMode.GoldDungeon:
+                    if(DataManager.Instance.GetGoods(Goods.GoldDungeonTicket) == 0)
+                    {
+                        commonPanel.SetOK("NotEnoughGoods");
+                        UIManager.Instance.AddPanel(commonPanel);
+                    }
+                    break;
+                case GameMode.GemDungeon:
+                    if (DataManager.Instance.GetGoods(Goods.GemDungeonTicket) == 0)
+                    {
+                        commonPanel.SetOK("NotEnoughGoods");
+                        UIManager.Instance.AddPanel(commonPanel);
+                    }
+                    break;
+                default:
+                    break;
+            }
             return;
         }
 

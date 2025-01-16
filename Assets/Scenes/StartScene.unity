@@ -5699,7 +5699,1207 @@ MonoBehaviour:
       value: 0
     options: []
     sprite: {fileID: 0}
-  inventoryDates: []
+  inventoryDates:
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
+  - id: 
+    index: 
+    itemName: 
+    lv: 0
+    reinforce: 0
+    grade: 0
+    type: 0
+    mainState:
+      key: 0
+      value: 0
+    options: []
+    sprite: {fileID: 0}
   skills: []
   equipSkill:
   - data:

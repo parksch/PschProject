@@ -106,6 +106,10 @@ MonoBehaviour:
       desc: "\uAD11\uACE0\uBCF4\uAE30"
     - name: NotEnoughGoods
       desc: "\uC7AC\uD654\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4."
+    - name: AdLoadFail
+      desc: "\uAD11\uACE0\uB97C \uBD88\uB7EC\uC624\uB294\uB370 \uC2E4\uD328 \uD588\uC2B5\uB2C8\uB2E4."
+    - name: GetReward
+      desc: "\uBCF4\uC0C1\uD68D\uB4DD"
   - language: 1
     textkeys:
     - name: 

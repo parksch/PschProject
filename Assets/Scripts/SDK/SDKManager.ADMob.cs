@@ -25,9 +25,24 @@ public partial class SDKManager //ADMob
     Action adFullScreenContentClosed = null;
     Action adFullScreenContentFailed = null;
 
-    public void SetAdFullScreenContentClosed(Action action)
+    public void ResetAction()
     {
-        adFullScreenContentClosed = action;
+        adPaid = null;
+        adImpressionRecorded = null;
+        adClicked = null;
+        adFullScreenContentOpened = null;
+        adFullScreenContentClosed = null;
+        adFullScreenContentFailed = null;
+    }
+
+    public void AddAdFullScreenContentClosed(Action action)
+    {
+        adFullScreenContentClosed += action;
+    }
+
+    public void AddAdFullScreenContentFailed(Action action)
+    {
+        adFullScreenContentFailed += action;
     }
 
     public void AdMobInit()

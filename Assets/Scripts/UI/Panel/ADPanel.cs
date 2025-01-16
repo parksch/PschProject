@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ADPanel : BasePanel
 {
+    [SerializeField] UIADButton button;
+
     public override void FirstLoad()
     {
+        button.CheckTime();
+
         SDKManager.Instance.ResetAction();
         SDKManager.Instance.AddAdFullScreenContentClosed(UIManager.Instance.BackPanel);
         SDKManager.Instance.AddAdFullScreenContentClosed(() => 
@@ -19,6 +23,8 @@ public class ADPanel : BasePanel
             rewardPanel.AddGoods(ClientEnum.Goods.Gem, 1000);
 
             UIManager.Instance.AddPanel(rewardPanel);
+
+            button.SetTimer();
         });
         SDKManager.Instance.AddAdFullScreenContentFailed(UIManager.Instance.BackPanel);
         SDKManager.Instance.AddAdFullScreenContentFailed(() => 

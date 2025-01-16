@@ -110,6 +110,8 @@ MonoBehaviour:
       desc: "\uAD11\uACE0\uB97C \uBD88\uB7EC\uC624\uB294\uB370 \uC2E4\uD328 \uD588\uC2B5\uB2C8\uB2E4."
     - name: GetReward
       desc: "\uBCF4\uC0C1\uD68D\uB4DD"
+    - name: ADCoolTime
+      desc: "\uAD11\uACE0 \uCFE8\uD0C0\uC784 \uC9C4\uD589 \uC911\uC785\uB2C8\uB2E4."
   - language: 1
     textkeys:
     - name: 

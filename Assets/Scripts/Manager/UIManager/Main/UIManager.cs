@@ -173,6 +173,12 @@ public partial class UIManager : Singleton<UIManager>
             {
                 BackPanel();
             }
+            else
+            {
+               CommonPanel commonPanel = Get<CommonPanel>();
+               commonPanel.SetYesNo("Exit", Application.Quit);
+               AddPanel(commonPanel);
+            }
         }
     }
 

@@ -49,18 +49,23 @@ public class UIBuffSlot : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void Update()
+    public void UpdateTimer()
     {
         current = target.Timer;
 
         if (current > 0)
         {
             text.text = current.ToString("F2") + "s";
-            front.fillAmount = (max - current)/max;
+            front.fillAmount = (max - current) / max;
         }
         else
         {
             End();
         }
+    }
+
+    void Update()
+    {
+        UpdateTimer();
     }
 }

@@ -39,17 +39,17 @@ public partial class UIManager //Main
     }
     public void OnClickBuff()
     {
-        RectTransform rectTransform = buffSlots.GetComponent<RectTransform>();
 
         if (buffButtonText.text == "Close")
         {
             buffButtonText.text = "Open";
-            rectTransform.offsetMax = new Vector2(0, -buffParent.GetComponent<RectTransform>().rect.height);
+            buffSlots.gameObject.SetActive(false);
         }
         else
         {
             buffButtonText.text = "Close";
-            rectTransform.offsetMax = new Vector2(0, -50);
+            buffSlots.CheckBuff();
+            buffSlots.gameObject.SetActive(true);
         }
     }
 

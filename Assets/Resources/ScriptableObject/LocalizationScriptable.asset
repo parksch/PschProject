@@ -112,6 +112,9 @@ MonoBehaviour:
       desc: "\uBCF4\uC0C1\uD68D\uB4DD"
     - name: ADCoolTime
       desc: "\uAD11\uACE0 \uCFE8\uD0C0\uC784 \uC9C4\uD589 \uC911\uC785\uB2C8\uB2E4."
+    - name: Exit
+      desc: "\uAC8C\uC784\uC744 \uC885\uB8CC\uD558\uC2DC\uB824\uBA74 \uD655\uC778\uC744
+        \uB20C\uB7EC \uC8FC\uC138\uC694."
   - language: 1
     textkeys:
     - name: 

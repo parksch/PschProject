@@ -2,6 +2,7 @@ using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIBuffSlots : MonoBehaviour
 {
@@ -44,6 +45,14 @@ public class UIBuffSlots : MonoBehaviour
         for (int i = 0; i < slots.Count; i++)
         {
             slots[i].End();
+        }
+    }
+
+    public void CheckBuff()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            slots[i].UpdateTimer();
         }
     }
 }

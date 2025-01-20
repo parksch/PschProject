@@ -116,7 +116,7 @@ public class SkillBase : MonoBehaviour
     {
         BigStats bigStats = BigStats.Zero;
         bigStats += (int)target;
-        bigStats *= (int)value;
+        bigStats *= value;
 
         BigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
         character.AddHp(attack);
@@ -126,7 +126,7 @@ public class SkillBase : MonoBehaviour
     {
         BigStats bigStats = BigStats.Zero;
         bigStats += stats;
-        bigStats *= (int)value;
+        bigStats *= value;
 
         BigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
         character.AddHp(attack);

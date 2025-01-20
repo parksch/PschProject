@@ -109,10 +109,12 @@ public class BigStats
 
     public static BigStats operator +(BigStats a, int value)
     {
-        a.mini += value % referenceValue;
-        a.token += value / referenceValue;
+        BigStats result = new BigStats();
 
-        return a;
+        result.mini = a.mini + value % referenceValue;
+        result.token = a.token + value / referenceValue;
+
+        return result;
     }
 
     public static BigStats operator *(BigStats a, float multiplier)

@@ -15,11 +15,11 @@ namespace JsonClass
             switch (state)
             {
                 case ClientEnum.State.HP:
-                    return stage * multiplyPerStageHp;
+                    return stage * multiplierStageHp;
                 case ClientEnum.State.Attack:
-                    return stage * multiplyPerStageAttack;
+                    return stage * multiplierStageAttack;
                 case ClientEnum.State.Defense:
-                    return stage * multiplyPerStageDefanse;
+                    return stage * multiplierStageDefense;
                 default:
                     return 1;
             }

@@ -1,0 +1,225 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine;
+
+[System.Serializable]
+public class BigStats
+{
+    const int referenceValue = 100000000;
+    const int referenceDisplayValue = 10000;
+
+    [SerializeField] int mini = 0;
+    [SerializeField] float token = 0;
+
+    public string Text
+    {
+        get
+        {
+            if (token <= 0 && mini < referenceDisplayValue)
+                return mini.ToString(); // 숫자가 작으면 그대로 반환
+
+            double totalValue = token * referenceValue + mini;
+            int alphabetOffset = 26;
+            char startChar = 'A';
+
+            int unitLevel = 0;
+            while (totalValue >= referenceDisplayValue)
+            {
+                totalValue /= referenceDisplayValue;
+                unitLevel++;
+            }
+
+            string unitString = "";
+            while (unitLevel > 0)
+            {
+                unitLevel--; 
+                unitString = (char)(startChar + (unitLevel % alphabetOffset)) + unitString;
+                unitLevel /= alphabetOffset;
+            }
+
+            return $"{totalValue:0.##}{unitString}"; 
+        }
+    }
+
+    public void SetZero() { mini = 0; token = 0; } 
+
+    public bool IsZero => mini == 0 && token == 0; 
+
+    public BigStats Copy
+    {
+        get
+        {
+            BigStats bigStats = Zero;
+            bigStats += this;
+
+            return bigStats;
+        }
+    }
+
+    public static BigStats operator +(BigStats a, BigStats b)
+    {
+        BigStats result = new BigStats();
+
+        result.mini = a.mini + b.mini;
+        result.token = a.token + b.token;
+
+        return FinishingWork(result);
+    }
+
+    public static BigStats operator -(BigStats a, BigStats b)
+    {
+        BigStats result = new BigStats();
+
+        if (b.token > a.token)
+        {
+            result.mini = 0;
+            result.token = 0;
+        }
+        else
+        {
+            result.token = a.token - b.token;
+
+            if (a.mini < b.mini)
+            {
+                if (a.token > 0)
+                {
+                    a.token--;
+                    a.mini += referenceValue;
+
+                    result.token = a.token;
+                    result.mini = a.mini - b.mini;
+                }
+                else
+                {
+                    result.mini = 0;
+                    result.token = 0;
+                }
+            }
+            else
+            {
+                result.mini = a.mini - b.mini;
+            }
+
+        }
+
+        return FinishingWork(result);
+    }
+
+    public static BigStats operator +(BigStats a, int value)
+    {
+        a.mini += value % referenceValue;
+        a.token += value / referenceValue;
+
+        return a;
+    }
+
+    public static BigStats operator *(BigStats a, float multiplier)
+    {
+        BigStats result = new BigStats();
+
+        result.mini = Mathf.RoundToInt(a.mini * multiplier);
+        result.token = a.token * multiplier;
+
+        float value = result.token - Mathf.Floor(result.token);
+        result.mini += (int)(value * referenceValue);
+
+        return FinishingWork(result);
+    }
+
+    public static float operator /(BigStats a, BigStats b)
+    {
+        if (a.token == 0 && b.token == 0 && (Mathf.Max(a.mini,b.mini) < 1000000 ))
+        {
+            return a.mini / (float)b.mini;
+        }
+
+        int offset = TargetValue(a.token, b.token);
+        long scaleFactor = (100000 * offset) > 0 ? 100000 * offset : 10000;
+        float scaledA = 0;
+        float scaledB = 0;
+
+        if (scaleFactor < referenceValue)
+        {
+            scaledA = a.mini / scaleFactor;
+            scaledB = b.mini / scaleFactor;
+        }
+
+        scaledA += Mathf.Floor(a.token * (referenceValue / scaleFactor));
+        scaledB += Mathf.Floor(b.token * (referenceValue / scaleFactor));
+
+        int TargetValue(float a,float b)
+        {
+            float target = a > b ? a : b;
+            int result = 0;
+
+            for (int i = 1; i < target; i *= 10)
+            {
+                if (target > i)
+                {
+                    result = i;
+                }
+            }
+
+            return result;
+        }
+
+        return scaledA/scaledB;
+    }
+
+    public static bool operator <=(BigStats a, BigStats b)
+    {
+        return (a.token <= b.token) && a.mini <= b.mini;
+    }
+
+    public static bool operator >=(BigStats a, BigStats b)
+    {
+        return (a.token >= b.token) && a.mini >= b.mini;
+    }
+
+    public static bool operator >(BigStats a, BigStats b)
+    {
+        if (a.token == b.token)
+        {
+            return a.mini > b.mini;
+        }
+        else
+        {
+            return (a.token > b.token);
+        }
+    }
+
+    public static bool operator <(BigStats a, BigStats b)
+    {
+        if (a.token == b.token)
+        {
+            return a.mini < b.mini;
+        }
+        else
+        {
+            return (a.token < b.token);
+        }
+    }
+
+    public static BigStats Zero
+    {
+        get
+        {
+            BigStats result = new BigStats();
+            result.token = 0;
+            result.mini = 0;
+
+            return result;
+        }
+    }
+
+    static BigStats FinishingWork(BigStats result)
+    {
+        result.token += result.mini / referenceValue;
+        result.mini %= referenceValue;
+
+        return result;
+    }
+
+}

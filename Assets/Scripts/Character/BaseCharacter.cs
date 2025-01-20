@@ -12,11 +12,11 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected Animator animator;
     [SerializeField] protected BaseCharacterState state;
     [SerializeField] protected CharacterType characterType;
-    [SerializeField] protected long curHp;
+    [SerializeField] protected BigStats curHp;
 
     #region GetStatus
     public float Size => gameObject.transform.localScale.y / 2f;
-    public float GetHPRatio => ((float)curHp / HP());
+    public float GetHPRatio => (curHp / HP());
     public float AttackRange => state.AttackRange + Size;
     public float Dot()
     {
@@ -53,49 +53,49 @@ public class BaseCharacter : MonoBehaviour
     {
         return 0;
     }
-    public virtual long Attack()
+    public virtual BigStats Attack()
     {
-        return 0;
+        return BigStats.Zero;
     }
-    public virtual long Defense()
+    public virtual BigStats Defense()
     {
-        return 0;
+        return BigStats.Zero;
     }
-    public virtual long HP()
+    public virtual BigStats HP()
     {
-        return 0;
+        return BigStats.Zero;
     }
-    protected long DefenseCalculate(long attack)
+    protected BigStats DefenseCalculate(BigStats attack)
     {
         if (attack * .9f <= Defense())
         {
-            attack = (long)(attack * 0.1f);
+            attack = attack * 0.1f;
         }
         else if (attack * .7f <= Defense())
         {
-            attack = (long)(attack * 0.3f);
+            attack = attack * 0.3f;
         }
         else if (attack * .5f <= Defense())
         {
-            attack = (long)(attack * 0.5f);
+            attack = attack * 0.5f;
         }
         else if (attack * .3f <= Defense())
         {
-            attack = (long)(attack * 0.7f);
+            attack = attack * 0.7f;
         }
         else
         {
-            attack = (long)(attack * 0.9f);
+            attack = attack * 0.9f;
         }
 
-        if (attack <= 0)
+        if (attack.IsZero)
         {
-            attack = 1;
+            attack = BigStats.Zero;
         }
 
         return attack;
     }
-    public bool IsDeath => curHp <= 0;
+    public bool IsDeath => curHp.IsZero;
     public bool IsTarget => Target() != null;
     public bool IsLookAt => Dot() > 0;
     public CharacterType CharacterType => characterType;
@@ -142,6 +142,11 @@ public class BaseCharacter : MonoBehaviour
     {
         return 0;
     }
+
+    public virtual BigStats GetBigState(ClientEnum.State target)
+    {
+        return BigStats.Zero;
+    }
     #endregion
 
     protected virtual void FixedUpdate()
@@ -165,7 +170,7 @@ public class BaseCharacter : MonoBehaviour
 
     public virtual void Init()
     {
-        curHp = HP();
+        curHp = HP().Copy;
         SetAnimationSpeed();
     }
 
@@ -182,13 +187,23 @@ public class BaseCharacter : MonoBehaviour
         agent.StateMachine.ChangeState(AiStateID.Idle);
     }
 
-    public virtual void AddHp(long hp)
+    public virtual void AddHp(int hp)
     {
         curHp += hp;
 
         if (curHp > HP())
         {
-            curHp = HP();
+            curHp = HP().Copy;
+        }
+    }
+
+    public virtual void AddHp(BigStats hp)
+    {
+        curHp += hp;
+
+        if (curHp > HP())
+        {
+            curHp = HP().Copy;
         }
     }
 
@@ -196,22 +211,17 @@ public class BaseCharacter : MonoBehaviour
     {
         StopBuff();
     }
-    public virtual long Hit(long attack)
+    public virtual BigStats Hit(BigStats attack)
     {
-        if (curHp <= 0)
+        if (curHp.IsZero)
         {
-            return 0;
+            return BigStats.Zero;
         }
 
         attack = DefenseCalculate(attack);
         curHp -= attack;
 
-        if (curHp < 0)
-        {
-            curHp = 0;
-        }
-
-        if (curHp <= 0)
+        if (curHp.IsZero)
         {
             Death();
             agent.StateMachine.ChangeState(AiStateID.Death);
@@ -223,7 +233,7 @@ public class BaseCharacter : MonoBehaviour
     {
         if (Dist() <= AttackRange && IsLookAt)
         {
-            long attack = (long)(Target().Hit(Attack()) * DrainLife());
+            BigStats attack = (Target().Hit(Attack()) * DrainLife());
             AddHp(attack);
         }
     }

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using JsonClass;
+using ClientEnum;
 
 public class StatePanel : BasePanel
 {
     [SerializeField,ReadOnly] List<UIStateUpgradeSlot> stateUpgradeSlots = new List<UIStateUpgradeSlot>();
     [SerializeField,ReadOnly] UIStateUpgradeSlot prefab;
+    [SerializeField,ReadOnly] Text stateText;
+    [SerializeField,ReadOnly] Text valueText;
 
     public override void OnUpdate()
     {
@@ -36,6 +39,8 @@ public class StatePanel : BasePanel
                 stateUpgradeSlots.Add(slot);
             }
         }
+
+        UpdateState();
     }
 
     public override void Open()
@@ -53,4 +58,33 @@ public class StatePanel : BasePanel
 
     }
 
+    public void UpdateState()
+    {
+        string state = string.Empty;
+        string value = string.Empty;
+        LocalizationScriptable localization = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization);
+        PlayerCharacter player = GameManager.Instance.Player;
+        
+        for (int i = (int)State.HP; i < (int)State.Max;i++)
+        {
+            State current = (State)i;
+            string local = localization.Get(EnumString<State>.ToString(current));
+            string stateValue = string.Empty;
+
+            if (i < (int)State.HpRegen)
+            {
+                stateValue = player.GetBigState(current).Text;
+            }
+            else
+            {
+                stateValue = player.GetState(current).ToString();
+            }
+
+            value += $"{local}\n";
+            state += $"{stateValue}\n";
+        }
+
+        stateText.text = value;
+        valueText.text = state;
+    }
 }

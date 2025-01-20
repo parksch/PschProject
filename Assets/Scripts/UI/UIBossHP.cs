@@ -11,26 +11,26 @@ public class UIBossHP : MonoBehaviour
     [SerializeField, ReadOnly] Text timeText;
     [SerializeField] float targetTime;
 
-    public void SetHP(long hp) 
+    public void SetHP(BigStats hp) 
     {
         targetHp = hp;
         currentHp = targetHp;
         hpSlider.value = 1;
-        hpText.text = $"{currentHp}/{targetHp}";
+        hpText.text = $"{currentHp.Text}/{targetHp.Text}";
     }
     public void SetTime(float time) => targetTime = time;
     public void SetName(string name) => nameText.text = name;
-    public void UpdateHp(long hp)
+    public void UpdateHp(BigStats hp)
     {
         currentHp = hp;
-        hpSlider.value = (float)currentHp/targetHp;
-        hpText.text = $"{currentHp}/{targetHp}";
+        hpSlider.value = currentHp/targetHp;
+        hpText.text = $"{currentHp.Text}/{targetHp.Text}";
     }
     public void SetOn() => isOn = true;
 
     bool isOn;
-    long targetHp;
-    long currentHp;
+    BigStats targetHp;
+    BigStats currentHp;
 
     private void FixedUpdate()
     {

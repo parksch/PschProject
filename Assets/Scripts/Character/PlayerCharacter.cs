@@ -37,7 +37,7 @@ public class PlayerCharacter : BaseCharacter
         if (currentRegenTimer >= State.HpRegenTimer)
         {
             currentRegenTimer = 0;
-            AddHp(State.HpRegen);
+            AddHp(State.HP * State.HpRegen);
             UIManager.Instance.OnChangePlayerHP(GetHPRatio);
         }
 
@@ -61,9 +61,9 @@ public class PlayerCharacter : BaseCharacter
         base.Init();
     }
 
-    public override long Attack()
+    public override BigStats Attack()
     {
-        return (long)(State.Attack * BuffValues(ClientEnum.State.Attack));
+        return (State.Attack * BuffValues(ClientEnum.State.Attack));
     }
 
     public override float AttackSpeed()
@@ -71,7 +71,7 @@ public class PlayerCharacter : BaseCharacter
         return State.AttackSpeed;
     }
 
-    public override long HP()
+    public override BigStats HP()
     {
         return State.HP;
     }
@@ -81,7 +81,7 @@ public class PlayerCharacter : BaseCharacter
         return State.MoveSpeed;
     }
 
-    public override long Defense()
+    public override BigStats Defense()
     {
         return State.Defense;
     }
@@ -102,7 +102,7 @@ public class PlayerCharacter : BaseCharacter
 
             if (dist <= AttackRange + enemies[i].Size && Vector3.Dot(transform.forward, normal) > 0)
             {
-                long attack = (long)(enemies[i].Hit(Attack()) * DrainLife());
+                BigStats attack = (enemies[i].Hit(Attack()) * DrainLife());
 
                 if (!IsDeath)
                 {
@@ -119,7 +119,7 @@ public class PlayerCharacter : BaseCharacter
 
     public void ResetPlayer()
     {
-        curHp = HP();
+        curHp = HP().Copy;
         ResetBuff();
         ResetAI();
         UIManager.Instance.OnChangePlayerHP(GetHPRatio);
@@ -137,11 +137,11 @@ public class PlayerCharacter : BaseCharacter
         UIManager.Instance.ResetBuff();
     }
 
-    public override long Hit(long attack)
+    public override BigStats Hit(BigStats attack)
     {
-        if (curHp <= 0)
+        if (curHp.IsZero)
         {
-            return 0;
+            return BigStats.Zero;
         }
 
         attack = base.Hit(attack);
@@ -240,23 +240,49 @@ public class PlayerCharacter : BaseCharacter
 
         switch (target)
         {
-            case ClientEnum.State.HP:
-                value = HP();
-                break;
-            case ClientEnum.State.Attack:
-                value = Attack();
-                break;
-            case ClientEnum.State.Defense:
-                value = Defense();
-                break;
             case ClientEnum.State.HpRegen:
                 value = State.HpRegen;
+                break;
+            case ClientEnum.State.DrainLife:
+                value = State.DrainLife;
+                break;
+            case ClientEnum.State.AttackRange:
+                value = State.AttackRange;
+                break;
+            case ClientEnum.State.AttackSpeed:
+                value = State.AttackSpeed;
+                break;
+            case ClientEnum.State.MoveSpeed:
+                value = State.MoveSpeed;
+                break;
+            case ClientEnum.State.HpRegenTimer:
+                value = State.HpRegenTimer;
                 break;
             default:
                 break;
         }
 
         return value;
+    }
+
+    public override BigStats GetBigState(State target)
+    {
+        BigStats bigStats = BigStats.Zero;
+
+        switch (target)
+        {
+            case ClientEnum.State.HP:
+                bigStats = State.HP;
+                break;
+            case ClientEnum.State.Attack:
+                bigStats = State.Attack;
+                break;
+            case ClientEnum.State.Defense:
+                bigStats = State.Defense;
+                break;
+        }
+
+        return bigStats;
     }
 
     public void SetPlayerPos(Vector3 pos)

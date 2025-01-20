@@ -88,13 +88,21 @@ public class SkillBase : MonoBehaviour
     {
         BaseCharacter enemy = other.GetComponentInParent<BaseCharacter>();
         float target = character.GetState(state);
+        BigStats stats = character.GetBigState(state);
 
         switch (character.CharacterType)
         {
             case ClientEnum.CharacterType.Player:
                 if (enemy.CharacterType == CharacterType.Enemy)
                 {
-                    Attack(enemy,target);
+                    if (state < State.HpRegen)
+                    {
+                        Attack(enemy, stats);
+                    }
+                    else
+                    {
+                        Attack(enemy, target);
+                    }
                 }
                 break;
             case ClientEnum.CharacterType.Enemy:
@@ -106,7 +114,21 @@ public class SkillBase : MonoBehaviour
 
     protected virtual void Attack(BaseCharacter enemy,float target)
     {
-        long attack = (long)(enemy.Hit((long)(value * target)) * character.DrainLife());
+        BigStats bigStats = BigStats.Zero;
+        bigStats += (int)target;
+        bigStats *= (int)value;
+
+        BigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
+        character.AddHp(attack);
+    }
+
+    protected virtual void Attack(BaseCharacter enemy,BigStats stats)
+    {
+        BigStats bigStats = BigStats.Zero;
+        bigStats += stats;
+        bigStats *= (int)value;
+
+        BigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
         character.AddHp(attack);
     }
 }

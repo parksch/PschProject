@@ -36,17 +36,17 @@ public class EnemyCharacter : BaseCharacter
         }
     }
 
-    public override long Attack()
+    public override BigStats Attack()
     {
         return State.Attack;
     }
 
-    public override long HP()
+    public override BigStats HP()
     {
         return State.HP;
     }
 
-    public override long Defense()
+    public override BigStats Defense()
     {
         return State.Defense;
     }
@@ -68,7 +68,7 @@ public class EnemyCharacter : BaseCharacter
 
     public void SystemDeath()
     {
-        curHp = 0;
+        curHp.SetZero();
         Death();
         agent.StateMachine.ChangeState(AiStateID.Death);
     }
@@ -89,14 +89,14 @@ public class EnemyCharacter : BaseCharacter
     }
 
 
-    public override long Hit(long attack)
+    public override BigStats Hit(BigStats attack)
     {
-        if (curHp <= 0)
+        if (curHp.IsZero)
         {
-            return 0;
+            return BigStats.Zero;
         }
 
-        long result = base.Hit(attack);
+        BigStats result = base.Hit(attack);
 
         hitObject.SetActive(false);
         hitObject.SetActive(true);

@@ -21,7 +21,7 @@ MonoBehaviour:
     upgradeState: 1
     changeType: 0
     maxLevel: 100
-    addValue: 100
+    addValue: 1500
     goodsType: 1
     needGoods: 1000
     levelPerGoods: 0.5
@@ -56,11 +56,11 @@ MonoBehaviour:
     name: HpRegen
     upgradeState: 4
     changeType: 0
-    maxLevel: 100
-    addValue: 10
+    maxLevel: 10
+    addValue: 0.01
     goodsType: 1
     needGoods: 10000
-    levelPerGoods: 5
+    levelPerGoods: 10
   - upgradeType: 0
     atlas: 
     sprite: 

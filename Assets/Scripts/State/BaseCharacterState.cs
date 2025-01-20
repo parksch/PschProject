@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class BaseCharacterState : MonoBehaviour
 {
-    [SerializeField] protected long  attack;     
-    [SerializeField] protected long  hp;         
-    [SerializeField] protected long  defense;    
+    [SerializeField] protected BigStats  attack;     
+    [SerializeField] protected BigStats  hp;         
+    [SerializeField] protected BigStats  defense;    
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackSpeed;
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float drainLife;
 
-    public long Attack => attack;
-    public long HP => hp;
-    public long Defense => defense;
+    public BigStats Attack => attack;
+    public BigStats HP => hp;
+    public BigStats Defense => defense;
     public float DrainLife => drainLife;
     public float AttackSpeed => attackSpeed;
     public float MoveSpeed => moveSpeed;

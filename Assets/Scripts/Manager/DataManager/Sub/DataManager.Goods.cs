@@ -4,6 +4,7 @@ using UnityEngine;
 
 public partial class  DataManager //Goods
 {
+    Dictionary<ClientEnum.Goods, BigStats> goodsBigStats = new Dictionary<ClientEnum.Goods, BigStats>();
     Dictionary<ClientEnum.Goods, long> goodsDict = new Dictionary<ClientEnum.Goods, long>();
 
     public delegate void ChangeGoods(ClientEnum.Goods type,long value);

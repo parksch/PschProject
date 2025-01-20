@@ -17,13 +17,13 @@ MonoBehaviour:
   startExp: 10
   scrapMin: 10
   scrapMax: 50
-  multiplyperStageExp: 0.2
-  multiplyPerStageHp: 2
-  multiplyPerStageDefanse: 1.5
-  multiplyPerStageAttack: 1.5
-  multiplyPerGold: 0.2
   scrapProbability: 0.05
-  multiplyBossHp: 2
-  multiplyBossDefense: 1.5
-  multiplyBossAttack: 2
-  multiplyBossSize: 2
+  multiplierStageExp: 0.2
+  multiplierStageHp: 1.6
+  multiplierStageDefense: 1.5
+  multiplierStageAttack: 1.5
+  multiplierGold: 0.2
+  multiplierBossHp: 2
+  multiplierBossDefense: 1.5
+  multiplierBossAttack: 2
+  multiplierBossSize: 2

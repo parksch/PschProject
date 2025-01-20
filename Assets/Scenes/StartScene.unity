@@ -7032,14 +7032,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae4648ef3deb440a402445677b8478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 50
-  hp: 1000
-  defense: 10
+  attack:
+    mini: 100
+    token: 0
+  hp:
+    mini: 1000
+    token: 0
+  defense:
+    mini: 20
+    token: 0
   attackRange: 1
   attackSpeed: 2
   moveSpeed: 4
   drainLife: 0
-  hpRegen: 20
+  hpRegen: 0.05
   hpRegenTimer: 2
 --- !u!1 &1898427684
 GameObject:

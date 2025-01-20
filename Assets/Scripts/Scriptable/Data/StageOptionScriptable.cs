@@ -10,16 +10,16 @@ namespace JsonClass
         public int startExp;
         public int scrapMin;
         public int scrapMax;
-        public float multiplyperStageExp;
-        public float multiplyPerStageHp;
-        public float multiplyPerStageDefanse;
-        public float multiplyPerStageAttack;
-        public float multiplyPerGold;
         public float scrapProbability;
-        public float multiplyBossHp;
-        public float multiplyBossDefense;
-        public float multiplyBossAttack;
-        public float multiplyBossSize;
+        public float multiplierStageExp;
+        public float multiplierStageHp;
+        public float multiplierStageDefense;
+        public float multiplierStageAttack;
+        public float multiplierGold;
+        public float multiplierBossHp;
+        public float multiplierBossDefense;
+        public float multiplierBossAttack;
+        public float multiplierBossSize;
     }
 
 }

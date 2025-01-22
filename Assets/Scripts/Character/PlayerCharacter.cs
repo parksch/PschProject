@@ -61,9 +61,9 @@ public class PlayerCharacter : BaseCharacter
         base.Init();
     }
 
-    public override BigStats Attack()
+    public override UNBigStats Attack()
     {
-        return (State.Attack * BuffValues(ClientEnum.State.Attack));
+        return (State.Attack + BuffValues(ClientEnum.State.Attack,ChangeType.Sum)) * BuffValues(ClientEnum.State.Attack,ChangeType.Product);
     }
 
     public override float AttackSpeed()
@@ -71,7 +71,7 @@ public class PlayerCharacter : BaseCharacter
         return State.AttackSpeed;
     }
 
-    public override BigStats HP()
+    public override UNBigStats HP()
     {
         return State.HP;
     }
@@ -81,9 +81,9 @@ public class PlayerCharacter : BaseCharacter
         return State.MoveSpeed;
     }
 
-    public override BigStats Defense()
+    public override UNBigStats Defense()
     {
-        return State.Defense;
+        return (State.Defense + BuffValues(ClientEnum.State.Defense,ChangeType.Sum)) * BuffValues(ClientEnum.State.Defense, ChangeType.Product);
     }
 
     public override float DrainLife()
@@ -102,7 +102,7 @@ public class PlayerCharacter : BaseCharacter
 
             if (dist <= AttackRange + enemies[i].Size && Vector3.Dot(transform.forward, normal) > 0)
             {
-                BigStats attack = (enemies[i].Hit(Attack()) * DrainLife());
+                UNBigStats attack = (enemies[i].Hit(Attack()) * DrainLife());
 
                 if (!IsDeath)
                 {
@@ -137,11 +137,11 @@ public class PlayerCharacter : BaseCharacter
         UIManager.Instance.ResetBuff();
     }
 
-    public override BigStats Hit(BigStats attack)
+    public override UNBigStats Hit(UNBigStats attack)
     {
         if (curHp.IsZero)
         {
-            return BigStats.Zero;
+            return UNBigStats.Zero;
         }
 
         attack = base.Hit(attack);
@@ -265,9 +265,9 @@ public class PlayerCharacter : BaseCharacter
         return value;
     }
 
-    public override BigStats GetBigState(State target)
+    public override UNBigStats GetBigState(State target)
     {
-        BigStats bigStats = BigStats.Zero;
+        UNBigStats bigStats = UNBigStats.Zero;
 
         switch (target)
         {
@@ -290,9 +290,9 @@ public class PlayerCharacter : BaseCharacter
         transform.position = pos;
     }
 
-    protected override BuffBase SetBuff(BuffData buffData, float timer, float value)
+    protected override BuffBase SetBuff(BuffData buffData, float timer, float value, ChangeType changeType)
     {
-        BuffBase buff = base.SetBuff(buffData, timer, value);
+        BuffBase buff = base.SetBuff(buffData, timer, value, changeType);
 
         if (buff != null)
         {

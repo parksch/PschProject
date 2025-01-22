@@ -58,7 +58,7 @@ public partial class UIManager //Main
         escapeButton.SetActive(false);
     }
 
-    public void UpdateBossHp(BigStats hp)
+    public void UpdateBossHp(UNBigStats hp)
     {
         bossHP.UpdateHp(hp);
     }
@@ -85,7 +85,7 @@ public partial class UIManager //Main
         string title = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
         stageText.text = string.Format(title, stageNum);
     }
-    public void SetBossUI(BigStats hp,string name)
+    public void SetBossUI(UNBigStats hp,string name)
     {
         bossHP.SetHP(hp);
         bossHP.SetName(name);

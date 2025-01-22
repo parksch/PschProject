@@ -12,7 +12,7 @@ public class BaseCharacter : MonoBehaviour
     [SerializeField] protected Animator animator;
     [SerializeField] protected BaseCharacterState state;
     [SerializeField] protected CharacterType characterType;
-    [SerializeField] protected BigStats curHp;
+    [SerializeField] protected UNBigStats curHp;
 
     #region GetStatus
     public float Size => gameObject.transform.localScale.y / 2f;
@@ -53,19 +53,19 @@ public class BaseCharacter : MonoBehaviour
     {
         return 0;
     }
-    public virtual BigStats Attack()
+    public virtual UNBigStats Attack()
     {
-        return BigStats.Zero;
+        return UNBigStats.Zero;
     }
-    public virtual BigStats Defense()
+    public virtual UNBigStats Defense()
     {
-        return BigStats.Zero;
+        return UNBigStats.Zero;
     }
-    public virtual BigStats HP()
+    public virtual UNBigStats HP()
     {
-        return BigStats.Zero;
+        return UNBigStats.Zero;
     }
-    protected BigStats DefenseCalculate(BigStats attack)
+    protected UNBigStats DefenseCalculate(UNBigStats attack)
     {
         if (attack * .9f <= Defense())
         {
@@ -90,7 +90,7 @@ public class BaseCharacter : MonoBehaviour
 
         if (attack.IsZero)
         {
-            attack = BigStats.Zero;
+            attack = UNBigStats.Zero;
         }
 
         return attack;
@@ -118,9 +118,10 @@ public class BaseCharacter : MonoBehaviour
 
         return target;
     }
-    protected float BuffValues(ClientEnum.State target)
+
+    protected float BuffValues(State target,ChangeType changeType)
     {
-        float value = 1;
+        float value = changeType == ChangeType.Product ? 1: 0;
 
         for (int i = 0; i < buffs.Count; i++)
         {
@@ -129,6 +130,7 @@ public class BaseCharacter : MonoBehaviour
 
         return value;
     }
+
     public Transform TargetTransform()
     {
         if (Target() == null)
@@ -143,9 +145,9 @@ public class BaseCharacter : MonoBehaviour
         return 0;
     }
 
-    public virtual BigStats GetBigState(ClientEnum.State target)
+    public virtual UNBigStats GetBigState(ClientEnum.State target)
     {
-        return BigStats.Zero;
+        return UNBigStats.Zero;
     }
     #endregion
 
@@ -160,10 +162,16 @@ public class BaseCharacter : MonoBehaviour
         {
             if (buffs[i].Timer <= 0)
             {
+                BuffBase buff = buffs[i];
                 buffs[i].BuffEnd();
                 buffs[i].Enqueue();
                 buffs.RemoveAt(i);
                 i--;
+
+                if (buff.State == State.AttackSpeed || buff.State == State.MoveSpeed)
+                {
+                    SetAnimationSpeed();
+                }
             }
         }
     }
@@ -197,7 +205,7 @@ public class BaseCharacter : MonoBehaviour
         }
     }
 
-    public virtual void AddHp(BigStats hp)
+    public virtual void AddHp(UNBigStats hp)
     {
         curHp += hp;
 
@@ -211,11 +219,11 @@ public class BaseCharacter : MonoBehaviour
     {
         StopBuff();
     }
-    public virtual BigStats Hit(BigStats attack)
+    public virtual UNBigStats Hit(UNBigStats attack)
     {
         if (curHp.IsZero)
         {
-            return BigStats.Zero;
+            return UNBigStats.Zero;
         }
 
         attack = DefenseCalculate(attack);
@@ -233,7 +241,7 @@ public class BaseCharacter : MonoBehaviour
     {
         if (Dist() <= AttackRange && IsLookAt)
         {
-            BigStats attack = (Target().Hit(Attack()) * DrainLife());
+            UNBigStats attack = (Target().Hit(Attack()) * DrainLife());
             AddHp(attack);
         }
     }
@@ -242,7 +250,7 @@ public class BaseCharacter : MonoBehaviour
         ResetBuff();
     }
 
-    protected virtual BuffBase SetBuff(JsonClass.BuffData buffData, float timer, float value)
+    protected virtual BuffBase SetBuff(JsonClass.BuffData buffData, float timer, float value,ChangeType changeType)
     {
         BuffBase buffBase = buffs.Find(x => x.ID == buffData.name);
 
@@ -252,20 +260,33 @@ public class BaseCharacter : MonoBehaviour
             buffBase.transform.parent = buffTrans;
             buffBase.transform.localPosition = Vector3.zero;
             buffBase.transform.localRotation = Quaternion.identity;
-            buffBase.BuffStart(timer, value);
+            buffBase.BuffStart(timer, value,changeType);
             buffs.Add(buffBase);
+
+            if (buffBase.State == State.AttackSpeed || buffBase.State == State.MoveSpeed)
+            {
+                SetAnimationSpeed();
+            }
+
             return buffBase;
         }
         else
         {
             buffBase.gameObject.SetActive(false);
             buffBase.gameObject.SetActive(true);
-            buffBase.BuffCheck(timer, value);
+            buffBase.BuffCheck(timer, value, changeType);
+
+            if (buffBase.State == State.AttackSpeed || buffBase.State == State.MoveSpeed)
+            {
+                SetAnimationSpeed();
+            }
+
             return null;
         }
+
     }
 
-    public void AddBuff(string key, float timer, float addValue)
+    public void AddBuff(string key, float timer, float addValue,ChangeType change)
     {
         JsonClass.BuffData buffData = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData).buffData.Find(x => x.name == key);
 
@@ -274,7 +295,7 @@ public class BaseCharacter : MonoBehaviour
             return;
         }
 
-        SetBuff(buffData, timer, addValue);
+        SetBuff(buffData, timer, addValue,change);
     }
 
     public void StopBuff()

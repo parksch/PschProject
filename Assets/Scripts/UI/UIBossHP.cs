@@ -11,7 +11,7 @@ public class UIBossHP : MonoBehaviour
     [SerializeField, ReadOnly] Text timeText;
     [SerializeField] float targetTime;
 
-    public void SetHP(BigStats hp) 
+    public void SetHP(UNBigStats hp) 
     {
         targetHp = hp;
         currentHp = targetHp;
@@ -20,7 +20,7 @@ public class UIBossHP : MonoBehaviour
     }
     public void SetTime(float time) => targetTime = time;
     public void SetName(string name) => nameText.text = name;
-    public void UpdateHp(BigStats hp)
+    public void UpdateHp(UNBigStats hp)
     {
         currentHp = hp;
         hpSlider.value = currentHp/targetHp;
@@ -29,8 +29,8 @@ public class UIBossHP : MonoBehaviour
     public void SetOn() => isOn = true;
 
     bool isOn;
-    BigStats targetHp;
-    BigStats currentHp;
+    UNBigStats targetHp;
+    UNBigStats currentHp;
 
     private void FixedUpdate()
     {

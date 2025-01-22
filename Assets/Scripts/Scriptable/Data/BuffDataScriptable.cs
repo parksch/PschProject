@@ -13,7 +13,6 @@ namespace JsonClass
     {
         public string name;
         public string prefab;
-        public int targetState;
         public string atlas;
         public string sprite;
     }

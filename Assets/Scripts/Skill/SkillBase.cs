@@ -88,7 +88,7 @@ public class SkillBase : MonoBehaviour
     {
         BaseCharacter enemy = other.GetComponentInParent<BaseCharacter>();
         float target = character.GetState(state);
-        BigStats stats = character.GetBigState(state);
+        UNBigStats stats = character.GetBigState(state);
 
         switch (character.CharacterType)
         {
@@ -114,21 +114,21 @@ public class SkillBase : MonoBehaviour
 
     protected virtual void Attack(BaseCharacter enemy,float target)
     {
-        BigStats bigStats = BigStats.Zero;
+        UNBigStats bigStats = UNBigStats.Zero;
         bigStats += (int)target;
         bigStats *= value;
 
-        BigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
+        UNBigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
         character.AddHp(attack);
     }
 
-    protected virtual void Attack(BaseCharacter enemy,BigStats stats)
+    protected virtual void Attack(BaseCharacter enemy,UNBigStats stats)
     {
-        BigStats bigStats = BigStats.Zero;
+        UNBigStats bigStats = UNBigStats.Zero;
         bigStats += stats;
         bigStats *= value;
 
-        BigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
+        UNBigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
         character.AddHp(attack);
     }
 }

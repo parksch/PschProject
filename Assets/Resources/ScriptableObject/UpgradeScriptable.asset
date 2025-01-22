@@ -21,7 +21,7 @@ MonoBehaviour:
     upgradeState: 1
     changeType: 0
     maxLevel: 100
-    addValue: 1500
+    addValue: 1300
     goodsType: 1
     needGoods: 1000
     levelPerGoods: 0.5

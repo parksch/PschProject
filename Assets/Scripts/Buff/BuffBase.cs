@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ClientEnum;
 
 public class BuffBase : MonoBehaviour
 {
     [SerializeField] GameObject targetParticle;
-    [SerializeField] ClientEnum.State state;
+    [SerializeField] State state;
+    [SerializeField, ReadOnly] ChangeType changeType;
     [SerializeField] string id;
     [SerializeField] bool isDebuff;
     [SerializeField] float timer;
@@ -14,8 +16,8 @@ public class BuffBase : MonoBehaviour
     public void Stop() => isOn = false;
     public string ID => id;
     public float Timer => timer;
-    public ClientEnum.State State => state;
-    public float Value(ClientEnum.State target)
+    public State State => state;
+    public float Value(State target)
     {
         if (target == state)
         {
@@ -27,7 +29,6 @@ public class BuffBase : MonoBehaviour
         }
     }
 
-    float maxTimer = 0;
     float tick = 0f;
     bool isOn = false;
 
@@ -55,23 +56,22 @@ public class BuffBase : MonoBehaviour
         }
     }
 
-    public virtual void BuffCheck(float _timer,float _value)
+    public virtual void BuffCheck(float _timer,float _value,ClientEnum.ChangeType change)
     {
-        if (value <= _value)
+        if (value <= _value && change == changeType)
         {
             isOn = true;
             value = _value;
             timer = _timer;
-            maxTimer = timer;
         }
     }
 
-    public virtual void BuffStart(float _timer,float _value)
+    public virtual void BuffStart(float _timer,float _value,ClientEnum.ChangeType change)
     {
         isOn = true;
         value = _value;
         timer = _timer;
-        maxTimer = timer;
+        changeType = change;
         tick = 0;
         gameObject.SetActive(true);
     }
@@ -83,6 +83,7 @@ public class BuffBase : MonoBehaviour
 
     public virtual void BuffEnd()
     {
+
     }
 
     public void Enqueue()

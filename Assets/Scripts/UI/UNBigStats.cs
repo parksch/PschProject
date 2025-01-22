@@ -1,37 +1,36 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 [System.Serializable]
-public class BigStats
+public class UNBigStats
 {
+    [SerializeField] long mini = 0;
+    [SerializeField] float token = 0;
+
     const int referenceValue = 100000000;
     const int referenceDisplayValue = 10000;
-
-    [SerializeField] int mini = 0;
-    [SerializeField] float token = 0;
 
     public string Text
     {
         get
         {
             if (token <= 0 && mini < referenceDisplayValue)
-                return mini.ToString(); // 숫자가 작으면 그대로 반환
+                return mini.ToString();
 
+            string unitString = "";
             double totalValue = token * referenceValue + mini;
-            int alphabetOffset = 26;
             char startChar = 'A';
-
+            int alphabetOffset = 26;
             int unitLevel = 0;
+
             while (totalValue >= referenceDisplayValue)
             {
                 totalValue /= referenceDisplayValue;
                 unitLevel++;
             }
 
-            string unitString = "";
+            totalValue = Math.Floor(totalValue * 100) / 100f;
+
             while (unitLevel > 0)
             {
                 unitLevel--; 
@@ -42,35 +41,42 @@ public class BigStats
             return $"{totalValue:0.##}{unitString}"; 
         }
     }
-
     public void SetZero() { mini = 0; token = 0; } 
-
     public bool IsZero => mini == 0 && token == 0; 
-
-    public BigStats Copy
+    public UNBigStats Copy
     {
         get
         {
-            BigStats bigStats = Zero;
+            UNBigStats bigStats = Zero;
             bigStats += this;
 
             return bigStats;
         }
     }
 
-    public static BigStats operator +(BigStats a, BigStats b)
+    public static UNBigStats Zero
     {
-        BigStats result = new BigStats();
+        get
+        {
+            UNBigStats result = new UNBigStats();
+            result.token = 0;
+            result.mini = 0;
+
+            return result;
+        }
+    }
+    public static UNBigStats operator +(UNBigStats a, UNBigStats b)
+    {
+        UNBigStats result = new UNBigStats();
 
         result.mini = a.mini + b.mini;
         result.token = a.token + b.token;
 
         return FinishingWork(result);
     }
-
-    public static BigStats operator -(BigStats a, BigStats b)
+    public static UNBigStats operator -(UNBigStats a, UNBigStats b)
     {
-        BigStats result = new BigStats();
+        UNBigStats result = new UNBigStats();
 
         if (b.token > a.token)
         {
@@ -106,31 +112,37 @@ public class BigStats
 
         return FinishingWork(result);
     }
-
-    public static BigStats operator +(BigStats a, int value)
+    public static UNBigStats operator +(UNBigStats a, int value)
     {
-        BigStats result = new BigStats();
+        UNBigStats result = new UNBigStats();
 
         result.mini = a.mini + value % referenceValue;
         result.token = a.token + value / referenceValue;
 
         return result;
     }
-
-    public static BigStats operator *(BigStats a, float multiplier)
+    public static UNBigStats operator +(UNBigStats a, float value)
     {
-        BigStats result = new BigStats();
+        UNBigStats result = new UNBigStats();
 
-        result.mini = Mathf.RoundToInt(a.mini * multiplier);
+        result.mini = (long)Mathf.Round(a.mini + value % referenceValue);
+        result.token = a.token + value / referenceValue;
+
+        return result;
+    }
+    public static UNBigStats operator *(UNBigStats a, float multiplier)
+    {
+        UNBigStats result = new UNBigStats();
+
+        result.mini = (long)Mathf.Round(a.mini * multiplier);
         result.token = a.token * multiplier;
 
         float value = result.token - Mathf.Floor(result.token);
-        result.mini += (int)(value * referenceValue);
+        result.mini += (long)Mathf.Round(value * referenceValue);
 
         return FinishingWork(result);
     }
-
-    public static float operator /(BigStats a, BigStats b)
+    public static float operator /(UNBigStats a, UNBigStats b)
     {
         if (a.token == 0 && b.token == 0 && (Mathf.Max(a.mini,b.mini) < 1000000 ))
         {
@@ -169,18 +181,15 @@ public class BigStats
 
         return scaledA/scaledB;
     }
-
-    public static bool operator <=(BigStats a, BigStats b)
+    public static bool operator <=(UNBigStats a, UNBigStats b)
     {
         return (a.token <= b.token) && a.mini <= b.mini;
     }
-
-    public static bool operator >=(BigStats a, BigStats b)
+     public static bool operator >=(UNBigStats a, UNBigStats b)
     {
         return (a.token >= b.token) && a.mini >= b.mini;
     }
-
-    public static bool operator >(BigStats a, BigStats b)
+    public static bool operator >(UNBigStats a, UNBigStats b)
     {
         if (a.token == b.token)
         {
@@ -191,8 +200,7 @@ public class BigStats
             return (a.token > b.token);
         }
     }
-
-    public static bool operator <(BigStats a, BigStats b)
+    public static bool operator <(UNBigStats a, UNBigStats b)
     {
         if (a.token == b.token)
         {
@@ -204,24 +212,11 @@ public class BigStats
         }
     }
 
-    public static BigStats Zero
-    {
-        get
-        {
-            BigStats result = new BigStats();
-            result.token = 0;
-            result.mini = 0;
-
-            return result;
-        }
-    }
-
-    static BigStats FinishingWork(BigStats result)
+    static UNBigStats FinishingWork(UNBigStats result)
     {
         result.token += result.mini / referenceValue;
         result.mini %= referenceValue;
 
         return result;
     }
-
 }

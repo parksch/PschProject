@@ -28,6 +28,8 @@ MonoBehaviour:
     range: 2
     skillBuffs:
     - state: 
+      characterType: 0
+      changeType: 0
       timer: 0
       value: 0
   - id: WarCry
@@ -44,9 +46,16 @@ MonoBehaviour:
     coolTime: 10
     range: 2
     skillBuffs:
-    - state: 
-      timer: 0
-      value: 0
+    - state: AttackBuff
+      characterType: 0
+      changeType: 1
+      timer: 10
+      value: 0.1
+    - state: AttackDebuff
+      characterType: 1
+      changeType: 1
+      timer: 10
+      value: 0.2
   - id: Earthquake
     atlas: Icon
     sprite: SkillEarthquake
@@ -62,6 +71,8 @@ MonoBehaviour:
     range: 2
     skillBuffs:
     - state: 
+      characterType: 0
+      changeType: 0
       timer: 0
       value: 0
   - id: HalfMoonSlash
@@ -79,5 +90,7 @@ MonoBehaviour:
     range: 2
     skillBuffs:
     - state: AttackBuff
+      characterType: 0
+      changeType: 1
       timer: 10
       value: 0.5

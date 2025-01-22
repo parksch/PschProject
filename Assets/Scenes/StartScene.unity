@@ -7033,13 +7033,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack:
-    mini: 100
+    mini: 50
     token: 0
   hp:
     mini: 1000
     token: 0
   defense:
-    mini: 20
+    mini: 10
     token: 0
   attackRange: 1
   attackSpeed: 2

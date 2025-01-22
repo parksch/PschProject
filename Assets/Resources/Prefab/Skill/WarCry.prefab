@@ -76,7 +76,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 294976042600559836}
-  - component: {fileID: 8742048943770532774}
+  - component: {fileID: -537513297225094427}
   - component: {fileID: -336061069679542564}
   m_Layer: 11
   m_Name: WarCry
@@ -103,7 +103,7 @@ Transform:
   - {fileID: 1915921731804271981}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8742048943770532774
+--- !u!114 &-537513297225094427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1405500511935152084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c442a10bfa70d02448fff3d3883d0096, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cdf1f4497538814e93e12fecc473510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: WarCry
@@ -121,6 +121,7 @@ MonoBehaviour:
   cameras:
   - {fileID: 7175422460758817345}
   - {fileID: 8929646729062780351}
+  buffs: []
   character: {fileID: 0}
   state: 0
   value: 0
@@ -5222,7 +5223,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8742048943770532774}
+        - m_Target: {fileID: -537513297225094427}
           m_TargetAssemblyTypeName: SkillBase, Assembly-CSharp
           m_MethodName: Stop
           m_Mode: 1

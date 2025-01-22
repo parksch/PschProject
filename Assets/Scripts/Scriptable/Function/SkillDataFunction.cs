@@ -63,4 +63,17 @@ namespace JsonClass
         }
     }
 
+    public partial class SkillBuffs // This Class is a functional Class.
+    {
+        public ChangeType ChangeType()
+        {
+            return (ChangeType)changeType;
+        }
+
+        public CharacterType CharacterType() 
+        {
+            return (CharacterType)characterType;
+        }
+    }
+
 }

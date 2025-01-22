@@ -36,17 +36,17 @@ public class EnemyCharacter : BaseCharacter
         }
     }
 
-    public override BigStats Attack()
+    public override UNBigStats Attack()
     {
         return State.Attack;
     }
 
-    public override BigStats HP()
+    public override UNBigStats HP()
     {
         return State.HP;
     }
 
-    public override BigStats Defense()
+    public override UNBigStats Defense()
     {
         return State.Defense;
     }
@@ -89,14 +89,14 @@ public class EnemyCharacter : BaseCharacter
     }
 
 
-    public override BigStats Hit(BigStats attack)
+    public override UNBigStats Hit(UNBigStats attack)
     {
         if (curHp.IsZero)
         {
-            return BigStats.Zero;
+            return UNBigStats.Zero;
         }
 
-        BigStats result = base.Hit(attack);
+        UNBigStats result = base.Hit(attack);
 
         hitObject.SetActive(false);
         hitObject.SetActive(true);

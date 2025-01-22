@@ -31,6 +31,8 @@ namespace JsonClass
     public partial class SkillBuffs
     {
         public string state;
+        public int characterType;
+        public int changeType;
         public float timer;
         public float value;
     }

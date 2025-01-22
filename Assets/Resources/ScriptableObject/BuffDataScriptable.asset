@@ -15,6 +15,9 @@ MonoBehaviour:
   buffData:
   - name: AttackBuff
     prefab: AttackBuff
-    targetState: 1
     atlas: Icon2
     sprite: AttackBuff
+  - name: AttackDebuff
+    prefab: AttackDeBuff
+    atlas: Icon2
+    sprite: AttackDebuff

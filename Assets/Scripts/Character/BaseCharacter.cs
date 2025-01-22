@@ -288,7 +288,7 @@ public class BaseCharacter : MonoBehaviour
 
     public void AddBuff(string key, float timer, float addValue,ChangeType change)
     {
-        JsonClass.BuffData buffData = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData).buffData.Find(x => x.name == key);
+        BuffData buffData = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData).buffData.Find(x => x.name == key);
 
         if (buffData == null)
         {

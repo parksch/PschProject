@@ -16,6 +16,12 @@ public class EnemyCharacter : BaseCharacter
 
     public void Enqueue()
     {
+        if (hpbar != null)
+        {
+            hpbar.ReleaseHpBar();
+            hpbar = null;
+        }
+
         hitObject.SetActive(false);
         PoolManager.Instance.Enqueue(poolName, gameObject);
     }
@@ -77,8 +83,6 @@ public class EnemyCharacter : BaseCharacter
     public override void Death()
     {
         base.Death();
-        hpbar.ReleaseHpBar();
-        hpbar = null;
         GameManager.Instance.OnEnemyDeath(this);
         if (isBoss)
         {
@@ -112,6 +116,10 @@ public class EnemyCharacter : BaseCharacter
         if (!IsDeath)
         {
             hpbar.SetHPRatio(curHp / HP());
+        }
+        else
+        {
+            hpbar.SetHPRatio(0);
         }
 
         UIManager.Instance.WorldCanvas.SetDamageText(transform.position,result);

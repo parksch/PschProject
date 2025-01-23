@@ -7,7 +7,7 @@ public class UIText : MonoBehaviour
 {
     const int referenceDisplayValue = 10000;
 
-    [SerializeField] Text text;
+    [SerializeField] protected Text text;
 
     public void SetText(string str, long num) => text.text = str + GetValue(num);
     public void SetText(string str, int num) => text.text = str + GetValue(num);

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyCharacter : BaseCharacter
 {
+    [SerializeField] UIHP hpbar;
     [SerializeField] GameObject hitObject;
     [SerializeField] bool isBoss;
     [SerializeField] string poolName;
@@ -76,6 +77,8 @@ public class EnemyCharacter : BaseCharacter
     public override void Death()
     {
         base.Death();
+        hpbar.ReleaseHpBar();
+        hpbar = null;
         GameManager.Instance.OnEnemyDeath(this);
         if (isBoss)
         {
@@ -91,7 +94,7 @@ public class EnemyCharacter : BaseCharacter
 
     public override UNBigStats Hit(UNBigStats attack)
     {
-        if (curHp.IsZero)
+        if (IsDeath)
         {
             return UNBigStats.Zero;
         }
@@ -106,6 +109,13 @@ public class EnemyCharacter : BaseCharacter
             UIManager.Instance.UpdateBossHp(curHp);
         }
 
+        if (!IsDeath)
+        {
+            hpbar.SetHPRatio(curHp / HP());
+        }
+
+        UIManager.Instance.WorldCanvas.SetDamageText(transform.position,result);
+
         return result;
     }
 
@@ -119,6 +129,8 @@ public class EnemyCharacter : BaseCharacter
         {
             UIManager.Instance.SetBossUI(State.HP, ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(monsterData.local));
         }
+
+        hpbar = UIManager.Instance.WorldCanvas.SetHpBar(this);
     }
 
 }

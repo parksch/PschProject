@@ -23,8 +23,11 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
     [SerializeField, ReadOnly] RectTransform buffParent;
+    [SerializeField, ReadOnly] WorldCanvas worldCanvas;
     [SerializeField, ReadOnly] GameObject bossButton;
-    [SerializeField] GameObject escapeButton;
+    [SerializeField, ReadOnly] GameObject escapeButton;
+
+    public WorldCanvas WorldCanvas => worldCanvas;
 
     public delegate void ChangeHP(float ratio);
 

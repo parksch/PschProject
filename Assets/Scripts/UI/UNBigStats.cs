@@ -53,7 +53,6 @@ public class UNBigStats
             return bigStats;
         }
     }
-
     public static UNBigStats Zero
     {
         get
@@ -74,45 +73,16 @@ public class UNBigStats
 
         return FinishingWork(result);
     }
-    public static UNBigStats operator -(UNBigStats a, UNBigStats b)
+    public static UNBigStats operator +(UNBigStats a, int value)
     {
         UNBigStats result = new UNBigStats();
 
-        if (b.token > a.token)
-        {
-            result.mini = 0;
-            result.token = 0;
-        }
-        else
-        {
-            result.token = a.token - b.token;
+        result.mini = a.mini + value % referenceValue;
+        result.token = a.token + value / referenceValue;
 
-            if (a.mini < b.mini)
-            {
-                if (a.token > 0)
-                {
-                    a.token--;
-                    a.mini += referenceValue;
-
-                    result.token = a.token;
-                    result.mini = a.mini - b.mini;
-                }
-                else
-                {
-                    result.mini = 0;
-                    result.token = 0;
-                }
-            }
-            else
-            {
-                result.mini = a.mini - b.mini;
-            }
-
-        }
-
-        return FinishingWork(result);
+        return result;
     }
-    public static UNBigStats operator +(UNBigStats a, int value)
+    public static UNBigStats operator +(UNBigStats a, long value)
     {
         UNBigStats result = new UNBigStats();
 
@@ -129,6 +99,60 @@ public class UNBigStats
         result.token = a.token + value / referenceValue;
 
         return result;
+    }
+    public static UNBigStats operator -(UNBigStats a, UNBigStats b)
+    {
+        UNBigStats result = new UNBigStats();
+
+        if (b.token > a.token)
+        {
+            result.mini = 0;
+            result.token = 0;
+        }
+        else
+        {
+            result.token = a.token - b.token;
+
+            if (a.mini < b.mini)
+            {
+                if (result.token > 0)
+                {
+                    result.token--;
+                    result.mini += referenceValue;
+                    result.mini += a.mini - b.mini;
+                }
+                else
+                {
+                    result.mini = 0;
+                    result.token = 0;
+                }
+            }
+            else
+            {
+                result.mini = a.mini - b.mini;
+            }
+
+        }
+
+        return FinishingWork(result);
+    }
+    public static UNBigStats operator -(UNBigStats a, int value)
+    {
+        UNBigStats b = Zero + value;
+
+        return a - b;
+    }
+    public static UNBigStats operator -(UNBigStats a, float value)
+    {
+        UNBigStats b = Zero + value;
+
+        return a - b;
+    }
+    public static UNBigStats operator -(UNBigStats a, long value)
+    {
+        UNBigStats b = Zero + value;
+
+        return a - b;
     }
     public static UNBigStats operator *(UNBigStats a, float multiplier)
     {

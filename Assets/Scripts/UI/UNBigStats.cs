@@ -66,7 +66,7 @@ public class UNBigStats
     }
     public static UNBigStats operator +(UNBigStats a, UNBigStats b)
     {
-        UNBigStats result = new UNBigStats();
+        UNBigStats result = Zero;
 
         result.mini = a.mini + b.mini;
         result.token = a.token + b.token;
@@ -75,34 +75,46 @@ public class UNBigStats
     }
     public static UNBigStats operator +(UNBigStats a, int value)
     {
-        UNBigStats result = new UNBigStats();
+        UNBigStats b = Zero + Mathf.Abs(value);
 
-        result.mini = a.mini + value % referenceValue;
-        result.token = a.token + value / referenceValue;
-
-        return result;
+        if (value > 0)
+        {
+            return a + b;
+        }
+        else
+        {
+            return a - b;
+        }
     }
     public static UNBigStats operator +(UNBigStats a, long value)
     {
-        UNBigStats result = new UNBigStats();
+        UNBigStats b = Zero + Mathf.Abs(value);
 
-        result.mini = a.mini + value % referenceValue;
-        result.token = a.token + value / referenceValue;
-
-        return result;
+        if (value > 0)
+        {
+            return a + b;
+        }
+        else
+        {
+            return a - b;
+        }
     }
     public static UNBigStats operator +(UNBigStats a, float value)
     {
-        UNBigStats result = new UNBigStats();
+        UNBigStats b = Zero + Mathf.Abs(value);
 
-        result.mini = (long)Mathf.Round(a.mini + value % referenceValue);
-        result.token = a.token + value / referenceValue;
-
-        return result;
+        if (value > 0)
+        {
+            return a + b;
+        }
+        else
+        {
+            return a - b;
+        }
     }
     public static UNBigStats operator -(UNBigStats a, UNBigStats b)
     {
-        UNBigStats result = new UNBigStats();
+        UNBigStats result = Zero;
 
         if (b.token > a.token)
         {
@@ -118,8 +130,7 @@ public class UNBigStats
                 if (result.token > 0)
                 {
                     result.token--;
-                    result.mini += referenceValue;
-                    result.mini += a.mini - b.mini;
+                    result.mini = referenceValue + a.mini - b.mini;
                 }
                 else
                 {
@@ -138,25 +149,46 @@ public class UNBigStats
     }
     public static UNBigStats operator -(UNBigStats a, int value)
     {
-        UNBigStats b = Zero + value;
+        UNBigStats b = Zero + Mathf.Abs(value);
 
-        return a - b;
+        if (value > 0)
+        {
+            return a - b;
+        }
+        else
+        {
+            return a + b;
+        }
     }
     public static UNBigStats operator -(UNBigStats a, float value)
     {
         UNBigStats b = Zero + value;
 
-        return a - b;
+        if (value > 0)
+        {
+            return a - b;
+        }
+        else
+        {
+            return a + b;
+        }
     }
     public static UNBigStats operator -(UNBigStats a, long value)
     {
         UNBigStats b = Zero + value;
 
-        return a - b;
+        if (value > 0)
+        {
+            return a - b;
+        }
+        else
+        {
+            return a + b;
+        }
     }
     public static UNBigStats operator *(UNBigStats a, float multiplier)
     {
-        UNBigStats result = new UNBigStats();
+        UNBigStats result = Zero;
 
         result.mini = (long)Mathf.Round(a.mini * multiplier);
         result.token = a.token * multiplier;
@@ -238,8 +270,16 @@ public class UNBigStats
 
     static UNBigStats FinishingWork(UNBigStats result)
     {
-        result.token += result.mini / referenceValue;
-        result.mini %= referenceValue;
+        if (result.token < 0)
+        {
+            result.token = 0;
+            result.mini = 0;
+        }
+        else
+        {
+            result.token += result.mini / referenceValue;
+            result.mini %= referenceValue;
+        }
 
         return result;
     }

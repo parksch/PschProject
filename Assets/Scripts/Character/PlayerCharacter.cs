@@ -37,7 +37,7 @@ public class PlayerCharacter : BaseCharacter
         if (currentRegenTimer >= State.HpRegenTimer)
         {
             currentRegenTimer = 0;
-            AddHp(State.HP * State.HpRegen);
+            SumHp(State.HP * State.HpRegen);
             UIManager.Instance.OnChangePlayerHP(GetHPRatio);
         }
 
@@ -106,7 +106,7 @@ public class PlayerCharacter : BaseCharacter
 
                 if (!IsDeath)
                 {
-                    AddHp(attack);
+                    SumHp(attack);
                 }
             }
         }

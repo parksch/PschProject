@@ -5,21 +5,22 @@ using ClientEnum;
 
 public class BuffBase : MonoBehaviour
 {
-    [SerializeField] GameObject targetParticle;
+    [SerializeField, ReadOnly] float timer;
+    [SerializeField, ReadOnly] float value;
+    [SerializeField, ReadOnly] protected BaseCharacter character;
+    [SerializeField, ReadOnly] protected ChangeType changeType;
+    [SerializeField] protected GameObject targetParticle;
+    [SerializeField] protected bool isDebuff;
     [SerializeField] State state;
-    [SerializeField, ReadOnly] ChangeType changeType;
     [SerializeField] string id;
-    [SerializeField] bool isDebuff;
-    [SerializeField] float timer;
-    [SerializeField] float value;
 
     public void Stop() => isOn = false;
     public string ID => id;
     public float Timer => timer;
     public State State => state;
-    public float Value(State target)
+    public float Value(State target,ChangeType _changeType)
     {
-        if (target == state)
+        if (target == state && changeType == _changeType)
         {
             return isDebuff ? -value : value;
         }
@@ -66,8 +67,9 @@ public class BuffBase : MonoBehaviour
         }
     }
 
-    public virtual void BuffStart(float _timer,float _value,ClientEnum.ChangeType change)
+    public virtual void BuffStart(BaseCharacter baseCharacter,float _timer,float _value,ClientEnum.ChangeType change)
     {
+        character = baseCharacter;
         isOn = true;
         value = _value;
         timer = _timer;
@@ -88,6 +90,7 @@ public class BuffBase : MonoBehaviour
 
     public void Enqueue()
     {
+        character = null;
         PoolManager.Instance.Enqueue(id, gameObject);
     }
 }

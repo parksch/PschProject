@@ -119,7 +119,7 @@ public class SkillBase : MonoBehaviour
         bigStats *= value;
 
         UNBigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
-        character.AddHp(attack);
+        character.SumHp(attack);
     }
 
     protected virtual void Attack(BaseCharacter enemy,UNBigStats stats)
@@ -129,6 +129,6 @@ public class SkillBase : MonoBehaviour
         bigStats *= value;
 
         UNBigStats attack = (enemy.Hit(bigStats) * character.DrainLife());
-        character.AddHp(attack);
+        character.SumHp(attack);
     }
 }

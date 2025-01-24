@@ -121,11 +121,11 @@ public class BaseCharacter : MonoBehaviour
 
     protected float BuffValues(State target,ChangeType changeType)
     {
-        float value = changeType == ChangeType.Product ? 1: 0;
+        float value = (changeType == ChangeType.Product ? 1: 0);
 
         for (int i = 0; i < buffs.Count; i++)
         {
-            value += buffs[i].Value(target);
+            value += buffs[i].Value(target,changeType);
         }
 
         return value;
@@ -195,7 +195,7 @@ public class BaseCharacter : MonoBehaviour
         agent.StateMachine.ChangeState(AiStateID.Idle);
     }
 
-    public virtual void AddHp(int hp)
+    public virtual void SumHp(UNBigStats hp)
     {
         curHp += hp;
 
@@ -205,13 +205,14 @@ public class BaseCharacter : MonoBehaviour
         }
     }
 
-    public virtual void AddHp(UNBigStats hp)
+    public virtual void SubHP(UNBigStats hp)
     {
-        curHp += hp;
+        curHp -= hp;
 
-        if (curHp > HP())
+        if (IsDeath)
         {
-            curHp = HP().Copy;
+            Death();
+            agent.StateMachine.ChangeState(AiStateID.Death);
         }
     }
 
@@ -219,6 +220,7 @@ public class BaseCharacter : MonoBehaviour
     {
         StopBuff();
     }
+
     public virtual UNBigStats Hit(UNBigStats attack)
     {
         if (curHp.IsZero)
@@ -237,14 +239,16 @@ public class BaseCharacter : MonoBehaviour
 
         return attack;
     }
+
     public virtual void AttackAction()
     {
         if (Dist() <= AttackRange && IsLookAt)
         {
             UNBigStats attack = (Target().Hit(Attack()) * DrainLife());
-            AddHp(attack);
+            SumHp(attack);
         }
     }
+
     public virtual void DeathAction()
     {
         ResetBuff();
@@ -260,7 +264,7 @@ public class BaseCharacter : MonoBehaviour
             buffBase.transform.parent = buffTrans;
             buffBase.transform.localPosition = Vector3.zero;
             buffBase.transform.localRotation = Quaternion.identity;
-            buffBase.BuffStart(timer, value,changeType);
+            buffBase.BuffStart(this,timer, value,changeType);
             buffs.Add(buffBase);
 
             if (buffBase.State == State.AttackSpeed || buffBase.State == State.MoveSpeed)

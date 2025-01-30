@@ -75,7 +75,9 @@ public class UNBigStats
     }
     public static UNBigStats operator +(UNBigStats a, int value)
     {
-        UNBigStats b = Zero + Mathf.Abs(value);
+        UNBigStats b = Zero;
+        Zero.mini += Mathf.Abs(value % referenceValue);
+        Zero.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -88,7 +90,9 @@ public class UNBigStats
     }
     public static UNBigStats operator +(UNBigStats a, long value)
     {
-        UNBigStats b = Zero + Mathf.Abs(value);
+        UNBigStats b = Zero;
+        Zero.mini += (long)Mathf.Abs(value % referenceValue);
+        Zero.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -101,7 +105,9 @@ public class UNBigStats
     }
     public static UNBigStats operator +(UNBigStats a, float value)
     {
-        UNBigStats b = Zero + Mathf.Abs(value);
+        UNBigStats b = Zero;
+        Zero.mini += (long)Mathf.Abs(value % referenceValue);
+        Zero.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -149,7 +155,9 @@ public class UNBigStats
     }
     public static UNBigStats operator -(UNBigStats a, int value)
     {
-        UNBigStats b = Zero + Mathf.Abs(value);
+        UNBigStats b = Zero;
+        Zero.mini += Mathf.Abs(value % referenceValue);
+        Zero.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -162,7 +170,9 @@ public class UNBigStats
     }
     public static UNBigStats operator -(UNBigStats a, float value)
     {
-        UNBigStats b = Zero + value;
+        UNBigStats b = Zero;
+        Zero.mini += (long)Mathf.Abs(value % referenceValue);
+        Zero.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -175,7 +185,9 @@ public class UNBigStats
     }
     public static UNBigStats operator -(UNBigStats a, long value)
     {
-        UNBigStats b = Zero + value;
+        UNBigStats b = Zero;
+        Zero.mini += (long)Mathf.Abs(value % referenceValue);
+        Zero.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {

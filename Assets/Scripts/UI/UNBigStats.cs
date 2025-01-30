@@ -76,8 +76,8 @@ public class UNBigStats
     public static UNBigStats operator +(UNBigStats a, int value)
     {
         UNBigStats b = Zero;
-        Zero.mini += Mathf.Abs(value % referenceValue);
-        Zero.token += Mathf.Abs(value / referenceValue);
+        b.mini += Mathf.Abs(value % referenceValue);
+        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -91,8 +91,8 @@ public class UNBigStats
     public static UNBigStats operator +(UNBigStats a, long value)
     {
         UNBigStats b = Zero;
-        Zero.mini += (long)Mathf.Abs(value % referenceValue);
-        Zero.token += Mathf.Abs(value / referenceValue);
+        b.mini += (long)Mathf.Abs(value % referenceValue);
+        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -106,8 +106,8 @@ public class UNBigStats
     public static UNBigStats operator +(UNBigStats a, float value)
     {
         UNBigStats b = Zero;
-        Zero.mini += (long)Mathf.Abs(value % referenceValue);
-        Zero.token += Mathf.Abs(value / referenceValue);
+        b.mini += (long)Mathf.Abs(value % referenceValue);
+        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -156,8 +156,8 @@ public class UNBigStats
     public static UNBigStats operator -(UNBigStats a, int value)
     {
         UNBigStats b = Zero;
-        Zero.mini += Mathf.Abs(value % referenceValue);
-        Zero.token += Mathf.Abs(value / referenceValue);
+        b.mini += Mathf.Abs(value % referenceValue);
+        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -171,8 +171,8 @@ public class UNBigStats
     public static UNBigStats operator -(UNBigStats a, float value)
     {
         UNBigStats b = Zero;
-        Zero.mini += (long)Mathf.Abs(value % referenceValue);
-        Zero.token += Mathf.Abs(value / referenceValue);
+        b.mini += (long)Mathf.Abs(value % referenceValue);
+        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -186,8 +186,8 @@ public class UNBigStats
     public static UNBigStats operator -(UNBigStats a, long value)
     {
         UNBigStats b = Zero;
-        Zero.mini += (long)Mathf.Abs(value % referenceValue);
-        Zero.token += Mathf.Abs(value / referenceValue);
+        b.mini += (long)Mathf.Abs(value % referenceValue);
+        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
@@ -198,6 +198,7 @@ public class UNBigStats
             return a + b;
         }
     }
+
     public static UNBigStats operator *(UNBigStats a, float multiplier)
     {
         UNBigStats result = Zero;

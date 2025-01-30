@@ -33,7 +33,7 @@ public class BaseItem
         reinforce = 0;
         id = System.Guid.NewGuid().ToString();
         index = info.id;
-        lv = DataManager.Instance.GetInfo.CurrentLevel;
+        lv = DataManager.Instance.CurrentLevel;
         grade = target;
         sprite = info.Sprite();
         itemName = info.GetLocal();

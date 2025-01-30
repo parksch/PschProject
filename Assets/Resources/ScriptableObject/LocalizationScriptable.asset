@@ -115,6 +115,10 @@ MonoBehaviour:
     - name: Exit
       desc: "\uAC8C\uC784\uC744 \uC885\uB8CC\uD558\uC2DC\uB824\uBA74 \uD655\uC778\uC744
         \uB20C\uB7EC \uC8FC\uC138\uC694."
+    - name: Attendance
+      desc: "\uCD9C\uC11D"
+    - name: WeeklyAttendance
+      desc: "\uC8FC\uAC04 \uCD9C\uC11D"
   - language: 1
     textkeys:
     - name: 

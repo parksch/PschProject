@@ -72,12 +72,12 @@ public class DungeonPanel : BasePanel
         switch (current.NeedGoods())
         {
             case ClientEnum.Goods.GoldDungeonTicket:
-                level = DataManager.Instance.GetInfo.CurrentGoldDungeon;
+                level = DataManager.Instance.CurrentGoldDungeon;
                 sweep.SetInterractable(level > 0 && DataManager.Instance.CheckGoods(ClientEnum.Goods.GoldDungeonTicket, 1));
                 challenge.SetInterractable(level < current.maxLevel && DataManager.Instance.CheckGoods(ClientEnum.Goods.GoldDungeonTicket, 1));
                 break;
             case ClientEnum.Goods.GemDungeonTicket:
-                level = DataManager.Instance.GetInfo.CurrentGemDungeon;
+                level = DataManager.Instance.CurrentGemDungeon;
                 sweep.SetInterractable(level > 0 && DataManager.Instance.CheckGoods(ClientEnum.Goods.GemDungeonTicket, 1));
                 challenge.SetInterractable(level < current.maxLevel && DataManager.Instance.CheckGoods(ClientEnum.Goods.GemDungeonTicket, 1));
                 break;

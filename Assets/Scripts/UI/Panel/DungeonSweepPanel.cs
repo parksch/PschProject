@@ -124,11 +124,11 @@ public class DungeonSweepPanel : BasePanel
         switch (target.GameMode())
         {
             case GameMode.GoldDungeon:
-                level = DataManager.Instance.GetInfo.CurrentGoldDungeon;
+                level = DataManager.Instance.CurrentGoldDungeon;
                 DataManager.Instance.UseGoods(Goods.GoldDungeonTicket, count);
                 break;
             case GameMode.GemDungeon:
-                level = DataManager.Instance.GetInfo.CurrentGemDungeon;
+                level = DataManager.Instance.CurrentGemDungeon;
                 DataManager.Instance.UseGoods(Goods.GemDungeonTicket, count);
                 break;
             default:

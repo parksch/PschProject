@@ -30,7 +30,7 @@ public class DrawPanel : BasePanel
         }
         else
         {
-            if (shop.limit >= DataManager.Instance.GetInfo.DrawLimit(shop.nameKey) + button.targetNum)
+            if (shop.limit >= DataManager.Instance.DrawLimit(shop.nameKey) + button.targetNum)
             {
                 return DataManager.Instance.CheckGoods(shop.Goods(), shop.needValue * button.targetNum);
             }
@@ -112,11 +112,11 @@ public class DrawPanel : BasePanel
     {
         if (shop.limit > 0)
         {
-            currentDrawLimit.text = string.Format("{0}/{1}", DataManager.Instance.GetInfo.DrawLimit(shop.nameKey), shop.limit);
+            currentDrawLimit.text = string.Format("{0}/{1}", DataManager.Instance.DrawLimit(shop.nameKey), shop.limit);
         }
         if (shop.maxLevel > 0)
         {
-            int drawCount = DataManager.Instance.GetInfo.DrawCount(shop.nameKey);
+            int drawCount = DataManager.Instance.DrawCount(shop.nameKey);
             int requiredExp = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).RequiredExp;
 
             if (drawCount < shop.maxLevel * requiredExp)
@@ -138,24 +138,24 @@ public class DrawPanel : BasePanel
     {
         if (currentSlot.GetCurrentData.limit > 0)
         {
-            DataManager.Instance.GetInfo.AddDrawLimit(currentSlot.GetCurrentData.nameKey, buyButton.targetNum);
+            DataManager.Instance.AddDrawLimit(currentSlot.GetCurrentData.nameKey, buyButton.targetNum);
         }
 
         if (currentSlot.GetCurrentData.maxLevel > 0)
         {
             int maxCount = currentSlot.GetCurrentData.maxLevel * ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).RequiredExp;
-            int currentCount = DataManager.Instance.GetInfo.DrawCount(currentSlot.GetCurrentData.nameKey);
+            int currentCount = DataManager.Instance.DrawCount(currentSlot.GetCurrentData.nameKey);
 
             if (maxCount > currentCount)
             {
                 if (maxCount < currentCount + buyButton.targetNum)
                 {
                     int addCount = buyButton.targetNum - ( (currentCount + buyButton.targetNum) - maxCount);
-                    DataManager.Instance.GetInfo.AddDrawCount(currentSlot.GetCurrentData.nameKey, addCount);
+                    DataManager.Instance.AddDrawCount(currentSlot.GetCurrentData.nameKey, addCount);
                 }
                 else
                 {
-                    DataManager.Instance.GetInfo.AddDrawCount(currentSlot.GetCurrentData.nameKey, buyButton.targetNum);
+                    DataManager.Instance.AddDrawCount(currentSlot.GetCurrentData.nameKey, buyButton.targetNum);
                 }
             }
         }

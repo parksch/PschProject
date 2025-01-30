@@ -49,19 +49,19 @@ public class StageResultPanel : BasePanel
             switch (mode)
             {
                 case GameMode.Boss:
-                    StageData stageData = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.ChallengingStage);
-                    DataManager.Instance.GetInfo.ChallengingStage = stageData.next;
+                    StageData stageData = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.ChallengingStage);
+                    DataManager.Instance.SetChallengingStage(stageData.next);
                     if (stageData.next != 0)
                     {
-                        DataManager.Instance.GetInfo.Stage = stageData.next;
+                        DataManager.Instance.SetStage(stageData.next);
                     }
                     break;
                 case GameMode.GoldDungeon:
-                    DataManager.Instance.GetInfo.AddDungeon(mode);
+                    DataManager.Instance.AddDungeon(mode);
                     DataManager.Instance.UseGoods(Goods.GoldDungeonTicket, 1);
                     break;
                 case GameMode.GemDungeon:
-                    DataManager.Instance.GetInfo.AddDungeon(mode);
+                    DataManager.Instance.AddDungeon(mode);
                     DataManager.Instance.UseGoods(Goods.GemDungeonTicket, 1);
                     break;
                 default:
@@ -187,21 +187,21 @@ public class StageResultPanel : BasePanel
             case GameMode.Stage:
                 break;
             case GameMode.Boss:
-                if (DataManager.Instance.GetInfo.ChallengingStage != 0)
+                if (DataManager.Instance.ChallengingStage != 0)
                 {
                     result = true;
                 }
                 break;
             case GameMode.GoldDungeon:
                 DungeonsData gold = ScriptableManager.Instance.Get<DungeonsDataScriptable>(ScriptableType.DungeonsData).GetDungeon(GameMode.GoldDungeon);
-                if (DataManager.Instance.GetInfo.CurrentGoldDungeon < gold.maxLevel)
+                if (DataManager.Instance.CurrentGoldDungeon < gold.maxLevel)
                 {
                     return true;
                 }
                 break;
             case GameMode.GemDungeon:
                 DungeonsData gem = ScriptableManager.Instance.Get<DungeonsDataScriptable>(ScriptableType.DungeonsData).GetDungeon(GameMode.GemDungeon);
-                if (DataManager.Instance.GetInfo.CurrentGemDungeon < gem.maxLevel)
+                if (DataManager.Instance.CurrentGemDungeon < gem.maxLevel)
                 {
                     return true;
                 }

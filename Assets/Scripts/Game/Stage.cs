@@ -43,7 +43,7 @@ public class Stage : MonoBehaviour
         switch (mode)
         {
             case GameMode.Stage:
-                map.CreateEnemy(monsters,DataManager.Instance.GetInfo.Stage);
+                map.CreateEnemy(monsters,DataManager.Instance.Stage);
                 break;
             case GameMode.Boss:
             case GameMode.GoldDungeon:
@@ -93,7 +93,7 @@ public class Stage : MonoBehaviour
 
     void SetStage(GameMode gameMode)
     {
-        StageData data = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.GetInfo.Stage);
+        StageData data = ScriptableManager.Instance.Get<StageDataScriptable>(ScriptableType.StageData).Get(DataManager.Instance.Stage);
         UIManager.Instance.SetStageTitle(data.nameKey, data.index);
         
         CreateMap(data.map);
@@ -103,11 +103,11 @@ public class Stage : MonoBehaviour
         switch (gameMode)
         {
             case GameMode.Stage:
-                map.CreateEnemy(data.monsters,DataManager.Instance.GetInfo.Stage);
+                map.CreateEnemy(data.monsters,DataManager.Instance.Stage);
                 break;
             case GameMode.Boss:
-                map.CreateEnemy(data.monsters, DataManager.Instance.GetInfo.Stage);
-                map.CreateBoss(data.boss, DataManager.Instance.GetInfo.Stage);
+                map.CreateEnemy(data.monsters, DataManager.Instance.Stage);
+                map.CreateBoss(data.boss, DataManager.Instance.Stage);
                 break;
             default:
                 break;
@@ -126,12 +126,12 @@ public class Stage : MonoBehaviour
         switch (gameMode)
         {
             case GameMode.GoldDungeon:
-                level = DataManager.Instance.GetInfo.CurrentGoldDungeon;
+                level = DataManager.Instance.CurrentGoldDungeon;
                 StageLevel = 1 + (dungeonsData.targetAddStage * level);
                 map.CreateBoss(monsters[0],StageLevel);
                 break;
             case GameMode.GemDungeon:
-                level = DataManager.Instance.GetInfo.CurrentGemDungeon;
+                level = DataManager.Instance.CurrentGemDungeon;
                 StageLevel = 1 + (dungeonsData.targetAddStage * level);
                 map.CreateBoss(monsters[0], StageLevel);
                 break;

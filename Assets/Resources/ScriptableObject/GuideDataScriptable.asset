@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: GuideDataScriptable
   m_EditorClassIdentifier: 
   guideData:
-  - id: 0
-    next: 0
+  - id: 1
+    next: 2
     guideType: 0
+    guideName: Upgrade
+    guideValue: 5
     rewardType: 0
     rewardIndex: 0
     value: 0

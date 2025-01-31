@@ -76,48 +76,59 @@ public class UNBigStats
     public static UNBigStats operator +(UNBigStats a, int value)
     {
         UNBigStats b = Zero;
-        b.mini += Mathf.Abs(value % referenceValue);
-        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
+            b.mini += value % referenceValue;
+            b.token += value / referenceValue;
             return a + b;
         }
         else
         {
+            b.mini += Mathf.Abs(value % referenceValue);
+            b.token += Mathf.Abs(value / referenceValue);
             return a - b;
         }
     }
     public static UNBigStats operator +(UNBigStats a, long value)
     {
         UNBigStats b = Zero;
-        b.mini += (long)Mathf.Abs(value % referenceValue);
-        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
+            b.mini += value % referenceValue;
+            b.token += value / referenceValue;
+
             return a + b;
         }
         else
         {
+            b.mini += (long)Mathf.Abs(value % referenceValue);
+            b.token += Mathf.Abs(value / referenceValue);
+
             return a - b;
         }
     }
     public static UNBigStats operator +(UNBigStats a, float value)
     {
         UNBigStats b = Zero;
-        b.mini += (long)Mathf.Abs(value % referenceValue);
-        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
+            b.mini += (long)(value % referenceValue);
+            b.token += Mathf.Floor(value / referenceValue);
+
             return a + b;
         }
         else
         {
+            b.mini += (long)Mathf.Abs(value % referenceValue);
+            b.token += Mathf.Floor(Mathf.Abs(value / referenceValue));
+
             return a - b;
         }
     }
+
     public static UNBigStats operator -(UNBigStats a, UNBigStats b)
     {
         UNBigStats result = Zero;
@@ -156,45 +167,57 @@ public class UNBigStats
     public static UNBigStats operator -(UNBigStats a, int value)
     {
         UNBigStats b = Zero;
-        b.mini += Mathf.Abs(value % referenceValue);
-        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
+            b.mini += value % referenceValue;
+            b.token += value / referenceValue;
+
             return a - b;
         }
         else
         {
-            return a + b;
-        }
-    }
-    public static UNBigStats operator -(UNBigStats a, float value)
-    {
-        UNBigStats b = Zero;
-        b.mini += (long)Mathf.Abs(value % referenceValue);
-        b.token += Mathf.Abs(value / referenceValue);
+            b.mini += Mathf.Abs(value % referenceValue);
+            b.token += Mathf.Abs(value / referenceValue);
 
-        if (value > 0)
-        {
-            return a - b;
-        }
-        else
-        {
             return a + b;
         }
     }
     public static UNBigStats operator -(UNBigStats a, long value)
     {
         UNBigStats b = Zero;
-        b.mini += (long)Mathf.Abs(value % referenceValue);
-        b.token += Mathf.Abs(value / referenceValue);
 
         if (value > 0)
         {
+            b.mini += value % referenceValue;
+            b.token += value / referenceValue;
+
             return a - b;
         }
         else
         {
+            b.mini += (long)Mathf.Abs(value % referenceValue);
+            b.token += Mathf.Abs(value / referenceValue);
+
+            return a + b;
+        }
+    }
+    public static UNBigStats operator -(UNBigStats a, float value)
+    {
+        UNBigStats b = Zero;
+
+        if (value > 0)
+        {
+            b.mini += (long)(value % referenceValue);
+            b.token += Mathf.Floor(value / referenceValue);
+
+            return a - b;
+        }
+        else
+        {
+            b.mini += (long)Mathf.Abs(value % referenceValue);
+            b.token += Mathf.Floor(Mathf.Abs(value / referenceValue));
+
             return a + b;
         }
     }

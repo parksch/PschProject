@@ -1,1 +1,1 @@
-﻿[{"name":"AttackBuff","prefab":"AttackBuff","targetState":1,"Atlas":"" ,"sprite":""}]
+[{"name":"AttackBuff","prefab":"AttackBuff","atlas":"Icon2","sprite":"AttackBuff"},{"name":"AttackDebuff","prefab":"AttackDeBuff","atlas":"Icon2","sprite":"AttackDebuff"},{"name":"HealBuff","prefab":"HealBuff","atlas":"Icon2","sprite":"AttackDebuff"}]

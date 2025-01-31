@@ -43,13 +43,12 @@ public class WeeklyAttendancePanel : BasePanel
         {
             string time = PlayerPrefs.GetString(weeklyCode);
             DateTime load = DateTime.Parse(time);
-            TimeSpan result = load - DataManager.Instance.CurrentDate;
+            TimeSpan result = DataManager.Instance.CurrentDate - load;
 
-            if (result.TotalDays > 0)
+            if (result.TotalDays >= 1)
             {
                 UIManager.Instance.AddPanel(this);
                 DateTime today = DateTime.UtcNow.Date;
-                today.AddDays(1);
                 PlayerPrefs.SetString(weeklyCode, today.ToString("yyyy-MM-dd")); // 날짜만 저장
                 PlayerPrefs.Save();
                 DataManager.Instance.AddWeekly();

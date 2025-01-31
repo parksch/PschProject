@@ -116,4 +116,9 @@ namespace ClientEnum
         GoldDungeon,
         GemDungeon,
     }
+
+    public enum GuideType
+    {
+
+    }
 }

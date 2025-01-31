@@ -33,4 +33,5 @@ namespace JsonClass
         public int changeType;
         public float addValue;
     }
+
 }

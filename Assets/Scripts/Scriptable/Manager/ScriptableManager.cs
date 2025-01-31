@@ -8,6 +8,7 @@ public enum ScriptableType
     DefaultValues,
     Draw,
     DungeonsData,
+    GuideData,
     ItemData,
     Localization,
     MonsterData,

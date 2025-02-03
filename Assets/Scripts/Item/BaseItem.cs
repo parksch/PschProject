@@ -20,7 +20,7 @@ public class BaseItem
     public void AddReinforce() => reinforce++;
     public Sprite GetSprite => sprite;
     public int Level => lv;
-    public int Reinforce => reinforce;
+    public int Reinforce => reinforce;   
     public string Name => itemName;
     public string ID => id;
     public ClientEnum.Grade Grade => grade;

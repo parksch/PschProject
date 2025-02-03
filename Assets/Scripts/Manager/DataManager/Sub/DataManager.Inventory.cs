@@ -28,8 +28,14 @@ public partial class DataManager //Inventory
                 return null;
         }
     }
+
     public void AddItem(BaseItem item)
     {
+        //if (inventoryDates.FindAll())
+        //{
+
+        //}
+
         for (int i = 0; i < inventoryDates.Count; i++)
         {
             if (inventoryDates[i].ID == "")

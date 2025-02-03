@@ -22,6 +22,7 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] Text level;
     [SerializeField, ReadOnly] UIBossHP bossHP;
     [SerializeField, ReadOnly] UIUserInfo userInfo;
+    [SerializeField, ReadOnly] UIGuide uIGuide;
     [SerializeField, ReadOnly] RectTransform buffParent;
     [SerializeField, ReadOnly] WorldCanvas worldCanvas;
     [SerializeField, ReadOnly] GameObject bossButton;
@@ -159,6 +160,7 @@ public partial class UIManager //Main
             SetGoodsText(goods, DataManager.Instance.GetGoods(goods));
         }
 
+        uIGuide.Init();
         userInfo.Init();
         OnChangePlayerHP += userInfo.SetHP;
 

@@ -1,22 +1,25 @@
+using ClientEnum;
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.AdaptivePerformance.Provider.AdaptivePerformanceSubsystemDescriptor;
 
 public class UIRewardSlot : MonoBehaviour
 {
     [SerializeField] Image image;
     [SerializeField] UIText text;
-    ClientEnum.Goods goods;
+    Goods goods;
     int num;
 
     public void ResetReward()
     {
-        goods = ClientEnum.Goods.None;
+        goods = Goods.None;
         num = 0;
     }
 
-    public bool CheckGoods(ClientEnum.Goods target,int value)
+    public bool CheckGoods(Goods target,int value)
     {
         if (target == goods)
         {
@@ -36,7 +39,7 @@ public class UIRewardSlot : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void SetGoods(ClientEnum.Goods target,int vlaue)
+    public void SetGoods(Goods target,int vlaue)
     {
         goods = target;
         num = vlaue;
@@ -45,18 +48,36 @@ public class UIRewardSlot : MonoBehaviour
         gameObject.SetActive(true); 
     }
 
-    public void SetTypeItem(ClientEnum.Reward reward,int index,int value)
+    public void SetTypeItem(Reward reward,int index,int value)
     {
         switch (reward)
         {
-            case ClientEnum.Reward.Item:
+            case Reward.Item:
+                goods = Goods.None;
 
+                Item target = (Item)index;
+                Grade grade = DefaultGrade();
+
+                Items info = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetRandom(target);
+                BaseItem item = ItemFactory.Create(target);
+                item.Set(info, grade,value);
+
+                DataManager.Instance.AddItem(item);
+
+                SetItem(item);
                 break;
-            case ClientEnum.Reward.Goods:
-                SetGoods((ClientEnum.Goods)index, value);
+            case Reward.Goods:
+                SetGoods((Goods)index, value);
 ;                break;
             default:
                 break;
         }
+    }
+
+    Grade DefaultGrade()
+    {
+        Grade grade = Grade.Normal;
+
+        return grade;
     }
 }

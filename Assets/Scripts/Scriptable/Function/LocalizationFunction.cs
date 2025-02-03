@@ -18,7 +18,7 @@ namespace JsonClass
 
             if (!keyValuePairs.ContainsKey(name))
             {
-                return "NoText";
+                return "NoText : " + name;
             }
 
             string str = keyValuePairs[name].desc;

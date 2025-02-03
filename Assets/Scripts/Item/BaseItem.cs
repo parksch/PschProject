@@ -28,12 +28,12 @@ public class BaseItem
     public Datas.Pair<ClientEnum.State,float> MainState => mainState;
     public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade, float value)>> Options => options;
 
-    public virtual void Set(Items info,ClientEnum.Grade target)
+    public virtual void Set(Items info,ClientEnum.Grade target,int level = -1)
     {
         reinforce = 0;
         id = System.Guid.NewGuid().ToString();
         index = info.id;
-        lv = DataManager.Instance.CurrentLevel;
+        lv = level == -1 ? DataManager.Instance.CurrentLevel : level;
         grade = target;
         sprite = info.Sprite();
         itemName = info.GetLocal();
@@ -66,4 +66,18 @@ public class BaseItem
 
     }
 
+    void ResetItem()
+    {
+        id = "";
+        index = "";
+        itemName = "";
+        lv = 0;
+        reinforce = 0;
+        grade = ClientEnum.Grade.Normal;
+        type = ClientEnum.Item.None;
+        mainState.key = ClientEnum.State.None;
+        mainState.value = 0;
+        options.Clear();
+        sprite = null;
+    }
 }

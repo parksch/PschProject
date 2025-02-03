@@ -14,8 +14,8 @@ public partial class DataManager //Info
     [SerializeField] int stage = 0;
     [SerializeField] int challengingStage = 0;
     [SerializeField] int currentLevel;
-    [SerializeField] int currentGoldDungeon;
-    [SerializeField] int currentGemDungeon;
+    [SerializeField] int goldDungeon;
+    [SerializeField] int gemDungeon;
     [SerializeField] int startExp;
     [SerializeField] int weekly;
     [SerializeField] List<Datas.Pair<string, int>> drawLimit;
@@ -50,8 +50,8 @@ public partial class DataManager //Info
     }
 
     public int Weekly => weekly;
-    public int CurrentGoldDungeon => currentGoldDungeon;
-    public int CurrentGemDungeon => currentGemDungeon;
+    public int CurrentGoldDungeon => goldDungeon;
+    public int CurrentGemDungeon => gemDungeon;
     public int StartExp => startExp;
     public int Stage
     {
@@ -130,10 +130,10 @@ public partial class DataManager //Info
         switch (gameMode)
         {
             case GameMode.GoldDungeon:
-                currentGoldDungeon++;
+                goldDungeon++;
                 break;
             case GameMode.GemDungeon:
-                currentGemDungeon++;
+                gemDungeon++;
                 break;
             default:
                 break;

@@ -12,6 +12,8 @@ public class UIGuide : MonoBehaviour
     [SerializeField, ReadOnly] Text title;
     [SerializeField, ReadOnly] Text desc;
 
+    int currentValue;
+
     public void Init()
     {
         GuideDataScriptable guideData = ScriptableManager.Instance.Get<GuideDataScriptable>(ScriptableType.GuideData);
@@ -32,7 +34,7 @@ public class UIGuide : MonoBehaviour
         else 
         {
             GuideData first = guideData.First();
-            PlayerPrefs.SetInt("Guide", first.id);
+            //PlayerPrefs.SetInt("Guide", first.id);
             SetGuide(first);
         }
 

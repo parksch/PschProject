@@ -11,21 +11,22 @@ namespace JsonClass
     [System.Serializable]
     public partial class ItemData
     {
-        public List<int> randomTarget;
-        public int target;
-        public List<Items> items;
+        public int itemType;
+        public int grade;
+        public int mainState;
         public float mainStateAddValue;
+        public string atlas;
+        public List<Items> items;
+        //public List<int> randomTarget;
+        //public int target;
     }
 
     [System.Serializable]
     public partial class Items
     {
-        public string id;
-        public string atlas;
         public string sprite;
         public string prefab;
         public string local;
-        public int mainState;
     }
 
 }

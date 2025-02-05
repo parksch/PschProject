@@ -35,21 +35,19 @@ namespace JsonClass
         {
             int value = 0;
             DefaultValuesScriptable defaultValuesScriptable = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues);
+            value = (int)defaultValuesScriptable.Get("Dismantle");
 
             switch (Grade())
             {
-                case ClientEnum.Grade.Normal:
-                    value = (int)defaultValuesScriptable.Get("NormalSkillPiece");
-                    break;
                 case ClientEnum.Grade.Rare:
-                    value = (int)defaultValuesScriptable.Get("RareSkillPiece");
+                case ClientEnum.Grade.Epic:
+                    value = (int)(value * 1.5f);
                     break;
-                case ClientEnum.Grade.SuperRare:
-                    value = (int)defaultValuesScriptable.Get("SuperRareSkillPiece");
+                case ClientEnum.Grade.Legendary:
+                case ClientEnum.Grade.Mythical:
+                    value = (int)(value * 2f);
                     break;
-                case ClientEnum.Grade.UltraRare:
-                    value = (int)defaultValuesScriptable.Get("UltraRareSkillPiece");
-                    break;
+                case ClientEnum.Grade.Max:
                 default:
                     break;
             }

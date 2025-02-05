@@ -20,7 +20,7 @@ public class BaseItem
     public void AddReinforce() => reinforce++;
     public Sprite GetSprite => sprite;
     public int Level => lv;
-    public int Reinforce => reinforce;   
+    public int Reinforce => reinforce;    
     public string Name => itemName;
     public string ID => id;
     public ClientEnum.Grade Grade => grade;
@@ -30,15 +30,19 @@ public class BaseItem
 
     public virtual void Set(Items info,ClientEnum.Grade target,int level = -1)
     {
-        reinforce = 0;
-        id = System.Guid.NewGuid().ToString();
-        index = info.id;
-        lv = level == -1 ? DataManager.Instance.CurrentLevel : level;
-        grade = target;
-        sprite = info.Sprite();
-        itemName = info.GetLocal();
-        mainState = new Datas.Pair<ClientEnum.State, float>(info.MainState(),ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetData(info.MainState()).Value(grade));
-        options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetRandomOption(ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetOptions(type),grade);
+        //reinforce = 0;
+        //id = System.Guid.NewGuid().ToString();
+        //index = info.id;
+        //lv = level == -1 ? DataManager.Instance.CurrentLevel : level;
+        //grade = target;
+        //sprite = info.Sprite();
+        //itemName = info.GetLocal();
+
+        //OptionScriptable option = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option);
+
+        //mainState = new Datas.Pair<ClientEnum.State, float>(info.MainState(), option.GetData(info.MainState()).Value(grade));
+
+        //options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetRandomOption(ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetOptions(type),grade);
     }
 
     public float GetStateValue(ClientEnum.State state)
@@ -73,7 +77,7 @@ public class BaseItem
         itemName = "";
         lv = 0;
         reinforce = 0;
-        grade = ClientEnum.Grade.Normal;
+        grade = ClientEnum.Grade.Common;
         type = ClientEnum.Item.None;
         mainState.key = ClientEnum.State.None;
         mainState.value = 0;

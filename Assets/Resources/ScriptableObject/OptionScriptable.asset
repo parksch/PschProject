@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   option:
   - target: 1
+    changeType: 1
     gradeValue:
     - key: 0
       value: 5
@@ -25,6 +26,7 @@ MonoBehaviour:
       value: 30
     local: HPOption
   - target: 2
+    changeType: 1
     gradeValue:
     - key: 0
       value: 5
@@ -36,6 +38,7 @@ MonoBehaviour:
       value: 30
     local: AttackOption
   - target: 3
+    changeType: 1
     gradeValue:
     - key: 0
       value: 5
@@ -47,6 +50,7 @@ MonoBehaviour:
       value: 30
     local: DefenseOption
   - target: 4
+    changeType: 1
     gradeValue:
     - key: 0
       value: 5
@@ -58,6 +62,7 @@ MonoBehaviour:
       value: 30
     local: HpRegenOption
   - target: 5
+    changeType: 1
     gradeValue:
     - key: 0
       value: 5

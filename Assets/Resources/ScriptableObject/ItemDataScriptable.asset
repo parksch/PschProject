@@ -13,33 +13,31 @@ MonoBehaviour:
   m_Name: ItemDataScriptable
   m_EditorClassIdentifier: 
   itemData:
-  - randomTarget: 0100000003000000
-    target: 1
+  - itemType: 0
+    grade: 0
     items:
-    - id: LeatherHelmet
-      atlas: Helmat
+    - atlas: Helmat
       sprite: 1
       prefab: 
       local: LeatherHelmet
-      mainState: 3
-    mainStateAddValue: 1.1
-  - randomTarget: 0400000003000000
-    target: 2
+  - itemType: 0
+    grade: 1
     items:
-    - id: ClothArmor
-      atlas: Armor
+    - atlas: Armor
       sprite: 1
       prefab: 
       local: ClothArmor
-      mainState: 1
-    mainStateAddValue: 1.2
-  - randomTarget: 0200000005000000
-    target: 3
+  - itemType: 0
+    grade: 2
     items:
-    - id: WoodAxe
-      atlas: Weapon
+    - atlas: Weapon
       sprite: 1
       prefab: 
       local: WoodAxe
-      mainState: 2
-    mainStateAddValue: 1.3
+  - itemType: 0
+    grade: 3
+    items:
+    - atlas: Weapon
+      sprite: 1
+      prefab: 
+      local: WoodAxe

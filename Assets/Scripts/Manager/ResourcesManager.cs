@@ -5,10 +5,12 @@ using UnityEngine.U2D;
 
 public class ResourcesManager : Singleton<ResourcesManager>
 {
-    [SerializeField] Color normal;
+    [SerializeField] Color common;
+    [SerializeField] Color uncommon;
     [SerializeField] Color rare;
-    [SerializeField] Color superRare;
-    [SerializeField] Color ultraRare;
+    [SerializeField] Color epic;
+    [SerializeField] Color legendary;
+    [SerializeField] Color mythical;
     [SerializeField, ReadOnly] string spriteAtlasPath = "SpriteAtlas";
     Dictionary<string, SpriteAtlas> spriteAtlasDict = new Dictionary<string, SpriteAtlas>();
 
@@ -41,20 +43,27 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
         switch (grade)
         {
-            case ClientEnum.Grade.Normal:
-                target = normal;
+            case ClientEnum.Grade.Common:
+                target = common;
+                break;
+            case ClientEnum.Grade.Uncommon:
+                target = uncommon;
                 break;
             case ClientEnum.Grade.Rare:
                 target = rare;
                 break;
-            case ClientEnum.Grade.SuperRare:
-                target = superRare;
+            case ClientEnum.Grade.Epic:
+                target = epic;
                 break;
-            case ClientEnum.Grade.UltraRare:
-                target = ultraRare;
+            case ClientEnum.Grade.Legendary:
+                target = legendary;
+                break;
+            case ClientEnum.Grade.Mythical:
+                target = mythical;
+                break;
+            case ClientEnum.Grade.Max:
                 break;
             default:
-                target = normal;
                 break;
         }
 

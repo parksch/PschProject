@@ -1,5 +1,6 @@
 using ClientEnum;
 using JsonClass;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,17 +16,18 @@ public class UIGuide : MonoBehaviour
     [SerializeField, ReadOnly] string titleLocal;
 
     GuideData target;
+    string key = "Guide";
+    int currentValue = 0;
 
     string TitleLocal => ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(titleLocal);
-
 
     public void Init()
     {
         GuideDataScriptable guideData = ScriptableManager.Instance.Get<GuideDataScriptable>(ScriptableType.GuideData);
 
-        if (PlayerPrefs.HasKey("Guide"))
+        if (PlayerPrefs.HasKey(key))
         {
-            int code = PlayerPrefs.GetInt("Guide");
+            int code = PlayerPrefs.GetInt(key);
             if (code == -1)
             {
                 gameObject.SetActive(false);
@@ -39,65 +41,114 @@ public class UIGuide : MonoBehaviour
         else 
         {
             GuideData first = guideData.First();
-            //PlayerPrefs.SetInt("Guide", first.id);
+            //PlayerPrefs.SetInt(key, first.id);
             SetGuide(first);
         }
 
     }
 
-    public void SetGuide(GuideData guideData)
+    public void OnClick()
     {
-        target = guideData;
+        if (target.guideValue > currentValue)
+        {
+            switch (target.GuideType())
+            {
+                case GuideType.Upgrade:
+                    break;
+                default:
+                    break;
+            }
 
-        switch (target.Reward())
+            return;
+        }
+
+        RewardPanel reward = UIManager.Instance.Get<RewardPanel>();
+
+        switch (target.RewardType())
         {
             case Reward.Item:
+                Shops shops = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).Target();
+                Items info = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetRandom(target.Item());
+                BaseItem item = ItemFactory.Create(target.Item());
+                item.Set(info, shops.Grade());
+
+                DataManager.Instance.AddItem(item);
+                reward.AddItem(item);
                 break;
             case Reward.Goods:
-                slot.SetGoods(target.Goods(), target.value);
+                DataManager.Instance.AddGoods(target.Goods(), target.rewardValue);
+                reward.AddGoods(target.Goods(), target.rewardValue);
                 break;
             default:
                 break;
         }
 
+        PlayerPrefs.SetInt(key, target.next);
+
+        if (target.next == -1)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            target = ScriptableManager.Instance.Get<GuideDataScriptable>(ScriptableType.GuideData).GetData(target.next);
+            SetGuide(target);
+        }
+    }
+
+    public void AddGuideValue(GuideType guideType, string code, int value = 0)
+    {
+        switch (guideType)
+        {
+            case GuideType.Action:
+                if (code == target.guideName)
+                {
+                    currentValue = value;
+                }
+                break;
+            default:
+                break;
+        }
+
+        CheckGuide(guideType, code);
+    }
+
+    void SetGuide(GuideData guideData)
+    {
+        target = guideData;
+        slot.SetTypeItem(target.RewardType(),target.rewardIndex,target.rewardValue);
         title.text = string.Format(TitleLocal, target.id);
+        currentValue = 0;
 
         CheckGuide(target.GuideType(), target.guideName);
     }
 
-    public bool CheckGuide(GuideType guideType,string code)
+    void CheckGuide(GuideType guideType,string code)
     {
         if (guideType != target.GuideType())
         {
-            return false;
+            return ;
         }
 
-        bool result = false;
-        float value = 0;
+        float value = GetValue(guideType, code);
 
+        desc.text = string.Format(target.Description(),target.guideValue,value);
+        slider.value = value/target.guideValue;
+        return ;
+    }
+
+    float GetValue(GuideType guideType, string code)
+    {
         switch (target.GuideType())
         {
             case GuideType.Upgrade:
+                currentValue = DataManager.Instance.GetUpgradeLevel(code);
                 break;
             default:
                 break;
         }
 
-        desc.text = string.Format(target.Description(),target.value,value);
-
-        slider.value = value/target.value;
-        return result;
+        return currentValue;
     }
 
-    public void OnClick()
-    {
-
-    }
-
-    public int GetValue(GuideType guideType)
-    {
-        int result = 0;
-
-        return result;
-    }
 }

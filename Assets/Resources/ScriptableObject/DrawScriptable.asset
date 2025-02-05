@@ -19,13 +19,17 @@ MonoBehaviour:
       shops:
       - probabilities:
         - grade: 0
-          value: 1000
+          value: 2000
         - grade: 1
-          value: 500
+          value: 1500
         - grade: 2
-          value: 100
+          value: 1000
         - grade: 3
-          value: 50
+          value: 500
+        - grade: 4
+          value: 250
+        - grade: 5
+          value: 100
         type: 0
         target: 0
         goods: 2
@@ -39,14 +43,16 @@ MonoBehaviour:
       titleKey: DailyShop
       shops:
       - probabilities:
-        - grade: 0
-          value: 1000
         - grade: 1
-          value: 500
+          value: 1500
         - grade: 2
-          value: 100
+          value: 1000
         - grade: 3
-          value: 50
+          value: 500
+        - grade: 4
+          value: 250
+        - grade: 5
+          value: 100
         type: 0
         target: 0
         goods: 1
@@ -56,14 +62,16 @@ MonoBehaviour:
         limit: 20
         maxLevel: 0
       - probabilities:
-        - grade: 0
-          value: 1000
         - grade: 1
-          value: 500
+          value: 1500
         - grade: 2
-          value: 100
+          value: 1000
         - grade: 3
-          value: 50
+          value: 500
+        - grade: 4
+          value: 250
+        - grade: 5
+          value: 100
         type: 0
         target: 0
         goods: 2
@@ -77,13 +85,13 @@ MonoBehaviour:
       titleKey: GemShop
       shops:
       - probabilities:
-        - grade: 0
-          value: 1000
-        - grade: 1
-          value: 500
         - grade: 2
-          value: 100
+          value: 1000
         - grade: 3
+          value: 500
+        - grade: 4
+          value: 100
+        - grade: 5
           value: 50
         type: 0
         target: 0

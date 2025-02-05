@@ -3363,10 +3363,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef8f14d4f2770a47b342547dcf27337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  rare: {r: 0, g: 0.7, b: 0, a: 1}
-  superRare: {r: 0.4, g: 0.4, b: 1, a: 1}
-  ultraRare: {r: 0.7294118, g: 0.33333334, b: 0.827451, a: 1}
+  common: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  uncommon: {r: 0.4, g: 0.4, b: 0.8, a: 1}
+  rare: {r: 0.3, g: 1, b: 1, a: 1}
+  epic: {r: 0.7, g: 0.2, b: 0.2, a: 1}
+  legendary: {r: 0.8, g: 0.2, b: 0.6, a: 1}
+  mythical: {r: 1, g: 0.6, b: 0.5, a: 1}
   spriteAtlasPath: SpriteAtlas
 --- !u!1 &996621993
 GameObject:
@@ -5635,31 +5637,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   language: 0
   deviceNum: 
-  info:
-    userName: player
-    stage: 0
-    challengingStage: 0
-    currentLevel: 0
-    currentGoldDungeon: 0
-    currentGemDungeon: 0
-    startExp: 0
-    currentExp: 0
-    maxExp: 0
-    drawLimit: []
-    drawCount: []
-    expUpgrade:
-      upgradeType: 0
-      atlas: 
-      sprite: 
-      localKey: 
-      name: 
-      upgradeState: 0
-      changeType: 0
-      maxLevel: 0
-      addValue: 0
-      goodsType: 0
-      needGoods: 0
-      levelPerGoods: 0
+  userName: 
+  currentExp: 0
+  maxExp: 0
+  stage: 0
+  challengingStage: 0
+  currentLevel: 0
+  goldDungeon: 0
+  gemDungeon: 0
+  startExp: 0
+  weekly: 0
+  drawLimit: []
+  drawCount: []
+  expUpgrade:
+    upgradeType: 0
+    atlas: 
+    sprite: 
+    localKey: 
+    name: 
+    upgradeState: 0
+    changeType: 0
+    maxLevel: 0
+    addValue: 0
+    goodsType: 0
+    needGoods: 0
+    levelPerGoods: 0
+  maxInventoryCount: 100
   equipHelmet:
     id: 
     index: 

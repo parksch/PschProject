@@ -54,17 +54,6 @@ public class UIRewardSlot : MonoBehaviour
         {
             case Reward.Item:
                 goods = Goods.None;
-
-                Item target = (Item)index;
-                Grade grade = DefaultGrade();
-
-                Items info = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetRandom(target);
-                BaseItem item = ItemFactory.Create(target);
-                item.Set(info, grade,value);
-
-                DataManager.Instance.AddItem(item);
-
-                SetItem(item);
                 break;
             case Reward.Goods:
                 SetGoods((Goods)index, value);
@@ -74,10 +63,4 @@ public class UIRewardSlot : MonoBehaviour
         }
     }
 
-    Grade DefaultGrade()
-    {
-        Grade grade = Grade.Normal;
-
-        return grade;
-    }
 }

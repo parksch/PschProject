@@ -18,7 +18,7 @@ namespace JsonClass
         public int guideValue;
         public int rewardType;
         public int rewardIndex;
-        public int value;
+        public int rewardValue;
         public string local;
     }
 

@@ -8,12 +8,12 @@ public class WeeklyAttendancePanel : BasePanel
 {
     [SerializeField] UIAttendanceReward prefab;
     [SerializeField] List<UIAttendanceReward> uiAttendanceRewardList;
-    [SerializeField] List<AttendacneReward> attendanceRewardList;
+    [SerializeField] List<AttendanceReward> attendanceRewardList;
     [SerializeField] RectTransform content;
     [SerializeField,ReadOnly] string weeklyCode = "WeeklyCode";
 
     [System.Serializable]
-    class AttendacneReward
+    class AttendanceReward
     {
         public ClientEnum.Goods index;
         public int value;
@@ -25,7 +25,7 @@ public class WeeklyAttendancePanel : BasePanel
 
         for (int i = 0; i < attendanceRewardList.Count; i++)
         {
-            AttendacneReward reward = attendanceRewardList[i];
+            AttendanceReward reward = attendanceRewardList[i];
 
             if (i == 0)
             {
@@ -49,11 +49,11 @@ public class WeeklyAttendancePanel : BasePanel
             {
                 UIManager.Instance.AddPanel(this);
                 DateTime today = DateTime.UtcNow.Date;
-                PlayerPrefs.SetString(weeklyCode, today.ToString("yyyy-MM-dd")); // ³¯Â¥¸¸ ÀúÀå
+                PlayerPrefs.SetString(weeklyCode, today.ToString("yyyy-MM-dd")); // ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 PlayerPrefs.Save();
                 DataManager.Instance.AddWeekly();
 
-                AttendacneReward reward = attendanceRewardList[DataManager.Instance.Weekly];
+                AttendanceReward reward = attendanceRewardList[DataManager.Instance.Weekly];
                 DataManager.Instance.AddGoods(reward.index, reward.value);
                 RewardPanel rewardPanel = UIManager.Instance.Get<RewardPanel>();
                 rewardPanel.AddGoods(reward.index, reward.value);
@@ -64,11 +64,11 @@ public class WeeklyAttendancePanel : BasePanel
         {
             UIManager.Instance.AddPanel(this);
             DateTime today = DateTime.UtcNow.Date;
-            PlayerPrefs.SetString(weeklyCode, today.ToString("yyyy-MM-dd")); // ³¯Â¥¸¸ ÀúÀå
+            PlayerPrefs.SetString(weeklyCode, today.ToString("yyyy-MM-dd")); // ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             PlayerPrefs.Save();
             DataManager.Instance.AddWeekly();
 
-            AttendacneReward reward = attendanceRewardList[DataManager.Instance.Weekly];
+            AttendanceReward reward = attendanceRewardList[DataManager.Instance.Weekly];
             DataManager.Instance.AddGoods(reward.index, reward.value);
             RewardPanel rewardPanel = UIManager.Instance.Get<RewardPanel>();
             rewardPanel.AddGoods(reward.index, reward.value);

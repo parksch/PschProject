@@ -8,7 +8,7 @@ namespace JsonClass
         [System.Serializable]
         public class ResultOption
         {
-            [SerializeField] List<Option> datas = new List<Option>();
+            [SerializeField] List<Option> dates = new List<Option>();
         }
 
         public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade,float value)>> GetRandomOption(List<ClientEnum.State> randStates, ClientEnum.Grade target)

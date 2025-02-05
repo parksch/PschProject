@@ -20,5 +20,5 @@ MonoBehaviour:
     guideValue: 5
     rewardType: 1
     rewardIndex: 1
-    value: 10000
+    rewardValue: 10000
     local: GuideAttackUpgrade

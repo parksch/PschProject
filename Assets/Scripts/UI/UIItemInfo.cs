@@ -41,7 +41,7 @@ public class UIItemInfo : MonoBehaviour
 
     public void OnClickEquip()
     {
-        DataManager.Instance.EquipItem(target);
+        DataManager.Instance.SetEquipItem(target);
     }
 
     public void OnClickReinforce()

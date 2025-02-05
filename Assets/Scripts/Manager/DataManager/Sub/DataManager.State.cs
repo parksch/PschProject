@@ -24,7 +24,7 @@ public partial class DataManager //State
     class UpgradeState
     {
         public int level = 0;
-        public float velue = 0;
+        public float value = 0;
     }
     
     void StateInit()
@@ -39,7 +39,7 @@ public partial class DataManager //State
         changeLevelUp = (code)=> 
         {
             Upgrade upgrade = ScriptableManager.Instance.Get<UpgradeScriptable>(ScriptableType.Upgrade).GetUpgradeState(code);
-            data[code].velue = upgrade.GetLevelValue(data[code].level);
+            data[code].value = upgrade.GetLevelValue(data[code].level);
             GameManager.Instance.Player.StateUpdate();
         };
     }
@@ -53,6 +53,6 @@ public partial class DataManager //State
             return 0;
         }
 
-        return data[upgrade.name].velue;
+        return data[upgrade.name].value;
     }
 }

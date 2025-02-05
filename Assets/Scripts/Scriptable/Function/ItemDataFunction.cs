@@ -7,7 +7,8 @@ namespace JsonClass
     {
         public ClientEnum.Item GetRandomTarget()
         {
-            return (ClientEnum.Item)itemData[Random.Range(0, itemData.Count)].target;
+            //return (ClientEnum.Item)itemData[Random.Range(0, itemData.Count)].target;
+            return ClientEnum.Item.Helmet;
         }
 
         public class None : Items
@@ -17,7 +18,8 @@ namespace JsonClass
 
         ItemData GetTargetData(ClientEnum.Item target)
         {
-            return itemData.Find(x => (ClientEnum.Item)x.target == target);
+            //return itemData.Find(x => (ClientEnum.Item)x.target == target);
+            return null;
         }
 
         public Items GetRandom(ClientEnum.Item target)
@@ -41,10 +43,10 @@ namespace JsonClass
         {
             List<ClientEnum.State> states = new List<ClientEnum.State>();
 
-            for (int i = 0; i < randomTarget.Count; i++)
-            {
-                states.Add((ClientEnum.State)randomTarget[i]);
-            }
+            //for (int i = 0; i < randomTarget.Count; i++)
+            //{
+            //    states.Add((ClientEnum.State)randomTarget[i]);
+            //}
 
             return states;
         }
@@ -57,15 +59,11 @@ namespace JsonClass
             return ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
         }
 
-        public ClientEnum.State MainState()
-        {
-            return (ClientEnum.State)mainState;
-        }
+        //public ClientEnum.State MainState()
+        //{
+        //    return (ClientEnum.State)mainState;
+        //}
 
-        public Sprite Sprite()
-        {
-            return ResourcesManager.Instance.GetSprite(atlas, sprite);
-        }
     }
 
 }

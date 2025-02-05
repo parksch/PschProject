@@ -19,13 +19,7 @@ MonoBehaviour:
     value: 1.1
   - key: RequiredExp
     value: 20
-  - key: NormalDismantle
-    value: 20
-  - key: RareDismantle
-    value: 20
-  - key: SuperRareDismantle
-    value: 20
-  - key: UltraRareDismantle
+  - key: Dismantle
     value: 20
   - key: NormalSkillPiece
     value: 2

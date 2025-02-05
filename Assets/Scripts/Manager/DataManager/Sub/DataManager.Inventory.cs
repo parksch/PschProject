@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class DataManager //Inventory
 {
-    //[SerializeField] int maxInventoryCount = 100;
+    [SerializeField] int maxInventoryCount = 100;
     [SerializeField, ReadOnly] BaseItem equipHelmet;
     [SerializeField, ReadOnly] BaseItem equipWeapon;
     [SerializeField, ReadOnly] BaseItem equipArmor;
@@ -14,6 +14,7 @@ public partial class DataManager //Inventory
     public BaseItem Weapon => equipWeapon;
     public BaseItem Armor => equipArmor;
     public List<BaseItem> InventoryDates => inventoryDates;
+
     public BaseItem GetEquipItem(ClientEnum.Item item)
     {
         switch (item)
@@ -46,20 +47,23 @@ public partial class DataManager //Inventory
         }
 
     }
-    public void EquipItem(BaseItem item)
+
+    public void SetEquipItem(BaseItem item)
     {
         BaseItem target = item;
         inventoryDates.Remove(item);
         inventoryDates.Add(new BaseItem());
-        equipItem(target);
+        OnEquipItem(target);
     }
     
-    public delegate void OnEquipItem(BaseItem item);
-    public OnEquipItem equipItem;
+    public delegate void EquipItem(BaseItem item);
+    public EquipItem OnEquipItem;
 
     void InventoryInit()
     {
-        equipItem = (item) =>
+        inventoryDates = new List<BaseItem>(maxInventoryCount);
+
+        OnEquipItem = (item) =>
         {
             switch (item.Type)
             {

@@ -89,11 +89,13 @@ namespace ClientEnum
     }
 
     public enum Grade
-    { 
-        Normal,
+    {
+        Common,
+        Uncommon,
         Rare,
-        SuperRare,
-        UltraRare,
+        Epic,
+        Legendary,
+        Mythical,
         Max
     }
 
@@ -120,5 +122,6 @@ namespace ClientEnum
     public enum GuideType
     {
         Upgrade,
+        Action
     }
 }

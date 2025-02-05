@@ -25,7 +25,7 @@ namespace JsonClass
             return (GuideType)guideType;
         }
 
-        public Reward Reward()
+        public Reward RewardType()
         {
             return (Reward)rewardType;
         }

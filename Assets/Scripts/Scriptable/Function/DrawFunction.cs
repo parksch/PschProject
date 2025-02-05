@@ -7,6 +7,8 @@ namespace JsonClass
     {
         public int RequiredExp => (int)ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get("RequiredExp");
 
+        public Shops Target() { return draw.Find(x => (ClientEnum.Draw)x.index == ClientEnum.Draw.Scrap).type.shops[0]; }
+
         public Draw GetData(ClientEnum.Draw shop)
         {
             Draw data = draw.Find(x => (ClientEnum.Draw) x.index == shop);
@@ -62,7 +64,7 @@ namespace JsonClass
         public ClientEnum.Grade Grade()
         {
             int random = Random.Range(0, MaxProbability());
-            ClientEnum.Grade grade = ClientEnum.Grade.Normal;
+            ClientEnum.Grade grade = ClientEnum.Grade.Common;
 
             for (int i = 0; i < probabilities.Count; i++)
             {

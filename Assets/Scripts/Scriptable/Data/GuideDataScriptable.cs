@@ -19,7 +19,6 @@ namespace JsonClass
         public int rewardType;
         public int rewardIndex;
         public int value;
-        public string title;
         public string local;
     }
 

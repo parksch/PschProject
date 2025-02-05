@@ -39,10 +39,10 @@ public class UIRewardSlot : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void SetGoods(Goods target,int vlaue)
+    public void SetGoods(Goods target,int value)
     {
         goods = target;
-        num = vlaue;
+        num = value;
         image.sprite = ResourcesManager.Instance.GetGoodsSprite(goods);
         text.SetText(num);
         gameObject.SetActive(true); 

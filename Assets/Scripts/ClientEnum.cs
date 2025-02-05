@@ -119,6 +119,6 @@ namespace ClientEnum
 
     public enum GuideType
     {
-
+        Upgrade,
     }
 }

@@ -9,10 +9,15 @@ public class UIGuide : MonoBehaviour
 {
     [SerializeField, ReadOnly] GuideData current;
     [SerializeField, ReadOnly] UIRewardSlot slot;
+    [SerializeField, ReadOnly] Slider slider;
     [SerializeField, ReadOnly] Text title;
     [SerializeField, ReadOnly] Text desc;
+    [SerializeField, ReadOnly] string titleLocal;
 
-    int currentValue;
+    GuideData target;
+
+    string TitleLocal => ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(titleLocal);
+
 
     public void Init()
     {
@@ -42,25 +47,57 @@ public class UIGuide : MonoBehaviour
 
     public void SetGuide(GuideData guideData)
     {
-        switch (guideData.Reward())
+        target = guideData;
+
+        switch (target.Reward())
         {
             case Reward.Item:
                 break;
             case Reward.Goods:
-                slot.SetGoods(guideData.Goods(), guideData.value);
+                slot.SetGoods(target.Goods(), target.value);
                 break;
             default:
                 break;
         }
+
+        title.text = string.Format(TitleLocal, target.id);
+
+        CheckGuide(target.GuideType(), target.guideName);
     }
 
-    public void CheckGuide(GuideType guideType,string code,int value)
+    public bool CheckGuide(GuideType guideType,string code)
     {
+        if (guideType != target.GuideType())
+        {
+            return false;
+        }
 
+        bool result = false;
+        float value = 0;
+
+        switch (target.GuideType())
+        {
+            case GuideType.Upgrade:
+                break;
+            default:
+                break;
+        }
+
+        desc.text = string.Format(target.Description(),target.value,value);
+
+        slider.value = value/target.value;
+        return result;
     }
 
     public void OnClick()
     {
 
+    }
+
+    public int GetValue(GuideType guideType)
+    {
+        int result = 0;
+
+        return result;
     }
 }

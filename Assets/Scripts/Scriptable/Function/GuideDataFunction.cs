@@ -20,6 +20,11 @@ namespace JsonClass
 
     public partial class GuideData // This Class is a functional Class.
     {
+        public GuideType GuideType()
+        {
+            return (GuideType)guideType;
+        }
+
         public Reward Reward()
         {
             return (Reward)rewardType;
@@ -33,6 +38,11 @@ namespace JsonClass
         public Item Item()
         {
             return (Item)rewardIndex;
+        }
+
+        public string Description()
+        {
+            return ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
         }
     }
 

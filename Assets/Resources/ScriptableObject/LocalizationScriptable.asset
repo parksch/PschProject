@@ -119,6 +119,10 @@ MonoBehaviour:
       desc: "\uCD9C\uC11D"
     - name: WeeklyAttendance
       desc: "\uC8FC\uAC04 \uCD9C\uC11D"
+    - name: GuideTitle
+      desc: "\uAC00\uC774\uB4DC \uD018\uC2A4\uD2B8 - {0}"
+    - name: GuideAttackUpgrade
+      desc: "\uACF5\uACA9\uB825 \uC5C5\uADF8\uB808\uC774\uB4DC {0} \uB2EC\uC131"
   - language: 1
     textkeys:
     - name: 

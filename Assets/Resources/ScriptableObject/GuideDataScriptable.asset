@@ -16,9 +16,9 @@ MonoBehaviour:
   - id: 1
     next: 2
     guideType: 0
-    guideName: Upgrade
+    guideName: Attack
     guideValue: 5
-    rewardType: 0
-    rewardIndex: 0
-    value: 0
-    local: 
+    rewardType: 1
+    rewardIndex: 1
+    value: 10000
+    local: GuideAttackUpgrade

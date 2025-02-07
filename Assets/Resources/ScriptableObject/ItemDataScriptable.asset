@@ -13,39 +13,217 @@ MonoBehaviour:
   m_Name: ItemDataScriptable
   m_EditorClassIdentifier: 
   itemData:
-  - itemType: 0
-    grade: 0
+  - itemType: 1
     mainState: 3
-    mainStateAddValue: 1.05
-    atlas: 
-    items:
-    - sprite: 1
-      prefab: 
-      local: LeatherHelmet
+    atlas: Helmet
+    gradeItems:
+    - grade: 0
+      startValue: 0.1
+      mainStateAddValue: 0.05
+      items:
+      - sprite: C_1
+        prefab: 
+        local: ClothHat
+      - sprite: C_2
+        prefab: 
+        local: CopperHelmet
+      - sprite: C_3
+        prefab: 
+        local: HornedHelmet
+      - sprite: C_4
+        prefab: 
+        local: WoodenHelmet
+    - grade: 1
+      startValue: 0.2
+      mainStateAddValue: 0.1
+      items:
+      - sprite: UN_1
+        prefab: 
+        local: PaddedHood
+      - sprite: UN_2
+        prefab: 
+        local: LinenHood
+      - sprite: UN_3
+        prefab: 
+        local: OrnateHelmet
+      - sprite: UN_4
+        prefab: 
+        local: IronHelmet
+      - sprite: UN_5
+        prefab: 
+        local: ReinforcedHood
+    - grade: 2
+      startValue: 0.2
+      mainStateAddValue: 0.15
+      items:
+      - sprite: R_1
+        prefab: 
+        local: GemmedHood
+      - sprite: R_2
+        prefab: 
+        local: EnchantedHood
+      - sprite: R_3
+        prefab: 
+        local: GlowingHornedHelm
+      - sprite: R_4
+        prefab: 
+        local: 'ForgedSteelHelmet '
+      - sprite: R_5
+        prefab: 
+        local: GemmedIronHelmet
+    - grade: 3
+      startValue: 0.3
+      mainStateAddValue: 0.2
+      items:
+      - sprite: E_1
+        prefab: 
+        local: SiroccoTurban
+      - sprite: E_2
+        prefab: 
+        local: BattleforgedHelm
+      - sprite: E_3
+        prefab: 
+        local: IronboundHelm
+      - sprite: E_4
+        prefab: 
+        local: BloodforgedHelm
+    - grade: 4
+      startValue: 0.4
+      mainStateAddValue: 0.25
+      items:
+      - sprite: L_1
+        prefab: 
+        local: ShadowHood
+      - sprite: L_2
+        prefab: 
+        local: EmberweaveHood
+      - sprite: L_3
+        prefab: 
+        local: TitaniumHelm
+      - sprite: L_4
+        prefab: 
+        local: NobleFedora
+    - grade: 5
+      startValue: 0.5
+      mainStateAddValue: 0.3
+      items:
+      - sprite: M_1
+        prefab: 
+        local: GoldenArchmageHood
+      - sprite: M_2
+        prefab: 
+        local: RoyalCrownedHelm
+      - sprite: M_3
+        prefab: 
+        local: WarlordCrownHelm
+      - sprite: M_4
+        prefab: 
+        local: MasterworkGoggledLeatherHelm
+  - itemType: 2
+    mainState: 1
+    atlas: Armor
+    gradeItems:
+    - grade: 0
+      startValue: 0.1
+      mainStateAddValue: 0.05
+      items:
+      - sprite: C_1
+        prefab: 
+        local: SimpleClothTunic
+      - sprite: C_2
+        prefab: 
+        local: RoughClothTunic
+      - sprite: C_3
+        prefab: 
+        local: LeatherArmor
+      - sprite: C_4
+        prefab: 
+        local: PaddedLeatherArmor
+    - grade: 1
+      startValue: 0.15
+      mainStateAddValue: 0.1
+      items:
+      - sprite: UN_1
+        prefab: 
+        local: SamuraiArmor
+      - sprite: UN_2
+        prefab: 
+        local: IronArmor
+      - sprite: UN_3
+        prefab: 
+        local: OverlayArmor
+      - sprite: UN_4
+        prefab: 
+        local: ReinforcedLeatherArmor
+    - grade: 2
+      startValue: 0.2
+      mainStateAddValue: 0.2
+      items:
+      - sprite: R_1
+        prefab: 
+        local: EmeraldEnhancedArmor
+      - sprite: R_2
+        prefab: 
+        local: NaturesArmor
+      - sprite: R_3
+        prefab: 
+        local: ForgedSteelArmor
+      - sprite: R_4
+        prefab: 
+        local: SeaDragonScaleArmor
+    - grade: 3
+      startValue: 0.3
+      mainStateAddValue: 0.3
+      items:
+      - sprite: E_1
+        prefab: 
+        local: SacredCrimsonHabit
+      - sprite: E_2
+        prefab: 
+        local: CrimsonGuardianArmor
+      - sprite: E_3
+        prefab: 
+        local: LegionCommanderArmor
+      - sprite: E_4
+        prefab: 
+        local: CrimsonSorcererRobe
+    - grade: 4
+      startValue: 0.4
+      mainStateAddValue: 0.4
+      items:
+      - sprite: L_1
+        prefab: 
+        local: VioletVanguardArmor
+      - sprite: L_2
+        prefab: 
+        local: SerpentsEnchantmentArmor
+      - sprite: L_3
+        prefab: 
+        local: VioletEnigmaRobe
+      - sprite: L_4
+        prefab: 
+        local: VioletAscendantRobes
+    - grade: 5
+      startValue: 0.5
+      mainStateAddValue: 0.5
+      items:
+      - sprite: M_1
+        prefab: 
+        local: GoldenScaledArmor
+      - sprite: M_2
+        prefab: 
+        local: DragonKingArmor
+      - sprite: M_3
+        prefab: 
+        local: VioletEnigmaRobe
+      - sprite: M_4
+        prefab: 
+        local: NobleArmor
   - itemType: 0
-    grade: 1
     mainState: 0
-    mainStateAddValue: 0
     atlas: 
-    items:
-    - sprite: 1
-      prefab: 
-      local: ClothArmor
+    gradeItems: []
   - itemType: 0
-    grade: 2
     mainState: 0
-    mainStateAddValue: 0
     atlas: 
-    items:
-    - sprite: 1
-      prefab: 
-      local: WoodAxe
-  - itemType: 0
-    grade: 3
-    mainState: 0
-    mainStateAddValue: 0
-    atlas: 
-    items:
-    - sprite: 1
-      prefab: 
-      local: WoodAxe
+    gradeItems: []

@@ -26,7 +26,8 @@ namespace JsonClass
         {
             ItemData typeData = GetTargetData(target);
 
-            return typeData.items[Random.Range(0, typeData.items.Count)];
+            //return typeData.gradeItems[Random.Range(0, typeData.gradeItems.Count)];
+            return null;
         }
 
         public List<ClientEnum.State> GetOptions(ClientEnum.Item target)
@@ -50,6 +51,11 @@ namespace JsonClass
 
             return states;
         }
+    }
+
+    public partial class GradeItem
+    {
+
     }
 
     public partial class Items

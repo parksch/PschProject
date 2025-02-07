@@ -12,13 +12,18 @@ namespace JsonClass
     public partial class ItemData
     {
         public int itemType;
-        public int grade;
         public int mainState;
-        public float mainStateAddValue;
         public string atlas;
+        public List<GradeItem> gradeItems;
+    }
+
+    [System.Serializable]
+    public partial class GradeItem
+    {
+        public int grade;
+        public float startValue;
+        public float mainStateAddValue;
         public List<Items> items;
-        //public List<int> randomTarget;
-        //public int target;
     }
 
     [System.Serializable]
@@ -28,5 +33,4 @@ namespace JsonClass
         public string prefab;
         public string local;
     }
-
 }

@@ -15,29 +15,37 @@ MonoBehaviour:
   itemData:
   - itemType: 0
     grade: 0
+    mainState: 3
+    mainStateAddValue: 1.05
+    atlas: 
     items:
-    - atlas: Helmat
-      sprite: 1
+    - sprite: 1
       prefab: 
       local: LeatherHelmet
   - itemType: 0
     grade: 1
+    mainState: 0
+    mainStateAddValue: 0
+    atlas: 
     items:
-    - atlas: Armor
-      sprite: 1
+    - sprite: 1
       prefab: 
       local: ClothArmor
   - itemType: 0
     grade: 2
+    mainState: 0
+    mainStateAddValue: 0
+    atlas: 
     items:
-    - atlas: Weapon
-      sprite: 1
+    - sprite: 1
       prefab: 
       local: WoodAxe
   - itemType: 0
     grade: 3
+    mainState: 0
+    mainStateAddValue: 0
+    atlas: 
     items:
-    - atlas: Weapon
-      sprite: 1
+    - sprite: 1
       prefab: 
       local: WoodAxe

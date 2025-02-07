@@ -77,3 +77,31 @@ MonoBehaviour:
       value: 100
     - key: 3
       value: 75
+  - grade: 4
+    randomCount:
+    - key: 3
+      value: 100
+    - key: 4
+      value: 60
+    randomGrade:
+    - key: 2
+      value: 150
+    - key: 3
+      value: 100
+    - key: 4
+      value: 75
+    - key: 5
+      value: 50
+  - grade: 5
+    randomCount:
+    - key: 3
+      value: 100
+    - key: 4
+      value: 60
+    randomGrade:
+    - key: 3
+      value: 150
+    - key: 4
+      value: 100
+    - key: 5
+      value: 75

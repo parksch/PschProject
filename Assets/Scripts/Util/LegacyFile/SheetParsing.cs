@@ -14,8 +14,8 @@ using UnityEngine.Networking;
 
 public class SheetParsing : EditorWindow
 {
-    string url = "https://docs.google.com/spreadsheets/d/14WP1k6Nqoq0Y3Yhz0T_gVfWb_TwKKKPDaFyeI0703eM";
-    string url2 = "https://script.google.com/macros/s/AKfycbwIpN7GLxKRhOEFf6UUsRUsXYuC8MdAEiiWf1w_7rlDdw3U6651hJ93QhRdLjT1LaDc/exec";
+    string url = "";
+    string url2 = ""
     string gid;
     string jsonFileName;
     ServerSheetEnum serverSheetEnum;

@@ -376,7 +376,7 @@ public class SheetParsing : EditorWindow
             {
                 continue;
             }
-            url = "https://docs.google.com/spreadsheets/d/14WP1k6Nqoq0Y3Yhz0T_gVfWb_TwKKKPDaFyeI0703eM";
+            url = "";
             _url = string.Format("{0}/export?format=tsv&gid={1}", url, id);
 
             unityWebRequest = UnityWebRequest.Get(_url);

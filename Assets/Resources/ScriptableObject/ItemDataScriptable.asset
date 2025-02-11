@@ -219,11 +219,103 @@ MonoBehaviour:
       - sprite: M_4
         prefab: 
         local: NobleArmor
-  - itemType: 0
-    mainState: 0
-    atlas: 
-    gradeItems: []
-  - itemType: 0
-    mainState: 0
-    atlas: 
-    gradeItems: []
+  - itemType: 3
+    mainState: 2
+    atlas: Weapon
+    gradeItems:
+    - grade: 0
+      startValue: 0.05
+      mainStateAddValue: 0.05
+      items:
+      - sprite: C_1
+        prefab: 
+        local: RustyHandAxe
+      - sprite: C_2
+        prefab: 
+        local: CopperHandAxe
+      - sprite: C_3
+        prefab: 
+        local: PrimalBattleAxe
+      - sprite: C_4
+        prefab: 
+        local: WarpedBattleAxe
+    - grade: 1
+      startValue: 0.1
+      mainStateAddValue: 0.1
+      items:
+      - sprite: UN_1
+        prefab: 
+        local: DoubleHeadedAxe
+      - sprite: UN_2
+        prefab: 
+        local: BattleAxe
+      - sprite: UN_3
+        prefab: 
+        local: VikingAxe
+      - sprite: UN_4
+        prefab: 
+        local: Iron Axe
+    - grade: 2
+      startValue: 0.15
+      mainStateAddValue: 0.15
+      items:
+      - sprite: R_1
+        prefab: 
+        local: SavageWarAxe
+      - sprite: R_2
+        prefab: 
+        local: SteelAxe
+      - sprite: R_3
+        prefab: 
+        local: PhantomCleaver
+      - sprite: R_4
+        prefab: 
+        local: CrystalStuddedAxe
+    - grade: 3
+      startValue: 0.2
+      mainStateAddValue: 0.2
+      items:
+      - sprite: E_1
+        prefab: 
+        local: FeralBattleAxe
+      - sprite: E_2
+        prefab: 
+        local: SacredRitualAxe
+      - sprite: E_3
+        prefab: 
+        local: RubyAxe
+      - sprite: E_4
+        prefab: 
+        local: EnchantedAxe
+    - grade: 4
+      startValue: 0.25
+      mainStateAddValue: 0.25
+      items:
+      - sprite: L_1
+        prefab: 
+        local: RoyalAxe
+      - sprite: L_2
+        prefab: 
+        local: EngravedAxe
+      - sprite: L_3
+        prefab: 
+        local: DragonToothAxe
+      - sprite: L_4
+        prefab: 
+        local: ThunderAxe
+    - grade: 5
+      startValue: 0.3
+      mainStateAddValue: 0.3
+      items:
+      - sprite: M_1
+        prefab: 
+        local: RuneGlaive
+      - sprite: M_2
+        prefab: 
+        local: EnergyAxe
+      - sprite: M_3
+        prefab: 
+        local: AncientAxe
+      - sprite: M_4
+        prefab: 
+        local: HeroAxe

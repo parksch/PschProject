@@ -33,8 +33,15 @@ namespace JsonClass
 
         public List<State> GetOptions(Item target)
         {
+            ItemData typeData = itemData.Find(x => x.ItemType() == target);
+            List<State> states = new List<State>();
 
-            return null;
+            for (int i = 0; i < typeData.options.Count; i++)
+            {
+                states.Add((State)typeData.options[i]);
+            }
+
+            return states;
         }
 
     }

@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using JsonClass;
 
 [System.Serializable]
 public class BaseItem 
 {
-    [SerializeField] protected string id = "";
-    [SerializeField] protected string index = "";
-    [SerializeField] protected string itemName = "";
-    [SerializeField] protected int lv = 0;
+    [SerializeField,ReadOnly] protected string id = "";
+    [SerializeField,ReadOnly] protected string local = "";
+    [SerializeField,ReadOnly] protected string prefab = "";
+    [SerializeField,ReadOnly] protected int lv = 0;
     [SerializeField] protected int reinforce = 0;
     [SerializeField] protected ClientEnum.Grade grade;
     [SerializeField] protected ClientEnum.Item type;
@@ -21,29 +20,28 @@ public class BaseItem
     public Sprite GetSprite => sprite;
     public int Level => lv;
     public int Reinforce => reinforce;    
-    public string Name => itemName;
+    public string Name => "";
     public string ID => id;
     public ClientEnum.Grade Grade => grade;
     public ClientEnum.Item Type => type;
     public Datas.Pair<ClientEnum.State,float> MainState => mainState;
     public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade, float value)>> Options => options;
 
-    public virtual void Set(Items info,ClientEnum.Grade target,int level = -1)
+    public virtual void Set(JsonClass.GradeItem gradeItem,int level = -1)
     {
-        //reinforce = 0;
-        //id = System.Guid.NewGuid().ToString();
-        //index = info.id;
-        //lv = level == -1 ? DataManager.Instance.CurrentLevel : level;
-        //grade = target;
-        //sprite = info.Sprite();
-        //itemName = info.GetLocal();
+        id = System.Guid.NewGuid().ToString();
+        reinforce = 0;
+        lv = level == -1 ? DataManager.Instance.CurrentLevel : level;
+        grade = gradeItem.Grade();
+        SetResource(gradeItem.GetRandom());
 
-        //OptionScriptable option = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option);
+        JsonClass.OptionScriptable option = ScriptableManager.Instance.Get<JsonClass.OptionScriptable>(ScriptableType.Option);
 
-        //mainState = new Datas.Pair<ClientEnum.State, float>(info.MainState(), option.GetData(info.MainState()).Value(grade));
+        mainState = new Datas.Pair<ClientEnum.State, float>(GetMainState(), gradeItem.startValue + (lv * gradeItem.mainStateAddValue));
 
-        //options = ScriptableManager.Instance.Get<OptionScriptable>(ScriptableType.Option).GetRandomOption(ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetOptions(type),grade);
+        options = option.GetRandomOption(GetOptions(), grade);
     }
+
 
     public float GetStateValue(ClientEnum.State state)
     {
@@ -73,15 +71,37 @@ public class BaseItem
     void ResetItem()
     {
         id = "";
-        index = "";
-        itemName = "";
+        local = "";
+        prefab = "";
         lv = 0;
         reinforce = 0;
         grade = ClientEnum.Grade.Common;
-        type = ClientEnum.Item.None;
         mainState.key = ClientEnum.State.None;
         mainState.value = 0;
         options.Clear();
         sprite = null;
+    }
+
+
+    protected void SetResource(JsonClass.ResourcesItem resourcesItem)
+    {
+        sprite = ResourcesManager.Instance.GetSprite(GetAtlas(), resourcesItem.sprite);
+        local = resourcesItem.local;
+        prefab = resourcesItem.prefab;
+    }
+
+    protected List<ClientEnum.State> GetOptions()
+    {
+        return ScriptableManager.Instance.Get<JsonClass.ItemDataScriptable>(ScriptableType.ItemData).GetOptions(type);
+    }
+
+    protected ClientEnum.State GetMainState()
+    {
+        return ScriptableManager.Instance.Get<JsonClass.ItemDataScriptable>(ScriptableType.ItemData).MainState(type);
+    }
+
+    protected string GetAtlas()
+    {
+        return ScriptableManager.Instance.Get<JsonClass.ItemDataScriptable>(ScriptableType.ItemData).Atlas(type);
     }
 }

@@ -68,10 +68,7 @@ public class UIGuide : MonoBehaviour
         {
             case Reward.Item:
                 Shops shops = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).Target();
-                Items info = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetRandom(target.Item());
-                BaseItem item = ItemFactory.Create(target.Item());
-                item.Set(info, shops.Grade());
-
+                BaseItem item = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetItem(target.Item(), shops.Grade());
                 DataManager.Instance.AddItem(item);
                 reward.AddItem(item);
                 break;

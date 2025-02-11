@@ -1,3 +1,4 @@
+using ClientEnum;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,44 +6,54 @@ namespace JsonClass
 {
     public partial class ItemDataScriptable// This Class is a functional Class.
     {
-        public ClientEnum.Item GetRandomTarget()
+        public Item RandomTarget()
         {
-            //return (ClientEnum.Item)itemData[Random.Range(0, itemData.Count)].target;
-            return ClientEnum.Item.Helmet;
+            return itemData[Random.Range(0,itemData.Count)].ItemType();
         }
 
-        public class None : Items
+        public State MainState(Item target)
         {
-
+            return itemData.Find(x => x.ItemType() == target).MainState();
         }
 
-        ItemData GetTargetData(ClientEnum.Item target)
+        public string Atlas(Item target)
         {
-            //return itemData.Find(x => (ClientEnum.Item)x.target == target);
+            return itemData.Find(x => x.ItemType() == target).atlas;
+        }
+
+        public BaseItem GetItem(Item target,Grade grade)
+        {
+            ItemData typeData = itemData.Find(x => x.ItemType() == target);
+            GradeItem gradeItem = typeData.GetGradeItem(grade);
+            BaseItem baseItem = ItemFactory.Create(target);
+
+            baseItem.Set(gradeItem);
+            return baseItem;
+        }
+
+        public List<State> GetOptions(Item target)
+        {
+
             return null;
-        }
-
-        public Items GetRandom(ClientEnum.Item target)
-        {
-            ItemData typeData = GetTargetData(target);
-
-            //return typeData.gradeItems[Random.Range(0, typeData.gradeItems.Count)];
-            return null;
-        }
-
-        public List<ClientEnum.State> GetOptions(ClientEnum.Item target)
-        {
-            ItemData typeData = GetTargetData(target);
-            return typeData.TargetStates();
         }
 
     }
 
     public partial class ItemData
     {
-        public List<ClientEnum.State> TargetStates()
+        public Item ItemType()
         {
-            List<ClientEnum.State> states = new List<ClientEnum.State>();
+            return (Item)itemType;
+        }
+
+        public State MainState()
+        {
+            return (State)mainState;
+        }
+
+        public List<State> TargetStates()
+        {
+            List<State> states = new List<State>();
 
             //for (int i = 0; i < randomTarget.Count; i++)
             //{
@@ -51,14 +62,28 @@ namespace JsonClass
 
             return states;
         }
+
+        public GradeItem GetGradeItem(Grade grade)
+        {
+            GradeItem gradeItem = gradeItems.Find(x => x.Grade() == grade);
+            return gradeItem;
+        }
     }
 
     public partial class GradeItem
     {
+        public Grade Grade()
+        {
+            return (Grade)grade;
+        }
 
+        public ResourcesItem GetRandom()
+        {
+            return resourcesItems[Random.Range(0, resourcesItems.Count)];
+        }
     }
 
-    public partial class Items
+    public partial class ResourcesItem
     {
         public string GetLocal()
         {

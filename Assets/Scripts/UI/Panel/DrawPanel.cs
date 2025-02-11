@@ -200,21 +200,20 @@ public class DrawPanel : BasePanel
 
     void Item(RewardPanel reward, Shops shop, int num)
     {
+        ItemDataScriptable itemData = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData);
+
         for (int i = 0; i < num; i++)
         {
             ClientEnum.Item target = shop.Target();
 
             if (target == ClientEnum.Item.None)
             {
-                target = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetRandomTarget();
+                target = itemData.RandomTarget();
             }
-
-            Items info = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetRandom(target);
 
             ClientEnum.Grade grade = shop.Grade();
 
-            BaseItem item = ItemFactory.Create(target);
-            item.Set(info, grade);
+            BaseItem item = itemData.GetItem(target,grade);
             reward.AddItem(item);
             DataManager.Instance.AddItem(item);
         }

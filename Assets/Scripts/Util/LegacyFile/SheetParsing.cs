@@ -15,7 +15,7 @@ using UnityEngine.Networking;
 public class SheetParsing : EditorWindow
 {
     string url = "";
-    string url2 = ""
+    string url2 = "";
     string gid;
     string jsonFileName;
     ServerSheetEnum serverSheetEnum;

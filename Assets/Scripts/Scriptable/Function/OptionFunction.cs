@@ -43,11 +43,27 @@ namespace JsonClass
                         ClientEnum.State state = randStates[Random.Range(0, randStates.Count)];
                         ClientEnum.ChangeType changeType = Random.Range(0, 10) > 5 ? ClientEnum.ChangeType.Sum:ClientEnum.ChangeType.Product;
 
-                        //Test
-                        changeType = ClientEnum.ChangeType.Product;
+                        Option getOption = GetData(state, changeType);
+
+                        if (getOption == null)
+                        {
+                            switch (changeType)
+                            {
+                                case ClientEnum.ChangeType.Sum:
+                                    changeType = ClientEnum.ChangeType.Product;
+                                    break;
+                                case ClientEnum.ChangeType.Product:
+                                    changeType = ClientEnum.ChangeType.Sum;
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            getOption = GetData(state, changeType);
+                        }
 
                         ItemOption itemOption = new ItemOption();
-                        itemOption.SetValue(changeType, GetData(state,changeType).Value(grade), grade);
+                        itemOption.SetValue(changeType, getOption.Value(grade), grade);
 
                         Datas.Pair<ClientEnum.State,ItemOption> pair = new Datas.Pair<ClientEnum.State, ItemOption>(state,itemOption);
                         option.Add(pair);

@@ -61,7 +61,12 @@ public partial class DataManager //Inventory
 
     void InventoryInit()
     {
-        inventoryDates = new List<BaseItem>(maxInventoryCount);
+        inventoryDates = new List<BaseItem>();
+
+        for (int i = 0;i < maxInventoryCount; i++)
+        {
+            inventoryDates.Add(new BaseItem());
+        }
 
         OnEquipItem = (item) =>
         {

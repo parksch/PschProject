@@ -22,7 +22,7 @@ namespace JsonClass
     public partial class GradeItem
     {
         public int grade;
-        public float startValue;
+        public int startValue;
         public float mainStateAddValue;
         public List<ResourcesItem> resourcesItems;
     }

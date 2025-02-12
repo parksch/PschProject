@@ -209,9 +209,9 @@ public class JsonLoader : EditorWindow
             //json = JsonConvert.SerializeObject(draws);
             //File.WriteAllText(jsonFilePath + "/Draw.json", json);
 
-            //List<ItemData> itemDatas = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).itemData;
-            //json = JsonConvert.SerializeObject(itemDatas);
-            //File.WriteAllText(jsonFilePath + "/ItemData.json", json, Encoding.UTF8);
+            List<ItemData> itemDatas = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).itemData;
+            json = JsonConvert.SerializeObject(itemDatas);
+            File.WriteAllText(jsonFilePath + "/ItemData.json", json, Encoding.UTF8);
 
             //List<Localization> localizations = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).localization;
             //json = JsonConvert.SerializeObject(localizations);

@@ -98,26 +98,21 @@ public partial class DataManager //Inventory
 
     float GetItemValue(ClientEnum.State state,ClientEnum.ChangeType type)
     {
-        if (type == ClientEnum.ChangeType.Sum)
-        {
-            return 0;
-        }
-
         float value = 0;
 
         if (equipHelmet.ID != "")
         {
-            value += equipHelmet.GetStateValue(state);
+            value += equipHelmet.GetStateValue(state, type);
         }
 
         if (equipArmor.ID != "")
         {
-            value += equipArmor.GetStateValue(state);
+            value += equipArmor.GetStateValue(state, type);
         }
 
         if (equipWeapon.ID != "")
         {
-            value += equipWeapon.GetStateValue(state);
+            value += equipWeapon.GetStateValue(state, type);
         }
 
         return value;

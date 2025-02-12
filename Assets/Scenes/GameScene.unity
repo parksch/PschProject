@@ -5935,8 +5935,8 @@ MonoBehaviour:
   lv: {fileID: 866111291}
   item:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
@@ -8178,7 +8178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.005645192}
+  m_AnchoredPosition: {x: 0, y: 0.0016030791}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &465614781
@@ -10331,8 +10331,8 @@ MonoBehaviour:
   lv: {fileID: 712594199}
   item:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
@@ -13921,8 +13921,8 @@ MonoBehaviour:
   lv: {fileID: 973215964}
   item:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
@@ -31906,8 +31906,8 @@ MonoBehaviour:
   lv: {fileID: 654532636}
   item:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
@@ -34339,8 +34339,8 @@ MonoBehaviour:
   lv: {fileID: 300904428}
   item:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
@@ -34504,8 +34504,8 @@ MonoBehaviour:
   lv: {fileID: 1788511441}
   item:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
@@ -35538,8 +35538,8 @@ MonoBehaviour:
   lv: {fileID: 1531923394}
   item:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
@@ -52355,8 +52355,8 @@ MonoBehaviour:
   lv: {fileID: 67133355}
   item:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0

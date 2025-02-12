@@ -12,8 +12,8 @@ public class BaseItem
     [SerializeField] protected int reinforce = 0;
     [SerializeField] protected ClientEnum.Grade grade;
     [SerializeField] protected ClientEnum.Item type;
-    [SerializeField] protected Datas.Pair<ClientEnum.State, float> mainState;
-    [SerializeField] protected List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float num)>> options;
+    [SerializeField] protected Datas.Pair<ClientEnum.State, ItemOption> mainState;
+    [SerializeField] protected List<Datas.Pair<ClientEnum.State,ItemOption>> options;
     [SerializeField] protected Sprite sprite;
 
     public void AddReinforce() => reinforce++;
@@ -24,8 +24,8 @@ public class BaseItem
     public string ID => id;
     public ClientEnum.Grade Grade => grade;
     public ClientEnum.Item Type => type;
-    public Datas.Pair<ClientEnum.State,float> MainState => mainState;
-    public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade, float value)>> Options => options;
+    public Datas.Pair<ClientEnum.State, ItemOption> MainState => mainState;
+    public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade, float value)>> Options => null;
 
     public virtual void Set(JsonClass.GradeItem gradeItem,int level = -1)
     {
@@ -36,27 +36,29 @@ public class BaseItem
         SetResource(gradeItem.GetRandom());
 
         JsonClass.OptionScriptable option = ScriptableManager.Instance.Get<JsonClass.OptionScriptable>(ScriptableType.Option);
+        ItemOption mainOption = new ItemOption();
+        mainOption.SetValue(ClientEnum.ChangeType.Sum, (int)(gradeItem.startValue + (gradeItem.startValue * (gradeItem.mainStateAddValue * level))));
 
-        mainState = new Datas.Pair<ClientEnum.State, float>(GetMainState(), gradeItem.startValue + (lv * gradeItem.mainStateAddValue));
+        mainState = new Datas.Pair<ClientEnum.State, ItemOption>(GetMainState(), mainOption);
 
-        options = option.GetRandomOption(GetOptions(), grade);
+        //options = option.GetRandomOption(GetOptions(), grade);
     }
 
 
-    public float GetStateValue(ClientEnum.State state)
+    public float GetStateValue(ClientEnum.State state,ClientEnum.ChangeType changeType)
     {
         float value = 0;
 
-        if (mainState.key == state)
+        if (mainState.key == state && mainState.value.ChangeType == changeType)
         {
-            value += mainState.value;
+            value += mainState.value.OptionSet;
         }
 
         foreach (var item in options)
         {
-            if (item.key == state)
+            if (item.key == state && item.value.ChangeType == changeType)
             {
-                value += item.value.num;
+                value += item.value.OptionSet;
             }
         }
 
@@ -76,8 +78,7 @@ public class BaseItem
         lv = 0;
         reinforce = 0;
         grade = ClientEnum.Grade.Common;
-        mainState.key = ClientEnum.State.None;
-        mainState.value = 0;
+        mainState.value.Reset();
         options.Clear();
         sprite = null;
     }

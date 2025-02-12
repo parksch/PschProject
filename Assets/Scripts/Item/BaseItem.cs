@@ -25,7 +25,7 @@ public class BaseItem
     public ClientEnum.Grade Grade => grade;
     public ClientEnum.Item Type => type;
     public Datas.Pair<ClientEnum.State, ItemOption> MainState => mainState;
-    public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade, float value)>> Options => null;
+    public List<Datas.Pair<ClientEnum.State,ItemOption >> Options => options;
 
     public virtual void Set(JsonClass.GradeItem gradeItem,int level = -1)
     {
@@ -41,7 +41,7 @@ public class BaseItem
 
         mainState = new Datas.Pair<ClientEnum.State, ItemOption>(GetMainState(), mainOption);
 
-        //options = option.GetRandomOption(GetOptions(), grade);
+        options = option.GetRandomOption(GetOptions(), grade);
     }
 
 

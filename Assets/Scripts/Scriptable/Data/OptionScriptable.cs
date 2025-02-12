@@ -12,6 +12,7 @@ namespace JsonClass
     public partial class Option
     {
         public int target;
+        public int changeType;
         public List<GradeValue> gradeValue;
         public string local;
     }

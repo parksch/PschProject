@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class DataManager //Inventory
 {
-    [SerializeField] int maxInventoryCount = 100;
+    [SerializeField, ReadOnly] int maxInventoryCount = 100;
     [SerializeField, ReadOnly] BaseItem equipHelmet;
     [SerializeField, ReadOnly] BaseItem equipWeapon;
     [SerializeField, ReadOnly] BaseItem equipArmor;

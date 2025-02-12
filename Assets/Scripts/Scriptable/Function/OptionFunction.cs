@@ -11,9 +11,9 @@ namespace JsonClass
             [SerializeField] List<Option> dates = new List<Option>();
         }
 
-        public List<Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade,float value)>> GetRandomOption(List<ClientEnum.State> randStates, ClientEnum.Grade target)
+        public List<Datas.Pair<ClientEnum.State,ItemOption >> GetRandomOption(List<ClientEnum.State> randStates, ClientEnum.Grade target)
         {
-            List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float value)>> option = new List<Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float value)>>();
+            List<Datas.Pair<ClientEnum.State,ItemOption >> option = new List<Datas.Pair<ClientEnum.State, ItemOption>>();
             OptionProbability probability = ScriptableManager.Instance.Get<OptionProbabilityScriptable>(ScriptableType.OptionProbability).GetOptionProbability(target);
 
             int rand = Random.Range(0, probability.MaxProbabilityCount());
@@ -41,9 +41,17 @@ namespace JsonClass
                     {
                         ClientEnum.Grade grade = probability.randomGrade[i].Grade();
                         ClientEnum.State state = randStates[Random.Range(0, randStates.Count)];
+                        ClientEnum.ChangeType changeType = Random.Range(0, 10) > 5 ? ClientEnum.ChangeType.Sum:ClientEnum.ChangeType.Product;
 
-                        Datas.Pair<ClientEnum.State,(ClientEnum.Grade grade, float)> pair = new Datas.Pair<ClientEnum.State, (ClientEnum.Grade grade, float)>(state,(grade, GetData(state).Value(grade)));
+                        //Test
+                        changeType = ClientEnum.ChangeType.Product;
+
+                        ItemOption itemOption = new ItemOption();
+                        itemOption.SetValue(changeType, GetData(state,changeType).Value(grade), grade);
+
+                        Datas.Pair<ClientEnum.State,ItemOption> pair = new Datas.Pair<ClientEnum.State, ItemOption>(state,itemOption);
                         option.Add(pair);
+
                         break;
                     }
                     else
@@ -56,7 +64,7 @@ namespace JsonClass
             return option;
         }
 
-        public Option GetData(ClientEnum.State target) => option.Find(x => x.Target() == target);
+        public Option GetData(ClientEnum.State target, ClientEnum.ChangeType changeType) => option.Find(x => x.Target() == target && x.ChangeType() == changeType);
 
         public ResultOption GetGradeOption(ClientEnum.Grade grade)
         {
@@ -71,6 +79,11 @@ namespace JsonClass
         public ClientEnum.State Target()
         {
             return (ClientEnum.State)target;
+        }
+
+        public ClientEnum.ChangeType ChangeType()
+        {
+            return (ClientEnum.ChangeType)changeType;
         }
 
         public float Value(ClientEnum.Grade grade)

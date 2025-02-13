@@ -17,9 +17,11 @@ public class DrawPanel : BasePanel
     [SerializeField, ReadOnly] RectTransform content;
     [SerializeField, ReadOnly] GameObject prevButton;
     [SerializeField, ReadOnly] GameObject nextButton;
+    [SerializeField, ReadOnly] GameObject salvageButton;
     [SerializeField, ReadOnly] UnityEngine.UI.Slider lvSlider;
     [SerializeField, ReadOnly] Text lvText;
     [SerializeField, ReadOnly] string drawLocal;
+    [SerializeField, ReadOnly] string drawFull = "InventoryFull";
 
     UIDrawSlot currentSlot;
     bool CheckButton(Shops shop, UIBuyButton button)
@@ -97,6 +99,7 @@ public class DrawPanel : BasePanel
 
     public void SetDraw(Shops shop)
     {
+        salvageButton.SetActive(shop.Target() != ClientEnum.Item.Skill);
         currentDrawDesc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(shop.descKey);
         currentDrawTitle.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(shop.nameKey);
         currentDrawLimit.gameObject.SetActive(shop.limit> 0);
@@ -136,6 +139,14 @@ public class DrawPanel : BasePanel
 
     public void OnClickDraw(UIBuyButton buyButton)
     {
+        if (DataManager.Instance.GetInventoryEmpty() < buyButton.targetNum)
+        {
+            CommonPanel commonPanel = UIManager.Instance.Get<CommonPanel>();
+            commonPanel.SetOK(drawFull);
+            UIManager.Instance.AddPanel(commonPanel);
+            return;
+        }
+
         if (currentSlot.GetCurrentData.limit > 0)
         {
             DataManager.Instance.AddDrawLimit(currentSlot.GetCurrentData.nameKey, buyButton.targetNum);
@@ -200,6 +211,7 @@ public class DrawPanel : BasePanel
 
     void Item(RewardPanel reward, Shops shop, int num)
     {
+
         ItemDataScriptable itemData = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData);
 
         for (int i = 0; i < num; i++)

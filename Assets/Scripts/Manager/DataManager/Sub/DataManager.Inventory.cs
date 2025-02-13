@@ -10,11 +10,13 @@ public partial class DataManager //Inventory
     [SerializeField, ReadOnly] BaseItem equipArmor;
     [SerializeField, ReadOnly] List<BaseItem> inventoryDates = new List<BaseItem>();
 
+    public delegate void EquipItem(BaseItem item);
+    public EquipItem OnEquipItem;
+
     public BaseItem Helmet => equipHelmet;
     public BaseItem Weapon => equipWeapon;
     public BaseItem Armor => equipArmor;
     public List<BaseItem> InventoryDates => inventoryDates;
-
     public BaseItem GetEquipItem(ClientEnum.Item item)
     {
         switch (item)
@@ -32,11 +34,6 @@ public partial class DataManager //Inventory
 
     public void AddItem(BaseItem item)
     {
-        //if (inventoryDates.FindAll())
-        //{
-
-        //}
-
         for (int i = 0; i < inventoryDates.Count; i++)
         {
             if (inventoryDates[i].ID == "")
@@ -45,7 +42,6 @@ public partial class DataManager //Inventory
                 break;
             }
         }
-
     }
 
     public void SetEquipItem(BaseItem item)
@@ -55,15 +51,17 @@ public partial class DataManager //Inventory
         inventoryDates.Add(new BaseItem());
         OnEquipItem(target);
     }
-    
-    public delegate void EquipItem(BaseItem item);
-    public EquipItem OnEquipItem;
+
+    public int GetInventoryEmpty()
+    {
+        return inventoryDates.FindAll(x => x.ID == "").Count;
+    }
 
     void InventoryInit()
     {
         inventoryDates = new List<BaseItem>();
 
-        for (int i = 0;i < maxInventoryCount; i++)
+        for (int i = 0; i < maxInventoryCount; i++)
         {
             inventoryDates.Add(new BaseItem());
         }
@@ -101,7 +99,7 @@ public partial class DataManager //Inventory
         };
     }
 
-    float GetItemValue(ClientEnum.State state,ClientEnum.ChangeType type)
+    float GetItemValue(ClientEnum.State state, ClientEnum.ChangeType type)
     {
         float value = 0;
 
@@ -123,4 +121,8 @@ public partial class DataManager //Inventory
         return value;
     }
 
+    public void SalvageItems(List<ClientEnum.Grade> grades)
+    {
+
+    }
 }

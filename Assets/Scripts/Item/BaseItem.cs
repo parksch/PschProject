@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class BaseItem
     public Sprite GetSprite => sprite;
     public int Level => lv;
     public int Reinforce => reinforce;    
-    public string Name => "";
+    public string Name => ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(local);
     public string ID => id;
     public ClientEnum.Grade Grade => grade;
     public ClientEnum.Item Type => type;
@@ -37,7 +38,7 @@ public class BaseItem
 
         JsonClass.OptionScriptable option = ScriptableManager.Instance.Get<JsonClass.OptionScriptable>(ScriptableType.Option);
         ItemOption mainOption = new ItemOption();
-        mainOption.SetValue(ClientEnum.ChangeType.Sum, (int)(gradeItem.startValue + (gradeItem.startValue * (gradeItem.mainStateAddValue * level))));
+        mainOption.SetValue(ClientEnum.ChangeType.Sum, (int)(gradeItem.startValue + (gradeItem.startValue * (gradeItem.mainStateAddValue * lv))));
 
         mainState = new Datas.Pair<ClientEnum.State, ItemOption>(GetMainState(), mainOption);
 

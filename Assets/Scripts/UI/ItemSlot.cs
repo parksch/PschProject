@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    [SerializeField] Image image;
-    [SerializeField] Text reinforce;
-    [SerializeField] Text lv;
+    [SerializeField,ReadOnly] Image image;
+    [SerializeField,ReadOnly] Text reinforce;
+    [SerializeField,ReadOnly] Text lv;
     [SerializeField,ReadOnly] BaseItem item;
 
     public void SetItem(BaseItem _item)

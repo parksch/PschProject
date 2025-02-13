@@ -10,7 +10,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
     [SerializeField] Color rare;
     [SerializeField] Color epic;
     [SerializeField] Color legendary;
-    [SerializeField] Color mythical;
+    [SerializeField] Color mythical;  
     [SerializeField, ReadOnly] string spriteAtlasPath = "SpriteAtlas";
     Dictionary<string, SpriteAtlas> spriteAtlasDict = new Dictionary<string, SpriteAtlas>();
 

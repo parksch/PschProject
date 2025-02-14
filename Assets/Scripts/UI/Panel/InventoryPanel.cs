@@ -36,6 +36,7 @@ public class InventoryPanel : BasePanel
     public void OnToggle(int value)
     {
         target = (ClientEnum.Item)value;
+        UpdatePanel();
     }
 
     public void OpenItemSelect(BaseItem item)
@@ -46,6 +47,8 @@ public class InventoryPanel : BasePanel
 
     public void UpdatePanel()
     {
+        DataManager.Instance.SortInventory();
+
         for (int i = 0; i < slots.Count; i++)
         {
             slots[i].SetItem(DataManager.Instance.GetEquipItem(slots[i].ItemType));

@@ -19,6 +19,8 @@ public class EquipSelectPanel : BasePanel
             select.SetItem(item);
             select.gameObject.SetActive(true);
         }
+
+        CheckReinforce();
     }
 
     bool CheckInventory(BaseItem item)
@@ -68,5 +70,15 @@ public class EquipSelectPanel : BasePanel
         }
 
         return result;
+    }
+
+    public void CheckReinforce()
+    {
+        if (prev.gameObject.activeSelf)
+        {
+            prev.ReinforceUpdate();
+        }
+
+        select.ReinforceUpdate();
     }
 }

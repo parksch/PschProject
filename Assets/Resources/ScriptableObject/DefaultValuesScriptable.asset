@@ -27,3 +27,7 @@ MonoBehaviour:
     value: 60
   - key: DrawSkillPiece
     value: 10
+  - key: NeedReinforce
+    value: 10
+  - key: MaxReinforce
+    value: 10

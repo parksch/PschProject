@@ -67,29 +67,29 @@ MonoBehaviour:
     - key: 0
       value: 5
     - key: 1
-      value: 10
+      value: 8
     - key: 2
-      value: 20
+      value: 12
     - key: 3
-      value: 30
+      value: 14
     - key: 4
-      value: 35
+      value: 17
     - key: 5
-      value: 40
+      value: 20
     local: HpRegenOption
   - target: 5
     changeType: 1
     gradeValue:
     - key: 0
-      value: 5
+      value: 3
     - key: 1
-      value: 10
+      value: 5
     - key: 2
-      value: 20
+      value: 8
     - key: 3
-      value: 30
+      value: 10
     - key: 4
-      value: 35
+      value: 12
     - key: 5
-      value: 40
+      value: 15
     local: DrainLifeOption

@@ -1,5 +1,4 @@
 using JsonClass;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +16,13 @@ public class BaseItem
     [SerializeField] protected List<Datas.Pair<ClientEnum.State,ItemOption>> options;
     [SerializeField] protected Sprite sprite;
 
-    public void AddReinforce() => reinforce++;
+    public void AddReinforce()
+    {
+        ItemOption main = MainState.value;
+        reinforce++;
+        int result = (int)(main.OptionSet * (1 + (reinforce * .1f)));
+        main.SetValue(main.ChangeType, result);
+    }
     public Sprite GetSprite => sprite;
     public int Level => lv;
     public int Reinforce => reinforce;    
@@ -43,6 +48,7 @@ public class BaseItem
         mainState = new Datas.Pair<ClientEnum.State, ItemOption>(GetMainState(), mainOption);
 
         options = option.GetRandomOption(GetOptions(), grade);
+        options.Sort((a,b) => a.key.CompareTo(b.key));
     }
 
 

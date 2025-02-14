@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public partial class DataManager //Inventory
@@ -102,6 +103,8 @@ public partial class DataManager //Inventory
                     break;
             }
 
+            UIManager.Instance.BackPanel();
+
             if (check)
             {
                 UIManager.Instance.AddPanel(UIManager.Instance.Get<RewardPanel>());
@@ -144,7 +147,9 @@ public partial class DataManager //Inventory
                 if (grades[j] == inventoryDates[i].Grade && inventoryDates[i].ID != "")
                 {
                     inventoryDates[i].Disassembly();
-                    inventoryDates[i].ResetItem();
+                    inventoryDates.RemoveAt(i);
+                    inventoryDates.Add(new BaseItem());
+                    i--;
                     isOn = true;
                 }
             }
@@ -152,6 +157,11 @@ public partial class DataManager //Inventory
 
         if (isOn)
         {
+            if (UIManager.Instance.ContainsPanel(UIManager.Instance.Get<InventoryPanel>()))
+            {
+                UIManager.Instance.Get<InventoryPanel>().UpdatePanel();
+            }
+
             UIManager.Instance.AddPanel(UIManager.Instance.Get<RewardPanel>());
         }
         else
@@ -159,6 +169,48 @@ public partial class DataManager //Inventory
             CommonPanel commonPanel = UIManager.Instance.Get<CommonPanel>();
             commonPanel.SetOK(emptyItem);
             UIManager.Instance.AddPanel(commonPanel);
+        }
+    }
+
+    public void SortInventory()
+    {
+        inventoryDates.Sort(SortItem);
+    }
+
+    int SortItem(BaseItem a,BaseItem b)
+    {
+        if (a.ID == "")
+        {
+            if (b.ID != "")
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            if (b.ID == "")
+            {
+                return -1;
+            }
+            else
+            {
+                if (a.Grade == b.Grade)
+                {
+                    return 0;
+                }
+                else if(a.Grade > b.Grade)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }

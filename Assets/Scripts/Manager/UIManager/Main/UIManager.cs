@@ -12,6 +12,13 @@ public partial class UIManager : Singleton<UIManager>
     [SerializeField] List<GameObject> topMenu = new List<GameObject>();
     [SerializeField] List<BasePanel> panels;
 
+    public BasePanel CurrentPanel => currentPanel;
+
+    public bool ContainsPanel(BasePanel target)
+    {
+        return panelStack.Contains(target);
+    }
+
     Stack<BasePanel> panelStack = new Stack<BasePanel>();
 
     protected override void Awake()

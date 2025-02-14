@@ -557,9 +557,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2eabdec1e7c729248b2fafbe3a0b271e, type: 3}
     m_FontSize: 80
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 8
     m_MaxSize: 104
@@ -1168,9 +1168,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2eabdec1e7c729248b2fafbe3a0b271e, type: 3}
     m_FontSize: 40
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
@@ -2395,9 +2395,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2eabdec1e7c729248b2fafbe3a0b271e, type: 3}
     m_FontSize: 40
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 41
@@ -3283,9 +3283,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2eabdec1e7c729248b2fafbe3a0b271e, type: 3}
     m_FontSize: 87
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 198
@@ -4980,9 +4980,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 250
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 2eabdec1e7c729248b2fafbe3a0b271e, type: 3}
+    m_FontSize: 220
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 250
@@ -5621,1242 +5621,1139 @@ MonoBehaviour:
   maxInventoryCount: 100
   equipHelmet:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   equipWeapon:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   equipArmor:
     id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   inventoryDates:
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   - id: 
-    index: 
-    itemName: 
+    local: 
+    prefab: 
     lv: 0
     reinforce: 0
     grade: 0
     type: 0
     mainState:
       key: 0
-      value: 0
     options: []
     sprite: {fileID: 0}
   skills: []

@@ -28,6 +28,16 @@ public class SalvagePanel : BasePanel
 
     public void OnClickSalvage()
     {
+        List<ClientEnum.Grade> grades = new List<ClientEnum.Grade>();
 
+        for (int i = 0; i < uIGradeToggles.Count; i++)
+        {
+            if (uIGradeToggles[i].IsOn)
+            {
+                grades.Add(uIGradeToggles[i].Grade);
+            }
+        }
+
+        DataManager.Instance.SalvageItems(grades);
     }
 }

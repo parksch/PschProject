@@ -291,6 +291,8 @@ MonoBehaviour:
       desc: "\uC804\uC124"
     - name: Mythical
       desc: "\uC2E0\uD654"
+    - name: EmptySalvage
+      desc: "\uBD84\uD574 \uD560 \uC544\uC774\uD15C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
   - language: 1
     textkeys:
     - name: 

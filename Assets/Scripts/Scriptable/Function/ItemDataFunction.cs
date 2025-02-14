@@ -44,6 +44,38 @@ namespace JsonClass
             return states;
         }
 
+        public int GetDismantle(Grade target)
+        {
+            DefaultValuesScriptable values = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues);
+            int value = (int)values.Get("Dismantle");
+
+            switch (target)
+            {
+                case Grade.Uncommon:
+                    value = (int)(value * 1.2f);
+                    break;
+                case Grade.Rare:
+                    value = (int)(value * 1.5f);
+                    break;
+                case Grade.Epic:
+                    value = (int)(value * 2f);
+                    break;
+                case Grade.Legendary:
+                    value = (int)(value * 2.5f);
+                    break;
+                case Grade.Mythical:
+                    value = (int)(value * 3f);
+                    break;
+                case Grade.Max:
+                    value = (int)(value * 5f);
+                    break;
+                default:
+                    break;
+            }
+
+            return value;
+        }
+
     }
 
     public partial class ItemData

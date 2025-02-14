@@ -11,6 +11,9 @@ public class UIGradeToggle : MonoBehaviour
     [SerializeField, ReadOnly] Text gradeText;
     [SerializeField, ReadOnly] Toggle toggle;
 
+    public Grade Grade => target;
+    public bool IsOn => toggle.isOn;
+
     public void Set(Grade grade)
     {
         target = grade;

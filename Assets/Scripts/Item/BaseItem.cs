@@ -68,10 +68,13 @@ public class BaseItem
 
     public void Disassembly()
     {
+        int reinforceStone = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData).GetDismantle(grade);
 
+        DataManager.Instance.AddGoods(ClientEnum.Goods.Reinforce, reinforceStone);
+        UIManager.Instance.Get<RewardPanel>().AddGoods(ClientEnum.Goods.Reinforce, reinforceStone);
     }
 
-    void ResetItem()
+    public void ResetItem()
     {
         id = "";
         local = "";

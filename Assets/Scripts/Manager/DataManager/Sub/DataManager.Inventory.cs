@@ -10,6 +10,8 @@ public partial class DataManager //Inventory
     [SerializeField, ReadOnly] BaseItem equipArmor;
     [SerializeField, ReadOnly] List<BaseItem> inventoryDates = new List<BaseItem>();
 
+    string emptyItem = "EmptySalvage";
+
     public delegate void EquipItem(BaseItem item);
     public EquipItem OnEquipItem;
 
@@ -68,12 +70,15 @@ public partial class DataManager //Inventory
 
         OnEquipItem = (item) =>
         {
+            bool check = false;
+
             switch (item.Type)
             {
                 case ClientEnum.Item.Helmet:
                     if (equipHelmet.ID != "")
                     {
                         equipHelmet.Disassembly();
+                        check = true;
                     }
                     equipHelmet = item;
                     break;
@@ -81,6 +86,7 @@ public partial class DataManager //Inventory
                     if (equipArmor.ID != "")
                     {
                         equipArmor.Disassembly();
+                        check = true;
                     }
                     equipArmor = item;
                     break;
@@ -88,11 +94,17 @@ public partial class DataManager //Inventory
                     if (equipWeapon.ID != "")
                     {
                         equipWeapon.Disassembly();
+                        check = true;
                     }
                     equipWeapon = item;
                     break;
                 default:
                     break;
+            }
+
+            if (check)
+            {
+                UIManager.Instance.AddPanel(UIManager.Instance.Get<RewardPanel>());
             }
 
             GameManager.Instance.Player.StateUpdate();
@@ -123,6 +135,30 @@ public partial class DataManager //Inventory
 
     public void SalvageItems(List<ClientEnum.Grade> grades)
     {
+        bool isOn = false;
 
+        for (int i = 0; i < inventoryDates.Count; i++)
+        {
+            for (int j = 0; j < grades.Count; j++)
+            {
+                if (grades[j] == inventoryDates[i].Grade && inventoryDates[i].ID != "")
+                {
+                    inventoryDates[i].Disassembly();
+                    inventoryDates[i].ResetItem();
+                    isOn = true;
+                }
+            }
+        }
+
+        if (isOn)
+        {
+            UIManager.Instance.AddPanel(UIManager.Instance.Get<RewardPanel>());
+        }
+        else
+        {
+            CommonPanel commonPanel = UIManager.Instance.Get<CommonPanel>();
+            commonPanel.SetOK(emptyItem);
+            UIManager.Instance.AddPanel(commonPanel);
+        }
     }
 }

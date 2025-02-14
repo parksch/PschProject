@@ -62,7 +62,7 @@ MonoBehaviour:
       value: 40
     local: DefenseOption
   - target: 4
-    changeType: 1
+    changeType: 0
     gradeValue:
     - key: 0
       value: 5
@@ -78,7 +78,7 @@ MonoBehaviour:
       value: 20
     local: HpRegenOption
   - target: 5
-    changeType: 1
+    changeType: 0
     gradeValue:
     - key: 0
       value: 3

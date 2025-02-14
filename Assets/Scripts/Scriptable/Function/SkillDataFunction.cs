@@ -35,22 +35,7 @@ namespace JsonClass
         {
             int value = 0;
             DefaultValuesScriptable defaultValuesScriptable = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues);
-            value = (int)defaultValuesScriptable.Get("Dismantle");
-
-            switch (Grade())
-            {
-                case ClientEnum.Grade.Rare:
-                case ClientEnum.Grade.Epic:
-                    value = (int)(value * 1.5f);
-                    break;
-                case ClientEnum.Grade.Legendary:
-                case ClientEnum.Grade.Mythical:
-                    value = (int)(value * 2f);
-                    break;
-                case ClientEnum.Grade.Max:
-                default:
-                    break;
-            }
+            value = (int)defaultValuesScriptable.Get("SkillPiece");
 
             return value;
         }

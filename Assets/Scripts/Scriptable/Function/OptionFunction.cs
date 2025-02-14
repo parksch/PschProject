@@ -37,9 +37,9 @@ namespace JsonClass
                 rand = Random.Range(0, probability.MaxProbabilityGrade());
                 for (int j = 0; j < probability.randomGrade.Count; j++)
                 {
-                    if (rand < probability.randomGrade[i].value)
+                    if (rand < probability.randomGrade[j].value)
                     {
-                        ClientEnum.Grade grade = probability.randomGrade[i].Grade();
+                        ClientEnum.Grade grade = probability.randomGrade[j].Grade();
                         ClientEnum.State state = randStates[Random.Range(0, randStates.Count)];
                         ClientEnum.ChangeType changeType = Random.Range(0, 10) > 5 ? ClientEnum.ChangeType.Sum:ClientEnum.ChangeType.Product;
 
@@ -72,7 +72,7 @@ namespace JsonClass
                     }
                     else
                     {
-                        rand -= probability.randomGrade[i].value;
+                        rand -= probability.randomGrade[j].value;
                     }
                 }
             }

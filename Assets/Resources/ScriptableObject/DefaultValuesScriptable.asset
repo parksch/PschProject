@@ -21,13 +21,7 @@ MonoBehaviour:
     value: 20
   - key: Dismantle
     value: 20
-  - key: NormalSkillPiece
-    value: 2
-  - key: RareSkillPiece
-    value: 3
-  - key: SuperRareSkillPiece
-    value: 4
-  - key: UltraRareSkillPiece
+  - key: SkillPiece
     value: 5
   - key: TimeLimit
     value: 60

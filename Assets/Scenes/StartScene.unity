@@ -3365,7 +3365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   common: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   uncommon: {r: 0.4, g: 0.4, b: 0.8, a: 1}
-  rare: {r: 0.3, g: 1, b: 1, a: 1}
+  rare: {r: 0.24448201, g: 0.7735849, b: 0.7735849, a: 1}
   epic: {r: 0.7, g: 0.2, b: 0.2, a: 1}
   legendary: {r: 0.8, g: 0.2, b: 0.6, a: 1}
   mythical: {r: 1, g: 0.6, b: 0.5, a: 1}

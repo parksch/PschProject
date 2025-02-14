@@ -10,7 +10,8 @@ public class UIItemInfo : MonoBehaviour
     [SerializeField] Image icon;
     [SerializeField] Text itemName;
     [SerializeField] Text mainState;
-    [SerializeField] Text option;
+    [SerializeField] Text optionName;
+    [SerializeField] Text optionState;
     [SerializeField] UIButton reinforceButton;
 
     BaseItem target;
@@ -32,17 +33,20 @@ public class UIItemInfo : MonoBehaviour
 
         if (options.Count > 0)
         {
-            option.text = string.Empty;
+            optionName.text = string.Empty;
+            optionState.text = string.Empty;
 
             for (int i = 0; i < options.Count; i++)
             {
-                state = local.Get(options[i].key.ToString());
-                option.text += $"<color={ResourcesManager.Instance.GradeColor(options[i].value.Grade)}>{state} : {options[i].value.OptionSet}%</color> \n";
+                state = string.Format(local.Get("Add"), local.Get(options[i].key.ToString()));
+                optionName.text += $"<color={ResourcesManager.Instance.GradeColor(options[i].value.Grade)}>{state}</color> \n";
+                optionState.text += $"<color={ResourcesManager.Instance.GradeColor(options[i].value.Grade)}>{options[i].value.OptionSet}%</color> \n";
             }
         }
         else
         {
-            option.text = "";
+            optionName.text = "";
+            optionState.text = "";
         }
     }
 

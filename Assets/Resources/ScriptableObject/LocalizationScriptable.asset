@@ -52,7 +52,7 @@ MonoBehaviour:
     - name: Attack
       desc: "\uACF5\uACA9\uB825"
     - name: HpRegen
-      desc: "\uCCB4\uB825\uC7AC\uC0DD"
+      desc: "\uC7AC\uC0DD"
     - name: DrainLife
       desc: "\uCCB4\uB825\uD761\uC218"
     - name: AttackRange
@@ -295,6 +295,8 @@ MonoBehaviour:
       desc: "\uBD84\uD574 \uD560 \uC544\uC774\uD15C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."
     - name: Reinforce
       desc: "\uAC15\uD654\uD558\uAE30"
+    - name: Add
+      desc: "{0} \uC99D\uAC00"
   - language: 1
     textkeys:
     - name: 

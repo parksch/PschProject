@@ -121,7 +121,13 @@ namespace ClientEnum
 
     public enum GuideType
     {
-        Upgrade,
+        Number,
         Action
+    }
+
+    public enum GuideKey
+    {
+        Upgrade,
+        Equip,
     }
 }

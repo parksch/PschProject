@@ -25,6 +25,11 @@ namespace JsonClass
             return (GuideType)guideType;
         }
 
+        public GuideKey GuideKey()
+        {
+            return (GuideKey)guideKey; 
+        }
+
         public Reward RewardType()
         {
             return (Reward)rewardType;

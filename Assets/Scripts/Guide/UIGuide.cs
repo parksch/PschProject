@@ -53,7 +53,7 @@ public class UIGuide : MonoBehaviour
         {
             switch (target.GuideType())
             {
-                case GuideType.Upgrade:
+                case GuideType.Number:
                     break;
                 default:
                     break;
@@ -93,21 +93,14 @@ public class UIGuide : MonoBehaviour
         }
     }
 
-    public void AddGuideValue(GuideType guideType, string code, int value = 0)
+    public void AddGuideValue(GuideType guideType,GuideKey guideKey, string code, int value = 1)
     {
-        switch (guideType)
+        if (guideType == target.GuideType() && guideKey == target.GuideKey() && code == target.guideName)
         {
-            case GuideType.Action:
-                if (code == target.guideName)
-                {
-                    currentValue = value;
-                }
-                break;
-            default:
-                break;
+            currentValue += value;
         }
 
-        CheckGuide(guideType, code);
+        CheckGuide(guideType,guideKey,code);
     }
 
     void SetGuide(GuideData guideData)
@@ -117,10 +110,10 @@ public class UIGuide : MonoBehaviour
         title.text = string.Format(TitleLocal, target.id);
         currentValue = 0;
 
-        CheckGuide(target.GuideType(), target.guideName);
+        CheckGuide(target.GuideType(), target.GuideKey(),target.guideName);
     }
 
-    void CheckGuide(GuideType guideType,string code)
+    void CheckGuide(GuideType guideType,GuideKey guideKey, string code)
     {
         if (guideType != target.GuideType())
         {
@@ -138,7 +131,7 @@ public class UIGuide : MonoBehaviour
     {
         switch (target.GuideType())
         {
-            case GuideType.Upgrade:
+            case GuideType.Number:
                 currentValue = DataManager.Instance.GetUpgradeLevel(code);
                 break;
             default:

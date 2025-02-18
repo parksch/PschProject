@@ -28,6 +28,7 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] GameObject bossButton;
     [SerializeField, ReadOnly] GameObject escapeButton;
 
+    public UIGuide Guide => uIGuide;
     public WorldCanvas WorldCanvas => worldCanvas;
 
     public delegate void ChangeHP(float ratio);

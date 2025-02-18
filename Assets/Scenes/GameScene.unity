@@ -7893,8 +7893,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -160, y: 0.0021964116}
-  m_SizeDelta: {x: 320, y: 182}
+  m_AnchoredPosition: {x: -160, y: -0.00048804708}
+  m_SizeDelta: {x: 320, y: 178}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &388678592
 MonoBehaviour:
@@ -8825,7 +8825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0047497866}
+  m_AnchoredPosition: {x: 0, y: -0.0005491689}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &465614781
@@ -9619,7 +9619,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 320, y: 0}
-  m_SizeDelta: {x: 320, y: 389}
+  m_SizeDelta: {x: 320, y: 385}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &506192987
 MonoBehaviour:
@@ -12479,6 +12479,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1469107268}
         m_TargetAssemblyTypeName: UIStateUpgradeSlot, Assembly-CSharp
         m_MethodName: OnClickSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1469107269}
+        m_TargetAssemblyTypeName: UIGuideUpdater, Assembly-CSharp
+        m_MethodName: OnGuideValueAdd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18843,7 +18855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0016395501}
+  m_AnchoredPosition: {x: 0, y: -0.0010449085}
   m_SizeDelta: {x: 0, y: 155}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &901384770
@@ -29041,6 +29053,7 @@ GameObject:
   - component: {fileID: 1469107267}
   - component: {fileID: 1469107266}
   - component: {fileID: 1469107268}
+  - component: {fileID: 1469107269}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -29144,6 +29157,22 @@ MonoBehaviour:
   value: {fileID: 386725692}
   lv: {fileID: 1884662473}
   price: {fileID: 198450986}
+--- !u!114 &1469107269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469107264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f740561189de4a4cb264190dbb3a666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideType: 0
+  guideKey: 0
+  code: Attack
+  count: 1
 --- !u!1 &1480063940
 GameObject:
   m_ObjectHideFlags: 0
@@ -36102,6 +36131,7 @@ MonoBehaviour:
     id: 0
     next: 0
     guideType: 0
+    guideKey: 0
     guideName: 
     guideValue: 0
     rewardType: 0
@@ -40535,10 +40565,10 @@ RectTransform:
   - {fileID: 343007817}
   m_Father: {fileID: 465614780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -60}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105466240
 MonoBehaviour:

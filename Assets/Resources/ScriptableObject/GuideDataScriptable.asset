@@ -15,7 +15,8 @@ MonoBehaviour:
   guideData:
   - id: 1
     next: 2
-    guideType: 0
+    guideType: 1
+    guideKey: 0
     guideName: Attack
     guideValue: 5
     rewardType: 1

@@ -120,19 +120,28 @@ public class UIGuide : MonoBehaviour
             return ;
         }
 
-        float value = GetValue(guideType, code);
+        float value = GetValue(guideType, guideKey, code);
 
         desc.text = string.Format(target.Description(),target.guideValue,value);
         slider.value = value/target.guideValue;
         return ;
     }
 
-    float GetValue(GuideType guideType, string code)
+    float GetValue(GuideType guideType,GuideKey key ,string code)
     {
-        switch (target.GuideType())
+        switch (guideType)
         {
             case GuideType.Number:
-                currentValue = DataManager.Instance.GetUpgradeLevel(code);
+                switch (key)
+                {
+                    case GuideKey.Upgrade:
+                        currentValue = DataManager.Instance.GetUpgradeLevel(code);
+                        break;
+                    case GuideKey.Equip:
+                        break;
+                    default:
+                        break;
+                }
                 break;
             default:
                 break;

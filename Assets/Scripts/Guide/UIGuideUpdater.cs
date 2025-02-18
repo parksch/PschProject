@@ -10,8 +10,13 @@ public class UIGuideUpdater : MonoBehaviour
     [SerializeField] string code;
     [SerializeField] int count = 1;
 
+    public void SetCode(string _code)
+    {
+        code = _code;
+    }
+
     public void OnGuideValueAdd()
     {
-        UIManager.Instance.Guide.AddGuideValue(guideType, guideKey,code,count);
+        UIManager.Instance.Guide.AddGuideValue(guideType, guideKey, code, count);
     }
 }

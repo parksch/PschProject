@@ -8,6 +8,7 @@ public class UIStateUpgradeSlot : MonoBehaviour
 {
     [SerializeField, ReadOnly] UIButton button;
     [SerializeField, ReadOnly] Upgrade targetState;
+    [SerializeField, ReadOnly] UIGuideUpdater updater;
     [SerializeField, ReadOnly] Image icon;
     [SerializeField, ReadOnly] Image goodsIcon;
     [SerializeField, ReadOnly] Text desc;
@@ -35,6 +36,7 @@ public class UIStateUpgradeSlot : MonoBehaviour
         icon.sprite = targetState.GetSprite();
         goodsIcon.sprite = ResourcesManager.Instance.GetGoodsSprite(targetState.Goods());
         value.SetText(targetState.GetLevelValue(DataManager.Instance.GetUpgradeLevel(targetState.name)));
+        updater.SetCode(targetState.name);
     }
 
     public void UpdateSlot()

@@ -15,8 +15,8 @@ namespace JsonClass
         public int next;
         public int guideType;
         public int guideKey;
-        public string guideName;
         public int guideValue;
+        public string guideName;
         public int rewardType;
         public int rewardIndex;
         public int rewardValue;

@@ -8825,7 +8825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0005491689}
+  m_AnchoredPosition: {x: 0, y: 0.0007195272}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &465614781
@@ -29151,6 +29151,7 @@ MonoBehaviour:
     goodsType: 0
     needGoods: 0
     levelPerGoods: 0
+  updater: {fileID: 1469107269}
   icon: {fileID: 1098022085}
   goodsIcon: {fileID: 2131904120}
   desc: {fileID: 896454230}
@@ -36132,8 +36133,8 @@ MonoBehaviour:
     next: 0
     guideType: 0
     guideKey: 0
-    guideName: 
     guideValue: 0
+    guideName: 
     rewardType: 0
     rewardIndex: 0
     rewardValue: 0

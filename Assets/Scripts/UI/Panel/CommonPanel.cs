@@ -27,11 +27,27 @@ public class CommonPanel : BasePanel
         desc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(descKey);
     }
 
+    public void SetYesNoTypeText(string text, System.Action no = null, System.Action yes = null)
+    {
+        yesObject.SetActive(true);
+        noObject.SetActive(true);
+        yesAction = yes;
+        noAction = no;
+        desc.text = text;
+    }
+
     public void SetOK(string descKey, System.Action ok = null)
     {
         okObject.SetActive(true);
         okAction = ok;
         desc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(descKey);
+    }
+
+    public void SetOKTypeText(string text, System.Action ok = null)
+    {
+        okObject.SetActive(true);
+        okAction = ok;
+        desc.text = text;
     }
 
     public override void Close()

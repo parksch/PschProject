@@ -14,11 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentLock:
   - id: 1
-    next: 2
-    guideType: 0
-    guideName: 
-    guideValue: 0
-    rewardType: 0
-    rewardIndex: 0
-    value: 0
-    local: 
+    contentLockType: 0
+    targetValue: 10
+    openLocal: ADOpen
+    clicklocal: ADLock

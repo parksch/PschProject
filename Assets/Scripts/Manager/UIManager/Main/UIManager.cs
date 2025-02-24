@@ -54,12 +54,6 @@ public partial class UIManager : Singleton<UIManager>
             topMenu[i].SetActive(false);
         }
 
-        for (int i = 0; i < contentLocks.Count; i++)
-        {
-            contentLocks[i].Init();
-            contentLocks[i].Check();
-        }
-
         ActiveTop(mainTop);
     }
 
@@ -124,6 +118,11 @@ public partial class UIManager : Singleton<UIManager>
     {
         if (currentPanel != null)
         {
+            if (currentPanel == panel || panelStack.Contains(panel))
+            {
+                return;
+            }
+
             panelStack.Push(currentPanel);
         }
 

@@ -22,6 +22,8 @@ public class UIGuide : MonoBehaviour
     bool isDone = false;
     string TitleLocal => ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(titleLocal);
 
+    public bool IsDone => isDone;
+
     public void Init()
     {
         GuideDataScriptable guideData = ScriptableManager.Instance.Get<GuideDataScriptable>(ScriptableType.GuideData);

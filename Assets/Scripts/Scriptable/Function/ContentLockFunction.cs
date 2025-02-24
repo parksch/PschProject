@@ -26,7 +26,7 @@ namespace JsonClass
 
         public string ClickLocal()
         {
-            return ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(clicklocal);
+            return string.Format(ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(clicklocal),targetValue);
         }
     }
 

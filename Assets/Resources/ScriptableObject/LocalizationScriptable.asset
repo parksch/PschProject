@@ -297,6 +297,10 @@ MonoBehaviour:
       desc: "\uAC15\uD654\uD558\uAE30"
     - name: Add
       desc: "{0} \uC99D\uAC00"
+    - name: ADOpen
+      desc: "\uAD11\uACE0 \uBCF4\uAE30 \uC624\uD508 !"
+    - name: ADLock
+      desc: "Lv {0} \uB2EC\uC131 \uC2DC \uD574\uAE08"
   - language: 1
     textkeys:
     - name: 

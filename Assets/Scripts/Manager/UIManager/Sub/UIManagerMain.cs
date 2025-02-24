@@ -29,7 +29,6 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] GameObject bossButton;
     [SerializeField, ReadOnly] GameObject escapeButton;
 
-
     public UIGuide Guide => uIGuide;
     public WorldCanvas WorldCanvas => worldCanvas;
 
@@ -167,6 +166,11 @@ public partial class UIManager //Main
         userInfo.Init();
         OnChangePlayerHP += userInfo.SetHP;
 
+        for (int i = 0; i < contentLocks.Count; i++)
+        {
+            contentLocks[i].Init();
+        }
+
         DataManager.Instance.OnChangeGoods += (type,value) => { SetGoodsText(type, value); };
         DataManager.Instance.OnChangeGoods += (_,_) => { UpdatePanel(); };
 
@@ -179,6 +183,14 @@ public partial class UIManager //Main
                 slots[i].SetSkill(DataManager.Instance.EquipSkill[i]);
             }
         };
+    }
+
+    public void CheckContentLock()
+    {
+        for (int i = 0; i < contentLocks.Count; i++)
+        {
+            contentLocks[i].LockCheck();
+        }
     }
 
 }

@@ -154,6 +154,7 @@ public class GameManager : Singleton<GameManager>
 
         long exp = (long)(ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).startExp * (1 + (DataManager.Instance.Stage * ScriptableManager.Instance.Get<StageOptionScriptable>(ScriptableType.StageOption).multiplierStageExp)));
         DataManager.Instance.OnChangeExp(exp);
+        UIManager.Instance.CheckContentLock();
     }
     void AddScrap()
     {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public partial class UIManager //Main
 {
+    [SerializeField] List<UIContentLock> contentLocks = new List<UIContentLock>();
     [SerializeField, ReadOnly] List<UIActiveSkillSlot> slots;
     [SerializeField, ReadOnly] UIBuffSlots buffSlots;
     [SerializeField, ReadOnly] UIToggle autoSkill;
@@ -27,6 +28,7 @@ public partial class UIManager //Main
     [SerializeField, ReadOnly] WorldCanvas worldCanvas;
     [SerializeField, ReadOnly] GameObject bossButton;
     [SerializeField, ReadOnly] GameObject escapeButton;
+
 
     public UIGuide Guide => uIGuide;
     public WorldCanvas WorldCanvas => worldCanvas;

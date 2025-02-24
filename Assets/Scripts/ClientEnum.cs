@@ -131,4 +131,10 @@ namespace ClientEnum
         Equip,
         Draw,
     }
+
+    public enum ContentLockType
+    {
+        Level,
+        Guide
+    }
 }

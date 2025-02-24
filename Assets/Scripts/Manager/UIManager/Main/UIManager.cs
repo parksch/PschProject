@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public partial class UIManager : Singleton<UIManager>
 {
@@ -54,6 +52,12 @@ public partial class UIManager : Singleton<UIManager>
         for (int i = 0; i < topMenu.Count; i++)
         {
             topMenu[i].SetActive(false);
+        }
+
+        for (int i = 0; i < contentLocks.Count; i++)
+        {
+            contentLocks[i].Init();
+            contentLocks[i].Check();
         }
 
         ActiveTop(mainTop);

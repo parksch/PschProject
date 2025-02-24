@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0036621094}
+  m_AnchoredPosition: {x: 0, y: -0.004272461}
   m_SizeDelta: {x: 0, y: 140}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &12605528
@@ -3766,6 +3766,7 @@ MonoBehaviour:
   optionName: {fileID: 560034701}
   optionState: {fileID: 960734531}
   reinforceButton: {fileID: 280107101}
+  guideUpdater: {fileID: 0}
 --- !u!114 &215739463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8496,7 +8497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.0017433057}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.0038590888}
   m_SizeDelta: {x: 240, y: 95}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &441134345
@@ -8825,7 +8826,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0007195272}
+  m_AnchoredPosition: {x: 0, y: 0.0046722633}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &465614781
@@ -11657,7 +11658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.001521636}
+  m_AnchoredPosition: {x: 0, y: 0.0038466374}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &560034699
@@ -20626,6 +20627,7 @@ GameObject:
   - component: {fileID: 991651102}
   - component: {fileID: 991651100}
   - component: {fileID: 991651101}
+  - component: {fileID: 991651104}
   m_Layer: 5
   m_Name: Select
   m_TagString: Untagged
@@ -20651,6 +20653,7 @@ MonoBehaviour:
   optionName: {fileID: 441134345}
   optionState: {fileID: 936229694}
   reinforceButton: {fileID: 948071808}
+  guideUpdater: {fileID: 991651104}
 --- !u!114 &991651101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20715,6 +20718,22 @@ RectTransform:
   m_AnchoredPosition: {x: 400, y: 0}
   m_SizeDelta: {x: 700, y: -230}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &991651104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991651099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f740561189de4a4cb264190dbb3a666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideType: 1
+  guideKey: 1
+  code: 
+  count: 1
 --- !u!1 &993495890
 GameObject:
   m_ObjectHideFlags: 0
@@ -36144,6 +36163,7 @@ MonoBehaviour:
   title: {fileID: 2109435564}
   desc: {fileID: 2013298327}
   titleLocal: GuideTitle
+  updaterList: []
 --- !u!114 &1864388433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39733,6 +39753,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 991651104}
+        m_TargetAssemblyTypeName: UIGuideUpdater, Assembly-CSharp
+        m_MethodName: OnGuideValueAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2043754688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40566,10 +40598,10 @@ RectTransform:
   - {fileID: 343007817}
   m_Father: {fileID: 465614780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -60}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105466240
 MonoBehaviour:

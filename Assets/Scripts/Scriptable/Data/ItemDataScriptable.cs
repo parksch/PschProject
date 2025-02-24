@@ -14,24 +14,25 @@ namespace JsonClass
         public int itemType;
         public int mainState;
         public string atlas;
-        public List<GradeItem> gradeItems;
+        public List<GradeItems> gradeItems;
         public List<int> options;
     }
 
     [System.Serializable]
-    public partial class GradeItem
+    public partial class GradeItems
     {
         public int grade;
         public int startValue;
         public float mainStateAddValue;
-        public List<ResourcesItem> resourcesItems;
+        public List<ResourcesItems> resourcesItems;
     }
 
     [System.Serializable]
-    public partial class ResourcesItem
+    public partial class ResourcesItems
     {
         public string sprite;
         public string prefab;
         public string local;
     }
+
 }

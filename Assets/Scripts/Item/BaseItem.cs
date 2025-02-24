@@ -33,7 +33,7 @@ public class BaseItem
     public Datas.Pair<ClientEnum.State, ItemOption> MainState => mainState;
     public List<Datas.Pair<ClientEnum.State,ItemOption >> Options => options;
 
-    public virtual void Set(JsonClass.GradeItem gradeItem,int level = -1)
+    public virtual void Set(JsonClass.GradeItems gradeItem,int level = -1)
     {
         id = System.Guid.NewGuid().ToString();
         reinforce = 0;
@@ -50,7 +50,6 @@ public class BaseItem
         options = option.GetRandomOption(GetOptions(), grade);
         options.Sort((a,b) => a.key.CompareTo(b.key));
     }
-
 
     public float GetStateValue(ClientEnum.State state,ClientEnum.ChangeType changeType)
     {
@@ -93,8 +92,7 @@ public class BaseItem
         sprite = null;
     }
 
-
-    protected void SetResource(JsonClass.ResourcesItem resourcesItem)
+    protected void SetResource(JsonClass.ResourcesItems resourcesItem)
     {
         sprite = ResourcesManager.Instance.GetSprite(GetAtlas(), resourcesItem.sprite);
         local = resourcesItem.local;

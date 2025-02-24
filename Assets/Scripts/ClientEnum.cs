@@ -129,5 +129,6 @@ namespace ClientEnum
     {
         Upgrade,
         Equip,
+        Draw,
     }
 }

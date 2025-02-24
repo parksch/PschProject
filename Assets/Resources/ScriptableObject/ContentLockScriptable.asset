@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c17d5b957cfbce4b9777da14de5d471, type: 3}
-  m_Name: GuideDataScriptable
+  m_Script: {fileID: 11500000, guid: 940f2d0aeebeea645abacc31f51418a9, type: 3}
+  m_Name: ContentLockScriptable
   m_EditorClassIdentifier: 
-  guideData:
+  contentLock:
   - id: 1
     next: 2
     guideType: 0
-    guideKey: 0
-    guideValue: 5
-    guideName: Attack
-    rewardType: 1
-    rewardIndex: 1
-    rewardValue: 10000
-    local: GuideAttackUpgrade
+    guideName: 
+    guideValue: 0
+    rewardType: 0
+    rewardIndex: 0
+    value: 0
+    local: 

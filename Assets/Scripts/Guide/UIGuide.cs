@@ -14,11 +14,12 @@ public class UIGuide : MonoBehaviour
     [SerializeField, ReadOnly] Text title;
     [SerializeField, ReadOnly] Text desc;
     [SerializeField, ReadOnly] string titleLocal;
+    [SerializeField] List<UIGuideUpdater> updaterList;
 
     GuideData target;
     string key = "Guide";
     int currentValue = 0;
-
+    bool isDone = false;
     string TitleLocal => ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(titleLocal);
 
     public void Init()
@@ -30,10 +31,12 @@ public class UIGuide : MonoBehaviour
             int code = PlayerPrefs.GetInt(key);
             if (code == -1)
             {
+                isDone = true;
                 gameObject.SetActive(false);
             }
             else
             {
+                isDone = false;
                 GuideData load = guideData.GetData(code);
                 SetGuide(load);
             }
@@ -95,9 +98,17 @@ public class UIGuide : MonoBehaviour
 
     public void AddGuideValue(GuideType guideType,GuideKey guideKey, string code, int value = 1)
     {
-        if (guideType == target.GuideType() && guideKey == target.GuideKey() && code == target.guideName)
+        if (isDone)
+        {
+            return;
+        }
+        else if (guideType == target.GuideType() && guideKey == target.GuideKey() && code == target.guideName)
         {
             currentValue += value;
+        }
+        else
+        {
+            return;
         }
 
         CheckGuide(guideType,guideKey,code);
@@ -115,12 +126,12 @@ public class UIGuide : MonoBehaviour
 
     void CheckGuide(GuideType guideType,GuideKey guideKey, string code)
     {
-        if (guideType != target.GuideType())
-        {
-            return ;
-        }
-
         float value = GetValue(guideType, guideKey, code);
+
+        if (target.guideValue > currentValue)
+        {
+            currentValue = target.guideValue;
+        }
 
         desc.text = string.Format(target.Description(),target.guideValue,value);
         slider.value = value/target.guideValue;
@@ -137,8 +148,6 @@ public class UIGuide : MonoBehaviour
                     case GuideKey.Upgrade:
                         currentValue = DataManager.Instance.GetUpgradeLevel(code);
                         break;
-                    case GuideKey.Equip:
-                        break;
                     default:
                         break;
                 }
@@ -146,7 +155,7 @@ public class UIGuide : MonoBehaviour
             default:
                 break;
         }
-
+         
         return currentValue;
     }
 

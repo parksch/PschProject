@@ -1,3 +1,4 @@
+using ClientEnum;
 using Datas;
 using JsonClass;
 using System.Collections;
@@ -7,12 +8,13 @@ using UnityEngine.UI;
 
 public class UIItemInfo : MonoBehaviour
 {
-    [SerializeField] Image icon;
-    [SerializeField] Text itemName;
-    [SerializeField] Text mainState;
-    [SerializeField] Text optionName;
-    [SerializeField] Text optionState;
-    [SerializeField] UIButton reinforceButton;
+    [SerializeField,ReadOnly] Image icon;
+    [SerializeField,ReadOnly] Text itemName;
+    [SerializeField,ReadOnly] Text mainState;
+    [SerializeField,ReadOnly] Text optionName;
+    [SerializeField,ReadOnly] Text optionState;
+    [SerializeField,ReadOnly] UIButton reinforceButton;
+    [SerializeField,ReadOnly] UIGuideUpdater guideUpdater;
 
     BaseItem target;
 
@@ -53,6 +55,7 @@ public class UIItemInfo : MonoBehaviour
     public void OnClickEquip()
     {
         DataManager.Instance.SetEquipItem(target);
+        guideUpdater.SetCode(EnumString<ClientEnum.Item>.ToString(target.Type));
     }
 
     public void OnClickReinforce()

@@ -24,7 +24,7 @@ namespace JsonClass
         public BaseItem GetItem(Item target,Grade grade)
         {
             ItemData typeData = itemData.Find(x => x.ItemType() == target);
-            GradeItem gradeItem = typeData.GetGradeItem(grade);
+            GradeItems gradeItem = typeData.GetGradeItem(grade);
             BaseItem baseItem = ItemFactory.Create(target);
 
             baseItem.Set(gradeItem);
@@ -102,27 +102,27 @@ namespace JsonClass
             return states;
         }
 
-        public GradeItem GetGradeItem(Grade grade)
+        public GradeItems GetGradeItem(Grade grade)
         {
-            GradeItem gradeItem = gradeItems.Find(x => x.Grade() == grade);
+            GradeItems gradeItem = gradeItems.Find(x => x.Grade() == grade);
             return gradeItem;
         }
     }
 
-    public partial class GradeItem
+    public partial class GradeItems
     {
         public Grade Grade()
         {
             return (Grade)grade;
         }
 
-        public ResourcesItem GetRandom()
+        public ResourcesItems GetRandom()
         {
             return resourcesItems[Random.Range(0, resourcesItems.Count)];
         }
     }
 
-    public partial class ResourcesItem
+    public partial class ResourcesItems
     {
         public string GetLocal()
         {

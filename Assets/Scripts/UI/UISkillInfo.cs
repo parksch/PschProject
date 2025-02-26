@@ -13,9 +13,10 @@ public class UISkillInfo : MonoBehaviour
     [SerializeField, ReadOnly] UIButton amplification;
     [SerializeField, ReadOnly] UIButton upgrade;
     [SerializeField, ReadOnly] UIButton equip;
-    [SerializeField] Color red;
         
     DataManager.Skill target;
+    string debuffKey = "DebuffKey";
+    string buffKey = "BuffKey";
 
     public void SetInfo(DataManager.Skill skillData)
     {
@@ -31,8 +32,44 @@ public class UISkillInfo : MonoBehaviour
         lvPiece.text = "Lv " + target.lv;
 
         string descLocal = localization.Get(target.data.descKey);
+        desc.text = string.Format(descLocal, localization.Get(EnumString<State>.ToString(target.GetState())), target.GetValue() * 100f) + "\n";
 
-        SetDesc(descLocal,localization.Get(EnumString<State>.ToString(target.GetState())),target.GetValue() * 100f);
+        if (target.data.skillBuffs.Count > 0)
+        {
+            BuffDataScriptable buffData = ScriptableManager.Instance.Get<BuffDataScriptable>(ScriptableType.BuffData);
+
+            for (int i = 0; i < target.data.skillBuffs.Count; i++)
+            {
+                SkillBuffs buffs = target.data.skillBuffs[i];
+                
+                if (buffs.state == "")
+                {
+                    break;
+                }
+
+                BuffData data = buffData.Get(buffs.state);
+                string buffStr = string.Empty;
+
+                if (data.IsDebuff())
+                {
+                    buffStr = string.Format(localization.Get(debuffKey),
+                        localization.Get(EnumString<ClientEnum.CharacterType>.ToString(buffs.CharacterType())),
+                        localization.Get(EnumString<ClientEnum.State>.ToString(data.State())),
+                        buffs.value * 100f,
+                        buffs.timer) + "\n";
+                }
+                else
+                {
+                    buffStr = string.Format(localization.Get(buffKey),
+                        localization.Get(EnumString<ClientEnum.CharacterType>.ToString(buffs.CharacterType())),
+                        localization.Get(EnumString<ClientEnum.State>.ToString(data.State())),
+                        buffs.value * 100f,
+                        buffs.timer) + "\n";
+                }
+
+                desc.text += buffStr;
+            }
+        }
 
         if (target.lv < target.data.levelMax)
         {
@@ -48,12 +85,8 @@ public class UISkillInfo : MonoBehaviour
             amplification.SetInterractable(DataManager.Instance.CheckGoods(ClientEnum.Goods.Amplification, need)  && target.amplification < target.data.amplificationMax);
         }
 
+        lockObject.SetActive(target.lv <= 0);
         equip.SetInterractable(target.lv != 0);
-    }
-
-    void SetDesc(string targetStr,params object[] args)
-    {
-        desc.text = string.Format(targetStr, args);
     }
 
 }

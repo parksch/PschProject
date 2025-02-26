@@ -17,11 +17,17 @@ MonoBehaviour:
     prefab: AttackBuff
     atlas: Icon2
     sprite: AttackBuff
+    state: 2
+    isDebuff: 0
   - name: AttackDebuff
     prefab: AttackDeBuff
     atlas: Icon2
     sprite: AttackDebuff
+    state: 2
+    isDebuff: 1
   - name: HealBuff
     prefab: HealBuff
     atlas: Icon2
     sprite: AttackDebuff
+    state: 1
+    isDebuff: 0

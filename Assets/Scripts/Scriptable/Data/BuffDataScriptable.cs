@@ -15,6 +15,8 @@ namespace JsonClass
         public string prefab;
         public string atlas;
         public string sprite;
+        public int state;
+        public int isDebuff;
     }
 
 }

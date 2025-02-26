@@ -18,6 +18,7 @@ MonoBehaviour:
     sprite: SkillSwing
     nameKey: SkillSwingName
     descKey: SkillSwingDesc
+    buffKey: 
     prefab: Slash
     levelMax: 10
     amplificationMax: 5
@@ -38,6 +39,7 @@ MonoBehaviour:
     sprite: SkillWarCry
     nameKey: SkillWarCryName
     descKey: SkillWarCryDesc
+    buffKey: SkillWarCryBuff
     prefab: WarCry
     levelMax: 10
     amplificationMax: 5
@@ -63,6 +65,7 @@ MonoBehaviour:
     sprite: SkillEarthquake
     nameKey: EarthquakeName
     descKey: EarthquakeDesc
+    buffKey: 
     prefab: Earthquake
     levelMax: 10
     amplificationMax: 5
@@ -83,6 +86,7 @@ MonoBehaviour:
     sprite: SkillHalfMoonSlash
     nameKey: HalfMoonSlashName
     descKey: HalfMoonSlashDesc
+    buffKey: 
     prefab: HalfMoonSlash
     levelMax: 10
     amplificationMax: 5

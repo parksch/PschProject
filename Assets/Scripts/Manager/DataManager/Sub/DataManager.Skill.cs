@@ -51,7 +51,12 @@ public partial class DataManager //Skill
 
         public float GetValue()
         {
-            return (data.startValue + (data.addValue * lv)) * (1 + (.1f * amplification));
+            if (lv == 0)
+            {
+                return 0;
+            }
+
+            return (data.startValue + (data.addValue * lv - 1)) * (1 + (.1f * amplification));
         }
 
         public State GetState() => data.State();

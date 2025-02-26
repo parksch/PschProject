@@ -214,19 +214,18 @@ public class DrawPanel : BasePanel
             {
                 keyValues[skillData] = skillpiece;
             }
-
-            DataManager.Instance.AddPiece(skillData, skillpiece);
         }
 
         foreach (var item in keyValues)
         {
+            DataManager.Instance.AddPiece(item.Key, item.Value);
+
             reward.AddSkill(item.Key,item.Value);
         }
     }
 
     void Item(RewardPanel reward, Shops shop, int num)
     {
-
         ItemDataScriptable itemData = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData);
 
         for (int i = 0; i < num; i++)

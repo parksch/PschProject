@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class SkillPanel : BasePanel
     [SerializeField] UISkillInfo info;
     [SerializeField] SkillSelectPanel selectPanel;
 
+    string ampStr = "NeedAmplification";
     UISkillSlot slot;
 
     public override void OnUpdate()
@@ -53,6 +55,8 @@ public class SkillPanel : BasePanel
         {
             slots[i].UpdateSlot();
         }
+
+        SetInfo(slot);
     }
 
     public override void Close()
@@ -69,8 +73,19 @@ public class SkillPanel : BasePanel
 
     public void OnClickReinforce()
     {
-        slot.Target.lv++;
         slot.Target.piece = slot.Target.piece - (1 + (slot.Target.lv * slot.Target.data.GetPiece()));
+        slot.Target.lv++;
+
+        SetInfo(slot);
+        slot.UpdateSlot();
+    }
+
+    public void OnClickAmplification()
+    {
+        int need = (int)ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get(ampStr);
+        DataManager.Instance.UseGoods(ClientEnum.Goods.Amplification, need);
+        slot.Target.amplification++;
+
         SetInfo(slot);
         slot.UpdateSlot();
     }

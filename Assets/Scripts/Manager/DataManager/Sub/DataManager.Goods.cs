@@ -43,6 +43,6 @@ public partial class  DataManager //Goods
         OnChangeGoods = null;
 
         goodsDict[ClientEnum.Goods.Gold] = 100000;
-        goodsDict[ClientEnum.Goods.Gem] = 10000;
+        goodsDict[ClientEnum.Goods.Gem] = 100000;
     }
 }

@@ -31,3 +31,5 @@ MonoBehaviour:
     value: 10
   - key: MaxReinforce
     value: 10
+  - key: NeedAmplification
+    value: 10

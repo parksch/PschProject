@@ -22,16 +22,24 @@ public partial class DataManager //Skill
         public SkillData data = null;
         public int lv = 0;
         public int piece = 0;
+        public int amplification = 0;
         public int maxPiece = 0;
 
-        public int GetCurrentPiece()
+        public int LevelPiece()
         {
-            int currentPiece = piece;
+            int lvPiece = 0;
 
             for (int i = 0; i < lv; i++)
             {
-                currentPiece += (1 + (i * data.GetPiece()));
+                lvPiece += (1 + (i * data.GetPiece()));
             }
+
+            return lvPiece;
+        }
+
+        public int GetCurrentPiece()
+        {
+            int currentPiece = piece + LevelPiece();
 
             return currentPiece;
         }
@@ -43,7 +51,7 @@ public partial class DataManager //Skill
 
         public float GetValue()
         {
-            return data.startValue + (data.addValue * lv);
+            return (data.startValue + (data.addValue * lv)) * (1 + (.1f * amplification));
         }
 
         public State GetState() => data.State();
@@ -61,7 +69,7 @@ public partial class DataManager //Skill
             skill.lv = 0;
             skill.piece = 0;
 
-            for (int j = 0; j <= skill.data.levelMax; j++)
+            for (int j = 0; j < skill.data.levelMax; j++)
             {
                 skill.maxPiece += 1 + (j * skill.data.GetPiece());
             }
@@ -94,8 +102,10 @@ public partial class DataManager //Skill
 
         if (skill.CheckOver())
         {
-
+            int value = skill.GetCurrentPiece() - skill.maxPiece;
+            int needValue = skill.maxPiece - skill.LevelPiece();
+            skill.piece = needValue;
+            AddGoods(ClientEnum.Goods.Amplification, value);
         }
-
     }
 }

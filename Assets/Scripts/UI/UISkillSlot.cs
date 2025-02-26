@@ -1,6 +1,7 @@
 using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,15 +24,15 @@ public class UISkillSlot : MonoBehaviour
 
     public void SetSkill(DataManager.Skill skill)
     {
-        LocalizationScriptable localization = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization);
         target = skill;
         icon.sprite = target.data.Sprite();
-        title.text = ResourcesManager.Instance.GradeColorText(target.data.Grade(), localization.Get(target.data.nameKey));
         UpdateSlot();
     }
 
     public void UpdateSlot()
     {
+        LocalizationScriptable localization = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization);
+        title.text = ResourcesManager.Instance.GradeColorText(target.data.Grade(), localization.Get(target.data.nameKey)) + "+" + target.amplification;
         int needValue = 1 + (target.lv * target.data.GetPiece());
 
         lv.text = $"Lv{target.lv}";
@@ -39,16 +40,25 @@ public class UISkillSlot : MonoBehaviour
         piece.text = $"{target.piece}/{needValue}";
         frontLock.SetActive(target.lv == 0 && target.piece == 0);
 
-        if (target.piece >= needValue)
+        if (target.lv < target.data.levelMax)
         {
-            fill.color = green;
-            piece.color = greenText;
+            if (target.piece >= needValue)
+            {
+                fill.color = green;
+                piece.color = greenText;
+            }
+            else
+            {
+                fill.color = red;
+                piece.color = redText;
+            }
         }
         else
         {
-            fill.color = red;
-            piece.color = redText;
+            slider.value = 1;
+            piece.text = "Max";
         }
+
     }
 
     public void OnClick()

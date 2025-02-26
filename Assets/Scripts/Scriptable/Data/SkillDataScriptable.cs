@@ -18,6 +18,7 @@ namespace JsonClass
         public string descKey;
         public string prefab;
         public int levelMax;
+        public int amplificationMax;
         public int grade;
         public int targetState;
         public float startValue;

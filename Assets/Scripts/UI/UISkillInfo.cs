@@ -28,10 +28,8 @@ public class UISkillInfo : MonoBehaviour
 
     public void UpdateInfo()
     {
-        lockObject.SetActive(target.lv == 0);
-        upgrade.SetInterractable(target.piece >= (1 + target.data.GetPiece()));
+        upgrade.SetInterractable(target.piece >= (1 + (target.lv * target.data.GetPiece())));
         equip.SetInterractable(target.lv != 0);
     }
-
 
 }

@@ -95,7 +95,7 @@ MonoBehaviour:
           value: 100
         - grade: 3
           value: 50
-        type: 0
+        type: 1
         target: 0
         goods: 3
         descKey: 

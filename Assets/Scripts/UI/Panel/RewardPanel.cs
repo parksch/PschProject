@@ -1,3 +1,4 @@
+using JsonClass;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,18 @@ public class RewardPanel : BasePanel
     public override void FirstLoad()
     {
 
+    }
+
+    public void AddSkill(SkillData skillData,int num)
+    {
+        if (count >= slots.Count)
+        {
+            UIRewardSlot slot = Instantiate(slotPrefab, content);
+            slots.Add(slot);
+        }
+
+        slots[count].SetSkill(skillData,num);
+        count++;
     }
 
     public void AddItem(BaseItem item)

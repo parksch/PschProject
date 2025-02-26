@@ -22,6 +22,24 @@ public partial class DataManager //Skill
         public SkillData data = null;
         public int lv = 0;
         public int piece = 0;
+        public int maxPiece = 0;
+
+        public int GetCurrentPiece()
+        {
+            int currentPiece = piece;
+
+            for (int i = 0; i < lv; i++)
+            {
+                currentPiece += (1 + (i * data.GetPiece()));
+            }
+
+            return currentPiece;
+        }
+
+        public bool CheckOver()
+        {
+            return GetCurrentPiece() > maxPiece;
+        }
 
         public float GetValue()
         {
@@ -29,18 +47,25 @@ public partial class DataManager //Skill
         }
 
         public State GetState() => data.State();
+
     }
 
     void SkillInit()
     {
-        List<SkillData> datas = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).skillData;
+        List<SkillData> dates = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).skillData;
 
-        for (int i = 0; i < datas.Count; i++)
+        for (int i = 0; i < dates.Count; i++)
         {
             Skill skill = new Skill();
-            skill.data = datas[i];
-            skill.lv = 1;
+            skill.data = dates[i];
+            skill.lv = 0;
             skill.piece = 0;
+
+            for (int j = 0; j <= skill.data.levelMax; j++)
+            {
+                skill.maxPiece += 1 + (j * skill.data.GetPiece());
+            }
+
             skills.Add(skill);
         }
 
@@ -63,6 +88,14 @@ public partial class DataManager //Skill
 
     public void AddPiece(SkillData skillData,int num)
     {
-        skills.Find(x => x.data.id == skillData.id);
+        Skill skill = skills.Find(x => x.data.id == skillData.id);
+
+        skill.piece += num;
+
+        if (skill.CheckOver())
+        {
+
+        }
+
     }
 }

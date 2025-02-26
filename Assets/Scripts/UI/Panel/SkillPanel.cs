@@ -11,7 +11,7 @@ public class SkillPanel : BasePanel
     [SerializeField] UISkillInfo info;
     [SerializeField] SkillSelectPanel selectPanel;
 
-    DataManager.Skill target;
+    UISkillSlot slot;
 
     public override void OnUpdate()
     {
@@ -36,18 +36,23 @@ public class SkillPanel : BasePanel
             }
         }
 
-        SetInfo(skills[0]);
+        SetInfo(slots[0]);
     }
 
-    public void SetInfo(DataManager.Skill _target)
+    public void SetInfo(UISkillSlot _slot)
     {
-        target = _target;
-        info.SetInfo(target);
+        slot = _slot;
+        info.SetInfo(slot.Target);
     }
 
     public override void Open()
     {
         base.Open();
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            slots[i].UpdateSlot();
+        }
     }
 
     public override void Close()
@@ -57,13 +62,16 @@ public class SkillPanel : BasePanel
 
     public void OnClickEquip()
     {
-        selectPanel.SetTarget(target);
+        selectPanel.SetTarget(slot.Target);
         selectPanel.CopyTopMenu(ActiveTop);
         UIManager.Instance.AddPanel(selectPanel);
     }
 
     public void OnClickReinforce()
     {
-
+        slot.Target.lv++;
+        slot.Target.piece = slot.Target.piece - (1 + (slot.Target.lv * slot.Target.data.GetPiece()));
+        SetInfo(slot);
+        slot.UpdateSlot();
     }
 }

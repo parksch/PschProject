@@ -31,6 +31,14 @@ public class UIRewardSlot : MonoBehaviour
         return false;
     }
 
+    public void SetSkill(SkillData skillData,int num)
+    {
+        goods = ClientEnum.Goods.None;
+        image.sprite = skillData.Sprite();
+        text.SetText(num);
+        gameObject.SetActive(true);
+    }
+
     public void SetItem(BaseItem item)
     {
         goods = ClientEnum.Goods.None;

@@ -19,6 +19,8 @@ public class UISkillSlot : MonoBehaviour
     [SerializeField, ReadOnly] Color red;
     [SerializeField, ReadOnly] Color green;
 
+    public DataManager.Skill Target => target;
+
     public void SetSkill(DataManager.Skill skill)
     {
         LocalizationScriptable localization = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization);
@@ -35,7 +37,7 @@ public class UISkillSlot : MonoBehaviour
         lv.text = $"Lv{target.lv}";
         slider.value = (float)target.piece / needValue;
         piece.text = $"{target.piece}/{needValue}";
-        frontLock.SetActive(target.lv == 0);
+        frontLock.SetActive(target.lv == 0 && target.piece == 0);
 
         if (target.piece >= needValue)
         {
@@ -51,6 +53,6 @@ public class UISkillSlot : MonoBehaviour
 
     public void OnClick()
     {
-        UIManager.Instance.Get<SkillPanel>().SetInfo(target);
+        UIManager.Instance.Get<SkillPanel>().SetInfo(this);
     }
 }

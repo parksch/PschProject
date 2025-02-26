@@ -99,7 +99,7 @@ public class DrawPanel : BasePanel
 
     public void SetDraw(Shops shop)
     {
-        salvageButton.SetActive(shop.Target() != ClientEnum.Item.Skill);
+        salvageButton.SetActive(shop.DrawValue() != ClientEnum.DrawValue.Skill);
         currentDrawDesc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(shop.descKey);
         currentDrawTitle.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(shop.nameKey);
         currentDrawLimit.gameObject.SetActive(shop.limit> 0);
@@ -198,14 +198,29 @@ public class DrawPanel : BasePanel
 
     void Skill(RewardPanel reward, Shops shop,int num)
     {
-        List<(SkillData skill, int piece)> data = new List<(SkillData, int)>();
+        Dictionary<SkillData,int> keyValues = new Dictionary<SkillData,int>();
+        int skillpiece = (int)ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get("DrawSkillPiece");
 
         for (int i = 0; i < num; i++)
         {
             ClientEnum.Grade grade = shop.Grade();
             SkillData skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).GetDataInGrade(grade);
 
+            if (keyValues.ContainsKey(skillData))
+            {
+                keyValues[skillData] += skillpiece;
+            }
+            else
+            {
+                keyValues[skillData] = skillpiece;
+            }
 
+            DataManager.Instance.AddPiece(skillData, skillpiece);
+        }
+
+        foreach (var item in keyValues)
+        {
+            reward.AddSkill(item.Key,item.Value);
         }
     }
 

@@ -66,7 +66,7 @@ public class UIContentLock : MonoBehaviour
         {
             gameObject.SetActive(false);
             CommonPanel common = UIManager.Instance.Get<CommonPanel>();
-            common.SetOK(contentLock.OpenLocal());
+            common.SetOKTypeText(contentLock.OpenLocal());
             UIManager.Instance.AddPanel(common);
         }
     }

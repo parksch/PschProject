@@ -12,6 +12,7 @@ namespace JsonClass
     public partial class Draw
     {
         public int index;
+        public int resetDay;
         public Type type;
     }
 
@@ -41,6 +42,8 @@ namespace JsonClass
     {
         public int grade;
         public int value;
+        public int targetLevel;
+        public float addValue;
     }
 
 }

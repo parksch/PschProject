@@ -14,51 +14,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   draw:
   - index: 1
+    resetDay: 0
     type:
       titleKey: ScrapShop
       shops:
       - probabilities:
         - grade: 0
           value: 2000
+          targetLevel: 0
+          addValue: 0
         - grade: 1
           value: 1500
+          targetLevel: 1
+          addValue: 0.01
         - grade: 2
           value: 1000
+          targetLevel: 3
+          addValue: 0.25
         - grade: 3
           value: 500
+          targetLevel: 5
+          addValue: 0.05
         - grade: 4
           value: 250
+          targetLevel: 7
+          addValue: 0.1
         - grade: 5
           value: 100
+          targetLevel: 9
+          addValue: 0.1
         type: 0
         target: 0
         goods: 2
-        descKey: 
+        descKey: ScrapDrawDesc
         nameKey: ScrapShop
         needValue: 10
         limit: 0
         maxLevel: 10
   - index: 2
+    resetDay: 1
     type:
       titleKey: DailyShop
       shops:
       - probabilities:
         - grade: 0
           value: 3000
+          targetLevel: 0
+          addValue: 0
         - grade: 1
           value: 1500
+          targetLevel: 0
+          addValue: 0
         - grade: 2
           value: 1000
+          targetLevel: 0
+          addValue: 0
         - grade: 3
           value: 500
+          targetLevel: 0
+          addValue: 0
         - grade: 4
           value: 250
+          targetLevel: 0
+          addValue: 0
         - grade: 5
           value: 100
+          targetLevel: 0
+          addValue: 0
         type: 0
         target: 0
         goods: 1
-        descKey: 
+        descKey: DailyGoldDrawDesc
         nameKey: DailyGold
         needValue: 10000
         limit: 20
@@ -66,35 +92,54 @@ MonoBehaviour:
       - probabilities:
         - grade: 1
           value: 1500
+          targetLevel: 0
+          addValue: 0
         - grade: 2
           value: 1000
+          targetLevel: 0
+          addValue: 0
         - grade: 3
           value: 500
+          targetLevel: 0
+          addValue: 0
         - grade: 4
           value: 250
+          targetLevel: 0
+          addValue: 0
         - grade: 5
           value: 100
+          targetLevel: 0
+          addValue: 0
         type: 0
         target: 0
         goods: 2
-        descKey: 
+        descKey: DailyGemDrawDesc
         nameKey: DailyGem
         needValue: 100
         limit: 20
         maxLevel: 0
   - index: 3
+    resetDay: 0
     type:
       titleKey: GemShop
       shops:
       - probabilities:
         - grade: 0
           value: 1000
+          targetLevel: 0
+          addValue: 0
         - grade: 1
           value: 500
+          targetLevel: 0
+          addValue: 0
         - grade: 2
           value: 100
+          targetLevel: 0
+          addValue: 0
         - grade: 3
           value: 50
+          targetLevel: 0
+          addValue: 0
         type: 1
         target: 0
         goods: 3

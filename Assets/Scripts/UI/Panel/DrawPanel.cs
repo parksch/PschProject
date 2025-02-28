@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using JsonClass;
+using System;
 
 public class DrawPanel : BasePanel
 {
@@ -18,10 +18,15 @@ public class DrawPanel : BasePanel
     [SerializeField, ReadOnly] GameObject prevButton;
     [SerializeField, ReadOnly] GameObject nextButton;
     [SerializeField, ReadOnly] GameObject salvageButton;
-    [SerializeField, ReadOnly] UnityEngine.UI.Slider lvSlider;
+    [SerializeField, ReadOnly] Slider lvSlider;
     [SerializeField, ReadOnly] Text lvText;
     [SerializeField, ReadOnly] string drawLocal;
     [SerializeField, ReadOnly] string drawFull = "InventoryFull";
+
+    DrawScriptable drawScriptable;
+    LocalizationScriptable local;
+    DefaultValuesScriptable defaultValues;
+    SkillDataScriptable skillDataScriptable;
 
     UIDrawSlot currentSlot;
     bool CheckButton(Shops shop, UIBuyButton button)
@@ -45,9 +50,14 @@ public class DrawPanel : BasePanel
 
     public override void FirstLoad()
     {
+        drawScriptable = ScriptableManager.Instance.Get<JsonClass.DrawScriptable>(ScriptableType.Draw);
+        defaultValues = ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues);
+        local = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization);
+        skillDataScriptable = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData);
+
         for (var i = ClientEnum.Draw.Min; i < ClientEnum.Draw.Max; i++)
         {
-            JsonClass.Draw draw = ScriptableManager.Instance.Get<JsonClass.DrawScriptable>(ScriptableType.Draw).GetData(i);
+            Draw draw = drawScriptable.GetData(i);
 
             if (draw == null)
             {
@@ -64,11 +74,38 @@ public class DrawPanel : BasePanel
                 slot.Set(i,draw.type.titleKey, draw.type.shops);
                 slots.Add(slot);
             }
+
+            if (draw.resetDay > 0)
+            {
+
+                if (PlayerPrefs.HasKey(draw.type.titleKey))
+                {
+                    DateTime load = DateTime.ParseExact(PlayerPrefs.GetString(draw.type.titleKey), "yyyy-MM-dd", null);
+
+                    if ((DataManager.Instance.CurrentDate - load).TotalSeconds > 0)
+                    {
+                        load = DataManager.Instance.CurrentDate.AddDays(1);
+                        string next = load.ToString("yyyy-MM-dd");
+                        PlayerPrefs.SetString(draw.type.titleKey, next);
+
+                        for (int j = 0; j < draw.type.shops.Count; j++)
+                        {
+                            DataManager.Instance.ResetDrawLimit(draw.type.shops[j].nameKey);
+                        }
+                    }
+                }
+                else
+                {
+                    DateTime current = DateTime.UtcNow.AddDays(1);
+                    string next = current.ToString("yyyy-MM-dd");
+                    PlayerPrefs.SetString(draw.type.titleKey, next);
+                }
+            }
         }
 
         currentSlot = slots[0];
-        oneDraw.title.text = string.Format(ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(drawLocal), oneDraw.targetNum);
-        tenDraw.title.text = string.Format(ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(drawLocal), tenDraw.targetNum);
+        oneDraw.title.text = string.Format(local.Get(drawLocal), oneDraw.targetNum);
+        tenDraw.title.text = string.Format(local.Get(drawLocal), tenDraw.targetNum);
     }
 
     public override void OnUpdate()
@@ -100,8 +137,8 @@ public class DrawPanel : BasePanel
     public void SetDraw(Shops shop)
     {
         salvageButton.SetActive(shop.DrawValue() != ClientEnum.DrawValue.Skill);
-        currentDrawDesc.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(shop.descKey);
-        currentDrawTitle.text = ScriptableManager.Instance.Get<LocalizationScriptable>(ScriptableType.Localization).Get(shop.nameKey);
+        currentDrawDesc.text = local.Get(shop.descKey);
+        currentDrawTitle.text = local.Get(shop.nameKey);
         currentDrawLimit.gameObject.SetActive(shop.limit> 0);
         lvSlider.gameObject.SetActive(shop.maxLevel > 0);
 
@@ -120,7 +157,7 @@ public class DrawPanel : BasePanel
         if (shop.maxLevel > 0)
         {
             int drawCount = DataManager.Instance.DrawCount(shop.nameKey);
-            int requiredExp = ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).RequiredExp;
+            int requiredExp = drawScriptable.RequiredExp;
 
             if (drawCount < shop.maxLevel * requiredExp)
             {
@@ -154,7 +191,7 @@ public class DrawPanel : BasePanel
 
         if (currentSlot.GetCurrentData.maxLevel > 0)
         {
-            int maxCount = currentSlot.GetCurrentData.maxLevel * ScriptableManager.Instance.Get<DrawScriptable>(ScriptableType.Draw).RequiredExp;
+            int maxCount = currentSlot.GetCurrentData.maxLevel * drawScriptable.RequiredExp;
             int currentCount = DataManager.Instance.DrawCount(currentSlot.GetCurrentData.nameKey);
 
             if (maxCount > currentCount)
@@ -199,12 +236,14 @@ public class DrawPanel : BasePanel
     void Skill(RewardPanel reward, Shops shop,int num)
     {
         Dictionary<SkillData,int> keyValues = new Dictionary<SkillData,int>();
-        int skillpiece = (int)ScriptableManager.Instance.Get<DefaultValuesScriptable>(ScriptableType.DefaultValues).Get("DrawSkillPiece");
+        int skillpiece = (int)defaultValues.Get("DrawSkillPiece");
+        int drawCount = DataManager.Instance.DrawCount(shop.nameKey);
+        int requiredExp = drawScriptable.RequiredExp;
 
         for (int i = 0; i < num; i++)
         {
-            ClientEnum.Grade grade = shop.Grade();
-            SkillData skillData = ScriptableManager.Instance.Get<SkillDataScriptable>(ScriptableType.SkillData).GetDataInGrade(grade);
+            ClientEnum.Grade grade = shop.Grade(shop.maxLevel > 0 ? drawCount / requiredExp : 0);
+            SkillData skillData = skillDataScriptable.GetDataInGrade(grade);
 
             if (keyValues.ContainsKey(skillData))
             {
@@ -227,6 +266,8 @@ public class DrawPanel : BasePanel
     void Item(RewardPanel reward, Shops shop, int num)
     {
         ItemDataScriptable itemData = ScriptableManager.Instance.Get<ItemDataScriptable>(ScriptableType.ItemData);
+        int drawCount = DataManager.Instance.DrawCount(shop.nameKey);
+        int requiredExp = drawScriptable.RequiredExp;
 
         for (int i = 0; i < num; i++)
         {
@@ -237,7 +278,7 @@ public class DrawPanel : BasePanel
                 target = itemData.RandomTarget();
             }
 
-            ClientEnum.Grade grade = shop.Grade();
+            ClientEnum.Grade grade = shop.Grade(shop.maxLevel > 0 ? drawCount / requiredExp : 0);
 
             BaseItem item = itemData.GetItem(target,grade);
             reward.AddItem(item);

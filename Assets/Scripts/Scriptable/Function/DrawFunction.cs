@@ -34,6 +34,7 @@ namespace JsonClass
 
     public partial class Shops
     {
+
         public ClientEnum.DrawValue DrawValue()
         {
             return (ClientEnum.DrawValue)type;
@@ -49,21 +50,28 @@ namespace JsonClass
             return (ClientEnum.Item)target;
         }
 
-        int MaxProbability()
+        int GetAddProbability(Probabilities probability,int lv)
+        {
+            int value = (lv >= probability.targetLevel ? Mathf.RoundToInt(probability.value * lv * probability.addValue) : 0);
+
+            return value;
+        }
+
+        int MaxProbability(int lv)
         {
             int value = 0;
 
             foreach (var item in probabilities)
             {
-                value += item.value;
+                value += item.value + GetAddProbability(item,lv);
             }
 
             return value;
         }
 
-        public ClientEnum.Grade Grade()
+        public ClientEnum.Grade Grade(int lv = 0)
         {
-            int random = Random.Range(0, MaxProbability());
+            int random = Random.Range(0, MaxProbability(lv));
             ClientEnum.Grade grade = ClientEnum.Grade.Common;
 
             for (int i = 0; i < probabilities.Count; i++)
@@ -76,7 +84,7 @@ namespace JsonClass
                 }
                 else
                 {
-                    random -= probabilities[i].value;
+                    random -= (probabilities[i].value + GetAddProbability(probabilities[i],lv));
                 }
             }
 
@@ -86,6 +94,7 @@ namespace JsonClass
 
     public partial class Probabilities
     {
+
     }
 
 }

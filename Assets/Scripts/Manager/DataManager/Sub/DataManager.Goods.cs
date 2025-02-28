@@ -44,5 +44,6 @@ public partial class  DataManager //Goods
 
         goodsDict[ClientEnum.Goods.Gold] = 100000;
         goodsDict[ClientEnum.Goods.Gem] = 100000;
+        goodsDict[ClientEnum.Goods.Scrap] = 1000;
     }
 }

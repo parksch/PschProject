@@ -151,8 +151,10 @@ public partial class DataManager //Inventory
                     inventoryDates.Add(new BaseItem());
                     i--;
                     isOn = true;
+                    break;
                 }
             }
+
         }
 
         if (isOn)

@@ -117,6 +117,8 @@ public partial class DataManager //Info
 
         return exp;
     }
+
+    public int ResetDrawLimit(string name) => drawLimit.Find(x => name == x.key).value = 0;
     public int DrawLimit(string name) => drawLimit.Find(x => name == x.key).value;
     public int DrawCount(string name) => drawCount.Find(x => name == x.key).value;
     public int AddDrawLimit(string name, int value) => drawLimit.Find(x => name == x.key).value += value;

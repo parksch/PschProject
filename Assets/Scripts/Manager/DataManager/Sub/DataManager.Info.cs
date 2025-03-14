@@ -190,15 +190,8 @@ public partial class DataManager //Info
 
             for (int j = 0; j < shop.type.shops.Count; j++)
             {
-                if (shop.type.shops[j].limit > 0)
-                {
-                    CreateDrawLimit(shop.type.shops[j].nameKey);
-                }
-
-                if (shop.type.shops[j].maxLevel > 0)
-                {
-                    CreateDrawCount(shop.type.shops[j].nameKey);
-                }
+                CreateDrawLimit(shop.type.shops[j].nameKey);
+                CreateDrawCount(shop.type.shops[j].nameKey);
             }
         }
 

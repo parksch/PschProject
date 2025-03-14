@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-using JsonClass;
 
 public partial class DataManager : Singleton<DataManager>
 {
@@ -12,7 +10,6 @@ public partial class DataManager : Singleton<DataManager>
 
     protected override void Awake()
     {
-        //Application.targetFrameRate = 60;
         base.Awake();
     }
 
